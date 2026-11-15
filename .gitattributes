@@ -1,0 +1,14 @@
+# Keep the attribute policy itself portable and deterministic.
+/.gitattributes text eol=lf
+
+# Sealed Golden payload and its saved baseline are hashed as exact bytes.
+/tests/golden/cases/** -text
+/tests/golden/inputs/** -text
+/tests/golden/libs/** -text
+/tests/golden/.baseline/** -text
+
+# Independently authored and pending validation data must also retain their bytes.
+/tests/acceptance/expected/** -text
+/tests/golden_pending/cases/** -text
+/tests/golden_pending/inputs/** -text
+/tests/golden_pending/carddemo_source/expectations.json -text
