@@ -1,0 +1,82 @@
+# JCL Profiler configuration (schema version 1)
+# 要件 FR-01 / CTX-02 / ADR-002..006
+version: 1
+
+roots:
+  - id: carddemo
+    path: D:/projects/aws-card/aws-mainframe-modernization-carddemo/app
+
+encoding:
+  # ADR-009: JCL/PROC系とデータファイルの文字コード設定を分離する。
+  # 解決順序: overrides（最初に一致したもの） > asset_types.*.encoding_profile > default
+  # null は「未確定」を表す。デコードせず、ハッシュのみ記録する（INV-I004）。推測はしない。
+  default: utf-8
+  profiles:
+    jcl_text: utf-8   # JCL / PROC / CONTROL_CARDS（Step 2: 58ファイル全件が UTF-8 strict でデコード可能）
+    data: null        # 未確定: EBCDIC のコードページ（037 / 1047 など）はユーザー決定 A1 により確定しない
+  overrides: []
+
+limits:
+  max_decode_bytes: 16777216   # これを超えるファイルはハッシュのみ計算し、デコードしない（INV-W004）
+
+follow_symlinks: false
+
+# Environment Profile (ADR-021, user decision A2). JES2/JES3 で挙動が異なる規則（例: DD * の DLM）
+# のために JES 種別を保持する。未確認の間は UNKNOWN とし、JES 依存の結果は確定しない。
+environment:
+  jes: UNKNOWN
+
+# 除外規則。一致したファイルは excluded に記録する（黙って捨てない）
+exclude: []
+
+# ADR-010: データセット名 → ローカルフォルダの対応は明示的な設定でのみ与える。DSN から物理パスを推測しない。
+# ユーザーが確認した対応だけをここに追加する。未登録の DSN は Step 5 で未解決参照として報告する。
+# 書式: {dsn: AWS.M2.CARDDEMO.PROC, root: carddemo, path: proc, organization: PDS,
+#        member_suffixes: [".prc"], aliases: {ALIAS: MEMBER}, note: "確認者・日付"}
+datasets: []
+
+asset_types:
+  # fixed_record_length: 80桁固定レコード（JCL-REC-004）。超過・TABを診断する（INV-W005/W006）
+  JCL:                {member_like: true,  fixed_record_length: 80, encoding_profile: jcl_text, description: "JCL job members"}
+  PROC:               {member_like: true,  fixed_record_length: 80, encoding_profile: jcl_text, description: "Cataloged procedure members"}
+  CONTROL_CARDS:      {member_like: true,  fixed_record_length: 80, encoding_profile: jcl_text, description: "Control statements / SYSIN members"}
+  COBOL:              {member_like: true,  description: "COBOL source"}
+  COPYBOOK:           {member_like: true,  description: "COBOL copybooks"}
+  BMS:                {member_like: true,  description: "CICS BMS map source"}
+  ASSEMBLER:          {member_like: true,  description: "Assembler source"}
+  MACRO:              {member_like: true,  description: "Assembler macros"}
+  DB2_DDL:            {member_like: true,  description: "DB2 DDL"}
+  DB2_DCLGEN:         {member_like: true,  description: "DB2 DCLGEN declarations"}
+  IMS_PSB:            {member_like: true,  description: "IMS PSB source"}
+  IMS_DBD:            {member_like: true,  description: "IMS DBD source"}
+  CICS_CSD:           {member_like: false, description: "CICS CSD definitions"}
+  DATA:               {member_like: false, encoding_profile: data, description: "Data files (content not analyzed)"}
+  CATALOG_LISTING:    {member_like: false, description: "IDCAMS LISTCAT output"}
+  SCHEDULER_CA7:      {member_like: false, description: "CA-7 schedule listing"}
+  SCHEDULER_CONTROLM: {member_like: false, description: "Control-M job definitions (XML)"}
+  DOCUMENT:           {member_like: false, description: "Documentation"}
+  PLACEHOLDER:        {member_like: false, description: "VCS placeholder files"}
+
+# 分類規則: 上から順に評価し、最初に一致した規則を採用する。pattern は root 相対の POSIX パス glob。
+# 大文字小文字は区別しない（.JCL / .jcl など）。どれにも一致しなければ UNKNOWN（INV-W001）。
+classification:
+  - {id: CLS-001, pattern: "**/.gitkeep",    asset_type: PLACEHOLDER}
+  - {id: CLS-002, pattern: "**/data/**",     asset_type: DATA}
+  - {id: CLS-003, pattern: "**/catlg/**",    asset_type: CATALOG_LISTING}
+  - {id: CLS-010, pattern: "**/*.jcl",       asset_type: JCL}
+  - {id: CLS-011, pattern: "**/*.prc",       asset_type: PROC}
+  - {id: CLS-012, pattern: "**/*.proc",      asset_type: PROC}
+  - {id: CLS-013, pattern: "**/*.ctl",       asset_type: CONTROL_CARDS}
+  - {id: CLS-020, pattern: "**/*.cbl",       asset_type: COBOL}
+  - {id: CLS-021, pattern: "**/*.cpy",       asset_type: COPYBOOK}
+  - {id: CLS-022, pattern: "**/*.bms",       asset_type: BMS}
+  - {id: CLS-023, pattern: "**/*.asm",       asset_type: ASSEMBLER}
+  - {id: CLS-024, pattern: "**/*.mac",       asset_type: MACRO}
+  - {id: CLS-030, pattern: "**/*.ddl",       asset_type: DB2_DDL}
+  - {id: CLS-031, pattern: "**/*.dcl",       asset_type: DB2_DCLGEN}
+  - {id: CLS-032, pattern: "**/*.psb",       asset_type: IMS_PSB}
+  - {id: CLS-033, pattern: "**/*.dbd",       asset_type: IMS_DBD}
+  - {id: CLS-034, pattern: "**/*.csd",       asset_type: CICS_CSD}
+  - {id: CLS-040, pattern: "**/*.ca7",       asset_type: SCHEDULER_CA7}
+  - {id: CLS-041, pattern: "**/*.controlm",  asset_type: SCHEDULER_CONTROLM}
+  - {id: CLS-050, pattern: "**/*.md",        asset_type: DOCUMENT}

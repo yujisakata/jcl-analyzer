@@ -1,0 +1,1021 @@
+{
+  "request_evidence": [],
+  "events": [
+    {
+      "timestamp": "2026-11-15T11:49:07.863Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01SU59LD1s3HKg4rWjTSHJVT",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:50:36.524Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01TM94uTetmRUdTX8DEVTkBv",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": "cat > /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h1.py <<'EOF'\nimport pathlib\np = pathlib.Path(\"s",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:50:54.059Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_018nK84kyaz56eXgijDQRgMb",
+      "paths": [
+        "src/jclprof/harness/defects.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:10.711Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01PLEQf8WsGWsfT3L8UbrfrG",
+      "paths": [
+        "tests/KNOWN_DEFECTS.yaml"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:35.579Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01Cc7mdoomjFNz34PRkfK2K8",
+      "paths": [
+        "src/jclprof/harness/adapters.py",
+        "src/jclprof/harness/comparator.py",
+        "src/jclprof/harness/runner.py",
+        "src/jclprof/harness/trace.py"
+      ],
+      "command_excerpt": "cat > /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h2.py <<'EOF'\nimport pathlib\ndef rep(path, pairs",
+      "tool_result_not_marked_error": false
+    },
+    {
+      "timestamp": "2026-11-15T11:51:45.177Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01TVMH59U18RpW42HkBQLFAY",
+      "paths": [
+        "src/jclprof/harness/trace.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:48.264Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01JEPxf4gTaj3sQsYnzqbrx6",
+      "paths": [
+        "src/jclprof/harness/trace.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:00.192Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01RsahwC8TG9UVcaWq2F9ojD",
+      "paths": [
+        "src/jclprof/parser/adapter.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:02.192Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_018JA27v2KB2ePyTszacmzR6",
+      "paths": [
+        "src/jclprof/parser/adapter.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:09.550Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_015uF2dVraPDFNUFAKJCLfbH",
+      "paths": [
+        "src/jclprof/parser/adapter.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:34.343Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01PtHCtRqhNrb3et9R6uPbvM",
+      "paths": [
+        "tools/golden_authoring/make_pending_hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:36.599Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01XiGWNzy7rdoeqessEzNXpu",
+      "paths": [
+        "tests/golden_pending/cases/dd_concatenation.yaml",
+        "tests/golden_pending/cases/instream_data.yaml",
+        "tests/golden_pending/cases/job_exec_dd.yaml",
+        "tools/golden_authoring/make_pending_hierarchy.py"
+      ],
+      "command_excerpt": "uv run python tools/golden_authoring/make_pending_hierarchy.py && uv run jclprof golden-check --suite tests/golden_pending 2>&1 | tail -3; uv run jclprof verify",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:46.242Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01XQhKtQLK4CEebBGPxzKL1D",
+      "paths": [
+        "tools/golden_authoring/make_pending_hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:48.099Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01XhF3UkZ3Urq4WJ2j2weGNP",
+      "paths": [
+        "tests/golden_pending/cases/dd_concatenation.yaml",
+        "tests/golden_pending/cases/instream_data.yaml",
+        "tests/golden_pending/cases/job_exec_dd.yaml",
+        "tools/golden_authoring/make_pending_hierarchy.py"
+      ],
+      "command_excerpt": "uv run python tools/golden_authoring/make_pending_hierarchy.py >/dev/null && uv run jclprof verify --suite tests/golden_pending --output results/harness/pending",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:23.344Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_014sz4tUfBgc1HyfsHPMWEwk",
+      "paths": [
+        "src/jclprof/harness/mutations.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:32.244Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01P9BvSYXuzFh5TRTBYUbcT3",
+      "paths": [
+        "src/jclprof/harness/mutations.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:37.053Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01KY63CeiTywMDSzPWcuthn4",
+      "paths": [
+        "src/jclprof/harness/mutations.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:38.158Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01HDSP6NFy656C6JzHsi1jVQ",
+      "paths": [
+        "src/jclprof/harness/mutations.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:04.834Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01KNvScNvoWfK6gej7St39RP",
+      "paths": [
+        "tools/hierarchy_mutation_report.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:32.976Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_011MSqN5MWc7c2AN89KTvyF7",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:34.476Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01R1hyn2k3mi94yReZ7aLVGu",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:25.588Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01MTrbpb3gyBgx9AdMuPyekz",
+      "paths": [
+        "tests/harness/test_hierarchy_harness.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:42.945Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_011mZWWEcErBjQ981u3eG825",
+      "paths": [
+        "tests/property/test_hierarchy_properties.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:59.872Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01F5RMz9jvBurN6kVdbofWZA",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:02.677Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01AciX6c4ujQ2eVg94cvPxaa",
+      "paths": [
+        "tests/KNOWN_DEFECTS.yaml"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:14.999Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_014uYueuZ7MWe9d2jP4Jtg4U",
+      "paths": [
+        "src/jclprof/harness/hierarchy.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:32.987Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01LLZC8NbJJefb2ZeruyGfNa",
+      "paths": [
+        "tests/KNOWN_DEFECTS.yaml"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:03.396Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_012PejeVoLKgvwBVAU2hPQ45",
+      "paths": [
+        "tests/ACCEPTANCE_SCOPE.yaml"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:21.308Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01Qbfgow967Duo5diYPu6p2f",
+      "paths": [
+        "src/jclprof/harness/gates.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:58.214Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01AFV1UC8gbbRH3esMdFX2tw",
+      "paths": [
+        "tools/quality_gate.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:59:56.650Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01WV8Z9yVP2a6rxPnxddmQfJ",
+      "paths": [
+        "tests/harness/test_harness_cli.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T11:59:57.902Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_011XQn5ZL8VTECqMsrrcCu5v",
+      "paths": [
+        "tests/harness/test_harness_cli.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:01.655Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01KHpEakFutH4tAJW7Xj95ow",
+      "paths": [
+        "tests/parser/test_golden_parser.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:03.253Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01FJGKSD7nsYWYYYH488V1t7",
+      "paths": [
+        "tests/parser/test_golden_parser.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:04.906Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01TFbFUsECAKRwcPMMwKwys6",
+      "paths": [
+        "tests/KNOWN_DEFECTS.yaml"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:25.324Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01BTzUJJTqvtSGkJ4S7J2bGw",
+      "paths": [
+        "src/jclprof/harness/defects.py",
+        "src/jclprof/harness/mutations.py",
+        "tools/hierarchy_mutation_report.py",
+        "tools/quality_gate.py"
+      ],
+      "command_excerpt": "cat > /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h3.py <<'EOF'\nimport pathlib\ndef rep(path, pairs",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:44.722Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01U59ctJsKhCHvxweBFdQDjb",
+      "paths": [
+        "tests/harness/test_gates.py"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:01:33.551Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01Jz6nDjCNVSBdunZAcdTK6V",
+      "paths": [
+        "docs/decisions.md",
+        "docs/golden-view.md",
+        "docs/reviews/parser-defects-04b.md",
+        "tests/ACCEPTANCE_SCOPE.yaml",
+        "tests/KNOWN_DEFECTS.yaml",
+        "tests/harness/test_harness_cli.py",
+        "tests/parser/test_golden_parser.py",
+        "tools/hierarchy_mutation_report.py",
+        "tools/quality_gate.py"
+      ],
+      "command_excerpt": "uv run python - <<'EOF'\nimport pathlib\np = pathlib.Path(\"docs/reviews/parser-defects-04b.md\"); s = p.read_text(encoding=\"utf-8\")\nn = s.count(\"ADR-027\") + s.coun",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:01:51.459Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01JhZdmCwrC1GVb6rjQLdG1C",
+      "paths": [
+        "docs/golden-view.md",
+        "src/jclprof/harness/hierarchy.py",
+        "tests/CHANGES.md",
+        "tests/KNOWN_DEFECTS.yaml",
+        "tests/golden_pending/README.md",
+        "tools/golden_authoring/make_pending_hierarchy.py"
+      ],
+      "command_excerpt": "cat >> docs/golden-view.md <<'EOF'\n\n## hierarchy（statements view の任意項目。ADR-027）\n\nJOB→STEP→DD の木。平坦な `statements` に加えて書く。書いた場合は順序どおりに比較し（ジョブ・ステップ・DD の順序は意味を持つ）、期",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:02:03.826Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01Vvt1Ch5JiEDdCitJ6cZ58T",
+      "paths": [
+        "docs/requirements.md",
+        "src/jclprof/harness/trace.py",
+        "tests/CHANGES.md",
+        "tests/KNOWN_DEFECTS.yaml",
+        "tests/harness/test_gates.py",
+        "tests/harness/test_harness_cli.py",
+        "tests/harness/test_hierarchy_harness.py",
+        "tests/parser/test_golden_parser.py",
+        "tests/property/test_hierarchy_properties.py"
+      ],
+      "command_excerpt": "cat >> tests/CHANGES.md <<'EOF'\n| TC-013 | 2026-11-15 | `tests/harness/test_harness_cli.py::test_verify_real_suite_reports_not_implemented`、`tests/parser/test_g",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:02:14.960Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Bash",
+      "id": "toolu_01KEzWTyyXSdS5QigQSKGcau",
+      "paths": [
+        "CLAUDE.md",
+        "docs/reports/r1-harness.md",
+        "docs/reviews/parser-defects-04b.md",
+        "tests/KNOWN_DEFECTS.yaml",
+        "tools/hierarchy_mutation_report.py",
+        "tools/quality_gate.py"
+      ],
+      "command_excerpt": "cat > /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h4.py <<'EOF'\nimport pathlib\np = pathlib.Path(\"C",
+      "tool_result_not_marked_error": true
+    },
+    {
+      "timestamp": "2026-11-15T12:03:20.371Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01YHBfB5JaxeYTavNKA6uSnB",
+      "paths": [
+        "docs/reports/r1-harness.md"
+      ],
+      "command_excerpt": null,
+      "tool_result_not_marked_error": true
+    }
+  ],
+  "files": [
+    {
+      "path": "src/jclprof/harness/adapters.py",
+      "first_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "last_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:51:36.021557+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/comparator.py",
+      "first_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "last_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:51:36.026248+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/runner.py",
+      "first_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "last_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:51:36.023234+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/trace.py",
+      "first_R1_write_event_utc": "2026-11-15T11:51:35.579Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:51:49.061994+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/parser/adapter.py",
+      "first_R1_write_event_utc": "2026-11-15T11:52:00.192Z",
+      "last_R1_write_event_utc": "2026-11-15T11:52:09.550Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Edit"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:52:10.963608+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/CHANGES.md",
+      "first_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:02:04.170540+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/harness/test_harness_cli.py",
+      "first_R1_write_event_utc": "2026-11-15T11:59:56.650Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:05.709677+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/parser/test_golden_parser.py",
+      "first_R1_write_event_utc": "2026-11-15T12:00:01.655Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:07.325030+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "specs/golden-schema.json",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:52:29.822687+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tools/quality_gate.py",
+      "first_R1_write_event_utc": "2026-11-15T11:58:58.214Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:25.769002+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/decisions.md",
+      "first_R1_write_event_utc": "2026-11-15T12:01:33.551Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:33.551Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:01:34.101336+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/golden-view.md",
+      "first_R1_write_event_utc": "2026-11-15T12:01:33.551Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:01:51.632512+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/requirements.md",
+      "first_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:02:04.200314+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/reviews/parser-defects-04b.md",
+      "first_R1_write_event_utc": "2026-11-15T12:01:33.551Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:01:34.061360+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "CLAUDE.md",
+      "first_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:02:15.619684+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/reports/r1-harness.md",
+      "first_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "last_R1_write_event_utc": "2026-11-15T12:03:20.371Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:03:21.752581+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "docs/reviews/carddemo-acceptance-contract.md",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:56:05.748540+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "src/jclprof/harness/defects.py",
+      "first_R1_write_event_utc": "2026-11-15T11:50:54.059Z",
+      "last_R1_write_event_utc": "2026-11-15T12:00:25.324Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:25.766694+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/gates.py",
+      "first_R1_write_event_utc": "2026-11-15T11:58:21.308Z",
+      "last_R1_write_event_utc": "2026-11-15T11:58:21.308Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:58:22.117654+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/hierarchy.py",
+      "first_R1_write_event_utc": "2026-11-15T11:49:07.863Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:57:16.329479+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "src/jclprof/harness/mutations.py",
+      "first_R1_write_event_utc": "2026-11-15T11:54:23.344Z",
+      "last_R1_write_event_utc": "2026-11-15T12:00:25.324Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:25.767998+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/ACCEPTANCE_SCOPE.yaml",
+      "first_R1_write_event_utc": "2026-11-15T11:58:03.396Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:33.551Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:58:21.325443+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/golden_pending/cases/dd_concatenation.yaml",
+      "first_R1_write_event_utc": "2026-11-15T11:53:36.599Z",
+      "last_R1_write_event_utc": "2026-11-15T11:53:48.099Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:53:49.411253+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/golden_pending/cases/instream_data.yaml",
+      "first_R1_write_event_utc": "2026-11-15T11:53:36.599Z",
+      "last_R1_write_event_utc": "2026-11-15T11:53:48.099Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:53:49.415253+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/golden_pending/cases/job_exec_dd.yaml",
+      "first_R1_write_event_utc": "2026-11-15T11:53:36.599Z",
+      "last_R1_write_event_utc": "2026-11-15T11:53:48.099Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:53:49.407973+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/golden_pending/inputs/hierarchy/h001.jcl",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:53:02.150743+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tests/golden_pending/inputs/hierarchy/h002.jcl",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:53:02.154216+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tests/golden_pending/inputs/hierarchy/h003.jcl",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:53:02.156173+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tests/golden_pending/inputs/hierarchy/h004.jcl",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:53:02.159195+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tests/golden_pending/inputs/hierarchy/h005.jcl",
+      "first_R1_write_event_utc": null,
+      "last_R1_write_event_utc": null,
+      "models": [],
+      "tools": [],
+      "filesystem_mtime_utc": "2026-11-15T11:53:02.161194+00:00",
+      "origin_status": "not established from direct Write/Edit/script event"
+    },
+    {
+      "path": "tests/golden_pending/README.md",
+      "first_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:01:51.656733+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/harness/test_gates.py",
+      "first_R1_write_event_utc": "2026-11-15T12:00:44.722Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:46.034310+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/harness/test_hierarchy_harness.py",
+      "first_R1_write_event_utc": "2026-11-15T11:56:25.588Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:56:26.699479+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "first_R1_write_event_utc": "2026-11-15T11:51:10.711Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:08.107397+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tests/property/test_hierarchy_properties.py",
+      "first_R1_write_event_utc": "2026-11-15T11:56:42.945Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:03.826Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:56:43.963189+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tools/golden_authoring/make_pending_hierarchy.py",
+      "first_R1_write_event_utc": "2026-11-15T11:53:34.343Z",
+      "last_R1_write_event_utc": "2026-11-15T12:01:51.459Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Edit",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T11:53:48.275654+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    },
+    {
+      "path": "tools/hierarchy_mutation_report.py",
+      "first_R1_write_event_utc": "2026-11-15T11:55:04.834Z",
+      "last_R1_write_event_utc": "2026-11-15T12:02:14.960Z",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "tools": [
+        "Bash",
+        "Write"
+      ],
+      "filesystem_mtime_utc": "2026-11-15T12:00:25.770002+00:00",
+      "origin_status": "correlated Claude project session write/script event"
+    }
+  ]
+}

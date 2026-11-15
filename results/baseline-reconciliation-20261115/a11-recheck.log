@@ -1,0 +1,80 @@
+{
+  "input": "//J JOB\n//S EXEC PGM=X\n//D DD DUMMY\n",
+  "mutation": "dataclasses.replace(r,jobs=())",
+  "legacy_flat_comparison_ok": true,
+  "trace_result": "PASS",
+  "new_invariant_violations": [
+    {
+      "code": "H-DD-01",
+      "node": "S00003",
+      "detail": "DD not in tree (expected under STEP:S00002)"
+    },
+    {
+      "code": "H-JOB-01",
+      "node": "S00001",
+      "detail": "JOB not in tree (expected under ROOT)"
+    },
+    {
+      "code": "H-STEP-01",
+      "node": "S00002",
+      "detail": "EXEC not in tree (expected under JOB:S00001)"
+    }
+  ],
+  "hierarchical_comparison_differences": [
+    {
+      "path": "hierarchy.jobs[0]",
+      "kind": "missing",
+      "expected": {
+        "name": "J",
+        "line": 1,
+        "span": [
+          1,
+          3
+        ],
+        "dds": [],
+        "steps": [
+          {
+            "name": "S",
+            "line": 2,
+            "target": [
+              "PGM",
+              "X"
+            ],
+            "dds": [
+              {
+                "name": "D",
+                "line": 3,
+                "concat_head": "D",
+                "concat_index": 0
+              }
+            ]
+          }
+        ],
+        "procedures": []
+      },
+      "actual": null
+    }
+  ],
+  "continued_string_mutation": {
+    "input": "//J JOB\n//S EXEC PGM=X,PARM='AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n//             BBBB'\n",
+    "change": "PARM later segment BBBB -> CCCC",
+    "trace_result": "PASS",
+    "invariant_violations": [],
+    "raw_source_unchanged": true
+  },
+  "gate_a_case_id_allowance": {
+    "injected_result": {
+      "test_id": "G-IS-006",
+      "verification_status": "FAILED",
+      "reason": "unrelated adapter crash injected in memory"
+    },
+    "classification": [
+      [],
+      {
+        "G-IS-006": "A10"
+      },
+      []
+    ]
+  }
+}
+Adapter/Runner: PASSED -> FAILED

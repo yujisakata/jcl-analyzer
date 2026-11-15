@@ -1,0 +1,53 @@
+{
+  "checked_at_utc": "2026-11-15T14:59:11.807839+00:00",
+  "baseline_source_sha256": "86878b6588133f6f796b104f8359e5c11e0c7f48f896fe9a5f7345a64bd50b4b",
+  "protected_count": 444,
+  "protected_changed": [],
+  "protected_sets": {
+    "parser": {
+      "before": 5,
+      "after": 5,
+      "added": [],
+      "removed": []
+    },
+    "lexer": {
+      "before": 4,
+      "after": 4,
+      "added": [],
+      "removed": []
+    },
+    "golden": {
+      "before": 195,
+      "after": 195,
+      "added": [],
+      "removed": []
+    },
+    "original": {
+      "before": 240,
+      "after": 240,
+      "added": [],
+      "removed": []
+    }
+  },
+  "existing_302_changed": [
+    {
+      "path": "tests/CHANGES.md",
+      "before": "456149969c85a532b3939a14b8230ae0cabe10124de8254fc0863f07d57add43",
+      "after": "6a4cc3bc259dd3822b4f814b4b416f4999f3a8042b7a54f57f0683a49b95d401"
+    }
+  ],
+  "added_source_paths": [
+    "src/jclprof/harness/carddemo_mutations.py",
+    "src/jclprof/harness/carddemo_source.py",
+    "tests/golden_pending/carddemo_source/README.md",
+    "tests/golden_pending/carddemo_source/expectations.json",
+    "tests/golden_pending/carddemo_source/oracle-manifest.json",
+    "tests/golden_pending/carddemo_source/reviews.json",
+    "tests/harness/test_carddemo_source.py",
+    "tools/carddemo_source_acceptance.py",
+    "tools/carddemo_source_review_packet.py",
+    "tools/golden_authoring/build_carddemo_source.py"
+  ],
+  "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+  "oracle_review_pending": 48
+}

@@ -1,0 +1,12 @@
+--- before/src/jclprof/harness/adapters.py
++++ current/src/jclprof/harness/adapters.py
+@@ -19,6 +19,9 @@
+ class AdapterOutput:
+     view: dict[str, Any]
+     diagnostics: list[dict[str, Any]] = field(default_factory=list)
++    # Expectation-free structural checks run by the adapter (e.g. hierarchy invariants, ADR-027):
++    # [{code, node, detail}]. Any entry makes the case FAILED, whatever the expected values say.
++    invariants: list[dict[str, Any]] = field(default_factory=list)
+ 
+ 
+ class StageAdapter(Protocol):

@@ -1,0 +1,125 @@
+--- /dev/null
++++ current/tools/hierarchy_mutation_report.py
+@@ -0,0 +1,122 @@
++"""Hierarchy mutation report (R1 / audit A11): are wrong ASTs detected?
++
++Applies every operator in jclprof.harness.mutations to the Parser output of
++  * the review-pending hierarchy cases (tests/golden_pending; detectors: invariants, trace, golden)
++  * the sealed syntactic Golden cases in the adapter scope (golden = their statements expectation)
++  * the 48 CardDemo JCL/PROC files (no expectation; detectors: invariants, trace)
++and writes results/harness/hierarchy_mutation.{json,md}. Inputs are read only.
++
++Exit code 1 if any mutant of a REQUIRED operator (M1-M7) escapes every detector. Consistency
++variants (M5c, M6c) are reported; a variant that can only be caught by an expectation is counted
++as "needs expectation" on inputs that have none.
++
++usage: uv run python tools/hierarchy_mutation_report.py [--output results/harness]
++"""
++
++from __future__ import annotations
++
++import argparse
++import json
++import sys
++from pathlib import Path
++from typing import Any
++
++import yaml
++
++from jclprof.context.config import ConfigError, load_config
++from jclprof.harness.loader import load_suite
++from jclprof.harness.mutations import CONSISTENT, REQUIRED, all_mutants, detect
++from jclprof.harness.registry import load_catalog, load_rules
++from jclprof.parser import parse_file
++from jclprof.parser.adapter import scope_gap
++
++ROOT = Path(__file__).resolve().parents[1]
++REQUIRED_NAMES = {op.__name__ for op in REQUIRED}
++CONSISTENT_NAMES = {op.__name__ for op in CONSISTENT}
++
++
++def _inputs() -> list[tuple[str, str, Path, str, dict[str, Any] | None]]:
++    """(group, label, path, input_kind, expected_structure or None)."""
++    reg = load_rules(ROOT / "specs" / "rules.yaml")
++    cat = load_catalog(ROOT / "specs" / "diagnostic-catalog.yaml")
++    out: list[tuple[str, str, Path, str, dict[str, Any] | None]] = []
++    for group, suite in (("pending", "tests/golden_pending"), ("golden", "tests/golden")):
++        res = load_suite(ROOT / suite, reg, cat)
++        for c in res.cases:
++            if c.stage != "syntactic" or c.review_status == "blocked" or c.is_corpus_input:
++                continue
++            if scope_gap(c):
++                continue
++            if c.raw.get("environment", {}).get("jes", "UNKNOWN") != "UNKNOWN":
++                continue
++            out.append((group, c.test_id, c.input_path, c.raw["input_kind"],
++                        c.raw["expected_structure"]))
++    try:
++        root = load_config(ROOT / "config" / "profiler.yaml").roots[0].path
++    except (ConfigError, IndexError):
++        return out
++    oracle = yaml.safe_load((ROOT / "tests/acceptance/expected/carddemo_inventory.yaml")
++                            .read_text(encoding="utf-8"))
++    for rel in oracle["jcl_family_files"]:
++        kind = "proc_member" if rel.lower().endswith((".prc", ".proc")) else "job"
++        out.append(("carddemo", rel, Path(root) / rel, kind, None))
++    return out
++
++
++def main(argv: list[str] | None = None) -> int:
++    ap = argparse.ArgumentParser()
++    ap.add_argument("--output", default="results/harness")
++    args = ap.parse_args(argv)
++    rows: dict[tuple[str, str], dict[str, Any]] = {}
++    escaped: list[dict[str, Any]] = []
++    for group, label, path, kind, expected in _inputs():
++        r = parse_file(path, encoding="utf-8", input_kind=kind)
++        text = path.read_bytes().decode("utf-8")
++        for m in all_mutants(r):
++            op = m.operator.split()[1]
++            d = detect(m, r, text, expected)
++            hit = any(v for v in d.values())
++            row = rows.setdefault((m.operator, group), {"mutants": 0, "detected": 0,
++                                                        "invariants": 0, "trace": 0,
++                                                        "golden": 0, "needs_expectation": 0})
++            row["mutants"] += 1
++            row["detected"] += hit
++            for k in ("invariants", "trace", "golden"):
++                row[k] += bool(d[k])
++            if not hit:
++                if op in CONSISTENT_NAMES and expected is None:
++                    row["needs_expectation"] += 1
++                else:
++                    escaped.append({"operator": m.operator, "group": group, "input": label,
++                                    "target": m.target})
++    required = [(k, v) for k, v in rows.items() if k[0].split()[1] in REQUIRED_NAMES]
++    req_total = sum(v["mutants"] for _, v in required)
++    req_hit = sum(v["detected"] for _, v in required)
++    out = ROOT / args.output
++    out.mkdir(parents=True, exist_ok=True)
++    data = {"required_mutants": req_total, "required_detected": req_hit,
++            "required_detection_rate": (req_hit / req_total) if req_total else None,
++            "escaped": escaped,
++            "rows": [{"operator": k[0], "group": k[1], **v} for k, v in sorted(rows.items())]}
++    (out / "hierarchy_mutation.json").write_text(json.dumps(data, indent=2) + "\n",
++                                                 encoding="utf-8")
++    L = ["# Hierarchy mutation report (R1)", "",
++         f"Required operators M1-M7: {req_hit}/{req_total} mutants detected.", "",
++         "A mutant counts as detected if any detector rejects it. `invariants` counts only "
++         "violations absent from the unmutated AST, so known-defect violations do not count as "
++         "detections. `needs expectation`: consistency variant on an input without a Golden "
++         "expectation (detectable only by an expectation).", "",
++         "| Operator | Inputs | Mutants | Detected | invariants | trace | golden | "
++         "needs expectation |", "|---|---|---|---|---|---|---|---|"]
++    for key, v in sorted(rows.items()):
++        L.append(f"| {key[0]} | {key[1]} | {v['mutants']} | {v['detected']} | {v['invariants']} | "
++                 f"{v['trace']} | {v['golden']} | {v['needs_expectation']} |")
++    L += ["", f"Escaped mutants: {len(escaped)}"] + [f"- {e}" for e in escaped[:50]]
++    (out / "hierarchy_mutation.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    print(f"required operators: {req_hit}/{req_total} detected; escaped: {len(escaped)}")
++    print(f"report: {out / 'hierarchy_mutation.md'}")
++    return 0 if not escaped else 1
++
++
++if __name__ == "__main__":
++    sys.exit(main())

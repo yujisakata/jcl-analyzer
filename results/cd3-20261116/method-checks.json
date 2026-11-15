@@ -1,0 +1,78 @@
+{
+  "passed": 18,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "job_level_dds_and_concatenation",
+      "passed": true
+    },
+    {
+      "name": "crlf_and_no_final_newline",
+      "passed": true
+    },
+    {
+      "name": "byte_extent_matches_fixture",
+      "passed": true
+    },
+    {
+      "name": "joblib_label_is_not_dd",
+      "passed": true
+    },
+    {
+      "name": "comment_in_column_one_ends_star_data",
+      "passed": true
+    },
+    {
+      "name": "eof_data_and_span",
+      "passed": true
+    },
+    {
+      "name": "same_named_steps_keep_distinct_owners",
+      "passed": true
+    },
+    {
+      "name": "quoted_comma_and_space",
+      "passed": true
+    },
+    {
+      "name": "continued_null_subparameter_and_comment",
+      "passed": true
+    },
+    {
+      "name": "proc_root_and_pend_reachable",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/removed_root",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/removed_step",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/moved_dd_to_step",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/swapped_concat_order",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/data_boundary",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/record_byte_start",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/token_end_column",
+      "passed": true
+    },
+    {
+      "name": "copy_mutation/raw_parameter",
+      "passed": true
+    }
+  ]
+}

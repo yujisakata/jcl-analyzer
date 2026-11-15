@@ -1,0 +1,128 @@
+schema_version: 1
+category: INVALID_UNRESOLVED
+cases:
+  - test_id: G-INV-001
+    category: INVALID_UNRESOLVED
+    description: "EXEC PROC= naming a procedure that is neither in-stream nor in the JCLLIB private library."
+    rule_ids: [JCL-PROC-003]
+    source_reference:
+      - {rule_id: "JCL-PROC-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols > Using a procedure", pages: "26 (PDF 72)"}
+    input_file: inputs/invalid/inv001.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    environment:
+      datasets: [{dsn: TEST.PROCLIB, path: libs/proclib}]
+    expected_structure: {view: none, reason: "Unresolved reference: the diagnostic is the oracle."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-E002, severity: ERROR, line: 3}]
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "Assumes no system procedure library is configured (search step 3 is empty). libs/proclib contains only CYCA and CYCB."
+
+  - test_id: G-INV-002
+    category: INVALID_UNRESOLVED
+    description: "Cyclic procedure references (CYCA calls CYCB, which calls CYCA): resolution stops safely with a diagnostic."
+    rule_ids: [JCL-PROC-003, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols > Using a procedure", pages: "26 (PDF 72)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/invalid/inv002.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    environment:
+      datasets: [{dsn: TEST.PROCLIB, path: libs/proclib}]
+    expected_structure: {view: none, reason: "Cycle: the diagnostic is the oracle."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-E003, severity: ERROR, line: 2, file: libs/proclib/CYCB}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: "Requirement FR-06: cyclic references end safely with a diagnostic. Reported at the EXEC that re-enters CYCA. Open question: report at the re-entering EXEC or at the first call? This case takes the re-entering EXEC."
+
+  - test_id: G-INV-003
+    category: INVALID_UNRESOLVED
+    description: "Backward reference *.STEP1.NODD to a DD statement that does not exist."
+    rule_ids: [JCL-SYN-004, POL-001]
+    source_reference:
+      - {rule_id: "JCL-SYN-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Backward references", pages: "23-24 (PDF 69-70)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/invalid/inv003.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    expected_structure: {view: none, reason: "Unresolved reference: the diagnostic is the oracle."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-E004, severity: ERROR, line: 5}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-INV-004
+    category: INVALID_UNRESOLVED
+    description: "A JES2 control statement (/*JOBPARM) is recognized as JES2 and kept, not treated as a delimiter or as an error."
+    rule_ids: [JCL-JES2-001, JCL-REC-001]
+    source_reference:
+      - {rule_id: "JCL-JES2-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JES2 control statement fields", pages: "16 (PDF 62)"}
+      - {rule_id: "JCL-REC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields > Identifier field", pages: "13 (PDF 59)"}
+    input_file: inputs/invalid/inv005.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: INV005}
+        - {kind: JES2, span: [2, 2]}
+        - {kind: EXEC, span: [3, 3], name: STEP1}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Requirement 1.3: detect JES-specific statements. How a JES2 statement is told apart from the delimiter statement is not registered as a rule (see JCL-JES2-001 conditions), so this case stays draft until a JES2 statement rule is VERIFIED. Duplicate ddnames (JES2/JES3-dependent) were deliberately not designed (POL-003)."
+
+  - test_id: G-INV-101
+    category: INVALID_UNRESOLVED
+    description: 'Lexical: /* followed by a nonblank column 3 is a JES2 control statement record, not a delimiter.'
+    rule_ids: [JCL-JES2-001, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-JES2-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JES2 control statement fields", pages: "16 (PDF 62)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/invalid/inv005.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: JES2
+        raw: /*JOBPARM PROCLIB=PROC01
+      - line: 3
+        kind: STATEMENT_START
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 3
+        - 3
+        operation:
+          text: EXEC
+          line: 3
+          column: 12
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: 'The Delimiter statement has /* followed by comments after a blank (JES2: blank after the delimiter characters, p.309). A nonblank column 3 is classified as JES2. Which JES2 statement it is, is not decided.'

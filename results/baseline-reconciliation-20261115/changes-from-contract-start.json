@@ -1,0 +1,104 @@
+{
+  "modified": [
+    {
+      "path": "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\adapters.py",
+      "before": "f7e72e64ea7cc8726dda41a6f709e2438f4b06edb8f11e0a2b37c62caeb84e2b",
+      "current": "5bd9b2ec8a45ac055c7ae78ed61eec0c652b0ff5308dfac052a3202806b2bb9f"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\comparator.py",
+      "before": "7116d49d3af4a0f6dd61a8ed7059548245e148ccf8863b5ce37684196f74830f",
+      "current": "a28b2d4b490b3eeae846ddda2cb35503eb44b432f75df304f20fd234a5a3cec6"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\runner.py",
+      "before": "1bfa27175aaf3a113f7dfdca7c2a7b3c638955cea77fb97f60a752e488991561",
+      "current": "89b32dd7c79fd5eb310a0fd85ee5f5d24552b93560f7562cd21ef6cc1680363c"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\trace.py",
+      "before": "6c5af96a8d8072b2efe6227d61811b7ec2f3a0a050fefd774eeffe3e6c895835",
+      "current": "adceccca6d1be81df4b1afff20c144bbfac57ab2c949974bf918d4c20b2bc220"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\src\\jclprof\\parser\\adapter.py",
+      "before": "432c09d4abad099beebf98d886eaa9ad68b4ea6f112b8470605151742581c631",
+      "current": "9dacabff82fe684f0c161935862e92adb0100481a12b6f7da533b33919b656ad"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\tests\\CHANGES.md",
+      "before": "6dcefaf362605ccdd03ab0fd9079abe7ab4a01d0a4100ec0bda382f9003f986e",
+      "current": "456149969c85a532b3939a14b8230ae0cabe10124de8254fc0863f07d57add43"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\tests\\harness\\test_harness_cli.py",
+      "before": "be53d4f10856c0023164a306ac271ae6c880ec0f3d422e0ced92f5a7592a5af9",
+      "current": "fee1f056a730ac9affaf92b452b74030ace33430da1905edcc55b8bd33579298"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\tests\\parser\\test_golden_parser.py",
+      "before": "04382e104bd58c6e8aec1076fa6a8d6ddcf7d33f568045e32381f6173bac3782",
+      "current": "0153f81764ccb145abce5409e1d624eb6476ed51332b2737aea60119e3acfefd"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\specs\\golden-schema.json",
+      "before": "9c44c60b5766fb8ad437f0351f4494214901dc6d02ef9c043509ef1993e81fde",
+      "current": "b3c9b4ad5eb258b143dccc701e08ab1aa515731fff6e398b94532bd55c7ccdea"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\tools\\quality_gate.py",
+      "before": "5ffdfe4722977720bd9cd31aec5b39daea673287a84c025927837d7b75b28075",
+      "current": "76a1aee05aaa8c993f6ea0b98e5e350da90d2c458703d6cd339f04498e746e13"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\docs\\decisions.md",
+      "before": "43d0e6f1681a39e58488badcc5fb68edad1e4fd8b3d8984461b480cbfcd366fd",
+      "current": "97f57001a5ecfdfb6a59e57bd66ebf3ea7c119fbbe1ced10536870ee58079527"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\docs\\golden-view.md",
+      "before": "d8d9365148199861a0e36bfbaee94dddcc008dcc5dd7dac822ec1cfdf8f72a48",
+      "current": "c5938cae18115007864ba0c1e067ce6e71f325e508a1ebd988e9a7b9931fbb86"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\docs\\requirements.md",
+      "before": "973186dff713a074b59a599b7cd02d5caf4d4fb1ab127c87977d1ffbcc857d00",
+      "current": "0cf4efbccb12ac1a7c950576cd3ab5d8920bcead78ee9c430e03f5a79a2cb360"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\docs\\reviews\\parser-defects-04b.md",
+      "before": "ca7993fe77b083765555713b897b1cd44e98b5bb68413f88a2bb0eb7319c6589",
+      "current": "0fc74d854a2d91aa70109522bf9352e2eb0b1691aa4c9b8cbfe6cb1fb22511d6"
+    },
+    {
+      "path": "D:\\projects\\jcl-profiler\\CLAUDE.md",
+      "before": "bd25518d81ba144470df9a4803d3ee2a1a8159a168c26f0b3baebc7bde910268",
+      "current": "a533841bd01b6ed0f4f1e7933951b3113759f78ca8a2e21400a5c7ad6d2e8874"
+    }
+  ],
+  "added": [
+    "D:\\projects\\jcl-profiler\\docs\\reports\\r1-harness.md",
+    "D:\\projects\\jcl-profiler\\docs\\reviews\\carddemo-acceptance-contract.md",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\defects.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\gates.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\hierarchy.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\mutations.py",
+    "D:\\projects\\jcl-profiler\\tests\\ACCEPTANCE_SCOPE.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\dd_concatenation.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\instream_data.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\job_exec_dd.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h001.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h002.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h003.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h004.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h005.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\README.md",
+    "D:\\projects\\jcl-profiler\\tests\\harness\\test_gates.py",
+    "D:\\projects\\jcl-profiler\\tests\\harness\\test_hierarchy_harness.py",
+    "D:\\projects\\jcl-profiler\\tests\\KNOWN_DEFECTS.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\property\\test_hierarchy_properties.py",
+    "D:\\projects\\jcl-profiler\\tools\\golden_authoring\\make_pending_hierarchy.py",
+    "D:\\projects\\jcl-profiler\\tools\\hierarchy_mutation_report.py"
+  ],
+  "removed": []
+}

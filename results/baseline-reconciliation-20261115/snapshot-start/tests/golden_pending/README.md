@@ -1,0 +1,22 @@
+# Review-pending Golden cases (unsealed)
+
+この suite の期待値は **独立レビュー待ち** である（ADR-027）。封印済みの `tests/golden/` とは分けて管理しているので、ここにケースを追加しても `golden-check` の封印検査には影響しない。
+
+- 作成者: Claude（claude-opus-5-5）。**Parser と Harness の作成者と同じ**であり、独立したオラクルではない
+- 作成方法: 引用した IBM 規則と `docs/golden-view.md` の hierarchy 規約から、手で書いた。Parser の出力から生成していない。`tools/golden_authoring/make_pending_hierarchy.py` が YAML を書き出す（source_reference は `specs/rules.yaml` から補う）
+- 状態: すべて `review_status: draft`。結果は REFERENCE であり、正式な保証ではない
+- G-HIER-004 は既知欠陥 A10 により FAILED になることが期待されている（`tests/KNOWN_DEFECTS.yaml`）
+
+## 実行
+
+```
+uv run jclprof golden-check --suite tests/golden_pending   # 定義の検査（MANIFEST がないので integrity は CHANGED と表示される）
+uv run jclprof verify --suite tests/golden_pending --output results/harness/pending
+```
+
+## 承認後の手順
+
+1. レビュー者が期待値を確認し、修正があれば `tests/CHANGES.md` に記録する
+2. ケースを `tests/golden/cases/<category>.yaml` に、入力を `tests/golden/inputs/` に移す
+3. `review_status` を reviewed / approved に変える
+4. ユーザーが `uv run jclprof golden-seal --by NAME` で封印する

@@ -1,0 +1,753 @@
+schema_version: 1
+category: CONTINUATION_COLUMNS
+cases:
+  - test_id: G-CONT-001
+    category: CONTINUATION_COLUMNS
+    description: "IBM continuation example 1: DD parameter field continued after a comma, continuation in column 8."
+    rule_ids: [JCL-CONT-001, JCL-FMT-005, JCL-FMT-006]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+      - {rule_id: "JCL-FMT-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-FMT-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Null positional subparameters", pages: "15 (PDF 61)"}
+    input_file: inputs/continuation/cont001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT001}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - kind: DD
+          span: [3, 4]
+          name: DD1
+          positional: []
+          keywords: [[DSNAME, SWITCH.LEVEL18.GROUP12], [UNIT, "3390"], [VOLUME, "339023"], [SPACE, [TRK, ["80", "15"]]], [DISP, [null, PASS]]]
+          comment: null
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ex "Statements transcribed from the IBM SA23-1385-70 example on the cited page. Expected structure derived by hand from the cited rules."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "Example 1, p.17."
+
+  - test_id: G-CONT-002
+    category: CONTINUATION_COLUMNS
+    description: "IBM continuation example 3: EXEC continued twice, then a comment continued with a nonblank column 72 over three records."
+    rule_ids: [JCL-CONT-001, JCL-CONT-004, JCL-FMT-007]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+      - {rule_id: "JCL-CONT-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the comments field; note on column 72", pages: "17 (PDF 63)"}
+      - {rule_id: "JCL-FMT-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Comments field", pages: "13 (PDF 59)"}
+    input_file: inputs/continuation/cont003.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT003}
+        - kind: EXEC
+          span: [2, 6]
+          name: STP4
+          positional: []
+          keywords:
+            - [PROC, BILLING]
+            - [COND.PAID, [["20", LT], EVEN]]
+            - [COND.LATE, ["60", GT, FIND]]
+            - [COND.BILL, [["20", GE], ["30", LT, CHGE]]]
+          comment: ["THIS STATEMENT CALLS", "THE BILLING PROCEDURE AND SPECIFIES RETURN CODE TESTS", "FOR THREE PROCEDURE STEPS."]
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ex
+    oracle_author: *author
+    review_status: draft
+    notes: "Example 3, p.18. Records 4 and 5 carry X in column 72 (the comment continues); records 2 and 3 end in comma + blank (the parameters continue)."
+
+  - test_id: G-CONT-003
+    category: CONTINUATION_COLUMNS
+    description: "IBM continuation example 4: an apostrophe-enclosed value extended to column 71 and continued in column 16, splitting a word."
+    rule_ids: [JCL-CONT-003, JCL-SYN-001]
+    source_reference:
+      - {rule_id: "JCL-CONT-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing parameter fields enclosed in apostrophes", pages: "17 (PDF 63)"}
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+    input_file: inputs/continuation/cont004.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT004}
+        - kind: EXEC
+          span: [2, 3]
+          name: S1
+          positional: []
+          keywords: [[PGM, IEFBR14], [PARM, {q: "THIS IS A LONG PARAMETER WITHIN APOSTROPHES, CONTINUED IN COLUMN 16 OF THE NEXT RECORD"}]]
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ex
+    oracle_author: *author
+    review_status: draft
+    notes: "Example 4, p.18. Record 2 ends exactly in column 71 (checked by make_inputs.py)."
+
+  - test_id: G-CONT-004
+    category: CONTINUATION_COLUMNS
+    description: "Continuation expected, but column 3 of the next record is not blank: the next record starts a new statement and the job fails."
+    rule_ids: [JCL-CONT-002]
+    source_reference:
+      - {rule_id: "JCL-CONT-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the parameter field, step 3", pages: "17 (PDF 63)"}
+    input_file: inputs/continuation/cont005.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT005}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: DD1}
+        - {kind: DD, span: [4, 4], name: DD2}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-E002, severity: ERROR, line: 4, column: 3}]
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: *author
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "The expected statements view needs statement kinds (JOB/DD/COMMENT), which is Parser output. The Lexer (Step 4a) must not produce kinds, so the case moves to the syntactic stage. Its lexical facts are covered by new lexical-view cases."
+        before: {validation_stage: lexical}
+        after: {validation_stage: syntactic}
+        basis: "Step 4a instruction C (the Lexer produces no JOB/EXEC/DD structure); ADR-024"
+        approver: "user instruction C (the case itself remains draft)"
+    notes: "IBM: 'the system assumes the following statement is a new statement' (p.17), so two DD statements are expected."
+
+  - test_id: G-CONT-005
+    category: CONTINUATION_COLUMNS
+    description: "Boundary: continued parameter text starting in column 17 (outside columns 4-16)."
+    rule_ids: [JCL-CONT-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/continuation/cont006.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure: {view: none, reason: "IBM requires columns 4-16 but does not describe the result of violating it, so no structure is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-E003, severity: ERROR, line: 4, column: 17}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CONT-006
+    category: CONTINUATION_COLUMNS
+    description: "Boundary: continuations starting exactly in column 4 and in column 16."
+    rule_ids: [JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/continuation/cont007.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT007}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 5], name: DD1, positional: [], keywords: [[DSN, A.B], [DISP, SHR], [UNIT, SYSDA]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CONT-007
+    category: CONTINUATION_COLUMNS
+    description: "Sequence numbers in columns 73-80 are ignored; a nonblank column 72 after 'parameter, blank' does not continue a comment."
+    rule_ids: [JCL-REC-003, JCL-CONT-004]
+    source_reference:
+      - {rule_id: "JCL-REC-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields (location of fields)", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-CONT-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the comments field; note on column 72", pages: "17 (PDF 63)"}
+    input_file: inputs/continuation/cont008.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT008, positional: [], keywords: []}
+        - {kind: EXEC, span: [2, 2], name: STEP1, positional: [], keywords: [[PGM, IEFBR14]]}
+        - {kind: DD, span: [3, 4], name: DD1, positional: [], keywords: [[DSN, A.B], [DISP, SHR]], comment: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Record 3 has X in column 72 and the sequence number 00030000. IBM p.17: the system ignores a nonblank column 72 on a statement whose parameter is followed by a comma and a blank."
+
+  - test_id: G-CONT-008
+    category: CONTINUATION_COLUMNS
+    description: "A comment statement placed between continuation records is a separate statement; the DD statement spans records 3-5."
+    rule_ids: [JCL-CONT-006, JCL-STMT-COMMENT]
+    source_reference:
+      - {rule_id: "JCL-CONT-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Location in the JCL", pages: "71 (PDF 117)"}
+      - {rule_id: "JCL-STMT-COMMENT", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Description; Location in the JCL", pages: "71 (PDF 117)"}
+    input_file: inputs/continuation/cont009.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT009}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 5], name: DD1, positional: [], keywords: [[DSN, A.B], [DISP, SHR]]}
+        - {kind: COMMENT, span: [4, 4], comment: ["COMMENT BETWEEN CONTINUATIONS"]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Ordering convention (docs/golden-view.md): statements ordered by first record."
+
+  - test_id: G-CONT-009
+    category: CONTINUATION_COLUMNS
+    description: "A null statement following a statement that is being continued is treated as a blank comment field."
+    rule_ids: [JCL-CONT-007, JCL-STMT-NULL]
+    source_reference:
+      - {rule_id: "JCL-CONT-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "23. Null statement > Location in the JCL", pages: "459 (PDF 505)"}
+      - {rule_id: "JCL-STMT-NULL", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "23. Null statement > Description", pages: "459 (PDF 505)"}
+    input_file: inputs/continuation/cont010.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+        - {line: 1, kind: STATEMENT_START}
+        - {line: 2, kind: STATEMENT_START}
+        - {line: 3, kind: STATEMENT_START, continues: PARAMETER}
+        - {line: 4, kind: "NULL"}
+      lexical_statements:
+        - {span: [1, 1]}
+        - {span: [2, 2]}
+        - {span: [3, 3], lines: [3], parameter_text: "DSN=A.B,", end: NULL_STATEMENT}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-W001, severity: WARNING, line: 4}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A7: preserve the lexical position relationship (the continued statement ends at the null record) without concluding whether the job ends."
+        before: {expected_structure: {view: none}}
+        after: {expected_structure: {view: lexical, end: NULL_STATEMENT, null_record_kind: "NULL"}}
+        basis: "ADR-025; SA23-1385-70 p.459"
+        approver: "user decision A7 (the case itself remains draft)"
+    notes: "The warning is a reporting choice (catalog LEX-W001): IBM treats the input as acceptable but unusual. Open question: does the null record also end the job?"
+
+  - test_id: G-CONT-010
+    category: CONTINUATION_COLUMNS
+    description: "A comment statement may use columns 73-80: comment text includes them, unlike other statements."
+    rule_ids: [JCL-STMT-COMMENT, JCL-REC-003]
+    source_reference:
+      - {rule_id: "JCL-STMT-COMMENT", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Description; Location in the JCL", pages: "71 (PDF 117)"}
+      - {rule_id: "JCL-REC-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields (location of fields)", pages: "15 (PDF 61)"}
+    input_file: inputs/continuation/cont011.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CONT011}
+        - {kind: COMMENT, span: [2, 2], comment: ["COMMENT TEXT RUNS THROUGH COLUMN EIGHTY                             ENDSHERE"]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "The expected statements view needs statement kinds (JOB/DD/COMMENT), which is Parser output. The Lexer (Step 4a) must not produce kinds, so the case moves to the syntactic stage. Its lexical facts are covered by new lexical-view cases."
+        before: {validation_stage: lexical}
+        after: {validation_stage: syntactic}
+        basis: "Step 4a instruction C (the Lexer produces no JOB/EXEC/DD structure); ADR-024"
+        approver: "user instruction C (the case itself remains draft)"
+    notes: "The comment text is columns 4-80 with leading and trailing blanks removed; internal blanks are kept."
+
+  - test_id: G-CONT-101
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: IBM continuation example 1 - one logical statement over records 3-4, fields and tokens with positions.'
+    rule_ids: [JCL-REC-001, JCL-FMT-001, JCL-FMT-002, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-REC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields > Identifier field", pages: "13 (PDF 59)"}
+      - {rule_id: "JCL-FMT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements / 4. Syntax of parameters > Name field; Table 10 Character sets", pages: "13 (PDF 59); 21 (PDF 67)"}
+      - {rule_id: "JCL-FMT-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Operation field", pages: "13 (PDF 59)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/continuation/cont001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 4
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+        name:
+          text: CONT001
+          line: 1
+          column: 3
+        operation:
+          text: JOB
+          line: 1
+          column: 12
+        parameter_text: ''
+      - span:
+        - 2
+        - 2
+        name:
+          text: STEP1
+          line: 2
+          column: 3
+        operation:
+          text: EXEC
+          line: 2
+          column: 12
+        parameter_text: PGM=IEFBR14
+      - span:
+        - 3
+        - 4
+        lines:
+        - 3
+        - 4
+        name:
+          text: DD1
+          line: 3
+          column: 3
+        operation:
+          text: DD
+          line: 3
+          column: 8
+        parameter_text: DSNAME=SWITCH.LEVEL18.GROUP12,UNIT=3390,VOLUME=339023,SPACE=(TRK,(80,15)),DISP=(,PASS)
+        comments: []
+        end: COMPLETE
+        tokens:
+        - - WORD
+          - DSNAME
+        - - EQUALS
+          - '='
+        - - WORD
+          - SWITCH.LEVEL18.GROUP12
+        - - COMMA
+          - ','
+        - - WORD
+          - UNIT
+        - - EQUALS
+          - '='
+        - - WORD
+          - '3390'
+        - - COMMA
+          - ','
+        - - WORD
+          - VOLUME
+        - - EQUALS
+          - '='
+        - - WORD
+          - '339023'
+        - - COMMA
+          - ','
+        - - WORD
+          - SPACE
+        - - EQUALS
+          - '='
+        - - LPAREN
+          - (
+        - - WORD
+          - TRK
+        - - COMMA
+          - ','
+        - - LPAREN
+          - (
+        - - WORD
+          - '80'
+        - - COMMA
+          - ','
+        - - WORD
+          - '15'
+        - - RPAREN
+          - )
+        - - RPAREN
+          - )
+        - - COMMA
+          - ','
+        - - WORD
+          - DISP
+        - - EQUALS
+          - '='
+        - - LPAREN
+          - (
+        - - COMMA
+          - ','
+        - - WORD
+          - PASS
+        - - RPAREN
+          - )
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: 'Tokens are lexical only: no keyword/positional classification (Step 4a instruction C).'
+
+  - test_id: G-CONT-102
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: IBM example 3 - parameter continuation (comma+blank) then comment continuation by nonblank column 72; comment text kept raw with positions.'
+    rule_ids: [JCL-CONT-001, JCL-CONT-004, JCL-FMT-007]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+      - {rule_id: "JCL-CONT-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the comments field; note on column 72", pages: "17 (PDF 63)"}
+      - {rule_id: "JCL-FMT-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Comments field", pages: "13 (PDF 59)"}
+    input_file: inputs/continuation/cont003.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 3
+        kind: CONTINUATION
+        continues: PARAMETER
+      - line: 4
+        kind: CONTINUATION
+        continues: COMMENT
+      - line: 5
+        kind: CONTINUATION
+        continues: COMMENT
+      - line: 6
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 6
+        lines:
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        name:
+          text: STP4
+          line: 2
+          column: 3
+        operation:
+          text: EXEC
+          line: 2
+          column: 9
+        parameter_text: PROC=BILLING,COND.PAID=((20,LT),EVEN),COND.LATE=(60,GT,FIND),COND.BILL=((20,GE),(30,LT,CHGE))
+        comments:
+        - line: 4
+          column: 42
+          text: THIS STATEMENT CALLS
+        - line: 5
+          column: 8
+          text: THE BILLING PROCEDURE AND SPECIFIES RETURN CODE TESTS
+        - line: 6
+          column: 8
+          text: FOR THREE PROCEDURE STEPS.
+        end: COMPLETE
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-CONT-103
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: IBM example 4 - apostrophe-enclosed value extended to column 71 and continued at column 16; STRING token value is the joined text.'
+    rule_ids: [JCL-CONT-003, JCL-SYN-001]
+    source_reference:
+      - {rule_id: "JCL-CONT-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing parameter fields enclosed in apostrophes", pages: "17 (PDF 63)"}
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+    input_file: inputs/continuation/cont004.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+        continues: QUOTED
+      - line: 3
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 3
+        lines:
+        - 2
+        - 3
+        name:
+          text: S1
+          line: 2
+          column: 3
+        operation:
+          text: EXEC
+          line: 2
+          column: 12
+        parameter_text: PGM=IEFBR14,PARM='THIS IS A LONG PARAMETER WITHIN APOSTROPHES, CONTINUED IN COLUMN 16 OF THE NEXT RECORD'
+        comments: []
+        end: COMPLETE
+        tokens:
+        - - WORD
+          - PGM
+        - - EQUALS
+          - '='
+        - - WORD
+          - IEFBR14
+        - - COMMA
+          - ','
+        - - WORD
+          - PARM
+        - - EQUALS
+          - '='
+        - - STRING
+          - THIS IS A LONG PARAMETER WITHIN APOSTROPHES, CONTINUED IN COLUMN 16 OF THE NEXT RECORD
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-CONT-104
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: continuation expected but column 3 is not blank - the record starts a new statement; the first statement ends with MISSING_CONTINUATION.'
+    rule_ids: [JCL-CONT-002]
+    source_reference:
+      - {rule_id: "JCL-CONT-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the parameter field, step 3", pages: "17 (PDF 63)"}
+    input_file: inputs/continuation/cont005.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 4
+        kind: STATEMENT_START
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 2
+      - span:
+        - 3
+        - 3
+        lines:
+        - 3
+        parameter_text: DSN=A.B,
+        end: MISSING_CONTINUATION
+      - span:
+        - 4
+        - 4
+        name:
+          text: DD2
+          line: 4
+          column: 3
+        parameter_text: DSN=C.D
+        end: COMPLETE
+    expected_diagnostics:
+      mode: exact
+      items:
+      - code: LEX-E002
+        severity: ERROR
+        line: 4
+        column: 3
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-CONT-105
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: continuation text starting exactly in column 4 and in column 16.'
+    rule_ids: [JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/continuation/cont007.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 4
+        kind: CONTINUATION
+        continues: PARAMETER
+      - line: 5
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 2
+      - span:
+        - 3
+        - 5
+        lines:
+        - 3
+        - 4
+        - 5
+        parameter_text: DSN=A.B,DISP=SHR,UNIT=SYSDA
+        end: COMPLETE
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-CONT-106
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: columns 73-80 kept as sequence field and never lexed; nonblank column 72 after ''comma, blank'' is ignored (no comment continuation).'
+    rule_ids: [JCL-REC-003, JCL-CONT-004]
+    source_reference:
+      - {rule_id: "JCL-REC-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields (location of fields)", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-CONT-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing the comments field; note on column 72", pages: "17 (PDF 63)"}
+    input_file: inputs/continuation/cont008.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+        seq: '00010000'
+      - line: 2
+        kind: STATEMENT_START
+        seq: '00020000'
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+        seq: '00030000'
+      - line: 4
+        kind: CONTINUATION
+        seq: '00040000'
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+        parameter_text: ''
+      - span:
+        - 2
+        - 2
+        parameter_text: PGM=IEFBR14
+      - span:
+        - 3
+        - 4
+        parameter_text: DSN=A.B,DISP=SHR
+        comments: []
+        end: COMPLETE
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-CONT-107
+    category: CONTINUATION_COLUMNS
+    description: 'Lexical: a comment statement between continuation records is its own record kind; the continued statement''s records are 3 and 5.'
+    rule_ids: [JCL-CONT-006, JCL-STMT-COMMENT]
+    source_reference:
+      - {rule_id: "JCL-CONT-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Location in the JCL", pages: "71 (PDF 117)"}
+      - {rule_id: "JCL-STMT-COMMENT", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Description; Location in the JCL", pages: "71 (PDF 117)"}
+    input_file: inputs/continuation/cont009.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 4
+        kind: COMMENT
+      - line: 5
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 2
+      - span:
+        - 3
+        - 5
+        lines:
+        - 3
+        - 5
+        parameter_text: DSN=A.B,DISP=SHR
+        end: COMPLETE
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''

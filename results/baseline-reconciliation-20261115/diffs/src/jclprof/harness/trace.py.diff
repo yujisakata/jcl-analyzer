@@ -1,0 +1,36 @@
+--- before/src/jclprof/harness/trace.py
++++ current/src/jclprof/harness/trace.py
+@@ -20,6 +20,25 @@
+     return out
+ 
+ 
++def _check_value_text(lines: list[str], sid: str, v: Value) -> None:
++    """The whole value text must be found at its position (R1: not only the first character).
++    A value continued on the next record must match up to column 71 of its first record:
++    STRING (apostrophe continuation, JCL-CONT-003) by text, LIST / KWSUB by their opening part
++    (their items are checked separately)."""
++    here = lines[v.line - 1][v.column - 1:]
++    if here.startswith(v.text):
++        return
++    first = lines[v.line - 1][v.column - 1:71]
++    if v.kind == "STRING":
++        assert v.text.startswith(first), (sid, v)
++    elif v.kind == "LIST":
++        assert here.startswith("("), (sid, v)
++    elif v.kind == "KWSUB":
++        assert v.keyword is not None and here.startswith(v.keyword + "="), (sid, v)
++    else:
++        raise AssertionError((sid, v, "value text not found at its source position"))
++
++
+ def check_trace(r: ParseResult, text: str) -> None:
+     """Every node maps back to the original text (requirements CTX-01)."""
+     lines = text.replace("\r\n", "\n").split("\n")
+@@ -37,6 +56,6 @@
+         for v in [x for p in s.positional for x in _values(p)] + \
+                  [x for k in s.keywords for x in _values(k.value)]:
+             if v.kind != "NULL" and v.text:
+-                assert lines[v.line - 1][v.column - 1] == v.text[0], (s.id, v)
++                _check_value_text(lines, s.id, v)
+         for c in s.comments:
+             assert lines[c.line - 1][c.column - 1:].startswith(c.text)

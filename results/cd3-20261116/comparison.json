@@ -1,0 +1,3563 @@
+{
+  "method": "CD3-card-relations-SQL-regex-grammar-v1",
+  "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+  "summary": {
+    "files": 48,
+    "matched": 48,
+    "mismatched": 0,
+    "records": 3046,
+    "steps": 123,
+    "dds": 500,
+    "regions": 91,
+    "unnamed_dds": 24
+  },
+  "files": [
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 47,
+      "steps": 1,
+      "dds": 17,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 24,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 27,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 24,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 34,
+            "concat_head": "IMS",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 24,
+            "lines": [
+              24,
+              25
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          20,
+          22
+        ],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 47,
+      "steps": 2,
+      "dds": 19,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 15,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 19,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 15,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 22,
+            "concat_head": "IMS",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 9,
+            "lines": [
+              9,
+              10
+            ]
+          },
+          {
+            "line": 15,
+            "lines": [
+              15,
+              16
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          },
+          {
+            "line": 36,
+            "lines": [
+              36,
+              37,
+              38
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          4,
+          6,
+          12,
+          14
+        ],
+        "nonblank_73_80": [
+          45
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 51,
+      "steps": 1,
+      "dds": 14,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 29,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 30,
+            "concat_head": "STEPLIB",
+            "concat_index": 2
+          },
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 34,
+            "concat_head": "IMS",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 26,
+            "lines": [
+              26,
+              27
+            ]
+          },
+          {
+            "line": 44,
+            "lines": [
+              44,
+              45
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          22,
+          24
+        ],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 53,
+      "steps": 1,
+      "dds": 16,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 29,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 30,
+            "concat_head": "STEPLIB",
+            "concat_index": 2
+          },
+          {
+            "owner": 26,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 34,
+            "concat_head": "IMS",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 26,
+            "lines": [
+              26,
+              27
+            ]
+          },
+          {
+            "line": 36,
+            "lines": [
+              36,
+              37
+            ]
+          },
+          {
+            "line": 39,
+            "lines": [
+              39,
+              40
+            ]
+          },
+          {
+            "line": 46,
+            "lines": [
+              46,
+              47
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          22,
+          24
+        ],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 69,
+      "steps": 2,
+      "dds": 21,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 38,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 41,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 38,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 42,
+            "concat_head": "STEPLIB",
+            "concat_index": 2
+          },
+          {
+            "owner": 38,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 46,
+            "concat_head": "IMS",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 33,
+            "lines": [
+              33,
+              34
+            ]
+          },
+          {
+            "line": 35,
+            "lines": [
+              35,
+              36
+            ]
+          },
+          {
+            "line": 38,
+            "lines": [
+              38,
+              39
+            ]
+          },
+          {
+            "line": 48,
+            "lines": [
+              48,
+              49,
+              50,
+              51
+            ]
+          },
+          {
+            "line": 53,
+            "lines": [
+              53,
+              54,
+              55,
+              56
+            ]
+          },
+          {
+            "line": 62,
+            "lines": [
+              62,
+              63
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          22,
+          24
+        ],
+        "nonblank_73_80": [
+          50,
+          51,
+          55,
+          56
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/CREADB21.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 84,
+      "steps": 5,
+      "dds": 30,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [
+          {
+            "owner": 1,
+            "owner_kind": "JOB",
+            "name": "JOBLIB",
+            "line": 32,
+            "concat_head": "JOBLIB",
+            "concat_index": 0
+          },
+          {
+            "owner": 1,
+            "owner_kind": "JOB",
+            "name": null,
+            "line": 33,
+            "concat_head": "JOBLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 1,
+            "owner_kind": "JOB",
+            "name": null,
+            "line": 34,
+            "concat_head": "JOBLIB",
+            "concat_index": 2
+          }
+        ],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 1,
+            "owner_kind": "JOB",
+            "name": null,
+            "line": 33,
+            "concat_head": "JOBLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 1,
+            "owner_kind": "JOB",
+            "name": null,
+            "line": 34,
+            "concat_head": "JOBLIB",
+            "concat_index": 2
+          },
+          {
+            "owner": 40,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 42,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 52,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 54,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 65,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 67,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 77,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 79,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 30,
+      "steps": 1,
+      "dds": 7,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 21,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 23,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 21,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 24,
+            "concat_head": "STEPLIB",
+            "concat_index": 2
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [
+          1
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 122,
+      "steps": 5,
+      "dds": 28,
+      "regions": 4,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 65,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 67,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          },
+          {
+            "owner": 95,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 97,
+            "concat_head": "STEPLIB",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 35,
+            "lines": [
+              35,
+              36,
+              37,
+              38
+            ]
+          },
+          {
+            "line": 46,
+            "lines": [
+              46,
+              47,
+              48,
+              49
+            ]
+          },
+          {
+            "line": 54,
+            "lines": [
+              54,
+              55,
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59,
+              60,
+              61
+            ]
+          },
+          {
+            "line": 72,
+            "lines": [
+              72,
+              73,
+              74
+            ]
+          },
+          {
+            "line": 102,
+            "lines": [
+              102,
+              103,
+              104
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/ACCTFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 65,
+      "steps": 3,
+      "dds": 8,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CARDFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 128,
+      "steps": 8,
+      "dds": 20,
+      "regions": 8,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 70,
+            "lines": [
+              70,
+              71
+            ]
+          },
+          {
+            "line": 72,
+            "lines": [
+              72,
+              73
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CBADMCDJ.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 167,
+      "steps": 1,
+      "dds": 5,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 27,
+            "lines": [
+              27,
+              28
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CBEXPORT.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 72,
+      "steps": 2,
+      "dds": 11,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 44,
+            "lines": [
+              44,
+              45
+            ]
+          },
+          {
+            "line": 49,
+            "lines": [
+              49,
+              50
+            ]
+          },
+          {
+            "line": 51,
+            "lines": [
+              51,
+              52
+            ]
+          },
+          {
+            "line": 53,
+            "lines": [
+              53,
+              54
+            ]
+          },
+          {
+            "line": 55,
+            "lines": [
+              55,
+              56
+            ]
+          },
+          {
+            "line": 57,
+            "lines": [
+              57,
+              58
+            ]
+          },
+          {
+            "line": 62,
+            "lines": [
+              62,
+              63
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CBIMPORT.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 68,
+      "steps": 1,
+      "dds": 9,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 28,
+            "lines": [
+              28,
+              29
+            ]
+          },
+          {
+            "line": 33,
+            "lines": [
+              33,
+              34,
+              35,
+              36,
+              37
+            ]
+          },
+          {
+            "line": 38,
+            "lines": [
+              38,
+              39,
+              40,
+              41,
+              42
+            ]
+          },
+          {
+            "line": 43,
+            "lines": [
+              43,
+              44,
+              45,
+              46,
+              47
+            ]
+          },
+          {
+            "line": 48,
+            "lines": [
+              48,
+              49,
+              50,
+              51,
+              52
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57,
+              58,
+              59,
+              60
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CLOSEFIL.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 34,
+      "steps": 1,
+      "dds": 3,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/COMBTRAN.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 52,
+      "steps": 2,
+      "dds": 10,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [
+          {
+            "owner": 22,
+            "owner_kind": "STEP",
+            "name": null,
+            "line": 25,
+            "concat_head": "SORTIN",
+            "concat_index": 1
+          }
+        ],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          },
+          {
+            "line": 33,
+            "lines": [
+              33,
+              34,
+              35,
+              36,
+              37
+            ]
+          },
+          {
+            "line": 43,
+            "lines": [
+              43,
+              44
+            ]
+          },
+          {
+            "line": 45,
+            "lines": [
+              45,
+              46
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CREASTMT.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 97,
+      "steps": 5,
+      "dds": 22,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 48,
+            "lines": [
+              48,
+              49,
+              50,
+              51
+            ]
+          },
+          {
+            "line": 67,
+            "lines": [
+              67,
+              68,
+              69,
+              70,
+              71
+            ]
+          },
+          {
+            "line": 72,
+            "lines": [
+              72,
+              73,
+              74,
+              75
+            ]
+          },
+          {
+            "line": 87,
+            "lines": [
+              87,
+              88,
+              89,
+              90,
+              91
+            ]
+          },
+          {
+            "line": 92,
+            "lines": [
+              92,
+              93,
+              94,
+              95,
+              96
+            ]
+          }
+        ],
+        "inline_comments": [
+          {
+            "statement": 87,
+            "line": 90,
+            "column": 35,
+            "text": "00,RECFM=FB), ATA.VSAM.KSDS"
+          }
+        ],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/CUSTFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 84,
+      "steps": 5,
+      "dds": 14,
+      "regions": 5,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 66,
+            "lines": [
+              66,
+              67
+            ]
+          },
+          {
+            "line": 68,
+            "lines": [
+              68,
+              69
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DALYREJS.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 32,
+      "steps": 1,
+      "dds": 2,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DEFCUST.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 47,
+      "steps": 2,
+      "dds": 4,
+      "regions": 2,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [
+          {
+            "name": "STEP05",
+            "lines": [
+              22,
+              32
+            ]
+          }
+        ],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DEFGDGB.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 63,
+      "steps": 1,
+      "dds": 2,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DEFGDGD.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 94,
+      "steps": 6,
+      "dds": 18,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 40,
+            "lines": [
+              40,
+              41,
+              42,
+              43
+            ]
+          },
+          {
+            "line": 63,
+            "lines": [
+              63,
+              64,
+              65,
+              66
+            ]
+          },
+          {
+            "line": 86,
+            "lines": [
+              86,
+              87,
+              88,
+              89
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [
+          1,
+          2
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DISCGRP.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 65,
+      "steps": 3,
+      "dds": 8,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/DUSRSECJ.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 92,
+      "steps": 4,
+      "dds": 12,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          },
+          {
+            "line": 46,
+            "lines": [
+              46,
+              47,
+              48,
+              49
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/ESDSRRDS.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 124,
+      "steps": 6,
+      "dds": 19,
+      "regions": 5,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 26,
+            "lines": [
+              26,
+              27
+            ]
+          },
+          {
+            "line": 47,
+            "lines": [
+              47,
+              48,
+              49,
+              50
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/FTPJCL.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 42,
+      "steps": 1,
+      "dds": 1,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          23
+        ],
+        "nonblank_73_80": [
+          1
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/INTCALC.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 44,
+      "steps": 1,
+      "dds": 9,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 27,
+            "lines": [
+              27,
+              28
+            ]
+          },
+          {
+            "line": 29,
+            "lines": [
+              29,
+              30
+            ]
+          },
+          {
+            "line": 31,
+            "lines": [
+              31,
+              32
+            ]
+          },
+          {
+            "line": 33,
+            "lines": [
+              33,
+              34
+            ]
+          },
+          {
+            "line": 35,
+            "lines": [
+              35,
+              36
+            ]
+          },
+          {
+            "line": 37,
+            "lines": [
+              37,
+              38,
+              39,
+              40,
+              41
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/INTRDRJ1.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 19,
+      "steps": 2,
+      "dds": 8,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/INTRDRJ2.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 14,
+      "steps": 1,
+      "dds": 4,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/OPENFIL.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 34,
+      "steps": 1,
+      "dds": 3,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/POSTTRAN.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 45,
+      "steps": 1,
+      "dds": 9,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 24,
+            "lines": [
+              24,
+              25
+            ]
+          },
+          {
+            "line": 28,
+            "lines": [
+              28,
+              29
+            ]
+          },
+          {
+            "line": 30,
+            "lines": [
+              30,
+              31
+            ]
+          },
+          {
+            "line": 32,
+            "lines": [
+              32,
+              33
+            ]
+          },
+          {
+            "line": 34,
+            "lines": [
+              34,
+              35,
+              36,
+              37,
+              38
+            ]
+          },
+          {
+            "line": 39,
+            "lines": [
+              39,
+              40
+            ]
+          },
+          {
+            "line": 41,
+            "lines": [
+              41,
+              42
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/PRTCATBL.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 66,
+      "steps": 3,
+      "dds": 8,
+      "regions": 2,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [
+          19
+        ],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 22,
+            "lines": [
+              22,
+              23,
+              24,
+              25
+            ]
+          },
+          {
+            "line": 29,
+            "lines": [
+              29,
+              30
+            ]
+          },
+          {
+            "line": 32,
+            "lines": [
+              32,
+              33
+            ]
+          },
+          {
+            "line": 35,
+            "lines": [
+              35,
+              36,
+              37,
+              38,
+              39
+            ]
+          },
+          {
+            "line": 44,
+            "lines": [
+              44,
+              45
+            ]
+          },
+          {
+            "line": 59,
+            "lines": [
+              59,
+              60,
+              61,
+              62,
+              63
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          26
+        ],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/READACCT.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 50,
+      "steps": 2,
+      "dds": 10,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          },
+          {
+            "line": 27,
+            "lines": [
+              27,
+              28
+            ]
+          },
+          {
+            "line": 33,
+            "lines": [
+              33,
+              34
+            ]
+          },
+          {
+            "line": 35,
+            "lines": [
+              35,
+              36
+            ]
+          },
+          {
+            "line": 37,
+            "lines": [
+              37,
+              38,
+              39,
+              40
+            ]
+          },
+          {
+            "line": 41,
+            "lines": [
+              41,
+              42,
+              43,
+              44
+            ]
+          },
+          {
+            "line": 45,
+            "lines": [
+              45,
+              46,
+              47,
+              48
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [
+          1
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/READCARD.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 31,
+      "steps": 1,
+      "dds": 4,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/READCUST.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 30,
+      "steps": 1,
+      "dds": 4,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 22,
+            "lines": [
+              22,
+              23
+            ]
+          },
+          {
+            "line": 24,
+            "lines": [
+              24,
+              25
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/READXREF.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 31,
+      "steps": 1,
+      "dds": 4,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/REPTFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 32,
+      "steps": 1,
+      "dds": 2,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TCATBALF.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 65,
+      "steps": 3,
+      "dds": 8,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANBKP.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 71,
+      "steps": 3,
+      "dds": 6,
+      "regions": 2,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [
+          19
+        ],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 26,
+            "lines": [
+              26,
+              27
+            ]
+          },
+          {
+            "line": 29,
+            "lines": [
+              29,
+              30,
+              31,
+              32,
+              33
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANCATG.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 65,
+      "steps": 3,
+      "dds": 8,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 125,
+      "steps": 8,
+      "dds": 20,
+      "regions": 8,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 69,
+            "lines": [
+              69,
+              70
+            ]
+          },
+          {
+            "line": 71,
+            "lines": [
+              71,
+              72
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANIDX.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 58,
+      "steps": 3,
+      "dds": 6,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANREPT.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 84,
+      "steps": 3,
+      "dds": 16,
+      "regions": 2,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [
+          19
+        ],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [
+          {
+            "name": "STEP05R",
+            "lines": [
+              23,
+              37
+            ]
+          }
+        ],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 26,
+            "lines": [
+              26,
+              27
+            ]
+          },
+          {
+            "line": 29,
+            "lines": [
+              29,
+              30,
+              31,
+              32,
+              33
+            ]
+          },
+          {
+            "line": 38,
+            "lines": [
+              38,
+              39
+            ]
+          },
+          {
+            "line": 51,
+            "lines": [
+              51,
+              52,
+              53,
+              54,
+              55
+            ]
+          },
+          {
+            "line": 60,
+            "lines": [
+              60,
+              61
+            ]
+          },
+          {
+            "line": 65,
+            "lines": [
+              65,
+              66
+            ]
+          },
+          {
+            "line": 67,
+            "lines": [
+              67,
+              68
+            ]
+          },
+          {
+            "line": 69,
+            "lines": [
+              69,
+              70
+            ]
+          },
+          {
+            "line": 71,
+            "lines": [
+              71,
+              72
+            ]
+          },
+          {
+            "line": 73,
+            "lines": [
+              73,
+              74
+            ]
+          },
+          {
+            "line": 76,
+            "lines": [
+              76,
+              77,
+              78,
+              79,
+              80
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          20,
+          43,
+          44
+        ],
+        "nonblank_73_80": [
+          43,
+          44
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TRANTYPE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 65,
+      "steps": 3,
+      "dds": 8,
+      "regions": 3,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 56,
+            "lines": [
+              56,
+              57
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/TXT2PDF1.JCL",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 41,
+      "steps": 1,
+      "dds": 6,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 24,
+            "lines": [
+              24,
+              25,
+              26
+            ]
+          },
+          {
+            "line": 28,
+            "lines": [
+              28,
+              29
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          20
+        ],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/WAITSTEP.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 27,
+      "steps": 1,
+      "dds": 3,
+      "regions": 1,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "jcl/XREFFILE.jcl",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 106,
+      "steps": 6,
+      "dds": 14,
+      "regions": 6,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 1,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "line": 59,
+            "lines": [
+              59,
+              60
+            ]
+          },
+          {
+            "line": 61,
+            "lines": [
+              61,
+              62
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "proc/REPROC.prc",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 32,
+      "steps": 1,
+      "dds": 4,
+      "regions": 0,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [
+          1,
+          29
+        ],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 23,
+            "lines": [
+              23,
+              24
+            ]
+          },
+          {
+            "line": 25,
+            "lines": [
+              25,
+              26
+            ]
+          },
+          {
+            "line": 27,
+            "lines": [
+              27,
+              28
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [],
+        "nonblank_73_80": [],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    },
+    {
+      "path": "proc/TRANREPT.prc",
+      "status": "MATCH",
+      "checks": {
+        "identity": [],
+        "hierarchy": [],
+        "flat_values_comments": [],
+        "boundaries": [],
+        "records": [],
+        "tokens_values_positions": []
+      },
+      "records": 82,
+      "steps": 3,
+      "dds": 16,
+      "regions": 2,
+      "special": {
+        "job_level_dds": [],
+        "jcllib_named_joblib": [],
+        "proc_pend": [
+          1,
+          79
+        ],
+        "unnamed_dds": [],
+        "duplicates": [],
+        "continuations": [
+          {
+            "line": 21,
+            "lines": [
+              21,
+              22
+            ]
+          },
+          {
+            "line": 24,
+            "lines": [
+              24,
+              25
+            ]
+          },
+          {
+            "line": 27,
+            "lines": [
+              27,
+              28,
+              29,
+              30,
+              31
+            ]
+          },
+          {
+            "line": 36,
+            "lines": [
+              36,
+              37
+            ]
+          },
+          {
+            "line": 49,
+            "lines": [
+              49,
+              50,
+              51,
+              52,
+              53
+            ]
+          },
+          {
+            "line": 58,
+            "lines": [
+              58,
+              59
+            ]
+          },
+          {
+            "line": 63,
+            "lines": [
+              63,
+              64
+            ]
+          },
+          {
+            "line": 65,
+            "lines": [
+              65,
+              66
+            ]
+          },
+          {
+            "line": 67,
+            "lines": [
+              67,
+              68
+            ]
+          },
+          {
+            "line": 69,
+            "lines": [
+              69,
+              70
+            ]
+          },
+          {
+            "line": 71,
+            "lines": [
+              71,
+              72
+            ]
+          },
+          {
+            "line": 74,
+            "lines": [
+              74,
+              75,
+              76,
+              77,
+              78
+            ]
+          }
+        ],
+        "inline_comments": [],
+        "comment_between_continuations": [],
+        "nonblank_72": [
+          41,
+          42
+        ],
+        "nonblank_73_80": [
+          41,
+          42
+        ],
+        "post_80": [],
+        "non_ascii": []
+      },
+      "review_status": "PENDING",
+      "unverified": [
+        "human independent approval",
+        "runtime validity and semantics",
+        "PROC/INCLUDE resolution"
+      ]
+    }
+  ]
+}

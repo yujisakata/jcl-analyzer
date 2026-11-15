@@ -1,0 +1,439 @@
+{
+  "log_sources": [
+    "C:\\Users\\yujis\\.claude\\projects\\d--projects-jcl-profiler\\05850e60-5673-4481-a406-305bef7153b3.jsonl",
+    "C:\\Users\\yujis\\.claude\\projects\\d--projects-jcl-profiler\\3097c724-28db-4848-82ce-45d8cc9500a8.jsonl"
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-15T02:58:16.349Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_012VwhZTiLMsezbkCL3qK1j3",
+      "path": "docs/decisions.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T02:58:35.964Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01UKUPYkZMetfp49PmFXY19g",
+      "path": "CLAUDE.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:17:29.075Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01Tj9S3N42hQ9a7rLgXfUfTg",
+      "path": "tests/CHANGES.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:36:09.730Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01C4UUXTpVm9vW3sRiSdWU5C",
+      "path": "specs/golden-schema.json",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:37:04.360Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01CxnjeVwZFB9dXGsp1bWhbL",
+      "path": "docs/golden-view.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:39:42.575Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_019wBDdHDPedgbQMMmr8Sm2G",
+      "path": "tests/harness/test_harness_cli.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:40:49.669Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01XhRcN7c883sDCNASmFJcEq",
+      "path": "src/jclprof/harness/comparator.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:41:27.638Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01J3UWJhdiKX8fQYZaMRruS9",
+      "path": "src/jclprof/harness/adapters.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:41:45.590Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_017BLQX441CdpzWJAwLZju2w",
+      "path": "src/jclprof/harness/runner.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:55:27.699Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01Cmra4o6Nmw3xfa1D2iihoU",
+      "path": "tests/parser/test_golden_parser.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T03:56:05.288Z",
+      "session": "05850e60-5673-4481-a406-305bef7153b3",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01PXWmtxczDMH52mCEq1pSsr",
+      "path": "tools/quality_gate.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T08:58:46.265Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01MaAB4apu71ex1wPVLMM3jg",
+      "path": "CLAUDE.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T09:57:10.330Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_018j6qWi9AemgA8LdctNn8zf",
+      "path": "docs/reviews/parser-defects-04b.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T09:57:15.666Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01PYyLXybpimqk86FMnLab1P",
+      "path": "CLAUDE.md",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:49:07.863Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01SU59LD1s3HKg4rWjTSHJVT",
+      "path": "src/jclprof/harness/hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:50:54.059Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_018nK84kyaz56eXgijDQRgMb",
+      "path": "src/jclprof/harness/defects.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:10.711Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01PLEQf8WsGWsfT3L8UbrfrG",
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:45.177Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01TVMH59U18RpW42HkBQLFAY",
+      "path": "src/jclprof/harness/trace.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:51:48.264Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01JEPxf4gTaj3sQsYnzqbrx6",
+      "path": "src/jclprof/harness/trace.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:00.192Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01RsahwC8TG9UVcaWq2F9ojD",
+      "path": "src/jclprof/parser/adapter.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:02.192Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_018JA27v2KB2ePyTszacmzR6",
+      "path": "src/jclprof/parser/adapter.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:52:09.550Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_015uF2dVraPDFNUFAKJCLfbH",
+      "path": "src/jclprof/parser/adapter.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:34.343Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01PtHCtRqhNrb3et9R6uPbvM",
+      "path": "tools/golden_authoring/make_pending_hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:53:46.242Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01XQhKtQLK4CEebBGPxzKL1D",
+      "path": "tools/golden_authoring/make_pending_hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:23.344Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_014sz4tUfBgc1HyfsHPMWEwk",
+      "path": "src/jclprof/harness/mutations.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:32.244Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01P9BvSYXuzFh5TRTBYUbcT3",
+      "path": "src/jclprof/harness/mutations.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:37.053Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01KY63CeiTywMDSzPWcuthn4",
+      "path": "src/jclprof/harness/mutations.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:54:38.158Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01HDSP6NFy656C6JzHsi1jVQ",
+      "path": "src/jclprof/harness/mutations.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:04.834Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01KNvScNvoWfK6gej7St39RP",
+      "path": "tools/hierarchy_mutation_report.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:32.976Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_011MSqN5MWc7c2AN89KTvyF7",
+      "path": "src/jclprof/harness/hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:55:34.476Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01R1hyn2k3mi94yReZ7aLVGu",
+      "path": "src/jclprof/harness/hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:25.588Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01MTrbpb3gyBgx9AdMuPyekz",
+      "path": "tests/harness/test_hierarchy_harness.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:42.945Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_011mZWWEcErBjQ981u3eG825",
+      "path": "tests/property/test_hierarchy_properties.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:56:59.872Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01F5RMz9jvBurN6kVdbofWZA",
+      "path": "src/jclprof/harness/hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:02.677Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01AciX6c4ujQ2eVg94cvPxaa",
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:14.999Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_014uYueuZ7MWe9d2jP4Jtg4U",
+      "path": "src/jclprof/harness/hierarchy.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:57:32.987Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01LLZC8NbJJefb2ZeruyGfNa",
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:03.396Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_012PejeVoLKgvwBVAU2hPQ45",
+      "path": "tests/ACCEPTANCE_SCOPE.yaml",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:21.308Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01Qbfgow967Duo5diYPu6p2f",
+      "path": "src/jclprof/harness/gates.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:58:58.214Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01AFV1UC8gbbRH3esMdFX2tw",
+      "path": "tools/quality_gate.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:59:56.650Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01WV8Z9yVP2a6rxPnxddmQfJ",
+      "path": "tests/harness/test_harness_cli.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T11:59:57.902Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_011XQn5ZL8VTECqMsrrcCu5v",
+      "path": "tests/harness/test_harness_cli.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:01.655Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01KHpEakFutH4tAJW7Xj95ow",
+      "path": "tests/parser/test_golden_parser.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:03.253Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01FJGKSD7nsYWYYYH488V1t7",
+      "path": "tests/parser/test_golden_parser.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:04.906Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Edit",
+      "id": "toolu_01TFbFUsECAKRwcPMMwKwys6",
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T12:00:44.722Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01U59ctJsKhCHvxweBFdQDjb",
+      "path": "tests/harness/test_gates.py",
+      "success": true
+    },
+    {
+      "timestamp": "2026-11-15T12:03:20.371Z",
+      "session": "3097c724-28db-4848-82ce-45d8cc9500a8",
+      "model": "claude-opus-5-5",
+      "tool": "Write",
+      "id": "toolu_01YHBfB5JaxeYTavNKA6uSnB",
+      "path": "docs/reports/r1-harness.md",
+      "success": true
+    }
+  ],
+  "relevant_instruction_excerpts": [],
+  "recovered_versions": {
+    "docs/reviews/parser-defects-04b.md": {
+      "timestamp": "2026-11-15T09:57:10.330Z",
+      "sha256": "ca7993fe77b083765555713b897b1cd44e98b5bb68413f88a2bb0eb7319c6589",
+      "method": "Claude Write/Edit history replay, exact saved-hash match"
+    }
+  }
+}

@@ -1,0 +1,279 @@
+schema_version: 1
+category: JCLLIB_INCLUDE_SET
+cases:
+  - test_id: G-JIS-001
+    category: JCLLIB_INCLUDE_SET
+    description: "JCLLIB with ORDER list after JOB; SET with a parenthesized value; INCLUDE MEMBER; then the first EXEC."
+    rule_ids: [JCL-JCLLIB-001, JCL-JCLLIB-002, JCL-SET-001, JCL-INCL-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Purpose; Location in the JCL", pages: "385-387 (PDF 431-433)"}
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+      - {rule_id: "JCL-SET-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "28. SET statement > Description; Parameter field; Location", pages: "565-567 (PDF 611-613)"}
+      - {rule_id: "JCL-INCL-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "19. INCLUDE statement > Syntax; Location in the JCL; Considerations", pages: "381-382 (PDF 427-428)"}
+    input_file: inputs/jclinc/jis001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JIS001}
+        - {kind: JCLLIB, span: [2, 2], name: LIBS, positional: [], keywords: [[ORDER, [MY.PROCLIB1, MY.PROCLIB2]]]}
+        - {kind: SET, span: [3, 3], name: null, positional: [], keywords: [[HLQ, PROD], [DSP, [NEW, KEEP]]]}
+        - {kind: INCLUDE, span: [4, 4], name: INC1, positional: [], keywords: [[MEMBER, SYSOUT2]]}
+        - {kind: EXEC, span: [5, 5], name: STEP1, positional: [], keywords: [[PGM, IEFBR14]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "Syntactic only: the INCLUDE is not resolved here."
+
+  - test_id: G-JIS-002
+    category: JCLLIB_INCLUDE_SET
+    description: "JCLLIB library names in apostrophes; SET value with a doubled apostrophe; SET nullification (symbol=)."
+    rule_ids: [JCL-JCLLIB-002, JCL-SET-001, JCL-SYN-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+      - {rule_id: "JCL-SET-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "28. SET statement > Description; Parameter field; Location", pages: "565-567 (PDF 611-613)"}
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+    input_file: inputs/jclinc/jis002.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JIS002}
+        - {kind: JCLLIB, span: [2, 2], name: MYLIB, positional: [], keywords: [[ORDER, [{q: MY.PROC1}, {q: MY.PROC2}]]]}
+        - {kind: SET, span: [3, 3], name: SP3, positional: [], keywords: [[PARM4, {q: "O'DAY"}], [PARM5, null]]}
+        - {kind: EXEC, span: [4, 4], name: STEP1, positional: [], keywords: [[PGM, IEFBR14]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-JIS-003
+    category: JCLLIB_INCLUDE_SET
+    description: "JCLLIB after the first EXEC statement."
+    rule_ids: [JCL-JCLLIB-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Purpose; Location in the JCL", pages: "385-387 (PDF 431-433)"}
+    input_file: inputs/jclinc/jis003.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E009, severity: ERROR, line: 3}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-JIS-004
+    category: JCLLIB_INCLUDE_SET
+    description: "Two JCLLIB statements in one job."
+    rule_ids: [JCL-JCLLIB-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Purpose; Location in the JCL", pages: "385-387 (PDF 431-433)"}
+    input_file: inputs/jclinc/jis004.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E010, severity: ERROR, line: 3}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Reported at the second JCLLIB."
+
+  - test_id: G-JIS-005
+    category: JCLLIB_INCLUDE_SET
+    description: "Boundary: JCLLIB ORDER with exactly 15 libraries, continued over records after list commas."
+    rule_ids: [JCL-JCLLIB-002, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/jclinc/jis006.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JIS006}
+        - kind: JCLLIB
+          span: [2, 5]
+          name: LIBS
+          positional: []
+          keywords: [[ORDER, [LIB01.PROC, LIB02.PROC, LIB03.PROC, LIB04.PROC, LIB05.PROC, LIB06.PROC, LIB07.PROC, LIB08.PROC, LIB09.PROC, LIB10.PROC, LIB11.PROC, LIB12.PROC, LIB13.PROC, LIB14.PROC, LIB15.PROC]]]
+        - {kind: EXEC, span: [6, 6], name: STEP1}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-JIS-006
+    category: JCLLIB_INCLUDE_SET
+    description: "JCLLIB ORDER with 16 libraries (the maximum is 15)."
+    rule_ids: [JCL-JCLLIB-002, POL-001]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/jclinc/jis007.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E011, severity: ERROR, line: 2}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: "Reported at the first record of the JCLLIB statement."
+
+  - test_id: G-JIS-007
+    category: JCLLIB_INCLUDE_SET
+    description: "Resolution: the INCLUDE group found in the JCLLIB private library replaces the INCLUDE statement in place."
+    rule_ids: [JCL-INCL-001, JCL-INCL-002, JCL-JCLLIB-002]
+    source_reference:
+      - {rule_id: "JCL-INCL-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "19. INCLUDE statement > Syntax; Location in the JCL; Considerations", pages: "381-382 (PDF 427-428)"}
+      - {rule_id: "JCL-INCL-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "19. INCLUDE statement > Parameter field; Considerations for using INCLUDE groups", pages: "382 (PDF 428)"}
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+    input_file: inputs/jclinc/jis008.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: resolution
+    environment:
+      datasets: [{dsn: TEST.INCLIB, path: libs/inclib}]
+    expected_structure:
+      view: effective_statements
+      effective_statements:
+        - {kind: JOB, name: JIS008, origin: {file: inputs/jclinc/jis008.jcl, line: 1}}
+        - {kind: JCLLIB, name: LIBS, origin: {file: inputs/jclinc/jis008.jcl, line: 2}}
+        - {kind: EXEC, name: STEP1, origin: {file: inputs/jclinc/jis008.jcl, line: 3}}
+        - {kind: DD, name: SYSOUT2, origin: {file: libs/inclib/SYSOUT2, line: 1}}
+        - {kind: OUTPUT, name: OUT1, origin: {file: libs/inclib/SYSOUT2, line: 2}}
+        - {kind: EXEC, name: STEP2, origin: {file: inputs/jclinc/jis008.jcl, line: 5}}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ex "Modelled on the IBM SA23-1385-70 INCLUDE Example 1 (p.382-383). Expected effective statement order derived by hand from the cited rules."
+    oracle_author: *author
+    review_status: draft
+    notes: "Test libraries store each member as a file named exactly after the member (no extension). No system procedure library is configured."
+
+  - test_id: G-JIS-008
+    category: JCLLIB_INCLUDE_SET
+    description: "Resolution: INCLUDE member not found in the configured search order."
+    rule_ids: [JCL-INCL-002]
+    source_reference:
+      - {rule_id: "JCL-INCL-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "19. INCLUDE statement > Parameter field; Considerations for using INCLUDE groups", pages: "382 (PDF 428)"}
+    input_file: inputs/jclinc/jis009.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    environment:
+      datasets: [{dsn: TEST.INCLIB, path: libs/inclib}]
+    expected_structure: {view: none, reason: "Unresolved reference: the diagnostic is the oracle."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-E001, severity: ERROR, line: 4}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Assumes the environment has no system procedure library (none configured). With a site PROCLIB configured, this case would need revisiting."
+
+  - test_id: G-JIS-009
+    category: JCLLIB_INCLUDE_SET
+    description: "Resolution: a JCLLIB ORDER library DSN with no dataset mapping is reported as an ENVIRONMENT_GAP, and no path is guessed."
+    rule_ids: [JCL-JCLLIB-002, POL-005]
+    source_reference:
+      - {rule_id: "JCL-JCLLIB-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "20. JCLLIB statement > Parameter field > ORDER", pages: "386 (PDF 432)"}
+      - {rule_id: "POL-005", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "decisions.md > ADR-010", pages: "-"}
+    input_file: inputs/jclinc/jis010.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    environment: {datasets: []}
+    expected_structure: {view: none, reason: "Unresolved environment: the diagnostic is the oracle."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-W002, severity: WARNING, line: 2}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: "ADR-010 (user decision A2)."
+
+  - test_id: G-JIS-010
+    category: JCLLIB_INCLUDE_SET
+    description: "Resolution: a SET symbol followed by '..' (symbol end period, then a literal period) - the CardDemo &HLQ.. pattern."
+    rule_ids: [JCL-SET-001, JCL-SYM-002]
+    source_reference:
+      - {rule_id: "JCL-SET-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "28. SET statement > Description; Parameter field; Location", pages: "565-567 (PDF 611-613)"}
+      - {rule_id: "JCL-SYM-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 9 Notation used to show syntax (two consecutive periods)", pages: "21 (PDF 67)"}
+    input_file: inputs/jclinc/jis011.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: resolution
+    expected_structure:
+      view: substitutions
+      substitutions:
+        - {line: 4, keyword: DSN, before: "&HLQ..TRANTYPE.PS", after: AWS.M2.CARDDEMO.TRANTYPE.PS, status: RESOLVED}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Table 9 example: &DEPT..NYC with DEPT=D27 gives D27.NYC (p.21)."
+
+  - test_id: G-JIS-011
+    category: JCLLIB_INCLUDE_SET
+    description: "IBM symbol example: &XXX is resolved from the calling EXEC; &INPUT is undefined and stays literal text, not an empty string."
+    rule_ids: [JCL-SYM-001, POL-002, JCL-PROC-001]
+    source_reference:
+      - {rule_id: "JCL-SYM-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols > Coding symbols in JCL; Using symbols in nested procedures (rule 6)", pages: "44 (PDF 90); 48 (PDF 94)"}
+      - {rule_id: "POL-002", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > CTX-04", pages: "-"}
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+    input_file: inputs/jclinc/jis012.jcl
+    input_kind: job
+    case_type: unresolved
+    validation_stage: resolution
+    expected_structure:
+      view: substitutions
+      substitutions:
+        - {line: 3, keyword: PARM, before: "&INPUT&XXX", after: "&INPUTVALUE", status: UNDEFINED_LEFT_LITERAL}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-W001, severity: WARNING, line: 3}]
+    oracle_method: &m_ex2 "Statements transcribed from the IBM SA23-1385-70 example on the cited page (p.44, result PARM='&INPUTVALUE'). The warning follows project policy POL-002."
+    oracle_author: *author
+    review_status: draft
+    notes: "IBM issues no message for &INPUT. RES-W001 is the project's requirement CTX-04 reporting."
+
+  - test_id: G-JIS-012
+    category: JCLLIB_INCLUDE_SET
+    description: "CardDemo TRANEXTR.jcl: SET HLQ=AWS.M2.CARDDEMO and its &HLQ.. uses in the STEP10 DD statements."
+    rule_ids: [JCL-SET-001, JCL-SYM-002]
+    source_reference:
+      - {rule_id: "JCL-SET-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "28. SET statement > Description; Parameter field; Location", pages: "565-567 (PDF 611-613)"}
+      - {rule_id: "JCL-SYM-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 9 Notation used to show syntax (two consecutive periods)", pages: "21 (PDF 67)"}
+    input_file: corpus://carddemo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+    corpus_source: {root_id: carddemo, rel_path: app-transaction-type-db2/jcl/TRANEXTR.jcl, sha256: d4d3b99a71b91fbce9c145283642ee7ca31b5ad7fa51ddcdb3e2c0b2e530457f, lines: [25, 38]}
+    scope: {lines: [25, 38]}
+    input_kind: job
+    case_type: valid
+    validation_stage: resolution
+    expected_structure:
+      view: substitutions
+      substitutions:
+        - {line: 34, keyword: DSN, before: "&HLQ..TRANTYPE.PS", after: AWS.M2.CARDDEMO.TRANTYPE.PS, status: RESOLVED}
+        - {line: 35, keyword: DSN, before: "&HLQ..TRANTYPE.BKUP(+1)", after: "AWS.M2.CARDDEMO.TRANTYPE.BKUP(+1)", status: RESOLVED}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_corpus "Manual structural analysis of the cited CardDemo line range (read-only). File identity fixed by the SHA-256 from the independent shell oracle (tests/acceptance/expected). Not derived from any parser."
+    oracle_author: *author
+    review_status: draft
+    notes: "A supplementary real-asset case. Lines 25-38 were inspected by hand: SET at line 25, and the symbols are used only in records 34 and 35."

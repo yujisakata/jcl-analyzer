@@ -1,0 +1,50 @@
+--- before/src/jclprof/harness/comparator.py
++++ current/src/jclprof/harness/comparator.py
+@@ -122,6 +122,35 @@
+             unchecked.append(f"{path}.{key}")
+ 
+ 
++def _cmp_tree(path: str, exp: Any, act: Any, out: list[Difference],
++              unchecked: list[str]) -> None:
++    """Hierarchy comparison (ADR-027): lists are ordered (job, step and DD order is significant)
++    and compared element by element; mappings compare the keys present in the expected value and
++    report other actual keys as unchecked; everything else is compared exactly."""
++    if isinstance(exp, dict):
++        if not isinstance(act, dict):
++            out.append(Difference(path, "missing" if act is None else "mismatch", exp, act))
++            return
++        for k, ev in exp.items():
++            if k not in act:
++                out.append(Difference(f"{path}.{k}", "missing", ev, None))
++            else:
++                _cmp_tree(f"{path}.{k}", ev, act[k], out, unchecked)
++        unchecked += [f"{path}.{k}" for k in act if k not in exp]
++    elif isinstance(exp, list):
++        if not isinstance(act, list):
++            out.append(Difference(path, "missing" if act is None else "mismatch", exp, act))
++            return
++        for i, (e, a) in enumerate(zip(exp, act, strict=False)):
++            _cmp_tree(f"{path}[{i}]", e, a, out, unchecked)
++        for i in range(len(act), len(exp)):
++            out.append(Difference(f"{path}[{i}]", "missing", exp[i], None))
++        for i in range(len(exp), len(act)):
++            out.append(Difference(f"{path}[{i}]", "unexpected", None, act[i]))
++    else:
++        _cmp_value(path, exp, act, out)
++
++
+ def _in_scope(span: Any, scope: tuple[int, int] | None) -> bool:
+     if scope is None:
+         return True
+@@ -187,6 +216,11 @@
+             _cmp_value("blocks", expected["blocks"], act.get("blocks"), res.differences)
+         elif "blocks" in act:
+             res.unchecked.append("blocks")
++        if "hierarchy" in expected:
++            _cmp_tree("hierarchy", expected["hierarchy"], act.get("hierarchy"), res.differences,
++                      res.unchecked)
++        elif "hierarchy" in act:
++            res.unchecked.append("hierarchy")
+     else:
+         if scope is not None:
+             act_items = [x for x in act_items if isinstance(x, dict)

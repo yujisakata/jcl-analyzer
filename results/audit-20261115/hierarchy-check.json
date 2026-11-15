@@ -1,0 +1,6 @@
+{
+  "mutation": "in-memory only: remove all JobNodes while preserving statements",
+  "golden_comparison_ok": true,
+  "trace_check": "PASS",
+  "differences": []
+}

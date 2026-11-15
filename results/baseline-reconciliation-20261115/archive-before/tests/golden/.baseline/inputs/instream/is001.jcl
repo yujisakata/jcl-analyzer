@@ -1,0 +1,7 @@
+//IS001    JOB
+//STEP1    EXEC PGM=SORT
+//SYSIN    DD   *
+ SORT FIELDS=(1,10,CH,A)
+ END
+/*
+//SYSOUT   DD   SYSOUT=*

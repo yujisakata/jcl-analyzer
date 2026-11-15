@@ -1,0 +1,263 @@
+{
+  "run_at": "2026-11-15T23:13:09+00:00",
+  "gate": "B (Parser formal acceptance)",
+  "result": "FAIL",
+  "checks": [
+    {
+      "name": "B0 gate-a",
+      "ok": true,
+      "detail": "Gate A must pass first",
+      "data": {}
+    },
+    {
+      "name": "B1 known-defects",
+      "ok": false,
+      "detail": "15 in-scope defect(s) not CLOSED: {'HIGH': ['A01(OPEN)', 'A02(OPEN)', 'A04(OPEN)', 'A05(OPEN)', 'A06(OPEN)', 'A11(RESOLVED_PENDING_REVIEW)'], 'MEDIUM': ['A03(OPEN)', 'A07(OPEN)', 'A08(OPEN)', 'A09(OPEN)', 'A10(RESOLVED_PENDING_REVIEW)'], 'LOW': ['H01(RESOLVED_PENDING_REVIEW)', 'H02(RESOLVED_PENDING_REVIEW)', 'H02B(OPEN)', 'H03(OPEN)']}",
+      "data": {
+        "defects": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "A05",
+          "A06",
+          "A07",
+          "A08",
+          "A09",
+          "A10",
+          "A11",
+          "H01",
+          "H02",
+          "H02B",
+          "H03"
+        ]
+      }
+    },
+    {
+      "name": "B2 xfail",
+      "ok": false,
+      "detail": "9 xfail test(s) in the Analyzer suite",
+      "data": {
+        "xfailed": [
+          "tests/parser/test_known_defects_04b.py::test_d1_jes2_with_unknown_nulljcl_does_not_fix_membership",
+          "tests/parser/test_known_defects_04b.py::test_d1_jes3_skips_statements_after_null",
+          "tests/parser/test_known_defects_04b.py::test_d1_skipped_records_are_marked_not_dropped",
+          "tests/parser/test_known_defects_04b.py::test_d1_unknown_environment_keeps_every_candidate",
+          "tests/parser/test_known_defects_04b.py::test_d2_unknown_does_not_present_one_interpretation_as_determined",
+          "tests/parser/test_known_defects_04b.py::test_d2_unknown_keeps_the_jes2_step_as_a_candidate",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES2]",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES3]",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[UNKNOWN]"
+        ]
+      }
+    },
+    {
+      "name": "B3 golden-approved",
+      "ok": false,
+      "detail": "83/83 in-scope case(s) not approved (REFERENCE only)",
+      "data": {
+        "unapproved": [
+          "G-CAT-001",
+          "G-CAT-003",
+          "G-CAT-004",
+          "G-CAT-005",
+          "G-CD-004",
+          "G-CD-005",
+          "G-CD-006",
+          "G-CD-007",
+          "G-CD-008",
+          "G-CONT-001",
+          "G-CONT-002",
+          "G-CONT-003",
+          "G-CONT-004",
+          "G-CONT-005",
+          "G-CONT-006",
+          "G-CONT-007",
+          "G-CONT-008",
+          "G-CONT-009",
+          "G-CONT-010",
+          "G-CONT-101",
+          "G-CONT-102",
+          "G-CONT-103",
+          "G-CONT-104",
+          "G-CONT-105",
+          "G-CONT-106",
+          "G-CONT-107",
+          "G-GD-001",
+          "G-GD-007",
+          "G-IF-001",
+          "G-IF-002",
+          "G-IF-003",
+          "G-IF-004",
+          "G-IF-005",
+          "G-IF-006",
+          "G-IF-007",
+          "G-IF-008",
+          "G-IF-009",
+          "G-IF-010",
+          "G-IF-011",
+          "G-IF-101",
+          "G-INV-004",
+          "G-INV-101",
+          "G-IS-001",
+          "G-IS-002",
+          "G-IS-003",
+          "G-IS-004",
+          "G-IS-005",
+          "G-IS-006",
+          "G-IS-007",
+          "G-IS-008",
+          "G-IS-009",
+          "G-IS-101",
+          "G-JED-001",
+          "G-JED-002",
+          "G-JED-003",
+          "G-JED-004",
+          "G-JED-005",
+          "G-JED-006",
+          "G-JED-007",
+          "G-JIS-001",
+          "G-JIS-002",
+          "G-JIS-003",
+          "G-JIS-004",
+          "G-JIS-005",
+          "G-JIS-006",
+          "G-PP-001",
+          "G-PP-002",
+          "G-PP-003",
+          "G-PP-004",
+          "G-PP-005",
+          "G-PP-006",
+          "G-PP-007",
+          "G-PP-008",
+          "G-PP-010",
+          "G-QP-001",
+          "G-QP-002",
+          "G-QP-003",
+          "G-QP-004",
+          "G-QP-005",
+          "G-QP-006",
+          "G-QP-007",
+          "G-QP-101",
+          "G-QP-102"
+        ]
+      }
+    },
+    {
+      "name": "B4 golden-implemented",
+      "ok": false,
+      "detail": "30 in-scope case(s) NOT_IMPLEMENTED",
+      "data": {
+        "cases": [
+          "G-CD-004",
+          "G-CD-005",
+          "G-CD-006",
+          "G-CD-007",
+          "G-CD-008",
+          "G-IF-001",
+          "G-IF-002",
+          "G-IF-003",
+          "G-IF-004",
+          "G-IF-005",
+          "G-IF-006",
+          "G-IF-007",
+          "G-IF-008",
+          "G-IF-009",
+          "G-IF-010",
+          "G-IF-011",
+          "G-JIS-001",
+          "G-JIS-002",
+          "G-JIS-003",
+          "G-JIS-004",
+          "G-JIS-005",
+          "G-JIS-006",
+          "G-PP-001",
+          "G-PP-002",
+          "G-PP-003",
+          "G-PP-004",
+          "G-PP-006",
+          "G-PP-007",
+          "G-PP-008",
+          "G-PP-010"
+        ]
+      }
+    },
+    {
+      "name": "B5 golden-blocked",
+      "ok": false,
+      "detail": "2 in-scope case(s) BLOCKED",
+      "data": {
+        "cases": [
+          "G-IS-005",
+          "G-PP-005"
+        ]
+      }
+    },
+    {
+      "name": "B6 golden-failed",
+      "ok": true,
+      "detail": "0 in-scope case(s) FAILED (sealed + pending)",
+      "data": {
+        "cases": []
+      }
+    },
+    {
+      "name": "B7 pending-review",
+      "ok": false,
+      "detail": "5 review-pending case(s) in tests/golden_pending (unsealed)",
+      "data": {
+        "cases": [
+          "G-HIER-001",
+          "G-HIER-002",
+          "G-HIER-003",
+          "G-HIER-004",
+          "G-HIER-005"
+        ]
+      }
+    },
+    {
+      "name": "B8 hierarchy-asserted",
+      "ok": false,
+      "detail": "29 executed in-scope syntactic case(s) do not assert the hierarchy",
+      "data": {
+        "cases": [
+          "G-CAT-001",
+          "G-CAT-004",
+          "G-CAT-005",
+          "G-CONT-001",
+          "G-CONT-002",
+          "G-CONT-003",
+          "G-CONT-004",
+          "G-CONT-006",
+          "G-CONT-007",
+          "G-CONT-008",
+          "G-CONT-010",
+          "G-GD-001",
+          "G-GD-007",
+          "G-INV-004",
+          "G-IS-001",
+          "G-IS-002",
+          "G-IS-003",
+          "G-IS-004",
+          "G-IS-006",
+          "G-IS-007",
+          "G-IS-008",
+          "G-JED-001",
+          "G-JED-002",
+          "G-JED-004",
+          "G-JED-006",
+          "G-QP-001",
+          "G-QP-002",
+          "G-QP-003",
+          "G-QP-004"
+        ]
+      }
+    },
+    {
+      "name": "B9 scope-approved",
+      "ok": false,
+      "detail": "tests/ACCEPTANCE_SCOPE.yaml is PROPOSED: no exclusion is effective",
+      "data": {}
+    }
+  ]
+}

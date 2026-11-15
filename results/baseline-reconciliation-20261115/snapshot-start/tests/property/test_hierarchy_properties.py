@@ -1,0 +1,58 @@
+"""R1 property tests: hierarchy invariants on generated input (requirements 6.3, 6.4).
+
+1. Any record stream within the Step 4b scope yields no hierarchy violation other than those of a
+   registered OPEN known defect (tests/KNOWN_DEFECTS.yaml). PROC / PEND are left out of the
+   generator: procedure structure is outside the Step 4b scope (PROC_STRUCTURE_NOT_VALIDATED).
+2. Every required mutation (M1-M7) of a generated multi-job stream is rejected.
+"""
+
+from __future__ import annotations
+
+from hypothesis import given, settings
+from hypothesis import strategies as st
+
+from jclprof.harness.defects import explain, load_known_defects
+from jclprof.harness.hierarchy import check_hierarchy
+from jclprof.harness.mutations import all_mutants, detect
+from jclprof.parser import parse_text
+
+DEFECTS = load_known_defects()
+
+RECORD = st.one_of(
+    st.text(st.characters(blacklist_characters="\r\n", blacklist_categories=["Cs"]), max_size=90),
+    st.sampled_from(["//J JOB", "//K JOB", "//S EXEC PGM=X", "//T EXEC PROC=P", "//U EXEC P",
+                     "//D DD *", "//E DD DATA", "/*", "//", "//* C", " DATA", "//X DD DSN=A,",
+                     "//   DISP=SHR", "//F DD *,DLM=$$", "$$", "//         DD DSN=B",
+                     "/*JOBPARM X", "//JOBLIB DD DSN=L", "// SET A=1", "//STEPLIB DD DSN=M"]),
+)
+
+
+@settings(max_examples=400, deadline=None)
+@given(recs=st.lists(RECORD, max_size=30), jes=st.sampled_from(["JES2", "JES3", "UNKNOWN"]))
+def test_no_unregistered_hierarchy_violation(recs: list[str], jes: str) -> None:
+    text = "\n".join(recs) + "\n" if recs else ""
+    _, rest = explain(check_hierarchy(parse_text(text, jes=jes)), DEFECTS)
+    assert rest == [], (recs, rest)
+
+
+STEP = st.tuples(st.sampled_from(["A", "B", "C"]),
+                 st.lists(st.sampled_from(["//IN DD DSN=X", "//   DD DSN=Y", "//OUT DD SYSOUT=*",
+                                           "//SYSIN DD *\n CARD\n/*"]), max_size=3))
+JOB = st.lists(STEP, min_size=1, max_size=3)
+
+
+@settings(max_examples=150, deadline=None)
+@given(jobs=st.lists(JOB, min_size=2, max_size=3))
+def test_every_required_mutation_of_a_multi_job_stream_is_rejected(
+        jobs: list[list[tuple[str, list[str]]]]) -> None:
+    lines: list[str] = []
+    for ji, steps in enumerate(jobs):
+        lines.append(f"//JOB{ji} JOB")
+        for si, (pgm, dds) in enumerate(steps):
+            lines.append(f"//S{si} EXEC PGM={pgm}")
+            lines += dds
+    text = "\n".join(lines) + "\n"
+    r = parse_text(text)
+    for m in all_mutants(r, consistent=False):
+        d = detect(m, r, text)
+        assert d["invariants"] or d["trace"], (m.operator, m.target, text)

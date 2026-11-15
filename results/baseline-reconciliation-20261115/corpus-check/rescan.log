@@ -1,0 +1,88 @@
+{
+  "files": 48,
+  "job_files": 46,
+  "proc_files": 2,
+  "records": 3046,
+  "operations": {
+    "JOB": 46,
+    "EXEC": 123,
+    "DD": 500,
+    "SET": 5,
+    "JCLLIB": 3,
+    "PROC": 2,
+    "PEND": 2
+  },
+  "roles": {
+    "STATEMENT": 681,
+    "CONTINUATION": 282,
+    "COMMENT": 1358,
+    "DATA": 635,
+    "DELIMITER": 83,
+    "NULL": 7
+  },
+  "steps": 123,
+  "dds": 500,
+  "job_level_dds": 3,
+  "unnamed_dds": 24,
+  "data_regions": 91,
+  "region_terminators": {
+    "NEXT_STATEMENT": 7,
+    "EOF": 1,
+    "DELIMITER": 83
+  },
+  "exec_targets": {
+    "PGM=DFSRRC00": 5,
+    "PGM=IEFBR14": 9,
+    "PGM=IKJEFT01": 7,
+    "PGM=IEBGENER": 8,
+    "PGM=IDCAMS": 62,
+    "PGM=SDSF": 8,
+    "PGM=DFHCSDUP": 1,
+    "PGM=CBEXPORT": 1,
+    "PGM=CBIMPORT": 1,
+    "PGM=SORT": 5,
+    "PGM=CBSTM03A": 1,
+    "PGM=FTP": 1,
+    "PGM=CBACT04C": 1,
+    "PGM=CBTRN02C": 1,
+    "PROC=REPROC": 4,
+    "PGM=CBACT01C": 1,
+    "PGM=CBACT02C": 1,
+    "PGM=CBCUS01C": 1,
+    "PGM=CBACT03C": 1,
+    "PGM=CBTRN03C": 2,
+    "PGM=IKJEFT1B": 1,
+    "PGM=COBSWAIT": 1
+  },
+  "continuation_modes": {
+    "PARAMETER": 282
+  }
+}
+DD <POSITIONAL> 111 2 {'*': 91, 'DUMMY': 20}
+DD DCB 37 27 [see operands.tsv]
+DD DISP 225 9 {'SHR': 171, '(MOD,DELETE)': 2, '(,CATLG,DELETE)': 1, '(OLD,KEEP,KEEP)': 2, '(OLD,DELETE,DELETE)': 2, '(NEW,CATLG,DELETE)': 29, '(NEW,CATLG)': 5, '(MOD,DELETE,DELETE)': 9, 'OLD': 4}
+DD DSN 225 101 [see operands.tsv]
+DD SPACE 42 12 {'(TRK,0)': 1, '(32274,(600,100),RLSE)': 1, '(605,(500,500),RLSE,,ROUND)': 1, '(400,(20,20),RLSE)': 2, '(TRK,(1,1),RLSE)': 8, '(TRK,(1,1))': 2, '(TRK,(50,25),RLSE)': 2, '(TRK,(25,10),RLSE)': 1, '(TRK,(100,50),RLSE)': 1, '(TRK,(10,5),RLSE)': 3, '(CYL,(1,1),RLSE)': 17, '(CYL,(1,2),RLSE)': 3}
+DD SYMBOLS 1 1 {'JCLONLY': 1}
+DD SYSOUT 164 2 {'*': 163, '(A,INTRDR)': 1}
+DD UNIT 34 3 {'SYSDA': 27, '3390': 2, 'SYSAD': 5}
+EXEC CNTLLIB 4 1 {'AWS.M2.CARDDEMO.CNTL': 4}
+EXEC COND 15 2 {'(0,NE)': 13, '(4,LT)': 2}
+EXEC DYNAMNBR 7 3 {'20': 4, '200': 2, '50': 1}
+EXEC PARM 8 8 {"'BMP,CBPAUP0C,PSBPAUTB'": 1, '(ULU,DFSURGU0,DBPAUTP0)': 1, "'BMP,PAUDBLOD,PSBPAUTB'": 1, "'DLI,DBUNLDGS,DLIGSAMP,,,,,,,,,,,N'": 1, "'DLI,PAUDBUNL,PAUTBUNL,,,,,,,,,,,N'": 1, "'CSD(READWRITE),PAGESIZE(60),NOCOMPAT'": 1, "'2022071800'": 1, "('')": 1}
+EXEC PGM 119 21 [see operands.tsv]
+EXEC PROC 4 1 {'REPROC': 4}
+EXEC REGION 4 3 {'4M': 1, '0M': 2, '2048K': 1}
+JCLLIB ORDER 3 1 {"('AWS.M2.CARDDEMO.PROC')": 3}
+JOB <POSITIONAL> 52 46 [see operands.tsv]
+JOB CLASS 46 1 {'A': 46}
+JOB MSGCLASS 46 4 {'H': 13, 'X': 2, 'A': 1, '0': 30}
+JOB MSGLEVEL 10 1 {'(1,1)': 10}
+JOB NOTIFY 46 2 {'&SYSUID': 45, '&SYUID': 1}
+JOB REGION 11 4 {'0M': 5, '0K': 1, '8M': 3, '5M': 2}
+JOB TIME 9 2 {'30': 1, '1440': 8}
+JOB TYPRUN 1 1 {'SCAN': 1}
+SET CODER 1 1 {'AWS': 1}
+SET DB2S 1 1 {'DAZ1': 1}
+SET HLQ 2 1 {'AWS.M2.CARDDEMO': 2}
+SET LBNM 1 1 {'&CODER..M2.CARDDEMO': 1}

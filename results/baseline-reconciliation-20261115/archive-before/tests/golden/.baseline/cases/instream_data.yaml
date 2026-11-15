@@ -1,0 +1,280 @@
+schema_version: 1
+category: INSTREAM_DATA
+cases:
+  - test_id: G-IS-001
+    category: INSTREAM_DATA
+    description: "DD * data ended by a /* delimiter statement."
+    rule_ids: [JCL-DD-003, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-DD-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter", pages: "95 (PDF 141)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/instream/is001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS001}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSIN, positional: ["*"], keywords: [], inline_data: {records: [4, 5], terminator: DELIMITER, delimiter: "/*"}}
+        - {kind: DELIMITER, span: [6, 6]}
+        - {kind: DD, span: [7, 7], name: SYSOUT, positional: [], keywords: [[SYSOUT, "*"]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: ""
+
+  - test_id: G-IS-002
+    category: INSTREAM_DATA
+    description: "DD * data ended by the next // statement, with no delimiter (optional for DD * without DLM)."
+    rule_ids: [JCL-DD-003, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-DD-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter", pages: "95 (PDF 141)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/instream/is002.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS002}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSIN, positional: ["*"], keywords: [], inline_data: {records: [4, 4], terminator: NEXT_STATEMENT, delimiter: null}}
+        - {kind: DD, span: [5, 5], name: SYSOUT, positional: [], keywords: [[SYSOUT, "*"]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-IS-003
+    category: INSTREAM_DATA
+    description: "DD DATA data may contain // records (even a JOB statement); only /* ends it."
+    rule_ids: [JCL-DD-004, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-DD-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DATA parameter", pages: "121 (PDF 167)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/instream/is003.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS003}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSUT1, positional: [DATA], keywords: [], inline_data: {records: [4, 5], terminator: DELIMITER, delimiter: "/*"}}
+        - {kind: DELIMITER, span: [6, 6]}
+        - {kind: DD, span: [7, 7], name: SYSUT2, positional: [], keywords: [[SYSOUT, [A, INTRDR]]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Records 4-5 must not become JOB or EXEC statements: mistaking data for JCL is a high-risk failure mode."
+
+  - test_id: G-IS-004
+    category: INSTREAM_DATA
+    description: "DD DATA with DLM=@@: a /* record inside the data is data; only @@ ends it (the same under JES2 and JES3)."
+    rule_ids: [JCL-DD-004, JCL-DD-005, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-DD-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DATA parameter", pages: "121 (PDF 167)"}
+      - {rule_id: "JCL-DD-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DLM parameter", pages: "159-160 (PDF 205-206)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/instream/is004.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS004}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSUT1, positional: [DATA], keywords: [[DLM, "@@"]], inline_data: {records: [4, 5], terminator: DELIMITER, delimiter: "@@"}}
+        - {kind: DELIMITER, span: [6, 6]}
+        - {kind: DD, span: [7, 7], name: SYSUT2, positional: [], keywords: [[SYSOUT, "*"]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "@ is a national character, so no apostrophes are needed. On DD DATA, only the assigned delimiter ends data under both JES2 and JES3 (p.159)."
+
+  - test_id: G-IS-005
+    category: INSTREAM_DATA
+    description: "DD * with DLM=AA followed by a // record before AA: JES2 ends the data at //, JES3 only at AA."
+    rule_ids: [JCL-DD-005, POL-003]
+    source_reference:
+      - {rule_id: "JCL-DD-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DLM parameter", pages: "159-160 (PDF 205-206)"}
+      - {rule_id: "POL-003", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md / decisions.md > 1.5 非推測; ADR-010; ADR-011", pages: "-"}
+    input_file: inputs/instream/is005.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    environment: {jes: UNKNOWN}
+    expected_structure: {view: none, reason: "Environment-dependent: the expected structure depends on the JES type."}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: blocked
+    blocked_reason: "The Environment Profile JES type is UNKNOWN (config environment.jes; POL-003, ADR-021). Under JES2, record 5 is a DD statement and record 6 is stray; under JES3, records 4-5 are data and record 6 is the delimiter. Unblock once the JES type is configured."
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A2: the JES type lives in the Environment Profile; unspecified = UNKNOWN."
+        before: {environment: {jes: UNDEFINED}}
+        after: {environment: {jes: UNKNOWN}}
+        basis: "ADR-021"
+        approver: "user decision A2 (the case remains blocked)"
+    notes: ""
+
+  - test_id: G-IS-006
+    category: INSTREAM_DATA
+    description: "DD DATA data reaches end of input with no delimiter: the data is kept to end of input and the missing delimiter is diagnosed."
+    rule_ids: [JCL-DD-004, JCL-STMT-DELIM, POL-006]
+    source_reference:
+      - {rule_id: "JCL-DD-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DATA parameter", pages: "121 (PDF 167)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+      - {rule_id: "POL-006", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "decisions.md > ADR-020", pages: "-"}
+    input_file: inputs/instream/is006.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS006}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSUT1, positional: [DATA], keywords: [], inline_data: {records: [4, 5], terminator: EOF, delimiter: null}}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-W002, severity: WARNING, line: 3}]
+    oracle_method: "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A3: keep the text to end of input and diagnose the unmet end condition; severity from the official specification and evaluation stage."
+        before: {review_status: blocked, expected_structure: {view: none}, expected_diagnostics: []}
+        after: {review_status: draft, inline_data: {records: [4, 5], terminator: EOF}, expected_diagnostics: [LEX-W002 WARNING line 3]}
+        basis: "ADR-023. WARNING (class SYNTAX_DEFINED): p.309 requires a delimiter, but p.121 also defines end of input as an end condition, so processing is defined."
+        approver: "user decision A3 (the case itself remains draft)"
+    notes: "Reported at the DD DATA statement whose data lacks the delimiter. The p.121/p.309 tension is recorded in ADR-023. JES-independent: on DD DATA, only /* or DLM ends data in both JES2 and JES3."
+
+  - test_id: G-IS-007
+    category: INSTREAM_DATA
+    description: "DD * data reaches end of input with no delimiter; IBM says the data ends when the system runs out of records."
+    rule_ids: [JCL-DD-003, JCL-DD-006]
+    source_reference:
+      - {rule_id: "JCL-DD-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter", pages: "95 (PDF 141)"}
+      - {rule_id: "JCL-DD-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter > Omitted Data Delimiters", pages: "97 (PDF 143)"}
+    input_file: inputs/instream/is007.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS007}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: SYSIN, positional: ["*"], keywords: [], inline_data: {records: [4, 4], terminator: EOF, delimiter: null}}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-IS-008
+    category: INSTREAM_DATA
+    description: "Data records after EXEC with no DD statement: the system provides DD * with ddname SYSIN."
+    rule_ids: [JCL-DD-006, JCL-DD-003]
+    source_reference:
+      - {rule_id: "JCL-DD-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter > Omitted Data Delimiters", pages: "97 (PDF 143)"}
+      - {rule_id: "JCL-DD-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > * parameter", pages: "95 (PDF 141)"}
+    input_file: inputs/instream/is008.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: IS008}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: null, name: SYSIN, implicit: true, positional: ["*"], keywords: [], inline_data: {records: [3, 4], terminator: NEXT_STATEMENT, delimiter: null}}
+        - {kind: DD, span: [5, 5], name: OUT, positional: [], keywords: [[SYSOUT, "*"]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "The implicit DD has no physical record (span null) and is placed where its data begins (docs/golden-view.md)."
+
+  - test_id: G-IS-009
+    category: INSTREAM_DATA
+    description: "DLM coded on a DD statement that has neither * nor DATA."
+    rule_ids: [JCL-DD-005]
+    source_reference:
+      - {rule_id: "JCL-DD-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DLM parameter", pages: "159-160 (PDF 205-206)"}
+    input_file: inputs/instream/is009.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E016, severity: ERROR, line: 3}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "IBM p.160: 'If DLM is specified on any other statement, a JCL error message is issued.'"
+
+  - test_id: G-IS-101
+    category: INSTREAM_DATA
+    description: 'Lexical: record kinds around in-stream data - data records are OTHER (kept raw, not interpreted), /* is DELIMITER.'
+    rule_ids: [JCL-REC-001, JCL-STMT-DELIM]
+    source_reference:
+      - {rule_id: "JCL-REC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields > Identifier field", pages: "13 (PDF 59)"}
+      - {rule_id: "JCL-STMT-DELIM", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    input_file: inputs/instream/is001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+      - line: 4
+        kind: OTHER
+        raw: ' SORT FIELDS=(1,10,CH,A)'
+      - line: 5
+        kind: OTHER
+        raw: ' END'
+      - line: 6
+        kind: DELIMITER
+      - line: 7
+        kind: STATEMENT_START
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 2
+      - span:
+        - 3
+        - 3
+        parameter_text: '*'
+      - span:
+        - 7
+        - 7
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: 'Step 4a: the Lexer classifies records by their leading characters only. Deciding that OTHER records are DD * data (and the JES-dependent end rules) is a later stage. A data record starting with // in DD DATA would be lexed as STATEMENT_START here and must be reclassified later; that limitation is why DD DATA inputs are not used in lexical cases.'

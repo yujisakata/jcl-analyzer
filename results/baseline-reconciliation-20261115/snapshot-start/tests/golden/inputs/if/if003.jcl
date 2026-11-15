@@ -1,0 +1,8 @@
+//IF003    JOB
+//STEP1    EXEC PGM=PROGA
+//TESTNOTA IF  ¬(RC > 8) THEN
+//S2       EXEC PGM=A
+//         ENDIF
+//TESTNOTB IF  NOT (RC > 8) THEN
+//S3       EXEC PGM=B
+//         ENDIF

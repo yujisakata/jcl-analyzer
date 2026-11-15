@@ -1,0 +1,245 @@
+# REVIEW PENDING (unsealed). See tests/golden_pending/README.md.
+schema_version: 1
+category: INSTREAM_DATA
+cases:
+- test_id: G-HIER-003
+  category: INSTREAM_DATA
+  description: 'DD * data with /*, implicit SYSIN for data without a DD, DD DATA containing a // record:
+    data records are not statements and every DD belongs to its step.'
+  rule_ids:
+  - JCL-DD-003
+  - JCL-DD-004
+  - JCL-DD-006
+  - JCL-STMT-DELIM
+  source_reference:
+  - rule_id: JCL-DD-003
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > * parameter
+    pages: 95 (PDF 141)
+  - rule_id: JCL-DD-004
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > DATA parameter
+    pages: 121 (PDF 167)
+  - rule_id: JCL-DD-006
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > * parameter > Omitted Data Delimiters
+    pages: 97 (PDF 143)
+  - rule_id: JCL-STMT-DELIM
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the
+      JCL
+    pages: 309-310 (PDF 355-356)
+  input_file: inputs/hierarchy/h003.jcl
+  input_kind: job
+  case_type: valid
+  validation_stage: syntactic
+  expected_structure:
+    view: statements
+    statements:
+    - kind: JOB
+      span:
+      - 1
+      - 1
+    - kind: EXEC
+      span:
+      - 2
+      - 2
+    - kind: DD
+      span:
+      - 3
+      - 3
+    - kind: DELIMITER
+      span:
+      - 6
+      - 6
+    - kind: EXEC
+      span:
+      - 7
+      - 7
+    - kind: DD
+      span: null
+      implicit: true
+    - kind: DD
+      span:
+      - 9
+      - 9
+    - kind: EXEC
+      span:
+      - 10
+      - 10
+    - kind: DD
+      span:
+      - 11
+      - 11
+    - kind: DELIMITER
+      span:
+      - 13
+      - 13
+    - kind: COMMENT
+      span:
+      - 14
+      - 14
+    hierarchy:
+      jobs:
+      - name: INST
+        line: 1
+        span:
+        - 1
+        - 14
+        dds: []
+        steps:
+        - name: S1
+          line: 2
+          target:
+          - PGM
+          - A
+          dds:
+          - name: SYSIN
+            line: 3
+            concat_head: SYSIN
+            concat_index: 0
+            inline_data:
+              records:
+              - 4
+              - 5
+              terminator: DELIMITER
+        - name: S2
+          line: 7
+          target:
+          - PGM
+          - B
+          dds:
+          - name: SYSIN
+            line: null
+            concat_head: SYSIN
+            concat_index: 0
+            implicit: true
+            inline_data:
+              records:
+              - 8
+              - 8
+              terminator: NEXT_STATEMENT
+          - name: OUT
+            line: 9
+            concat_head: OUT
+            concat_index: 0
+        - name: S3
+          line: 10
+          target:
+          - PGM
+          - C
+          dds:
+          - name: SYSUT1
+            line: 11
+            concat_head: SYSUT1
+            concat_index: 0
+            inline_data:
+              records:
+              - 12
+              - 12
+              terminator: DELIMITER
+        procedures: []
+      outside: []
+  expected_diagnostics:
+    mode: exact
+    items: []
+  oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in docs/golden-view.md
+    (ADR-027). Input JCL designed by hand. Expected statements and hierarchy written manually, never generated
+    from parser output.
+  oracle_author: Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness (R1);
+    draft awaiting independent review
+  review_status: draft
+  notes: Line 12 (//NOTJCL JOB) is DD DATA data, so there is only one job.
+- test_id: G-HIER-004
+  category: INSTREAM_DATA
+  description: 'DD DATA data that runs to end of input belongs to the job: the job span contains the data
+    records.'
+  rule_ids:
+  - JCL-DD-004
+  - JCL-STMT-DELIM
+  - POL-006
+  source_reference:
+  - rule_id: JCL-DD-004
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > DATA parameter
+    pages: 121 (PDF 167)
+  - rule_id: JCL-STMT-DELIM
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 14. Delimiter statement > Description; Relationship to the DLM parameter; Location in the
+      JCL
+    pages: 309-310 (PDF 355-356)
+  - rule_id: POL-006
+    url: docs/requirements.md
+    edition: requirements.md v1.0 / docs/decisions.md
+    section: decisions.md > ADR-020
+    pages: '-'
+  input_file: inputs/hierarchy/h004.jcl
+  input_kind: job
+  case_type: boundary
+  validation_stage: syntactic
+  expected_structure:
+    view: statements
+    statements:
+    - kind: JOB
+      span:
+      - 1
+      - 1
+    - kind: EXEC
+      span:
+      - 2
+      - 2
+    - kind: DD
+      span:
+      - 3
+      - 3
+      inline_data:
+        records:
+        - 4
+        - 5
+        terminator: EOF
+        delimiter: null
+    hierarchy:
+      jobs:
+      - name: EOFJOB
+        line: 1
+        span:
+        - 1
+        - 5
+        dds: []
+        steps:
+        - name: S1
+          line: 2
+          target:
+          - PGM
+          - A
+          dds:
+          - name: SYSUT1
+            line: 3
+            concat_head: SYSUT1
+            concat_index: 0
+            inline_data:
+              records:
+              - 4
+              - 5
+              terminator: EOF
+        procedures: []
+      outside: []
+  expected_diagnostics:
+    mode: exact
+    items:
+    - code: LEX-W002
+      severity: WARNING
+      line: 3
+  oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in docs/golden-view.md
+    (ADR-027). Input JCL designed by hand. Expected statements and hierarchy written manually, never generated
+    from parser output.
+  oracle_author: Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness (R1);
+    draft awaiting independent review
+  review_status: draft
+  notes: 'Expected to FAIL with the current Parser (known defect A10: Job.span stops at the last statement).'

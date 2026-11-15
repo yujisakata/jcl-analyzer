@@ -1,0 +1,187 @@
+schema_version: 1
+category: COND
+cases:
+  - test_id: G-CD-001
+    category: COND
+    description: "COND forms: a single test without outer parentheses, several tests with stepname, EVEN alone, and a test plus ONLY."
+    rule_ids: [JCL-COND-001, JCL-COND-002]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "JCL-COND-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Subparameter definition", pages: "328 (PDF 374)"}
+    input_file: inputs/cond/cd001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: semantic
+    expected_structure:
+      view: exec_conditions
+      exec_conditions:
+        - {step: STEP2, line: 3, conds: [{qualifier: null, even: false, only: false, tests: [{code: 4, op: LT, step: null, procstep: null}]}]}
+        - {step: STEP3, line: 4, conds: [{qualifier: null, even: false, only: false, tests: [{code: 12, op: GE, step: null, procstep: null}, {code: 8, op: EQ, step: STEP1, procstep: null}, {code: 4, op: LT, step: STEP2, procstep: null}]}]}
+        - {step: STEP4, line: 5, conds: [{qualifier: null, even: true, only: false, tests: []}]}
+        - {step: STEP5, line: 6, conds: [{qualifier: null, even: false, only: true, tests: [{code: 4, op: LT, step: null, procstep: null}]}]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "exec_conditions lists only EXEC statements that code COND. Requirement FR-07: conditions are kept and not evaluated."
+
+  - test_id: G-CD-002
+    category: COND
+    description: "IBM continuation example 3 in the semantic view: COND.procstepname on a calling EXEC, including stepname FIND inside the procedure."
+    rule_ids: [JCL-COND-001, JCL-COND-003]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "JCL-COND-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > On an EXEC statement that calls a procedure", pages: "330 (PDF 376)"}
+    input_file: inputs/continuation/cont003.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: semantic
+    expected_structure:
+      view: exec_conditions
+      exec_conditions:
+        - step: STP4
+          line: 2
+          conds:
+            - {qualifier: PAID, even: true, only: false, tests: [{code: 20, op: LT, step: null, procstep: null}]}
+            - {qualifier: LATE, even: false, only: false, tests: [{code: 60, op: GT, step: FIND, procstep: null}]}
+            - {qualifier: BILL, even: false, only: false, tests: [{code: 20, op: GE, step: null, procstep: null}, {code: 30, op: LT, step: CHGE, procstep: null}]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ex "Statements transcribed from the IBM SA23-1385-70 example on the cited page. Expected structure derived by hand from the cited rules."
+    oracle_author: *author
+    review_status: draft
+    notes: "Shares its input with G-CONT-002. 'line' is the first record of the EXEC statement."
+
+  - test_id: G-CD-003
+    category: COND
+    description: "Boundary: exactly 8 return-code tests, continued after a list comma."
+    rule_ids: [JCL-COND-001, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/cond/cd004.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: semantic
+    expected_structure:
+      view: exec_conditions
+      exec_conditions:
+        - step: STEP2
+          line: 3
+          conds:
+            - qualifier: null
+              even: false
+              only: false
+              tests:
+                - {code: 1, op: EQ, step: null, procstep: null}
+                - {code: 2, op: EQ, step: null, procstep: null}
+                - {code: 3, op: EQ, step: null, procstep: null}
+                - {code: 4, op: EQ, step: null, procstep: null}
+                - {code: 5, op: EQ, step: null, procstep: null}
+                - {code: 6, op: EQ, step: null, procstep: null}
+                - {code: 7, op: EQ, step: null, procstep: null}
+                - {code: 8, op: EQ, step: null, procstep: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CD-004
+    category: COND
+    description: "9 return-code tests (the maximum is 8)."
+    rule_ids: [JCL-COND-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/cond/cd005.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E011, severity: ERROR, line: 3}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CD-005
+    category: COND
+    description: "EVEN together with 8 tests (the maximum with EVEN or ONLY is 7)."
+    rule_ids: [JCL-COND-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/cond/cd006.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E011, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CD-006
+    category: COND
+    description: "Null positional subparameter in COND (explicitly invalid for COND)."
+    rule_ids: [JCL-COND-001, JCL-FMT-006, POL-001]
+    source_reference:
+      - {rule_id: "JCL-COND-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Syntax", pages: "328 (PDF 374)"}
+      - {rule_id: "JCL-FMT-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Null positional subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/cond/cd007.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E017, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: "JCL-FMT-006 names COND as an exception to the general null-subparameter rule."
+
+  - test_id: G-CD-007
+    category: COND
+    description: "COND operator not in GT, GE, EQ, LT, LE, NE."
+    rule_ids: [JCL-COND-002, POL-001]
+    source_reference:
+      - {rule_id: "JCL-COND-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Subparameter definition", pages: "328 (PDF 374)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/cond/cd008.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E018, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CD-008
+    category: COND
+    description: "COND code 4096, above the documented range 0-4095."
+    rule_ids: [JCL-COND-002]
+    source_reference:
+      - {rule_id: "JCL-COND-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > COND parameter > Subparameter definition", pages: "328 (PDF 374)"}
+    input_file: inputs/cond/cd009.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-W002, severity: WARNING, line: 3}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "IBM: a value above 4095 'could result in invalid return code testing' (p.328), so WARNING rather than ERROR."

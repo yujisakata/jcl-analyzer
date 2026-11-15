@@ -1,0 +1,42 @@
+[
+  {
+    "path": "app-transaction-type-db2/ctl/DB2CREAT.ctl",
+    "sha256": "fc0a9751863c267b63fec9560ef47cacda6d857a06d76556b8b56a0ca3b9d0ad",
+    "record_count": 106
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/DB2FREE.ctl",
+    "sha256": "5e0155cc263f01f34486a8a9fee34b6e5ab3a2eeda3f3d69409424c8cd37d1cf",
+    "record_count": 19
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/DB2LTCAT.ctl",
+    "sha256": "c22c097b6be78d68e281037a30e1a0dcb18a8971dbea35a8b90a6b2e912f6e95",
+    "record_count": 39
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/DB2LTTYP.ctl",
+    "sha256": "34fecbc52cd0c29e2b1efc773e38202da7290bb1feb89aae91b9c37c147005e1",
+    "record_count": 24
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/DB2TEP41.ctl",
+    "sha256": "61d12325e772661219f8c6e4ec08bb776eb52d3bc0d2768c4c92c5b8e153998f",
+    "record_count": 18
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/DB2TIAD1.ctl",
+    "sha256": "59a18c209916b8ccba8f43417cb46f5df6e86c7ea5568ea9389e19b9bc4ae4af",
+    "record_count": 17
+  },
+  {
+    "path": "app-transaction-type-db2/ctl/REPROCT.ctl",
+    "sha256": "3ceeb621fc3c24b249aedd2126a77d3ae665a6586fa28a6c125ed21492fc49b7",
+    "record_count": 15
+  },
+  {
+    "path": "ctl/REPROCT.ctl",
+    "sha256": "3ceeb621fc3c24b249aedd2126a77d3ae665a6586fa28a6c125ed21492fc49b7",
+    "record_count": 15
+  }
+]

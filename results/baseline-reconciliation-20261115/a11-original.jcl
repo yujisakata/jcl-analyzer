@@ -1,0 +1,3 @@
+//J JOB
+//S EXEC PGM=X
+//D DD DUMMY

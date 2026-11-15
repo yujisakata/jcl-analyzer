@@ -1,0 +1,11 @@
+PASS  ruff              All checks passed!
+PASS  mypy              Success: no issues found in 67 source files
+PASS  harness-suite     204 passed, 1 skipped in 5.90s
+PASS  golden-defs       golden definitions: 102 case(s) valid
+PASS  golden-integrity  golden integrity: OK (matches MANIFEST.json)
+PASS  rules-sync        rules reference: in sync
+PASS  golden-run        {"PASSED": 51, "FAILED": 0, "BLOCKED": 2, "NOT_IMPLEMENTED": 49, "NOT_RUN": 0}
+PASS  analyzer-suite    129 passed, 51 skipped, 9 xfailed in 4.92s
+NOTE  golden-run by assurance (REFERENCE = draft expectations, not formal QA): {"REFERENCE": {"PASSED": 51, "FAILED": 0, "BLOCKED": 2, "NOT_IMPLEMENTED": 49, "NOT_RUN": 0}}
+NOTE  unverified (skipped) harness tests: ['symlinks not permitted on this system']
+GATE: PASS

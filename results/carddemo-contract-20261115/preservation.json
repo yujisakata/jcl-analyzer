@@ -1,0 +1,43 @@
+{
+  "baseline_files": 526,
+  "modified": [
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\adapters.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\comparator.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\runner.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\trace.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\parser\\adapter.py",
+    "D:\\projects\\jcl-profiler\\specs\\golden-schema.json"
+  ],
+  "removed": [],
+  "added": [
+    "D:\\projects\\jcl-profiler\\docs\\reviews\\carddemo-acceptance-contract.md",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\defects.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\hierarchy.py",
+    "D:\\projects\\jcl-profiler\\src\\jclprof\\harness\\mutations.py",
+    "D:\\projects\\jcl-profiler\\tests\\KNOWN_DEFECTS.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\dd_concatenation.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\instream_data.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\cases\\job_exec_dd.yaml",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h001.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h002.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h003.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h004.jcl",
+    "D:\\projects\\jcl-profiler\\tests\\golden_pending\\inputs\\hierarchy\\h005.jcl",
+    "D:\\projects\\jcl-profiler\\tools\\golden_authoring\\make_pending_hierarchy.py",
+    "D:\\projects\\jcl-profiler\\tools\\hierarchy_mutation_report.py"
+  ],
+  "allowed_addition": "D:\\projects\\jcl-profiler\\docs\\reviews\\carddemo-acceptance-contract.md",
+  "protected_unchanged": false,
+  "carddemo_originals": {
+    "baseline_files": 240,
+    "mismatches": [],
+    "unchanged": true
+  },
+  "existing_golden": {
+    "baseline_files": 195,
+    "mismatches": [],
+    "unchanged": true
+  },
+  "verification_note": "Unrelated concurrent workspace writes detected; this investigation wrote only the contract and results/carddemo-contract-20261115. No unrelated changes were reverted. Attribution is unknown.",
+  "checked_at_utc": "2026-11-15T11:56:05.665069+00:00"
+}

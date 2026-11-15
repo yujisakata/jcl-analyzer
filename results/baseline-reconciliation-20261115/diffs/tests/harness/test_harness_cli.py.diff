@@ -1,0 +1,28 @@
+--- before/tests/harness/test_harness_cli.py
++++ current/tests/harness/test_harness_cli.py
+@@ -9,6 +9,7 @@
+ from harness_helpers import GOLDEN_DIR, base_case, write_suite
+ 
+ from jclprof import cli
++from jclprof.harness.defects import known_golden_failures, load_known_defects
+ from jclprof.harness.registry import RuleRegistry
+ 
+ 
+@@ -17,11 +18,15 @@
+ 
+ 
+ def test_verify_real_suite_reports_not_implemented(tmp_path: Path) -> None:
++    """TC-013: FAILED cases are allowed only if registered under an OPEN known defect
++    (tests/KNOWN_DEFECTS.yaml); verify exits 1 whenever any case FAILED."""
+     rc = cli.main(["verify", "--suite", str(GOLDEN_DIR), "--output", str(tmp_path)])
+-    assert rc == 0
+     data = json.loads((tmp_path / "golden_run.json").read_text(encoding="utf-8"))
+     assert data["counts"]["NOT_IMPLEMENTED"] > 0
+-    assert data["counts"]["FAILED"] == 0
++    failed = {r["test_id"] for r in data["results"] if r["verification_status"] == "FAILED"}
++    known = set(known_golden_failures(load_known_defects()))
++    assert failed <= known, f"unregistered FAILED cases: {sorted(failed - known)}"
++    assert rc == (1 if failed else 0)
+ 
+ 
+ def test_rules_render_check() -> None:

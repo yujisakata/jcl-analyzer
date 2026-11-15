@@ -1,0 +1,3 @@
+//JED007   JOB
+//STEP1    EXEC PGM=IEFBR14
+//IN       DD   DSN=A.B,*

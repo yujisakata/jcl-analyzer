@@ -1,0 +1,27 @@
+........................................................................ [ 15%]
+........................................................................ [ 30%]
+..........................................................s...ssssssss.. [ 45%]
+................sssss.sssssssssss.sss......s............ssssssssssssssss [ 60%]
+ssssss.........xxxxxxxxx................................................ [ 76%]
+.........................................s.............................. [ 91%]
+.........................................                                [100%]
+=========================== short test summary info ===========================
+SKIPPED [9] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: no adapter for stage 'semantic'
+SKIPPED [5] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: Step 4b scope: structure checks for COND are not implemented
+SKIPPED [11] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: Step 4b scope: structure checks for IF_THEN_ELSE are not implemented
+SKIPPED [10] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: no adapter for stage 'resolution'
+SKIPPED [1] tests\parser\test_golden_parser.py:54: BLOCKED: The Environment Profile JES type is UNKNOWN (config environment.jes; POL-003, ADR-021). Under JES2, record 5 is a DD statement and record 6 is stray; under JES3, records 4-5 are data and record 6 is the delimiter. Unblock once the JES type is configured.
+SKIPPED [6] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: Step 4b scope: structure checks for JCLLIB_INCLUDE_SET are not implemented
+SKIPPED [8] tests\parser\test_golden_parser.py:54: NOT_IMPLEMENTED: Step 4b scope: structure checks for PROC_PEND are not implemented
+SKIPPED [1] tests\parser\test_golden_parser.py:54: BLOCKED: The first diagnostic (PAR-E013 at record 3) is clear, but the follow-on diagnostics depend on an error-recovery policy that has not been decided: which PEND closes which PROC (records 5 and 6). Decide the recovery policy before Step 4.
+SKIPPED [1] tests\unit\test_collector.py:263: symlinks not permitted on this system
+XFAIL tests/parser/test_known_defects_04b.py::test_d1_jes3_skips_statements_after_null - D-1: null statement handling ignores JES/NULLJCL
+XFAIL tests/parser/test_known_defects_04b.py::test_d1_jes2_with_unknown_nulljcl_does_not_fix_membership - D-1: null statement handling ignores JES/NULLJCL
+XFAIL tests/parser/test_known_defects_04b.py::test_d1_unknown_environment_keeps_every_candidate - D-1: null statement handling ignores JES/NULLJCL
+XFAIL tests/parser/test_known_defects_04b.py::test_d1_skipped_records_are_marked_not_dropped - D-1: null statement handling ignores JES/NULLJCL
+XFAIL tests/parser/test_known_defects_04b.py::test_d2_unknown_keeps_the_jes2_step_as_a_candidate - D-2: JES=UNKNOWN DLM divergence loses candidates
+XFAIL tests/parser/test_known_defects_04b.py::test_d2_unknown_does_not_present_one_interpretation_as_determined - D-2: JES=UNKNOWN DLM divergence loses candidates
+XFAIL tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES2] - D-3: null after continuation treated as job end
+XFAIL tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES3] - D-3: null after continuation treated as job end
+XFAIL tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[UNKNOWN] - D-3: null after continuation treated as job end
+412 passed, 52 skipped, 9 xfailed in 23.44s

@@ -1,0 +1,13 @@
+{
+  "source": "//J JOB\n//S EXEC PGM=X\n//IN DD *,DLM=AA\n D\n//OTHER DD DUMMY\nAA\n",
+  "expected_span": [
+    1,
+    6
+  ],
+  "mutated_span": [
+    1,
+    3
+  ],
+  "violations": [],
+  "note": "Outside frozen CardDemo forms: DD * DLM UNKNOWN; parser output correct, hierarchy checker misses candidate span corruption"
+}

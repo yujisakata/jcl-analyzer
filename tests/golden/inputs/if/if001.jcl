@@ -1,0 +1,7 @@
+//IF001    JOB
+//STEP1    EXEC PGM=PROGA
+//CHK      IF (RC > 4) THEN
+//STEP2    EXEC PGM=ERRRTN
+//         ELSE
+//STEP3    EXEC PGM=NEXTRTN
+//         ENDIF

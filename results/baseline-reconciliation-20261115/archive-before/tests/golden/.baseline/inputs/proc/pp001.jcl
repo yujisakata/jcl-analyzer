@@ -1,0 +1,6 @@
+//PP001    JOB
+//CARDS    PROC
+//PSTEP1   EXEC PGM=IEFBR14
+//DD1      DD   DSN=A.B,DISP=SHR
+//         PEND
+//STEP1    EXEC CARDS

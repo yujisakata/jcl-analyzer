@@ -1,0 +1,2 @@
+src\jclprof\harness\carddemo_mutations.py:161: error: Need type annotation for "delta" (hint: "delta: list[<type>] = ...")  [var-annotated]
+Found 1 error in 1 file (checked 81 source files)

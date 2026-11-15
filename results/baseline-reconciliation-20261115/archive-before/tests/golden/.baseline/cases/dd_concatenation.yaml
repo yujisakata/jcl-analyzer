@@ -1,0 +1,136 @@
+schema_version: 1
+category: DD_CONCATENATION
+cases:
+  - test_id: G-CAT-001
+    category: DD_CONCATENATION
+    description: "Concatenated DD statements have no ddname (syntactic view)."
+    rule_ids: [JCL-DD-001]
+    source_reference:
+      - {rule_id: "JCL-DD-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+    input_file: inputs/concat/cat001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CAT001}
+        - {kind: EXEC, span: [2, 2], name: STEP1, keywords: [[PGM, IEBGENER]]}
+        - {kind: DD, span: [3, 3], name: SYSUT1, positional: [], keywords: [[DSN, A.FIRST], [DISP, SHR]]}
+        - {kind: DD, span: [4, 4], name: null, positional: [], keywords: [[DSN, A.SECOND], [DISP, SHR]]}
+        - {kind: DD, span: [5, 5], name: null, positional: [], keywords: [[DSN, A.THIRD], [DISP, SHR]]}
+        - {kind: DD, span: [6, 6], name: SYSUT2, positional: [], keywords: [[SYSOUT, "*"]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: ""
+
+  - test_id: G-CAT-002
+    category: DD_CONCATENATION
+    description: "Semantic view: unnamed DDs join the preceding ddname's concatenation in order; DISP defaults for existing data sets; SYSOUT has no DISP."
+    rule_ids: [JCL-DD-001, JCL-DD-008]
+    source_reference:
+      - {rule_id: "JCL-DD-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+      - {rule_id: "JCL-DD-008", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DISP parameter > Defaults", pages: "152 (PDF 198)"}
+    input_file: inputs/concat/cat001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: semantic
+    expected_structure:
+      view: dd_resources
+      dd_resources:
+        - {step: STEP1, ddname: SYSUT1, concat_index: 0, line: 3, dsn: A.FIRST, generation: null, disp: {status: SHR, normal: KEEP, abnormal: KEEP, defaulted: [normal, abnormal]}}
+        - {step: STEP1, ddname: SYSUT1, concat_index: 1, line: 4, dsn: A.SECOND, generation: null, disp: {status: SHR, normal: KEEP, abnormal: KEEP, defaulted: [normal, abnormal]}}
+        - {step: STEP1, ddname: SYSUT1, concat_index: 2, line: 5, dsn: A.THIRD, generation: null, disp: {status: SHR, normal: KEEP, abnormal: KEEP, defaulted: [normal, abnormal]}}
+        - {step: STEP1, ddname: SYSUT2, concat_index: 0, line: 6, dsn: null, generation: null, disp: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "IBM forbids coding DISP together with SYSOUT (p.152), so disp is null for SYSUT2."
+
+  - test_id: G-CAT-003
+    category: DD_CONCATENATION
+    description: "Unnamed DD immediately after EXEC: there is no preceding DD to concatenate to."
+    rule_ids: [JCL-DD-001, POL-006]
+    source_reference:
+      - {rule_id: "JCL-DD-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+      - {rule_id: "POL-006", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "decisions.md > ADR-020", pages: "-"}
+    input_file: inputs/concat/cat003.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-W004, severity: WARNING, line: 3}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A6: IBM does not state that an unnamed first DD is invalid (only how concatenation is coded), so the situation is SPEC_UNCONFIRMED, not ERROR."
+        before: {code: PAR-E019, severity: ERROR, rule_ids: [JCL-DD-001, POL-001]}
+        after: {code: PAR-W004, severity: WARNING, class: SPEC_UNCONFIRMED, rule_ids: [JCL-DD-001, POL-006]}
+        basis: "ADR-020"
+        approver: "user decision A6 (the case itself remains draft)"
+    notes: ""
+
+  - test_id: G-CAT-004
+    category: DD_CONCATENATION
+    description: "IBM example: a DD added to a procedure step (stepname.ddname) followed by a concatenated unnamed DD."
+    rule_ids: [JCL-DD-001, JCL-DD-002]
+    source_reference:
+      - {rule_id: "JCL-DD-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+      - {rule_id: "JCL-DD-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field when overriding/adding", pages: "76 (PDF 122)"}
+    input_file: inputs/concat/cat004.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: CAT004}
+        - {kind: EXEC, span: [2, 2], name: CALLER, keywords: [[PROC, MYPROC]]}
+        - {kind: DD, span: [3, 3], name: STEPSIX.DD4, positional: [], keywords: [[DSNAME, TEXT], [DISP, [NEW, PASS]]]}
+        - {kind: DD, span: [4, 4], name: null, positional: [], keywords: [[DSNAME, ART], [DISP, SHR]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ex "Statements transcribed from the IBM SA23-1385-70 example on the cited page. Expected structure derived by hand from the cited rules."
+    oracle_author: *author
+    review_status: draft
+    notes: "DD parameter Example 4, p.94. The procedure is not resolved at this stage."
+
+  - test_id: G-CAT-005
+    category: DD_CONCATENATION
+    description: "CardDemo sample: an EXEC with a continued quoted PARM, and STEPLIB and IMS DD concatenations around comment statements."
+    rule_ids: [JCL-DD-001, JCL-CONT-001, JCL-SYN-001, JCL-STMT-COMMENT]
+    source_reference:
+      - {rule_id: "JCL-DD-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+      - {rule_id: "JCL-STMT-COMMENT", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "10. Comment statement > Description; Location in the JCL", pages: "71 (PDF 117)"}
+    input_file: corpus://carddemo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl
+    corpus_source: {root_id: carddemo, rel_path: app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl, sha256: c90fbd21b8ea2b6448b8939ff4f3b47c6f73472465cd7d1e25871f7779063a86, lines: [24, 34]}
+    scope: {lines: [24, 34]}
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: EXEC, span: [24, 25], name: STEP01, positional: [], keywords: [[PGM, DFSRRC00], [PARM, {q: "BMP,CBPAUP0C,PSBPAUTB"}]]}
+        - {kind: DD, span: [26, 26], name: STEPLIB, positional: [], keywords: [[DISP, SHR], [DSN, IMS.SDFSRESL]]}
+        - {kind: DD, span: [27, 27], name: null, positional: [], keywords: [[DISP, SHR], [DSN, XXXXXXXX.PROD.LOADLIB]]}
+        - {kind: DD, span: [28, 28], name: DFSRESLB, positional: [], keywords: [[DISP, SHR], [DSN, IMS.SDFSRESL]]}
+        - {kind: DD, span: [29, 29], name: PROCLIB, positional: [], keywords: [[DISP, SHR], [DSN, IMS.PROCLIB]]}
+        - {kind: COMMENT, span: [30, 30], comment: [""]}
+        - {kind: DD, span: [31, 31], name: DFSSEL, positional: [], keywords: [[DSN, IMS.SDFSRESL], [DISP, SHR]]}
+        - {kind: COMMENT, span: [32, 32], comment: [""]}
+        - {kind: DD, span: [33, 33], name: IMS, positional: [], keywords: [[DISP, SHR], [DSN, IMS.PSBLIB]]}
+        - {kind: DD, span: [34, 34], name: null, positional: [], keywords: [[DISP, SHR], [DSN, IMS.DBDLIB]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_corpus "Manual structural analysis of the cited CardDemo line range (read-only). File identity fixed by the SHA-256 from the independent shell oracle (tests/acceptance/expected). Not derived from any parser."
+    oracle_author: *author
+    review_status: draft
+    notes: "A supplementary real-asset case. Only statements fully inside lines 24-34 are compared. The original file is referenced, never copied."

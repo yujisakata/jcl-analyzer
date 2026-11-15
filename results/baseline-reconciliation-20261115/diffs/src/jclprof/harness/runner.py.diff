@@ -1,0 +1,28 @@
+--- before/src/jclprof/harness/runner.py
++++ current/src/jclprof/harness/runner.py
+@@ -115,10 +115,24 @@
+     s = compare_structure(case.raw["expected_structure"], out.view, scope=case.scope)
+     d = compare_diagnostics(case.raw["expected_diagnostics"]["items"], out.diagnostics,
+                             scope=case.scope)
+-    r.differences = s.differences + d.differences
++    inv = [Difference(f"invariant.{v['code']}", "invariant", None,
++                      {"node": v.get("node"), "detail": v.get("detail")})
++           for v in out.invariants
++           if case.scope is None or _in_scope_node(v, case.scope)]
++    r.differences = s.differences + d.differences + inv
+     r.unchecked = s.unchecked
+     r.status = "PASSED" if not r.differences else "FAILED"
+     return r
++
++
++def _in_scope_node(v: dict[str, Any], scope: tuple[int, int]) -> bool:
++    """Invariant violations carry no reliable line; for scoped corpus cases they are kept unless
++    their node id encodes a line outside the scope (S00012 / T00012 / J00012 / R00012 / L12)."""
++    node = str(v.get("node") or "")
++    digits = "".join(ch for ch in node[1:6] if ch.isdigit()) if node[:1] in "STJRPL" else ""
++    if not digits:
++        return True
++    return scope[0] <= int(digits) <= scope[1]
+ 
+ 
+ def run_suite(cases: list[GoldenCase], *, adapters: dict[str, StageAdapter],

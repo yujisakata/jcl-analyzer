@@ -1,0 +1,498 @@
+{
+  "literal_ast_changed_files": 48,
+  "excluding_added_procedure_end_id_changed_files": [
+    "app-transaction-type-db2/jcl/MNTTRDB2.jcl"
+  ],
+  "details": [
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/CREADB21.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+      "differences": [
+        {
+          "path": ".jobs[0].span[1]",
+          "before": 28,
+          "after": 30
+        },
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/ACCTFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CARDFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CBADMCDJ.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CBEXPORT.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CBIMPORT.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CLOSEFIL.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/COMBTRAN.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CREASTMT.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/CUSTFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DALYREJS.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DEFCUST.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DEFGDGB.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DEFGDGD.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DISCGRP.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/DUSRSECJ.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/ESDSRRDS.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/FTPJCL.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/INTCALC.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/INTRDRJ1.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/INTRDRJ2.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/OPENFIL.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/POSTTRAN.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/PRTCATBL.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/READACCT.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/READCARD.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/READCUST.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/READXREF.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/REPTFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TCATBALF.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANBKP.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANCATG.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANIDX.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANREPT.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TRANTYPE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/TXT2PDF1.JCL",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/WAITSTEP.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "jcl/XREFFILE.jcl",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "proc/REPROC.prc",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": "S00029"
+        }
+      ]
+    },
+    {
+      "path": "proc/TRANREPT.prc",
+      "differences": [
+        {
+          "path": ".procedure_end_id",
+          "before": "<MISSING>",
+          "after": "S00079"
+        }
+      ]
+    }
+  ],
+  "missing_procedure_end_id_normalized_to_null_changed_files": [
+    "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+    "proc/REPROC.prc",
+    "proc/TRANREPT.prc"
+  ]
+}

@@ -1,0 +1,41 @@
+== Gate A: development health
+PASS  ruff                All checks passed!
+PASS  mypy                Success: no issues found in 76 source files
+PASS  harness-suite       245 passed, 1 skipped in 8.46s
+PASS  golden-defs         golden definitions: 102 case(s) valid
+PASS  golden-integrity    golden integrity: OK (matches MANIFEST.json)
+PASS  rules-sync          rules reference: in sync
+PASS  known-defects       14 registered, 13 OPEN
+PASS  golden-run          {"PASSED": 49, "NOT_IMPLEMENTED": 49, "BLOCKED": 2, "FAILED": 2}; known-defect FAILED {'G-IS-006': 'A10', 'G-IS-007': 'A10'}
+PASS  pending-defs        golden definitions: 5 case(s) valid (unsealed by design)
+PASS  pending-run         {"PASSED": 4, "FAILED": 1}; known-defect FAILED {'G-HIER-004': 'A10'}
+PASS  analyzer-suite      129 passed, 51 skipped, 11 xfailed in 8.72s
+PASS  hierarchy-mutation  required operators: 943/943 detected; escaped: 0
+KNOWN A01 HIGH OPEN: Statements after a null statement: job membership fixed regardless of JES / NULLJCL
+KNOWN A02 HIGH OPEN: JES=UNKNOWN DD * DLM divergence drops candidate statements and steps
+KNOWN A03 MEDIUM OPEN: Null record after a continued statement treated as a job end candidate
+KNOWN A04 HIGH OPEN: DLM value: doubled ampersands not restored before matching
+KNOWN A05 HIGH OPEN: False continuation from a delimiter record drops the following DD
+KNOWN A06 HIGH OPEN: Data ended by a DLM prefix match only
+KNOWN A07 MEDIUM OPEN: DLM length / empty value not checked per JES
+KNOWN A08 MEDIUM OPEN: Missing delimiter for DD * with DLM at end of input not diagnosed
+KNOWN A09 MEDIUM OPEN: EXEC target / DD positional parameter constraints not checked
+KNOWN A10 MEDIUM OPEN: Job.span does not contain in-stream data at the end of a job (data to end of input, or data followed directly by the next JOB)
+KNOWN A11 HIGH RESOLVED_PENDING_REVIEW: Harness did not verify the JOB/STEP/DD hierarchy; one gate mixed health and acceptance
+KNOWN H01 LOW OPEN: JobNode.job_statement is not the flat JOB statement (limitations missing in the tree)
+KNOWN H02 LOW OPEN: Statements owned by a procedure container (PEND in a cataloged PROC member, JCLLIB/SET before the first EXEC of an in-stream PROC) are not reachable from the tree
+KNOWN H03 LOW OPEN: DDs and other statements of a step before the first JOB statement are not reachable (only the EXEC is listed in outside_statements)
+NOTE  unverified (skipped) harness tests: ['symlinks not permitted on this system']
+DEV-HEALTH: PASS (with 13 OPEN known defects; not an acceptance)
+== Gate B: Parser formal acceptance
+PASS  B0 gate-a              Gate A must pass first
+FAIL  B1 known-defects       14 in-scope defect(s) not CLOSED: {'HIGH': ['A01(OPEN)', 'A02(OPEN)', 'A04(OPEN)', 'A05(OPEN)', 'A06(OPEN)', 'A11(RESOLVED_PENDING_REVIEW)'], 'MEDIUM': ['A03(OPEN)', 'A07(OPEN)', 'A08(OPEN)', 'A09(OPEN)', 'A10(OPEN)'], 'LOW': ['H01(OPEN)', 'H02(OPEN)', 'H03(OPEN)']}
+FAIL  B2 xfail               11 xfail test(s) in the Analyzer suite
+FAIL  B3 golden-approved     83/83 in-scope case(s) not approved (REFERENCE only)
+FAIL  B4 golden-implemented  30 in-scope case(s) NOT_IMPLEMENTED
+FAIL  B5 golden-blocked      2 in-scope case(s) BLOCKED
+FAIL  B6 golden-failed       3 in-scope case(s) FAILED (sealed + pending)
+FAIL  B7 pending-review      5 review-pending case(s) in tests/golden_pending (unsealed)
+FAIL  B8 hierarchy-asserted  29 executed in-scope syntactic case(s) do not assert the hierarchy
+FAIL  B9 scope-approved      tests/ACCEPTANCE_SCOPE.yaml is PROPOSED: no exclusion is effective
+PARSER-ACCEPTANCE: FAIL

@@ -1,0 +1,44 @@
+--- before/docs/golden-view.md
++++ current/docs/golden-view.md
+@@ -127,3 +127,41 @@
+ - **continues**: PARAMETER、QUOTED（アポストロフィ内で 71 桁に達した）、COMMENT（72 桁が非空白）
+ - **IF 文の扱い**: 関係式に空白を含むため、操作フィールドが `IF` のときに限り、字句規則として THEN までを parameter とする（JCL-IF-004）。parameter_text はレコード間を空白 1 つで連結する
+ - **Step 4a の制約**: レコードは先頭の文字だけで分類する。DD DATA の中にある `//` レコードは STATEMENT_START と判定されるため、インストリームの文脈を知る後続工程で再分類する
++
++## hierarchy（statements view の任意項目。ADR-027）
++
++JOB→STEP→DD の木。平坦な `statements` に加えて書く。書いた場合は順序どおりに比較し（ジョブ・ステップ・DD の順序は意味を持つ）、期待値にないキーは `unchecked` に出す。
++
++```yaml
++hierarchy:
++  jobs:
++    - name: PAYROLL
++      line: 1                 # JOB 文の行
++      span: [1, 9]            # JOB 文から、次の JOB 文の前までにジョブが所有する最後の物理レコード（文・コメント・データ・区切り文）
++      dds:                    # ジョブレベルの DD（JOBLIB など）
++        - {name: JOBLIB, line: 2, concat_head: JOBLIB, concat_index: 0}
++        - {name: null,   line: 3, concat_head: JOBLIB, concat_index: 1}   # 名前なし = 直前の DD への連結
++      steps:
++        - name: STEP1
++          line: 4             # EXEC 文の行
++          target: [PGM, SCAN] # [PGM|PROC, 原文]。対象なしは null
++          dds:
++            - {name: IN, line: 5, concat_head: IN, concat_index: 0}
++            - {name: SYSIN, line: null, concat_head: SYSIN, concat_index: 0, implicit: true,
++               inline_data: {records: [8, 8], terminator: NEXT_STATEMENT}}
++      procedures:             # インストリーム PROC の定義（展開しない）。その中のステップはジョブのステップではない
++        - {name: CARDS, line: 2, end_line: 5, steps: [...]}
++  procedure_steps: [...]      # input_kind: proc_member の場合だけ
++  outside: [2]                # どのジョブにも属さない文の行
++```
++
++- DD の `name` は名前欄の原文（`STEP.DD` を含む）。暗黙の SYSIN は `SYSIN`
++- `inline_data` はデータ領域を持つ DD だけに書く
++
++### 期待値に依存しない階層検査
++
++syntactic Adapter は、すべての実行ケースで `check_hierarchy()` を実行する。違反（`invariant.H-*`）があれば、期待値と一致していても FAILED になる。違反コードの一覧は `src/jclprof/harness/hierarchy.py` の冒頭にある。既知欠陥による違反は `tests/KNOWN_DEFECTS.yaml` に署名（コードと詳細の正規表現）で登録し、Gate A ではその範囲だけを許す。
++
++## レビュー待ちの期待値（tests/golden_pending）
++
++新しい期待値は、独立レビューまで `tests/golden_pending/` に置く（未封印。MANIFEST はない）。形式は封印済みスイートと同じである。`jclprof verify --suite tests/golden_pending` で実行し、結果は REFERENCE として扱う。承認後に `tests/golden/` へ移し、ユーザーが `golden-seal` で封印する。

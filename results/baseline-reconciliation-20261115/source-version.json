@@ -1,0 +1,8 @@
+{
+  "method": "SHA-256 of sorted path<TAB>file SHA-256<LF>; source/test/spec/config/tool and root metadata",
+  "source_set_sha256": "86878b6588133f6f796b104f8359e5c11e0c7f48f896fe9a5f7345a64bd50b4b",
+  "source_file_count": 302,
+  "changed_since_start": [],
+  "git_commit": null,
+  "git_reason": "not a Git repository; no git init or commit was performed"
+}

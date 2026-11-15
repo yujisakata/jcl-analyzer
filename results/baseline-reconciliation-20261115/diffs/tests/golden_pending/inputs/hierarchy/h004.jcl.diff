@@ -1,0 +1,8 @@
+--- /dev/null
++++ current/tests/golden_pending/inputs/hierarchy/h004.jcl
+@@ -0,0 +1,5 @@
++//EOFJOB   JOB
++//S1       EXEC PGM=A
++//SYSUT1   DD   DATA
++ R1
++ R2

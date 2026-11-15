@@ -1,0 +1,92 @@
+{
+  "run_at": "2026-11-15T11:36:15+00:00",
+  "gate": "PASS",
+  "checks": [
+    {
+      "name": "ruff",
+      "ok": true,
+      "detail": "All checks passed!",
+      "data": {}
+    },
+    {
+      "name": "mypy",
+      "ok": true,
+      "detail": "Success: no issues found in 67 source files",
+      "data": {}
+    },
+    {
+      "name": "harness-suite",
+      "ok": true,
+      "detail": "204 passed, 1 skipped in 5.90s",
+      "data": {
+        "counts": {
+          "passed": 204,
+          "skipped": 1
+        },
+        "skips": {
+          "symlinks not permitted on this system": 1
+        },
+        "unverified": [
+          "symlinks not permitted on this system"
+        ]
+      }
+    },
+    {
+      "name": "golden-defs",
+      "ok": true,
+      "detail": "golden definitions: 102 case(s) valid",
+      "data": {}
+    },
+    {
+      "name": "golden-integrity",
+      "ok": true,
+      "detail": "golden integrity: OK (matches MANIFEST.json)",
+      "data": {}
+    },
+    {
+      "name": "rules-sync",
+      "ok": true,
+      "detail": "rules reference: in sync",
+      "data": {}
+    },
+    {
+      "name": "golden-run",
+      "ok": true,
+      "detail": "{\"PASSED\": 51, \"FAILED\": 0, \"BLOCKED\": 2, \"NOT_IMPLEMENTED\": 49, \"NOT_RUN\": 0}",
+      "data": {
+        "counts": {
+          "PASSED": 51,
+          "FAILED": 0,
+          "BLOCKED": 2,
+          "NOT_IMPLEMENTED": 49,
+          "NOT_RUN": 0
+        },
+        "by_assurance": {
+          "REFERENCE": {
+            "PASSED": 51,
+            "FAILED": 0,
+            "BLOCKED": 2,
+            "NOT_IMPLEMENTED": 49,
+            "NOT_RUN": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "analyzer-suite",
+      "ok": true,
+      "detail": "129 passed, 51 skipped, 9 xfailed in 4.92s",
+      "data": {
+        "counts": {
+          "passed": 129,
+          "skipped": 51,
+          "xfailed": 9
+        },
+        "skips": {
+          "NOT_IMPLEMENTED": 49,
+          "BLOCKED": 2
+        }
+      }
+    }
+  ]
+}

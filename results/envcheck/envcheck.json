@@ -1,0 +1,48 @@
+{
+  "tool_version": "0.1.0",
+  "python": {
+    "version": "3.12.15",
+    "required": "3.12.x",
+    "executable": "D:\\projects\\jcl-profiler\\.venv\\Scripts\\python.exe",
+    "ok": true
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "PyYAML": {
+      "installed": true,
+      "version": "6.0.3"
+    },
+    "pytest": {
+      "installed": true,
+      "version": "9.2.0"
+    },
+    "hypothesis": {
+      "installed": true,
+      "version": "6.170.15"
+    },
+    "ruff": {
+      "installed": true,
+      "version": "0.17.5"
+    },
+    "mypy": {
+      "installed": true,
+      "version": "2.4.1"
+    }
+  },
+  "config": "D:/projects/jcl-profiler/config/profiler.yaml",
+  "roots": [
+    {
+      "id": "carddemo",
+      "path": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app",
+      "exists": true,
+      "is_dir": true,
+      "file_count": 240,
+      "readable_count": 240,
+      "unreadable": [],
+      "total_bytes": 3866974,
+      "os_write_permitted_count": 240
+    }
+  ],
+  "ok": true,
+  "checked_at": "2026-11-15T03:08:31+00:00"
+}

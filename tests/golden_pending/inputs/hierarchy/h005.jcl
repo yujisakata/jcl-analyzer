@@ -1,0 +1,8 @@
+//PJOB     JOB
+//CARDS    PROC
+//PS1      EXEC PGM=X
+//DD1      DD   DUMMY
+//         PEND
+//STEP1    EXEC CARDS
+//STEP2    EXEC PROC=CARDS
+//SYSIN    DD   DUMMY

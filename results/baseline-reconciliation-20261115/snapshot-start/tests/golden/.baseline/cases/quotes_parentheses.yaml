@@ -1,0 +1,352 @@
+schema_version: 1
+category: QUOTES_PARENTHESES
+cases:
+  - test_id: G-QP-001
+    category: QUOTES_PARENTHESES
+    description: "A doubled apostrophe inside a quoted value; commas and blanks inside apostrophes are part of the value; hyphens in JOB accounting need no apostrophes."
+    rule_ids: [JCL-SYN-001, JCL-SYN-002]
+    source_reference:
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+      - {rule_id: "JCL-SYN-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 12 Special characters that do not require enclosing apostrophes", pages: "22-23 (PDF 68-69)"}
+    input_file: inputs/quotes/qp001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: QP001, positional: [D58-D04, {q: "O'NEIL"}], keywords: []}
+        - {kind: EXEC, span: [2, 2], name: STEP1, positional: [], keywords: [[PGM, IEFBR14], [ACCT, {q: "123+456"}], [PARM, {q: "A,B C"}]], comment: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "Naive comma or blank splitting would break PARM='A,B C' (requirement FR-02)."
+
+  - test_id: G-QP-002
+    category: QUOTES_PARENTHESES
+    description: "Nested subparameter lists (two levels) and keyword subparameters inside a list; commas inside parentheses must not split parameters."
+    rule_ids: [JCL-FMT-005, JCL-FMT-008, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-FMT-008", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Syntax notes", pages: "23 (PDF 69)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/quotes/qp002.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: QP002}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - kind: DD
+          span: [3, 4]
+          name: OUT
+          positional: []
+          keywords: [[DSN, A.B], [DISP, [NEW, CATLG, DELETE]], [SPACE, [CYL, ["1", "1"], RLSE]], [DCB, [{kw: [RECFM, FB]}, {kw: [LRECL, "80"]}]]]
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-QP-003
+    category: QUOTES_PARENTHESES
+    description: "Null positional subparameters at the first, middle and first-two positions of DISP."
+    rule_ids: [JCL-FMT-006, JCL-DD-007]
+    source_reference:
+      - {rule_id: "JCL-FMT-006", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Null positional subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-DD-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "12. DD statement > DISP parameter > Syntax", pages: "147-148 (PDF 193-194)"}
+    input_file: inputs/quotes/qp003.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: QP003}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: D1, positional: [], keywords: [[DSN, A.B], [DISP, [null, CATLG, DELETE]]]}
+        - {kind: DD, span: [4, 4], name: D2, positional: [], keywords: [[DSN, C.D], [DISP, [OLD, null, DELETE]]]}
+        - {kind: DD, span: [5, 5], name: D3, positional: [], keywords: [[DSN, E.F], [DISP, [null, null, KEEP]]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "DISP=(OLD,,DELETE) and DISP=(,,KEEP) appear in IBM's DISP syntax notes (p.148)."
+
+  - test_id: G-QP-004
+    category: QUOTES_PARENTHESES
+    description: "Special characters that need no apostrophes in DSNAME: member, relative generation, &&temporary name, backward reference."
+    rule_ids: [JCL-SYN-002, JCL-SYN-003, JCL-SYN-004]
+    source_reference:
+      - {rule_id: "JCL-SYN-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 12 Special characters that do not require enclosing apostrophes", pages: "22-23 (PDF 68-69)"}
+      - {rule_id: "JCL-SYN-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+      - {rule_id: "JCL-SYN-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Backward references", pages: "23-24 (PDF 69-70)"}
+    input_file: inputs/quotes/qp004.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: QP004}
+        - {kind: EXEC, span: [2, 2], name: STEP1}
+        - {kind: DD, span: [3, 3], name: D1, positional: [], keywords: [[DSN, "PDS1(MEMA)"], [DISP, SHR]]}
+        - {kind: DD, span: [4, 4], name: D2, positional: [], keywords: [[DSN, "GDS(+1)"], [DISP, [NEW, CATLG]]]}
+        - {kind: DD, span: [5, 5], name: D3, positional: [], keywords: [[DSN, "&&TEMPDS"], [DISP, [NEW, PASS]]]}
+        - {kind: DD, span: [6, 6], name: D4, positional: [], keywords: [[DSN, "*.D1"], [DISP, SHR]]}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "In the statements view a DSNAME stays raw text, including its parentheses (docs/golden-view.md)."
+
+  - test_id: G-QP-005
+    category: QUOTES_PARENTHESES
+    description: "Unterminated apostrophe-enclosed value at end of input."
+    rule_ids: [JCL-SYN-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/quotes/qp005.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: lexical
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-E001, severity: ERROR, line: 2, column: 34}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: "Column 34 is the opening apostrophe. Open question: should the diagnostic point at the opening apostrophe or at end of file? This case takes the opening apostrophe."
+
+  - test_id: G-QP-006
+    category: QUOTES_PARENTHESES
+    description: "Unbalanced parentheses in a keyword value."
+    rule_ids: [JCL-FMT-005, POL-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/quotes/qp006.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: lexical
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: LEX-E004, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-QP-007
+    category: QUOTES_PARENTHESES
+    description: "Three levels of subparameter parentheses (the maximum is two)."
+    rule_ids: [JCL-FMT-008, POL-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-008", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Syntax notes", pages: "23 (PDF 69)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/quotes/qp007.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted. The two-level valid boundary is covered by G-QP-002."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E008, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-QP-101
+    category: QUOTES_PARENTHESES
+    description: 'Lexical: doubled apostrophe, and a comma and blank inside apostrophes, stay inside one STRING token; the blank does not end the parameter field.'
+    rule_ids: [JCL-SYN-001, JCL-SYN-002]
+    source_reference:
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+      - {rule_id: "JCL-SYN-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 12 Special characters that do not require enclosing apostrophes", pages: "22-23 (PDF 68-69)"}
+    input_file: inputs/quotes/qp001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+        parameter_text: D58-D04,'O''NEIL'
+        tokens:
+        - - WORD
+          - D58-D04
+        - - COMMA
+          - ','
+        - - STRING
+          - O'NEIL
+      - span:
+        - 2
+        - 2
+        parameter_text: PGM=IEFBR14,ACCT='123+456',PARM='A,B C'
+        comments: []
+        tokens:
+        - - WORD
+          - PGM
+        - - EQUALS
+          - '='
+        - - WORD
+          - IEFBR14
+        - - COMMA
+          - ','
+        - - WORD
+          - ACCT
+        - - EQUALS
+          - '='
+        - - STRING
+          - 123+456
+        - - COMMA
+          - ','
+        - - WORD
+          - PARM
+        - - EQUALS
+          - '='
+        - - STRING
+          - A,B C
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''
+
+  - test_id: G-QP-102
+    category: QUOTES_PARENTHESES
+    description: 'Lexical: nested parentheses and commas inside parentheses across a continuation; parenthesis tokens are balanced.'
+    rule_ids: [JCL-FMT-005, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/quotes/qp002.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: lexical
+    expected_structure:
+      view: lexical
+      records:
+      - line: 1
+        kind: STATEMENT_START
+      - line: 2
+        kind: STATEMENT_START
+      - line: 3
+        kind: STATEMENT_START
+        continues: PARAMETER
+      - line: 4
+        kind: CONTINUATION
+      lexical_statements:
+      - span:
+        - 1
+        - 1
+      - span:
+        - 2
+        - 2
+      - span:
+        - 3
+        - 4
+        parameter_text: DSN=A.B,DISP=(NEW,CATLG,DELETE),SPACE=(CYL,(1,1),RLSE),DCB=(RECFM=FB,LRECL=80)
+        end: COMPLETE
+        tokens:
+        - - WORD
+          - DSN
+        - - EQUALS
+          - '='
+        - - WORD
+          - A.B
+        - - COMMA
+          - ','
+        - - WORD
+          - DISP
+        - - EQUALS
+          - '='
+        - - LPAREN
+          - (
+        - - WORD
+          - NEW
+        - - COMMA
+          - ','
+        - - WORD
+          - CATLG
+        - - COMMA
+          - ','
+        - - WORD
+          - DELETE
+        - - RPAREN
+          - )
+        - - COMMA
+          - ','
+        - - WORD
+          - SPACE
+        - - EQUALS
+          - '='
+        - - LPAREN
+          - (
+        - - WORD
+          - CYL
+        - - COMMA
+          - ','
+        - - LPAREN
+          - (
+        - - WORD
+          - '1'
+        - - COMMA
+          - ','
+        - - WORD
+          - '1'
+        - - RPAREN
+          - )
+        - - COMMA
+          - ','
+        - - WORD
+          - RLSE
+        - - RPAREN
+          - )
+        - - COMMA
+          - ','
+        - - WORD
+          - DCB
+        - - EQUALS
+          - '='
+        - - LPAREN
+          - (
+        - - WORD
+          - RECFM
+        - - EQUALS
+          - '='
+        - - WORD
+          - FB
+        - - COMMA
+          - ','
+        - - WORD
+          - LRECL
+        - - EQUALS
+          - '='
+        - - WORD
+          - '80'
+        - - RPAREN
+          - )
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 record and continuation rules, independently of the Lexer implementation. Record kinds, continuation types, field boundaries and tokens were decided by reading the rules; columns were measured from the designed input text by plain string indexing (no lexer code).
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: ''

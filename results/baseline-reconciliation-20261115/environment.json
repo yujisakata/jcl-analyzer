@@ -1,0 +1,114 @@
+{
+  "captured_at_utc": "2026-11-15T12:39:43.695464+00:00",
+  "python": "3.12.15 (main, Oct  9 2026, 15:21:55) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\projects\\jcl-profiler\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": [
+    {
+      "name": "ast_serialize",
+      "version": "0.13.1"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "hypothesis",
+      "version": "6.170.15"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "jclprof",
+      "version": "0.1.0"
+    },
+    {
+      "name": "jclprof",
+      "version": "0.1.0"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "librt",
+      "version": "0.16.0"
+    },
+    {
+      "name": "mypy",
+      "version": "2.4.1"
+    },
+    {
+      "name": "mypy_extensions",
+      "version": "1.2.0"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pytest",
+      "version": "9.2.0"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "ruff",
+      "version": "0.17.5"
+    },
+    {
+      "name": "sortedcontainers",
+      "version": "2.4.0"
+    },
+    {
+      "name": "types-jsonschema",
+      "version": "4.26.0.20261006"
+    },
+    {
+      "name": "types-PyYAML",
+      "version": "6.0.12.20261113"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    }
+  ],
+  "git": {
+    "available": true,
+    "repository": false,
+    "commit": null,
+    "action": "read-only rev-parse failed: not a git repository; no init/commit"
+  }
+}

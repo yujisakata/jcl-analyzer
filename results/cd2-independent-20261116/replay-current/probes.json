@@ -1,0 +1,1249 @@
+{
+  "parser_module": "D:\\projects\\jcl-profiler\\src\\jclprof\\parser\\parser.py",
+  "before": false,
+  "checks": [
+    {
+      "name": "star_eof/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "implicit_eof/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_job_is_data/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "star_empty_eof/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_delimiter/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_before_next_job/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "two_jobs_distinct_regions/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_delimited_then_job/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "trailing_comment_and_null/JES2",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "star_eof/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "implicit_eof/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_job_is_data/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "star_empty_eof/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_delimiter/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_before_next_job/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "two_jobs_distinct_regions/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_delimited_then_job/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "trailing_comment_and_null/JES3",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "star_eof/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "implicit_eof/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_job_is_data/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "star_empty_eof/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_delimiter/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty_before_next_job/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "two_jobs_distinct_regions/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "name": "data_delimited_then_job/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "trailing_comment_and_null/UNKNOWN",
+      "passed": true,
+      "detail": {
+        "expected": [
+          [
+            1,
+            7
+          ]
+        ],
+        "actual": [
+          [
+            1,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "unknown_union_owns_delimiter",
+      "passed": true,
+      "detail": {
+        "span": [
+          1,
+          6
+        ],
+        "regions": [
+          {
+            "status": "UNDETERMINED",
+            "candidates": [
+              [
+                [
+                  4,
+                  4
+                ],
+                "NEXT_STATEMENT",
+                5
+              ],
+              [
+                [
+                  4,
+                  5
+                ],
+                "DELIMITER",
+                6
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "two_symbolic_jobs_share_flat_objects",
+      "passed": true,
+      "detail": [
+        [
+          "SYMBOLS_NOT_RESOLVED"
+        ],
+        [
+          "SYMBOLS_NOT_RESOLVED"
+        ]
+      ]
+    },
+    {
+      "name": "h01_stale_copy_still_rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "proc/REPROC.prc/root_pend_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "proc/REPROC.prc/missing_link",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-02"
+        ]
+      }
+    },
+    {
+      "name": "proc/REPROC.prc/moved_to_last_step",
+      "passed": true,
+      "detail": {
+        "source": "PASS",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-01"
+        ]
+      }
+    },
+    {
+      "name": "proc/REPROC.prc/duplicate_in_last_step",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-02"
+        ]
+      }
+    },
+    {
+      "name": "proc/REPROC.prc/stale_pend_copy",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-REF-01"
+        ]
+      }
+    },
+    {
+      "name": "proc/TRANREPT.prc/root_pend_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "proc/TRANREPT.prc/missing_link",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-02"
+        ]
+      }
+    },
+    {
+      "name": "proc/TRANREPT.prc/moved_to_last_step",
+      "passed": true,
+      "detail": {
+        "source": "PASS",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-01"
+        ]
+      }
+    },
+    {
+      "name": "proc/TRANREPT.prc/duplicate_in_last_step",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-OWN-02"
+        ]
+      }
+    },
+    {
+      "name": "proc/TRANREPT.prc/stale_pend_copy",
+      "passed": true,
+      "detail": {
+        "source": "FAIL",
+        "trace": "FAIL",
+        "codes": [
+          "H-REF-01"
+        ]
+      }
+    },
+    {
+      "name": "optional_pend/None",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "optional_pend/3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "in_stream_owns_its_pend",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 43,
+  "failed": 0,
+  "corpus": [
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+      "spans": [
+        [
+          1,
+          47
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+      "spans": [
+        [
+          1,
+          47
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+      "spans": [
+        [
+          1,
+          51
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+      "spans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+      "spans": [
+        [
+          1,
+          69
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/CREADB21.jcl",
+      "spans": [
+        [
+          1,
+          84
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+      "spans": [
+        [
+          1,
+          30
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+      "spans": [
+        [
+          1,
+          122
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/ACCTFILE.jcl",
+      "spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CARDFILE.jcl",
+      "spans": [
+        [
+          1,
+          128
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CBADMCDJ.jcl",
+      "spans": [
+        [
+          1,
+          167
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CBEXPORT.jcl",
+      "spans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CBIMPORT.jcl",
+      "spans": [
+        [
+          1,
+          68
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CLOSEFIL.jcl",
+      "spans": [
+        [
+          1,
+          34
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/COMBTRAN.jcl",
+      "spans": [
+        [
+          1,
+          52
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CREASTMT.JCL",
+      "spans": [
+        [
+          1,
+          97
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/CUSTFILE.jcl",
+      "spans": [
+        [
+          1,
+          84
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DALYREJS.jcl",
+      "spans": [
+        [
+          1,
+          32
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DEFCUST.jcl",
+      "spans": [
+        [
+          1,
+          47
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DEFGDGB.jcl",
+      "spans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DEFGDGD.jcl",
+      "spans": [
+        [
+          1,
+          94
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DISCGRP.jcl",
+      "spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/DUSRSECJ.jcl",
+      "spans": [
+        [
+          1,
+          92
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/ESDSRRDS.jcl",
+      "spans": [
+        [
+          1,
+          124
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/FTPJCL.JCL",
+      "spans": [
+        [
+          1,
+          42
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/INTCALC.jcl",
+      "spans": [
+        [
+          1,
+          44
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/INTRDRJ1.JCL",
+      "spans": [
+        [
+          1,
+          19
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/INTRDRJ2.JCL",
+      "spans": [
+        [
+          1,
+          14
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/OPENFIL.jcl",
+      "spans": [
+        [
+          1,
+          34
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/POSTTRAN.jcl",
+      "spans": [
+        [
+          1,
+          45
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/PRTCATBL.jcl",
+      "spans": [
+        [
+          1,
+          66
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/READACCT.jcl",
+      "spans": [
+        [
+          1,
+          50
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/READCARD.jcl",
+      "spans": [
+        [
+          1,
+          31
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/READCUST.jcl",
+      "spans": [
+        [
+          1,
+          30
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/READXREF.jcl",
+      "spans": [
+        [
+          1,
+          31
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/REPTFILE.jcl",
+      "spans": [
+        [
+          1,
+          32
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TCATBALF.jcl",
+      "spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANBKP.jcl",
+      "spans": [
+        [
+          1,
+          71
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANCATG.jcl",
+      "spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANFILE.jcl",
+      "spans": [
+        [
+          1,
+          125
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANIDX.jcl",
+      "spans": [
+        [
+          1,
+          58
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANREPT.jcl",
+      "spans": [
+        [
+          1,
+          84
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TRANTYPE.jcl",
+      "spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/TXT2PDF1.JCL",
+      "spans": [
+        [
+          1,
+          41
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/WAITSTEP.jcl",
+      "spans": [
+        [
+          1,
+          27
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "jcl/XREFFILE.jcl",
+      "spans": [
+        [
+          1,
+          106
+        ]
+      ],
+      "job_identity": true,
+      "pend_line": null
+    },
+    {
+      "path": "proc/REPROC.prc",
+      "spans": [],
+      "job_identity": true,
+      "pend_line": 29
+    },
+    {
+      "path": "proc/TRANREPT.prc",
+      "spans": [],
+      "job_identity": true,
+      "pend_line": 79
+    }
+  ]
+}

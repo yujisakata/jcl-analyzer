@@ -1,0 +1,4 @@
+//IS007    JOB
+//STEP1    EXEC PGM=SORT
+//SYSIN    DD   *
+ RECORD 1

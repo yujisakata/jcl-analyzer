@@ -1,0 +1,4 @@
+//IF007    JOB
+//STEP1    EXEC PGM=A
+//CHK      IF (RC > 4) THEN
+//STEP2    EXEC PGM=B

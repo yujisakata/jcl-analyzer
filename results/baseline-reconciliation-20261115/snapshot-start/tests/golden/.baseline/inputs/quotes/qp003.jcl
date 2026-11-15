@@ -1,0 +1,5 @@
+//QP003    JOB
+//STEP1    EXEC PGM=IEFBR14
+//D1       DD   DSN=A.B,DISP=(,CATLG,DELETE)
+//D2       DD   DSN=C.D,DISP=(OLD,,DELETE)
+//D3       DD   DSN=E.F,DISP=(,,KEEP)

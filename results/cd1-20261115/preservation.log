@@ -1,0 +1,51 @@
+old source count 302
+{
+  "preserved": 444,
+  "groups": {
+    "parser": {
+      "before": 5,
+      "after": 5,
+      "added": [],
+      "removed": []
+    },
+    "lexer": {
+      "before": 4,
+      "after": 4,
+      "added": [],
+      "removed": []
+    },
+    "golden": {
+      "before": 195,
+      "after": 195,
+      "added": [],
+      "removed": []
+    },
+    "original": {
+      "before": 240,
+      "after": 240,
+      "added": [],
+      "removed": []
+    }
+  },
+  "changed": [
+    {
+      "path": "tests/CHANGES.md",
+      "before": "456149969c85a532b3939a14b8230ae0cabe10124de8254fc0863f07d57add43",
+      "after": "6a4cc3bc259dd3822b4f814b4b416f4999f3a8042b7a54f57f0683a49b95d401"
+    }
+  ],
+  "added": [
+    "src/jclprof/harness/carddemo_mutations.py",
+    "src/jclprof/harness/carddemo_source.py",
+    "tests/golden_pending/carddemo_source/README.md",
+    "tests/golden_pending/carddemo_source/expectations.json",
+    "tests/golden_pending/carddemo_source/oracle-manifest.json",
+    "tests/golden_pending/carddemo_source/reviews.json",
+    "tests/harness/test_carddemo_source.py",
+    "tools/carddemo_source_acceptance.py",
+    "tools/carddemo_source_review_packet.py",
+    "tools/golden_authoring/build_carddemo_source.py"
+  ],
+  "new_count": 312,
+  "new_digest": "94adb81b77fa0e43df02f1a17bb963ced920448e3c1b1a6133511f2cbe718538"
+}

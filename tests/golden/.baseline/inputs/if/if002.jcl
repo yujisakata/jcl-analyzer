@@ -1,0 +1,5 @@
+//IF002    JOB
+//STEP1    EXEC PGM=PROGA
+//IFBAD    IF  (ABEND | STEP1.RC > 8) THEN
+//ERR      EXEC PGM=ERRRTN
+//         ENDIF

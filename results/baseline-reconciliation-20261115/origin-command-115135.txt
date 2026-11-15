@@ -1,0 +1,123 @@
+cat > /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h2.py <<'EOF'
+import pathlib
+def rep(path, pairs):
+    p = pathlib.Path(path); s = p.read_text(encoding="utf-8")
+    for a, b in pairs:
+        assert s.count(a) == 1, (path, a[:70], s.count(a)); s = s.replace(a, b)
+    p.write_text(s, encoding="utf-8", newline="\n")
+
+rep("src/jclprof/harness/adapters.py", [
+('''@dataclass
+class AdapterOutput:
+    view: dict[str, Any]
+    diagnostics: list[dict[str, Any]] = field(default_factory=list)
+''', '''@dataclass
+class AdapterOutput:
+    view: dict[str, Any]
+    diagnostics: list[dict[str, Any]] = field(default_factory=list)
+    # Expectation-free structural checks run by the adapter (e.g. hierarchy invariants, ADR-027):
+    # [{code, node, detail}]. Any entry makes the case FAILED, whatever the expected values say.
+    invariants: list[dict[str, Any]] = field(default_factory=list)
+'''),
+])
+
+rep("src/jclprof/harness/runner.py", [
+('''    r.differences = s.differences + d.differences
+    r.unchecked = s.unchecked''',
+'''    inv = [Difference(f"invariant.{v['code']}", "invariant", None,
+                      {"node": v.get("node"), "detail": v.get("detail")})
+           for v in out.invariants
+           if case.scope is None or _in_scope_node(v, case.scope)]
+    r.differences = s.differences + d.differences + inv
+    r.unchecked = s.unchecked'''),
+('''def run_suite(''', '''def _in_scope_node(v: dict[str, Any], scope: tuple[int, int]) -> bool:
+    """Invariant violations carry no reliable line; for scoped corpus cases they are kept unless
+    their node id encodes a line outside the scope (S00012 / T00012 / J00012 / R00012 / L12)."""
+    node = str(v.get("node") or "")
+    digits = "".join(ch for ch in node[1:6] if ch.isdigit()) if node[:1] in "STJRPL" else ""
+    if not digits:
+        return True
+    return scope[0] <= int(digits) <= scope[1]
+
+
+def run_suite('''),
+])
+
+rep("src/jclprof/harness/comparator.py", [
+('''        if "blocks" in expected:
+            _cmp_value("blocks", expected["blocks"], act.get("blocks"), res.differences)
+        elif "blocks" in act:
+            res.unchecked.append("blocks")''',
+'''        if "blocks" in expected:
+            _cmp_value("blocks", expected["blocks"], act.get("blocks"), res.differences)
+        elif "blocks" in act:
+            res.unchecked.append("blocks")
+        if "hierarchy" in expected:
+            _cmp_tree("hierarchy", expected["hierarchy"], act.get("hierarchy"), res.differences,
+                      res.unchecked)
+        elif "hierarchy" in act:
+            res.unchecked.append("hierarchy")'''),
+('''def _in_scope(span: Any''', '''def _cmp_tree(path: str, exp: Any, act: Any, out: list[Difference],
+              unchecked: list[str]) -> None:
+    """Hierarchy comparison (ADR-027): lists are ordered (job, step and DD order is significant)
+    and compared element by element; mappings compare the keys present in the expected value and
+    report other actual keys as unchecked; everything else is compared exactly."""
+    if isinstance(exp, dict):
+        if not isinstance(act, dict):
+            out.append(Difference(path, "missing" if act is None else "mismatch", exp, act))
+            return
+        for k, ev in exp.items():
+            if k not in act:
+                out.append(Difference(f"{path}.{k}", "missing", ev, None))
+            else:
+                _cmp_tree(f"{path}.{k}", ev, act[k], out, unchecked)
+        unchecked += [f"{path}.{k}" for k in act if k not in exp]
+    elif isinstance(exp, list):
+        if not isinstance(act, list):
+            out.append(Difference(path, "missing" if act is None else "mismatch", exp, act))
+            return
+        for i, (e, a) in enumerate(zip(exp, act, strict=False)):
+            _cmp_tree(f"{path}[{i}]", e, a, out, unchecked)
+        for i in range(len(act), len(exp)):
+            out.append(Difference(f"{path}[{i}]", "missing", exp[i], None))
+        for i in range(len(exp), len(act)):
+            out.append(Difference(f"{path}[{i}]", "unexpected", None, act[i]))
+    else:
+        _cmp_value(path, exp, act, out)
+
+
+def _in_scope(span: Any'''),
+])
+
+rep("src/jclprof/harness/trace.py", [
+('''        for v in [x for p in s.positional for x in _values(p)] + \\
+                 [x for k in s.keywords for x in _values(k.value)]:
+            if v.kind != "NULL" and v.text:
+                assert lines[v.line - 1][v.column - 1] == v.text[0], (s.id, v)''',
+'''        for v in [x for p in s.positional for x in _values(p)] + \\
+                 [x for k in s.keywords for x in _values(k.value)]:
+            if v.kind != "NULL" and v.text:
+                _check_value_text(lines, s.id, v)'''),
+('''def check_trace(''', '''def _check_value_text(lines: list[str], sid: str, v: Value) -> None:
+    """The whole value text must be found at its position (R1: not only the first character).
+    A value that continues on the next record must match up to column 71 on its first record:
+    STRING (apostrophe continuation, JCL-CONT-003) by text, LIST / KWSUB by their opening part
+    (their items are checked separately)."""
+    here = lines[v.line - 1][v.column - 1:]
+    if here.startswith(v.text):
+        return
+    first = lines[v.line - 1][v.column - 1:71]
+    if v.kind == "STRING":
+        assert v.text.startswith(first), (sid, v)
+    elif v.kind == "LIST":
+        assert here.startswith("("), (sid, v)
+    elif v.kind == "KWSUB":
+        assert v.keyword is not None and here.startswith(v.keyword + "="), (sid, v)
+    else:
+        raise AssertionError((sid, v, "value text not found at its source position"))
+
+
+def check_trace('''),
+])
+EOF
+uv run python /c/Users/yujis/AppData/Local/Temp/claude/5614545e1efcc636/3097c724-28db-4848-82ce-45d8cc9500a8/scratchpad/h2.py && echo ok

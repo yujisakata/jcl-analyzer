@@ -1,0 +1,4553 @@
+{
+ "schema_version": 1,
+ "source": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app/jcl/CARDFILE.jcl",
+ "sha256": "795600a41abec0706aec8bd0dd93446b29cf01fcd8f9d2173e4ec6d5476611d0",
+ "encoding": "utf-8",
+ "input_kind": "job",
+ "jes": "UNKNOWN",
+ "statements": [
+  {
+   "id": "S00001",
+   "kind": "JOB",
+   "span": [
+    1,
+    2
+   ],
+   "lines": [
+    1,
+    2
+   ],
+   "name": {
+    "text": "CARDFILE",
+    "line": 1,
+    "column": 3
+   },
+   "operation": "JOB",
+   "positional": [
+    {
+     "kind": "STRING",
+     "text": "'Delete define card data'",
+     "line": 1,
+     "column": 16,
+     "value": "Delete define card data",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [
+    {
+     "name": "CLASS",
+     "line": 1,
+     "column": 42,
+     "value": {
+      "kind": "WORD",
+      "text": "A",
+      "line": 1,
+      "column": 48,
+      "value": "A",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "MSGCLASS",
+     "line": 1,
+     "column": 50,
+     "value": {
+      "kind": "WORD",
+      "text": "0",
+      "line": 1,
+      "column": 59,
+      "value": "0",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "NOTIFY",
+     "line": 2,
+     "column": 4,
+     "value": {
+      "kind": "WORD",
+      "text": "&SYSUID",
+      "line": 2,
+      "column": 11,
+      "value": "&SYSUID",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 0,
+   "raw": [
+    "//CARDFILE JOB 'Delete define card data',CLASS=A,MSGCLASS=0,",
+    "// NOTIFY=&SYSUID              "
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00003",
+   "kind": "COMMENT",
+   "span": [
+    3,
+    3
+   ],
+   "lines": [
+    3
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*****************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//******************************************************************"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00004",
+   "kind": "COMMENT",
+   "span": [
+    4,
+    4
+   ],
+   "lines": [
+    4
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Copyright Amazon.com, Inc. or its affiliates."
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Copyright Amazon.com, Inc. or its affiliates.                   "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00005",
+   "kind": "COMMENT",
+   "span": [
+    5,
+    5
+   ],
+   "lines": [
+    5
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "All Rights Reserved."
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* All Rights Reserved.                                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00006",
+   "kind": "COMMENT",
+   "span": [
+    6,
+    6
+   ],
+   "lines": [
+    6
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                 "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00007",
+   "kind": "COMMENT",
+   "span": [
+    7,
+    7
+   ],
+   "lines": [
+    7
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Licensed under the Apache License, Version 2.0 (the \"License\")."
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Licensed under the Apache License, Version 2.0 (the \"License\"). "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00008",
+   "kind": "COMMENT",
+   "span": [
+    8,
+    8
+   ],
+   "lines": [
+    8
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "You may not use this file except in compliance with the License."
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* You may not use this file except in compliance with the License."
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00009",
+   "kind": "COMMENT",
+   "span": [
+    9,
+    9
+   ],
+   "lines": [
+    9
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "You may obtain a copy of the License at"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* You may obtain a copy of the License at                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00010",
+   "kind": "COMMENT",
+   "span": [
+    10,
+    10
+   ],
+   "lines": [
+    10
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                 "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00011",
+   "kind": "COMMENT",
+   "span": [
+    11,
+    11
+   ],
+   "lines": [
+    11
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*    http://www.apache.org/licenses/LICENSE-2.0                   "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00012",
+   "kind": "COMMENT",
+   "span": [
+    12,
+    12
+   ],
+   "lines": [
+    12
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                 "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00013",
+   "kind": "COMMENT",
+   "span": [
+    13,
+    13
+   ],
+   "lines": [
+    13
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Unless required by applicable law or agreed to in writing,"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Unless required by applicable law or agreed to in writing,      "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00014",
+   "kind": "COMMENT",
+   "span": [
+    14,
+    14
+   ],
+   "lines": [
+    14
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "software distributed under the License is distributed on an"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* software distributed under the License is distributed on an     "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00015",
+   "kind": "COMMENT",
+   "span": [
+    15,
+    15
+   ],
+   "lines": [
+    15
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "\"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00016",
+   "kind": "COMMENT",
+   "span": [
+    16,
+    16
+   ],
+   "lines": [
+    16
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "either express or implied. See the License for the specific"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* either express or implied. See the License for the specific     "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00017",
+   "kind": "COMMENT",
+   "span": [
+    17,
+    17
+   ],
+   "lines": [
+    17
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "language governing permissions and limitations under the License"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* language governing permissions and limitations under the License"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00018",
+   "kind": "COMMENT",
+   "span": [
+    18,
+    18
+   ],
+   "lines": [
+    18
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*****************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//******************************************************************       "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00019",
+   "kind": "COMMENT",
+   "span": [
+    19,
+    19
+   ],
+   "lines": [
+    19
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "********************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*********************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00020",
+   "kind": "COMMENT",
+   "span": [
+    20,
+    20
+   ],
+   "lines": [
+    20
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Close files in CICS region"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Close files in CICS region                                                  "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00021",
+   "kind": "COMMENT",
+   "span": [
+    21,
+    21
+   ],
+   "lines": [
+    21
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "********************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*********************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00022",
+   "kind": "EXEC",
+   "span": [
+    22,
+    22
+   ],
+   "lines": [
+    22
+   ],
+   "name": {
+    "text": "CLCIFIL",
+    "line": 22,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 22,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "SDSF",
+      "line": 22,
+      "column": 20,
+      "value": "SDSF",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 1,
+   "raw": [
+    "//CLCIFIL EXEC PGM=SDSF                                                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00023",
+   "kind": "DD",
+   "span": [
+    23,
+    23
+   ],
+   "lines": [
+    23
+   ],
+   "name": {
+    "text": "ISFOUT",
+    "line": 23,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 23,
+     "column": 13,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 23,
+      "column": 20,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 2,
+   "raw": [
+    "//ISFOUT DD SYSOUT=*                                                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00024",
+   "kind": "DD",
+   "span": [
+    24,
+    24
+   ],
+   "lines": [
+    24
+   ],
+   "name": {
+    "text": "CMDOUT",
+    "line": 24,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 24,
+     "column": 13,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 24,
+      "column": 20,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 3,
+   "raw": [
+    "//CMDOUT DD SYSOUT=*                                                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00025",
+   "kind": "DD",
+   "span": [
+    25,
+    25
+   ],
+   "lines": [
+    25
+   ],
+   "name": {
+    "text": "ISFIN",
+    "line": 25,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 25,
+     "column": 13,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00026",
+    "statement_id": "S00025",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     26,
+     27
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 28,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 4,
+   "raw": [
+    "//ISFIN  DD *                                                                   "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00028",
+   "kind": "DELIMITER",
+   "span": [
+    28,
+    28
+   ],
+   "lines": [
+    28
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00029",
+   "kind": "COMMENT",
+   "span": [
+    29,
+    29
+   ],
+   "lines": [
+    29
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                             "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00030",
+   "kind": "COMMENT",
+   "span": [
+    30,
+    30
+   ],
+   "lines": [
+    30
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00031",
+   "kind": "COMMENT",
+   "span": [
+    31,
+    31
+   ],
+   "lines": [
+    31
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "DELETE CARD DATA VSAM FILE IF ONE ALREADY EXISTS"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* DELETE CARD DATA VSAM FILE IF ONE ALREADY EXISTS                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00032",
+   "kind": "COMMENT",
+   "span": [
+    32,
+    32
+   ],
+   "lines": [
+    32
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00033",
+   "kind": "EXEC",
+   "span": [
+    33,
+    33
+   ],
+   "lines": [
+    33
+   ],
+   "name": {
+    "text": "STEP05",
+    "line": 33,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 33,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 33,
+      "column": 19,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 5,
+   "raw": [
+    "//STEP05 EXEC PGM=IDCAMS                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00034",
+   "kind": "DD",
+   "span": [
+    34,
+    34
+   ],
+   "lines": [
+    34
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 34,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 34,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 34,
+      "column": 24,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 6,
+   "raw": [
+    "//SYSPRINT DD   SYSOUT=*                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00035",
+   "kind": "DD",
+   "span": [
+    35,
+    35
+   ],
+   "lines": [
+    35
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 35,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 35,
+     "column": 17,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00036",
+    "statement_id": "S00035",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     36,
+     41
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 42,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 7,
+   "raw": [
+    "//SYSIN    DD   *                                                               "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00042",
+   "kind": "DELIMITER",
+   "span": [
+    42,
+    42
+   ],
+   "lines": [
+    42
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00043",
+   "kind": "COMMENT",
+   "span": [
+    43,
+    43
+   ],
+   "lines": [
+    43
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                             "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00044",
+   "kind": "COMMENT",
+   "span": [
+    44,
+    44
+   ],
+   "lines": [
+    44
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00045",
+   "kind": "COMMENT",
+   "span": [
+    45,
+    45
+   ],
+   "lines": [
+    45
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "DEFINE CARD DATA VSAM FILE"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* DEFINE CARD DATA VSAM FILE                                                  "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00046",
+   "kind": "COMMENT",
+   "span": [
+    46,
+    46
+   ],
+   "lines": [
+    46
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00047",
+   "kind": "EXEC",
+   "span": [
+    47,
+    47
+   ],
+   "lines": [
+    47
+   ],
+   "name": {
+    "text": "STEP10",
+    "line": 47,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 47,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 47,
+      "column": 19,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 8,
+   "raw": [
+    "//STEP10 EXEC PGM=IDCAMS                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00048",
+   "kind": "DD",
+   "span": [
+    48,
+    48
+   ],
+   "lines": [
+    48
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 48,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 48,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 48,
+      "column": 24,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 9,
+   "raw": [
+    "//SYSPRINT DD   SYSOUT=*                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00049",
+   "kind": "DD",
+   "span": [
+    49,
+    49
+   ],
+   "lines": [
+    49
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 49,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 49,
+     "column": 17,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00050",
+    "statement_id": "S00049",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     50,
+     63
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 64,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 10,
+   "raw": [
+    "//SYSIN    DD   *                                                               "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00064",
+   "kind": "DELIMITER",
+   "span": [
+    64,
+    64
+   ],
+   "lines": [
+    64
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00065",
+   "kind": "COMMENT",
+   "span": [
+    65,
+    65
+   ],
+   "lines": [
+    65
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00066",
+   "kind": "COMMENT",
+   "span": [
+    66,
+    66
+   ],
+   "lines": [
+    66
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "COPY DATA FROM FLAT FILE TO VSAM FILE"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* COPY DATA FROM FLAT FILE TO VSAM FILE                                       "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00067",
+   "kind": "COMMENT",
+   "span": [
+    67,
+    67
+   ],
+   "lines": [
+    67
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*******************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* *******************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00068",
+   "kind": "EXEC",
+   "span": [
+    68,
+    68
+   ],
+   "lines": [
+    68
+   ],
+   "name": {
+    "text": "STEP15",
+    "line": 68,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 68,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 68,
+      "column": 19,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 11,
+   "raw": [
+    "//STEP15 EXEC PGM=IDCAMS                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00069",
+   "kind": "DD",
+   "span": [
+    69,
+    69
+   ],
+   "lines": [
+    69
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 69,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 69,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 69,
+      "column": 24,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 12,
+   "raw": [
+    "//SYSPRINT DD   SYSOUT=*                                                        "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00070",
+   "kind": "DD",
+   "span": [
+    70,
+    71
+   ],
+   "lines": [
+    70,
+    71
+   ],
+   "name": {
+    "text": "CARDDATA",
+    "line": 70,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 70,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 70,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 71,
+     "column": 12,
+     "value": {
+      "kind": "WORD",
+      "text": "AWS.M2.CARDDEMO.CARDDATA.PS",
+      "line": 71,
+      "column": 16,
+      "value": "AWS.M2.CARDDEMO.CARDDATA.PS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 13,
+   "raw": [
+    "//CARDDATA DD DISP=SHR,                                                         ",
+    "//         DSN=AWS.M2.CARDDEMO.CARDDATA.PS                                      "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00072",
+   "kind": "DD",
+   "span": [
+    72,
+    73
+   ],
+   "lines": [
+    72,
+    73
+   ],
+   "name": {
+    "text": "CARDVSAM",
+    "line": 72,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 72,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 72,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 73,
+     "column": 12,
+     "value": {
+      "kind": "WORD",
+      "text": "AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS",
+      "line": 73,
+      "column": 16,
+      "value": "AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 14,
+   "raw": [
+    "//CARDVSAM DD DISP=SHR,                                                         ",
+    "//         DSN=AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS                               "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00074",
+   "kind": "DD",
+   "span": [
+    74,
+    74
+   ],
+   "lines": [
+    74
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 74,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 74,
+     "column": 17,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00075",
+    "statement_id": "S00074",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     75,
+     75
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 76,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 15,
+   "raw": [
+    "//SYSIN    DD   *                                                               "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00076",
+   "kind": "DELIMITER",
+   "span": [
+    76,
+    76
+   ],
+   "lines": [
+    76
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00077",
+   "kind": "COMMENT",
+   "span": [
+    77,
+    77
+   ],
+   "lines": [
+    77
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "-------------------------------------------------------------------*"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*-------------------------------------------------------------------*         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00078",
+   "kind": "COMMENT",
+   "span": [
+    78,
+    78
+   ],
+   "lines": [
+    78
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "CREATE ALTERNATE INDEX ON ACCT ID"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* CREATE ALTERNATE INDEX ON ACCT ID                                           "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00079",
+   "kind": "COMMENT",
+   "span": [
+    79,
+    79
+   ],
+   "lines": [
+    79
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "-------------------------------------------------------------------*"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*-------------------------------------------------------------------*         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00080",
+   "kind": "EXEC",
+   "span": [
+    80,
+    80
+   ],
+   "lines": [
+    80
+   ],
+   "name": {
+    "text": "STEP40",
+    "line": 80,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 80,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 80,
+      "column": 20,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 16,
+   "raw": [
+    "//STEP40  EXEC PGM=IDCAMS                                                       "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00081",
+   "kind": "DD",
+   "span": [
+    81,
+    81
+   ],
+   "lines": [
+    81
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 81,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 81,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 81,
+      "column": 23,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 17,
+   "raw": [
+    "//SYSPRINT DD  SYSOUT=*                                                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00082",
+   "kind": "DD",
+   "span": [
+    82,
+    82
+   ],
+   "lines": [
+    82
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 82,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 82,
+     "column": 16,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00083",
+    "statement_id": "S00082",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     83,
+     92
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 93,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 18,
+   "raw": [
+    "//SYSIN    DD  *                                                                "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00093",
+   "kind": "DELIMITER",
+   "span": [
+    93,
+    93
+   ],
+   "lines": [
+    93
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00094",
+   "kind": "COMMENT",
+   "span": [
+    94,
+    94
+   ],
+   "lines": [
+    94
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "-------------------------------------------------------------------*"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*-------------------------------------------------------------------*         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00095",
+   "kind": "COMMENT",
+   "span": [
+    95,
+    95
+   ],
+   "lines": [
+    95
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "DEFINE PATH IS USED TO RELATE THE ALTERNATE INDEX TO BASE CLUSTER"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* DEFINE PATH IS USED TO RELATE THE ALTERNATE INDEX TO BASE CLUSTER           "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00096",
+   "kind": "COMMENT",
+   "span": [
+    96,
+    96
+   ],
+   "lines": [
+    96
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "-------------------------------------------------------------------*"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*-------------------------------------------------------------------*         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00097",
+   "kind": "EXEC",
+   "span": [
+    97,
+    97
+   ],
+   "lines": [
+    97
+   ],
+   "name": {
+    "text": "STEP50",
+    "line": 97,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 97,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 97,
+      "column": 20,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 19,
+   "raw": [
+    "//STEP50  EXEC PGM=IDCAMS                                                       "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00098",
+   "kind": "DD",
+   "span": [
+    98,
+    98
+   ],
+   "lines": [
+    98
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 98,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 98,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 98,
+      "column": 23,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 20,
+   "raw": [
+    "//SYSPRINT DD  SYSOUT=*                                                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00099",
+   "kind": "DD",
+   "span": [
+    99,
+    99
+   ],
+   "lines": [
+    99
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 99,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 99,
+     "column": 16,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00100",
+    "statement_id": "S00099",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     100,
+     102
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 103,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 21,
+   "raw": [
+    "//SYSIN    DD  *                                                                "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00103",
+   "kind": "DELIMITER",
+   "span": [
+    103,
+    103
+   ],
+   "lines": [
+    103
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00104",
+   "kind": "COMMENT",
+   "span": [
+    104,
+    104
+   ],
+   "lines": [
+    104
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "------------------------------------------------------------------"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*------------------------------------------------------------------           "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00105",
+   "kind": "COMMENT",
+   "span": [
+    105,
+    105
+   ],
+   "lines": [
+    105
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "BUILD ALTERNATE INDEX CLUSTER"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* BUILD ALTERNATE INDEX CLUSTER                                               "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00106",
+   "kind": "COMMENT",
+   "span": [
+    106,
+    106
+   ],
+   "lines": [
+    106
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "-------------------------------------------------------------------*"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*-------------------------------------------------------------------*         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00107",
+   "kind": "EXEC",
+   "span": [
+    107,
+    107
+   ],
+   "lines": [
+    107
+   ],
+   "name": {
+    "text": "STEP60",
+    "line": 107,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 107,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "IDCAMS",
+      "line": 107,
+      "column": 20,
+      "value": "IDCAMS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 22,
+   "raw": [
+    "//STEP60  EXEC PGM=IDCAMS                                                       "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00108",
+   "kind": "DD",
+   "span": [
+    108,
+    108
+   ],
+   "lines": [
+    108
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 108,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 108,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 108,
+      "column": 23,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 23,
+   "raw": [
+    "//SYSPRINT DD  SYSOUT=*                                                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00109",
+   "kind": "DD",
+   "span": [
+    109,
+    109
+   ],
+   "lines": [
+    109
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 109,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 109,
+     "column": 16,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00110",
+    "statement_id": "S00109",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     110,
+     112
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 113,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 24,
+   "raw": [
+    "//SYSIN    DD  *                                                                "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00113",
+   "kind": "DELIMITER",
+   "span": [
+    113,
+    113
+   ],
+   "lines": [
+    113
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00114",
+   "kind": "COMMENT",
+   "span": [
+    114,
+    114
+   ],
+   "lines": [
+    114
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                             "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00115",
+   "kind": "COMMENT",
+   "span": [
+    115,
+    115
+   ],
+   "lines": [
+    115
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "********************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*********************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00116",
+   "kind": "COMMENT",
+   "span": [
+    116,
+    116
+   ],
+   "lines": [
+    116
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Open files in CICS region"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Open files in CICS region                                                   "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00117",
+   "kind": "COMMENT",
+   "span": [
+    117,
+    117
+   ],
+   "lines": [
+    117
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "********************************************************************"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*********************************************************************         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00118",
+   "kind": "EXEC",
+   "span": [
+    118,
+    118
+   ],
+   "lines": [
+    118
+   ],
+   "name": {
+    "text": "OPCIFIL",
+    "line": 118,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 118,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "SDSF",
+      "line": 118,
+      "column": 20,
+      "value": "SDSF",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 25,
+   "raw": [
+    "//OPCIFIL EXEC PGM=SDSF                                                         "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00119",
+   "kind": "DD",
+   "span": [
+    119,
+    119
+   ],
+   "lines": [
+    119
+   ],
+   "name": {
+    "text": "ISFOUT",
+    "line": 119,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 119,
+     "column": 13,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 119,
+      "column": 20,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 26,
+   "raw": [
+    "//ISFOUT DD SYSOUT=*                                                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00120",
+   "kind": "DD",
+   "span": [
+    120,
+    120
+   ],
+   "lines": [
+    120
+   ],
+   "name": {
+    "text": "CMDOUT",
+    "line": 120,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 120,
+     "column": 13,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 120,
+      "column": 20,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 27,
+   "raw": [
+    "//CMDOUT DD SYSOUT=*                                                            "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00121",
+   "kind": "DD",
+   "span": [
+    121,
+    121
+   ],
+   "lines": [
+    121
+   ],
+   "name": {
+    "text": "ISFIN",
+    "line": 121,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [
+    {
+     "kind": "WORD",
+     "text": "*",
+     "line": 121,
+     "column": 13,
+     "value": "*",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": {
+    "id": "R00122",
+    "statement_id": "S00121",
+    "mode": "STAR",
+    "dlm": null,
+    "status": "DETERMINED",
+    "records": [
+     122,
+     123
+    ],
+    "terminator": "DELIMITER",
+    "delimiter": "/*",
+    "terminator_line": 124,
+    "candidates": []
+   },
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 28,
+   "raw": [
+    "//ISFIN  DD *                                                                   "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00124",
+   "kind": "DELIMITER",
+   "span": [
+    124,
+    124
+   ],
+   "lines": [
+    124
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "/*                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00125",
+   "kind": "NULL",
+   "span": [
+    125,
+    125
+   ],
+   "lines": [
+    125
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//                                                                              "
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00126",
+   "kind": "COMMENT",
+   "span": [
+    126,
+    126
+   ],
+   "lines": [
+    126
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00127",
+   "kind": "COMMENT",
+   "span": [
+    127,
+    127
+   ],
+   "lines": [
+    127
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:23:04 CDT"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:23:04 CDT"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00128",
+   "kind": "COMMENT",
+   "span": [
+    128,
+    128
+   ],
+   "lines": [
+    128
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    ""
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*"
+   ],
+   "limitations": []
+  }
+ ],
+ "records": [
+  {
+   "line": 1,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00001",
+   "region_id": null
+  },
+  {
+   "line": 2,
+   "lexer_kind": "CONTINUATION",
+   "role": "CONTINUATION",
+   "statement_id": "S00001",
+   "region_id": null
+  },
+  {
+   "line": 3,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00003",
+   "region_id": null
+  },
+  {
+   "line": 4,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00004",
+   "region_id": null
+  },
+  {
+   "line": 5,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00005",
+   "region_id": null
+  },
+  {
+   "line": 6,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00006",
+   "region_id": null
+  },
+  {
+   "line": 7,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00007",
+   "region_id": null
+  },
+  {
+   "line": 8,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00008",
+   "region_id": null
+  },
+  {
+   "line": 9,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00009",
+   "region_id": null
+  },
+  {
+   "line": 10,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00010",
+   "region_id": null
+  },
+  {
+   "line": 11,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00011",
+   "region_id": null
+  },
+  {
+   "line": 12,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00012",
+   "region_id": null
+  },
+  {
+   "line": 13,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00013",
+   "region_id": null
+  },
+  {
+   "line": 14,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00014",
+   "region_id": null
+  },
+  {
+   "line": 15,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00015",
+   "region_id": null
+  },
+  {
+   "line": 16,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00016",
+   "region_id": null
+  },
+  {
+   "line": 17,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00017",
+   "region_id": null
+  },
+  {
+   "line": 18,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00018",
+   "region_id": null
+  },
+  {
+   "line": 19,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00019",
+   "region_id": null
+  },
+  {
+   "line": 20,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00020",
+   "region_id": null
+  },
+  {
+   "line": 21,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00021",
+   "region_id": null
+  },
+  {
+   "line": 22,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00022",
+   "region_id": null
+  },
+  {
+   "line": 23,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00023",
+   "region_id": null
+  },
+  {
+   "line": 24,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00024",
+   "region_id": null
+  },
+  {
+   "line": 25,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00025",
+   "region_id": null
+  },
+  {
+   "line": 26,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00025",
+   "region_id": "R00026"
+  },
+  {
+   "line": 27,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00025",
+   "region_id": "R00026"
+  },
+  {
+   "line": 28,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00028",
+   "region_id": "R00026"
+  },
+  {
+   "line": 29,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00029",
+   "region_id": null
+  },
+  {
+   "line": 30,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00030",
+   "region_id": null
+  },
+  {
+   "line": 31,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00031",
+   "region_id": null
+  },
+  {
+   "line": 32,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00032",
+   "region_id": null
+  },
+  {
+   "line": 33,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00033",
+   "region_id": null
+  },
+  {
+   "line": 34,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00034",
+   "region_id": null
+  },
+  {
+   "line": 35,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00035",
+   "region_id": null
+  },
+  {
+   "line": 36,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 37,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 38,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 39,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 40,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 41,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00035",
+   "region_id": "R00036"
+  },
+  {
+   "line": 42,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00042",
+   "region_id": "R00036"
+  },
+  {
+   "line": 43,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00043",
+   "region_id": null
+  },
+  {
+   "line": 44,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00044",
+   "region_id": null
+  },
+  {
+   "line": 45,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00045",
+   "region_id": null
+  },
+  {
+   "line": 46,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00046",
+   "region_id": null
+  },
+  {
+   "line": 47,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00047",
+   "region_id": null
+  },
+  {
+   "line": 48,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00048",
+   "region_id": null
+  },
+  {
+   "line": 49,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00049",
+   "region_id": null
+  },
+  {
+   "line": 50,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 51,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 52,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 53,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 54,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 55,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 56,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 57,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 58,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 59,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 60,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 61,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 62,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 63,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00049",
+   "region_id": "R00050"
+  },
+  {
+   "line": 64,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00064",
+   "region_id": "R00050"
+  },
+  {
+   "line": 65,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00065",
+   "region_id": null
+  },
+  {
+   "line": 66,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00066",
+   "region_id": null
+  },
+  {
+   "line": 67,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00067",
+   "region_id": null
+  },
+  {
+   "line": 68,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00068",
+   "region_id": null
+  },
+  {
+   "line": 69,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00069",
+   "region_id": null
+  },
+  {
+   "line": 70,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00070",
+   "region_id": null
+  },
+  {
+   "line": 71,
+   "lexer_kind": "CONTINUATION",
+   "role": "CONTINUATION",
+   "statement_id": "S00070",
+   "region_id": null
+  },
+  {
+   "line": 72,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00072",
+   "region_id": null
+  },
+  {
+   "line": 73,
+   "lexer_kind": "CONTINUATION",
+   "role": "CONTINUATION",
+   "statement_id": "S00072",
+   "region_id": null
+  },
+  {
+   "line": 74,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00074",
+   "region_id": null
+  },
+  {
+   "line": 75,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00074",
+   "region_id": "R00075"
+  },
+  {
+   "line": 76,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00076",
+   "region_id": "R00075"
+  },
+  {
+   "line": 77,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00077",
+   "region_id": null
+  },
+  {
+   "line": 78,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00078",
+   "region_id": null
+  },
+  {
+   "line": 79,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00079",
+   "region_id": null
+  },
+  {
+   "line": 80,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00080",
+   "region_id": null
+  },
+  {
+   "line": 81,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00081",
+   "region_id": null
+  },
+  {
+   "line": 82,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00082",
+   "region_id": null
+  },
+  {
+   "line": 83,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 84,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 85,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 86,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 87,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 88,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 89,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 90,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 91,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 92,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00082",
+   "region_id": "R00083"
+  },
+  {
+   "line": 93,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00093",
+   "region_id": "R00083"
+  },
+  {
+   "line": 94,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00094",
+   "region_id": null
+  },
+  {
+   "line": 95,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00095",
+   "region_id": null
+  },
+  {
+   "line": 96,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00096",
+   "region_id": null
+  },
+  {
+   "line": 97,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00097",
+   "region_id": null
+  },
+  {
+   "line": 98,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00098",
+   "region_id": null
+  },
+  {
+   "line": 99,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00099",
+   "region_id": null
+  },
+  {
+   "line": 100,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00099",
+   "region_id": "R00100"
+  },
+  {
+   "line": 101,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00099",
+   "region_id": "R00100"
+  },
+  {
+   "line": 102,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00099",
+   "region_id": "R00100"
+  },
+  {
+   "line": 103,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00103",
+   "region_id": "R00100"
+  },
+  {
+   "line": 104,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00104",
+   "region_id": null
+  },
+  {
+   "line": 105,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00105",
+   "region_id": null
+  },
+  {
+   "line": 106,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00106",
+   "region_id": null
+  },
+  {
+   "line": 107,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00107",
+   "region_id": null
+  },
+  {
+   "line": 108,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00108",
+   "region_id": null
+  },
+  {
+   "line": 109,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00109",
+   "region_id": null
+  },
+  {
+   "line": 110,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00109",
+   "region_id": "R00110"
+  },
+  {
+   "line": 111,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00109",
+   "region_id": "R00110"
+  },
+  {
+   "line": 112,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00109",
+   "region_id": "R00110"
+  },
+  {
+   "line": 113,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00113",
+   "region_id": "R00110"
+  },
+  {
+   "line": 114,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00114",
+   "region_id": null
+  },
+  {
+   "line": 115,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00115",
+   "region_id": null
+  },
+  {
+   "line": 116,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00116",
+   "region_id": null
+  },
+  {
+   "line": 117,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00117",
+   "region_id": null
+  },
+  {
+   "line": 118,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00118",
+   "region_id": null
+  },
+  {
+   "line": 119,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00119",
+   "region_id": null
+  },
+  {
+   "line": 120,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00120",
+   "region_id": null
+  },
+  {
+   "line": 121,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00121",
+   "region_id": null
+  },
+  {
+   "line": 122,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00121",
+   "region_id": "R00122"
+  },
+  {
+   "line": 123,
+   "lexer_kind": "OTHER",
+   "role": "DATA",
+   "statement_id": "S00121",
+   "region_id": "R00122"
+  },
+  {
+   "line": 124,
+   "lexer_kind": "DELIMITER",
+   "role": "DELIMITER",
+   "statement_id": "S00124",
+   "region_id": "R00122"
+  },
+  {
+   "line": 125,
+   "lexer_kind": "NULL",
+   "role": "NULL",
+   "statement_id": "S00125",
+   "region_id": null
+  },
+  {
+   "line": 126,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00126",
+   "region_id": null
+  },
+  {
+   "line": 127,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00127",
+   "region_id": null
+  },
+  {
+   "line": 128,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00128",
+   "region_id": null
+  }
+ ],
+ "data_regions": [
+  {
+   "id": "R00026",
+   "statement_id": "S00025",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    26,
+    27
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 28,
+   "candidates": []
+  },
+  {
+   "id": "R00036",
+   "statement_id": "S00035",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    36,
+    41
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 42,
+   "candidates": []
+  },
+  {
+   "id": "R00050",
+   "statement_id": "S00049",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    50,
+    63
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 64,
+   "candidates": []
+  },
+  {
+   "id": "R00075",
+   "statement_id": "S00074",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    75,
+    75
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 76,
+   "candidates": []
+  },
+  {
+   "id": "R00083",
+   "statement_id": "S00082",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    83,
+    92
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 93,
+   "candidates": []
+  },
+  {
+   "id": "R00100",
+   "statement_id": "S00099",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    100,
+    102
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 103,
+   "candidates": []
+  },
+  {
+   "id": "R00110",
+   "statement_id": "S00109",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    110,
+    112
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 113,
+   "candidates": []
+  },
+  {
+   "id": "R00122",
+   "statement_id": "S00121",
+   "mode": "STAR",
+   "dlm": null,
+   "status": "DETERMINED",
+   "records": [
+    122,
+    123
+   ],
+   "terminator": "DELIMITER",
+   "delimiter": "/*",
+   "terminator_line": 124,
+   "candidates": []
+  }
+ ],
+ "jobs": [
+  {
+   "id": "J00001",
+   "name": "CARDFILE",
+   "job_statement_id": "S00001",
+   "span": [
+    1,
+    128
+   ],
+   "job_level_dds": [],
+   "job_level_statements": [],
+   "steps": [
+    {
+     "id": "T00022",
+     "name": "CLCIFIL",
+     "exec_statement_id": "S00022",
+     "target": [
+      "PGM",
+      "SDSF"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00023",
+       "ddname": "ISFOUT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "ISFOUT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00024",
+       "ddname": "CMDOUT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "CMDOUT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00025",
+       "ddname": "ISFIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "ISFIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00033",
+     "name": "STEP05",
+     "exec_statement_id": "S00033",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00034",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00035",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00047",
+     "name": "STEP10",
+     "exec_statement_id": "S00047",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00048",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00049",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00068",
+     "name": "STEP15",
+     "exec_statement_id": "S00068",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00069",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00070",
+       "ddname": "CARDDATA",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "CARDDATA",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00072",
+       "ddname": "CARDVSAM",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "CARDVSAM",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00074",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00080",
+     "name": "STEP40",
+     "exec_statement_id": "S00080",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00081",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00082",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00097",
+     "name": "STEP50",
+     "exec_statement_id": "S00097",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00098",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00099",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00107",
+     "name": "STEP60",
+     "exec_statement_id": "S00107",
+     "target": [
+      "PGM",
+      "IDCAMS"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00108",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00109",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00118",
+     "name": "OPCIFIL",
+     "exec_statement_id": "S00118",
+     "target": [
+      "PGM",
+      "SDSF"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00119",
+       "ddname": "ISFOUT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "ISFOUT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00120",
+       "ddname": "CMDOUT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "CMDOUT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00121",
+       "ddname": "ISFIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "ISFIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    }
+   ],
+   "procedures": [],
+   "null_statement_line": 125
+  }
+ ],
+ "procedure_header_id": null,
+ "procedure_steps": [],
+ "outside_statements": [],
+ "diagnostics": [],
+ "superseded_diagnostics": [],
+ "limitations": [],
+ "dropped_lex_statements": []
+}

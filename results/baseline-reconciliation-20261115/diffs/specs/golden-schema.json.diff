@@ -1,0 +1,283 @@
+--- before/specs/golden-schema.json
++++ current/specs/golden-schema.json
+@@ -474,6 +474,9 @@
+           "items": {
+             "$ref": "#/$defs/lex_stmt"
+           }
++        },
++        "hierarchy": {
++          "$ref": "#/$defs/hierarchy"
+         }
+       },
+       "allOf": [
+@@ -574,6 +577,20 @@
+               "records",
+               "lexical_statements"
+             ]
++          }
++        },
++        {
++          "if": {
++            "required": [
++              "hierarchy"
++            ]
++          },
++          "then": {
++            "properties": {
++              "view": {
++                "const": "statements"
++              }
++            }
+           }
+         }
+       ]
+@@ -1431,6 +1448,249 @@
+           ]
+         }
+       }
++    },
++    "hier_dd": {
++      "type": "object",
++      "additionalProperties": false,
++      "required": [
++        "name",
++        "line",
++        "concat_head",
++        "concat_index"
++      ],
++      "properties": {
++        "name": {
++          "type": [
++            "string",
++            "null"
++          ]
++        },
++        "line": {
++          "oneOf": [
++            {
++              "$ref": "#/$defs/line"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "concat_head": {
++          "type": [
++            "string",
++            "null"
++          ]
++        },
++        "concat_index": {
++          "type": "integer",
++          "minimum": 0
++        },
++        "implicit": {
++          "type": "boolean"
++        },
++        "inline_data": {
++          "type": "object",
++          "additionalProperties": false,
++          "required": [
++            "records",
++            "terminator"
++          ],
++          "properties": {
++            "records": {
++              "oneOf": [
++                {
++                  "$ref": "#/$defs/span"
++                },
++                {
++                  "type": "null"
++                }
++              ]
++            },
++            "terminator": {
++              "enum": [
++                "DELIMITER",
++                "NEXT_STATEMENT",
++                "EOF",
++                "UNDETERMINED"
++              ]
++            }
++          }
++        }
++      }
++    },
++    "hier_step": {
++      "type": "object",
++      "additionalProperties": false,
++      "required": [
++        "name",
++        "line",
++        "target",
++        "dds"
++      ],
++      "properties": {
++        "name": {
++          "type": [
++            "string",
++            "null"
++          ]
++        },
++        "line": {
++          "oneOf": [
++            {
++              "$ref": "#/$defs/line"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "target": {
++          "oneOf": [
++            {
++              "type": "array",
++              "prefixItems": [
++                {
++                  "enum": [
++                    "PGM",
++                    "PROC"
++                  ]
++                },
++                {
++                  "type": "string"
++                }
++              ],
++              "minItems": 2,
++              "maxItems": 2
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "dds": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_dd"
++          }
++        }
++      }
++    },
++    "hier_proc": {
++      "type": "object",
++      "additionalProperties": false,
++      "required": [
++        "name",
++        "line",
++        "end_line",
++        "steps"
++      ],
++      "properties": {
++        "name": {
++          "type": [
++            "string",
++            "null"
++          ]
++        },
++        "line": {
++          "oneOf": [
++            {
++              "$ref": "#/$defs/line"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "end_line": {
++          "oneOf": [
++            {
++              "$ref": "#/$defs/line"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "steps": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_step"
++          }
++        }
++      }
++    },
++    "hier_job": {
++      "type": "object",
++      "additionalProperties": false,
++      "required": [
++        "name",
++        "line",
++        "span",
++        "dds",
++        "steps",
++        "procedures"
++      ],
++      "properties": {
++        "name": {
++          "type": [
++            "string",
++            "null"
++          ]
++        },
++        "line": {
++          "$ref": "#/$defs/line"
++        },
++        "span": {
++          "$ref": "#/$defs/span"
++        },
++        "dds": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_dd"
++          }
++        },
++        "steps": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_step"
++          }
++        },
++        "procedures": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_proc"
++          }
++        }
++      }
++    },
++    "hierarchy": {
++      "type": "object",
++      "additionalProperties": false,
++      "required": [
++        "jobs",
++        "outside"
++      ],
++      "description": "JOB -> STEP -> DD tree (ADR-027, docs/golden-view.md). Compared in order; only with view: statements.",
++      "properties": {
++        "jobs": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_job"
++          }
++        },
++        "procedure_steps": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/hier_step"
++          }
++        },
++        "outside": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/line"
++          }
++        }
++      }
+     }
+   }
+ }

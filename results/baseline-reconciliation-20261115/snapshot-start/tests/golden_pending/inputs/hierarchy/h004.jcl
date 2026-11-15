@@ -1,0 +1,5 @@
+//EOFJOB   JOB
+//S1       EXEC PGM=A
+//SYSUT1   DD   DATA
+ R1
+ R2

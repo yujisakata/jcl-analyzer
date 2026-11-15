@@ -1,0 +1,2 @@
+//S1      EXEC  PGM=IEFBR14
+//DD1     DD    DSN=A.B,DISP=SHR

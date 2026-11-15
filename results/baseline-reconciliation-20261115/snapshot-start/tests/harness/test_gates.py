@@ -1,0 +1,102 @@
+"""R1 Gate A / Gate B decisions (ADR-028) on synthetic results.
+
+Gate B must be able to PASS when every criterion holds (otherwise a FAIL proves nothing), and each
+criterion alone must turn it into FAIL.
+"""
+
+from __future__ import annotations
+
+from dataclasses import replace
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+from jclprof.harness.defects import KnownDefect, Signature
+from jclprof.harness.gates import (
+    Scope,
+    acceptance_checks,
+    classify_golden,
+    classify_xfails,
+    load_scope,
+)
+
+SCOPE = Scope(("lexical", "syntactic"), (), True)
+
+
+def res(tid: str, status: str = "PASSED", review: str = "approved", stage: str = "syntactic",
+        category: str = "JOB_EXEC_DD", unchecked: list[str] | None = None) -> dict[str, Any]:
+    return {"test_id": tid, "verification_status": status, "review_status": review,
+            "validation_stage": stage, "category": category, "unchecked": unchecked or []}
+
+
+def defect(status: str = "OPEN", cases: tuple[str, ...] = (), xfails: tuple[str, ...] = (),
+           scope: str = "STEP4B") -> KnownDefect:
+    return KnownDefect("X1", "t", "HIGH", scope, status, "s", xfails, cases,
+                       (Signature("H-SPAN-02", "x"),))
+
+
+def failing(**kw: Any) -> set[str]:
+    args: dict[str, Any] = {"dev_ok": True, "defects": [], "golden": [res("G-A-001")],
+                            "pending": [], "xfailed": [], "scope": SCOPE}
+    args.update(kw)
+    return {c.name.split()[0] for c in acceptance_checks(**args) if not c.ok}
+
+
+def test_gate_b_passes_only_when_everything_holds() -> None:
+    assert failing() == set()
+
+
+@pytest.mark.parametrize("kw,code", [
+    ({"dev_ok": False}, "B0"),
+    ({"defects": [defect()]}, "B1"),
+    ({"defects": [defect(status="RESOLVED_PENDING_REVIEW")]}, "B1"),
+    ({"xfailed": ["tests/x.py::t"]}, "B2"),
+    ({"golden": [res("G-A-001", review="draft")]}, "B3"),
+    ({"golden": [res("G-A-001", status="NOT_IMPLEMENTED")]}, "B4"),
+    ({"golden": [res("G-A-001", status="BLOCKED")]}, "B5"),
+    ({"golden": [res("G-A-001", status="FAILED")]}, "B6"),
+    ({"pending": [res("G-HIER-001", review="draft")]}, "B7"),
+    ({"golden": [res("G-A-001", unchecked=["hierarchy"])]}, "B8"),
+    ({"scope": replace(SCOPE, approved=False)}, "B9"),
+])
+def test_each_criterion_alone_fails_gate_b(kw: dict[str, Any], code: str) -> None:
+    assert code in failing(**kw)
+
+
+def test_closed_and_out_of_scope_defects_do_not_block() -> None:
+    assert failing(defects=[defect(status="CLOSED"), defect(scope="OUT_OF_SCOPE")]) == set()
+
+
+def test_exclusions_apply_only_when_approved() -> None:
+    cases = [res("G-A-001"), res("G-PP-001", status="NOT_IMPLEMENTED", category="PROC_PEND")]
+    assert "B4" in failing(golden=cases, scope=Scope(("syntactic",), (), False))
+    assert "B4" not in failing(golden=cases, scope=Scope(("syntactic",), ("PROC_PEND",), True))
+
+
+def test_proposed_scope_file_has_no_effective_exclusion() -> None:
+    s = load_scope()
+    assert not s.approved and s.excluded_categories == ()
+
+
+def test_gate_a_classifies_golden_failures() -> None:
+    d = [defect(cases=("G-K-001", "G-K-002"))]
+    results = [res("G-K-001", "FAILED"), res("G-U-001", "FAILED"), res("G-K-002", "PASSED")]
+    unexpected, known, stale = classify_golden(results, d)
+    assert unexpected == ["G-U-001"] and known == {"G-K-001": "X1"} and stale == ["G-K-002"]
+    assert classify_golden(results, [defect(status="CLOSED", cases=("G-K-001",))])[0] == [
+        "G-K-001", "G-U-001"]
+
+
+def test_gate_a_classifies_xfails() -> None:
+    d = [defect(xfails=("t::a", "t::b"))]
+    unreg, reg, missing = classify_xfails(["t::a", "t::z"], ["t::p"], d)
+    assert unreg == ["t::p", "t::z"] and reg == {"t::a": "X1"} and missing == ["t::b"]
+
+
+def test_scope_file_is_valid(tmp_path: Path) -> None:
+    p = tmp_path / "s.yaml"
+    p.write_text("schema_version: 1\nstatus: APPROVED\napproved_by: someone\n"
+                 "in_scope_stages: [syntactic]\nproposed_exclusions:\n"
+                 "  - {category: COND, reason: r}\n", encoding="utf-8")
+    assert load_scope(p) == Scope(("syntactic",), ("COND",), True)

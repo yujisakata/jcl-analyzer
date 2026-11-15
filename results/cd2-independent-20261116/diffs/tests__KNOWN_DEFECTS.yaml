@@ -1,0 +1,45 @@
+--- CD-1/tests/KNOWN_DEFECTS.yaml
++++ CD-2/tests/KNOWN_DEFECTS.yaml
+@@ -78,8 +78,8 @@
+     title: "Job.span does not contain in-stream data at the end of a job (data to end of input, or data followed directly by the next JOB)"
+     severity: MEDIUM
+     scope: STEP4B
+-    status: OPEN
+-    source: "audit A10 (probe T1); confirmed in CardDemo app-transaction-type-db2/jcl/MNTTRDB2.jcl by R1. R1 property test found the same root cause (close_job() takes the span from statements only) for data ended by the next JOB statement"
++    status: RESOLVED_PENDING_REVIEW
++    source: "audit A10 (probe T1); confirmed in CardDemo app-transaction-type-db2/jcl/MNTTRDB2.jcl by R1. R1 property test found the same root cause (close_job() takes the span from statements only) for data ended by the next JOB statement; FIXED in CD-2 (parser.py close_job/_region_end; tests/parser/test_cd2_source_fixes.py), independent review pending"
+     golden_cases: [G-IS-006, G-IS-007, G-HIER-004]
+     xfail_tests:
+       - "tests/parser/test_golden_parser.py::test_golden_case[G-IS-006]"
+@@ -96,19 +96,25 @@
+     title: "JobNode.job_statement is not the flat JOB statement (limitations missing in the tree)"
+     severity: LOW
+     scope: STEP4B
+-    status: OPEN
+-    source: "R1 hierarchy invariant H-REF-01; parser.py place(): JOB container created before replace()"
++    status: RESOLVED_PENDING_REVIEW
++    source: "R1 hierarchy invariant H-REF-01; parser.py place(): JOB container created before replace(); FIXED in CD-2 (parser.py place(): container created after replace()), independent review pending"
+     invariant_signatures:
+       - {code: H-REF-01, detail: "^JOB tree node differs from flat statement in \\['limitations'\\]$"}
+   - id: H02
+-    title: "Statements owned by a procedure container (PEND in a cataloged PROC member, JCLLIB/SET before the first EXEC of an in-stream PROC) are not reachable from the tree"
++    title: "PEND of a cataloged PROC member is not reachable from the tree"
++    severity: LOW
++    scope: STEP4B
++    status: RESOLVED_PENDING_REVIEW
++    source: "R1 hierarchy invariant H-OWN-02; CardDemo proc/REPROC.prc:29, proc/TRANREPT.prc:79. FIXED in CD-2: ParseResult.procedure_end (owned by the PROC root, not the last EXEC); CD-1 checker follows the link (user-approved). Split on 2026-11-16: the in-stream PROC form is H02B. Independent review pending"
++  - id: H02B
++    title: "Statements owned by an in-stream PROC definition before its first EXEC (JCLLIB/SET), and a stray PEND in a job file, are not reachable from the tree"
+     severity: LOW
+     scope: STEP4B
+     status: OPEN
+-    source: "R1 hierarchy invariant H-OWN-02; CardDemo proc/REPROC.prc, proc/TRANREPT.prc"
++    source: "Split from H02 in CD-2 (user decision: CD-2 fixes only the CardDemo member PEND form). Golden inputs proc/pp007.jcl, proc/pp008.jcl; not present in CardDemo"
+     invariant_signatures:
+-      - {code: H-OWN-02, detail: "^PEND not in tree"}
+-      - {code: H-OWN-02, detail: "not in tree \\(expected under (PROC:S\\d{5}|MEMBER)\\)$"}
++      - {code: H-OWN-02, detail: "not in tree \\(expected under PROC:S\\d{5}\\)$"}
++      - {code: H-OWN-02, detail: "^PEND not in tree \\(expected under (STEP|JOB):S\\d{5}\\)$"}
+   - id: H03
+     title: "DDs and other statements of a step before the first JOB statement are not reachable (only the EXEC is listed in outside_statements)"
+     severity: LOW

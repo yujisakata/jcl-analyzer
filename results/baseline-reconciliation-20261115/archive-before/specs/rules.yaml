@@ -1,0 +1,491 @@
+# JCL rule registry (canonical, machine-readable). Requirements CTX-05, ADR-012, ADR-015.
+# specs/ibm-jcl-reference.md is GENERATED from this file plus the Golden Test suite
+# (`jclprof rules-render`); a harness test fails when the two drift apart.
+#
+# status:
+#   VERIFIED       primary IBM text opened and read; chapter/section/page recorded
+#   CROSS-CHECKED  same content seen in several IBM editions; section/page not recorded
+#   PENDING        primary source not confirmed; dependent checks are INFO only; tests cannot be approved
+#   PROJECT-POLICY not an IBM rule: a project decision (requirements/ADR) about how the tool reports
+#                  something IBM leaves unspecified. Never counted as "IBM-backed".
+#
+# Pages: "printed page (PDF page)" of the document named in `doc`.
+schema_version: 1
+
+documents:
+  IBM-JCLREF-32:
+    title: "z/OS MVS JCL Reference"
+    edition: "z/OS 3.2, SA23-1385-70"
+    url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf"
+    retrieved: "2026-11-15"
+    sha256: "91b05378632ac166c6b23dcaf04c67f7bc6da0790757ed12ecb17daf3857cf86"
+  IBM-FTP-NAMES:
+    title: "MVS naming conventions (z/OS Communications Server)"
+    edition: "z/OS 2.3"
+    url: "https://www.ibm.com/docs/en/zos/2.3.0?topic=ftp-mvs-naming-conventions"
+    retrieved: "2026-11-15"
+  IBM-OGETX:
+    title: "OGETX command"
+    edition: "z/OS 2.3"
+    url: "https://www.ibm.com/docs/en/zos/2.3.0?topic=tc-ogetx-copy-zos-unix-files-from-directory-mvs-pds-pdse"
+    retrieved: "2026-11-15"
+  PROJECT:
+    title: "JCL Profiler requirements and ADRs"
+    edition: "requirements.md v1.0 / docs/decisions.md"
+    url: "docs/requirements.md"
+    retrieved: "2026-11-15"
+
+rules:
+  # ---------------------------------------------------------------- physical records / fields
+  - id: JCL-REC-001
+    applies_to: "All JCL records: identifier field"
+    summary: "Columns 1-2 contain // for all JCL statements except the delimiter (/* or DLM characters); a comment statement has //* in columns 1-3."
+    conditions: "Records outside in-stream data."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "JCL statement fields > Identifier field", pages: "13 (PDF 59)"}
+    status: VERIFIED
+  - id: JCL-REC-002
+    applies_to: "All JCL statements except the comment statement"
+    summary: "Do not code fields past column 71; if fields would exceed column 71, continue them onto following records."
+    conditions: "Comment statement may be coded through column 80."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "JCL statement fields (location of fields)", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-REC-003
+    applies_to: "All JCL records"
+    summary: "Columns 73-80 are ignored by z/OS and are typically used for sequence numbers. The comment statement can be coded through column 80."
+    conditions: "Comment statement text includes columns 73-80."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "JCL statement fields (location of fields)", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-REC-004
+    applies_to: "All JCL statements"
+    summary: "A JCL statement consists of one or more 80-byte records."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "JCL statement fields", pages: "13 (PDF 59)"}
+    status: VERIFIED
+  - id: JCL-FMT-001
+    applies_to: "Name field of JCL statements"
+    summary: "Name begins in column 3; 1-8 alphanumeric or national ($ # @) characters; first character alphabetic or national; followed by at least one blank. Alphabetic means capital A-Z."
+    conditions: "Statements whose name field is used. Override names stepname.ddname follow statement-specific rules."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements / 4. Syntax of parameters", section: "Name field; Table 10 Character sets", pages: "13 (PDF 59); 21 (PDF 67)"}
+    status: VERIFIED
+  - id: JCL-FMT-002
+    applies_to: "Operation field"
+    summary: "The operation field consists of the characters in the syntax box for the statement and must be preceded and followed by at least one blank."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Operation field", pages: "13 (PDF 59)"}
+    status: VERIFIED
+  - id: JCL-FMT-003
+    applies_to: "Parameter field"
+    summary: "Positional parameters precede all keyword parameters; parameters separated by commas; an omitted positional parameter followed by another positional parameter is marked by a comma (not when it is last, all following omitted, only keywords follow, or all omitted)."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Parameter field", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-FMT-004
+    applies_to: "Keyword parameters"
+    summary: "Keyword parameters (KEYWORD=value) may be coded in any order after positional parameters; never code a comma for an absent keyword."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Parameter field > Keyword parameters", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-FMT-005
+    applies_to: "Subparameter lists"
+    summary: "Multiple subparameters are separated by commas and enclosed in parentheses (or apostrophes where indicated); parentheses may be omitted for a single subparameter with no omitted preceding subparameters. Lists may contain positional and keyword subparameters."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-FMT-006
+    applies_to: "Null positional subparameters"
+    summary: "Null (omitted) positional subparameters are allowed, coded like omitted positional parameters, except where a parameter's syntax states otherwise (e.g. EXEC COND, DD AMP)."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Parameter field > Null positional subparameters", pages: "15 (PDF 61)"}
+    status: VERIFIED
+  - id: JCL-FMT-007
+    applies_to: "Comments field"
+    summary: "The comments field follows the parameter field after at least one blank; it may be coded even if the parameter field is continued. For most statements, no comments without parameters."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Comments field", pages: "13 (PDF 59)"}
+    status: VERIFIED
+  - id: JCL-FMT-008
+    applies_to: "Subparameter nesting"
+    summary: "Positional parameters and keywords can have at most two levels of subparameters: at most two levels of parenthesis nesting, even if empty."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Syntax notes", pages: "23 (PDF 69)"}
+    status: VERIFIED
+  - id: JCL-FMT-009
+    applies_to: "Fields that can appear on each statement"
+    summary: "Table 8: e.g. //jobname JOB and //[ddname] DD may be coded without parameters; //[name] PEND [comments]; the null statement is // only; IF/ELSE/ENDIF, INCLUDE, JCLLIB, SET, PROC field layouts."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Table 8 JCL statement fields", pages: "14 (PDF 60)"}
+    status: VERIFIED
+  - id: JCL-JES2-001
+    applies_to: "JES2 control statements"
+    summary: "JES2 control statements always have /* in columns 1-2; no comments on JES2 statements; columns 73-80 ignored."
+    conditions: "How a JES2 statement is distinguished from the delimiter statement is described per statement (e.g. /*JOBPARM); not separately registered."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "JES2 control statement fields", pages: "16 (PDF 62)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- continuation
+  - id: JCL-CONT-001
+    applies_to: "Continuing the parameter field"
+    summary: "Interrupt after a complete parameter or subparameter including its comma at or before column 71; next record has // in columns 1-2 and blank in column 3; continue in any column 4 through 16."
+    conditions: "Parameter not enclosed in apostrophes."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    status: VERIFIED
+  - id: JCL-CONT-002
+    applies_to: "Continuation records"
+    summary: "If column 3 of the following record contains anything but a blank or an asterisk, the system assumes it is a new statement, issues a 'no continuation found' error and fails the job."
+    conditions: "A continuation is expected (previous record ended a parameter with a comma)."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Continuing the parameter field, step 3", pages: "17 (PDF 63)"}
+    status: VERIFIED
+  - id: JCL-CONT-003
+    applies_to: "Continuing apostrophe-enclosed parameters"
+    summary: "Extend the parameter to column 71 and continue it in column 16 of the next record even if this splits the parameter; an apostrophe in column 71 is taken as the final character and the continuation is ignored."
+    conditions: "Parameter enclosed in apostrophes."
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Continuing parameter fields enclosed in apostrophes", pages: "17 (PDF 63)"}
+    status: VERIFIED
+  - id: JCL-CONT-004
+    applies_to: "Continuing the comments field"
+    summary: "Continue a comment by a nonblank character in column 72 and // plus blank column 3 on the next record. A comma followed by a blank at the end of the parameter text indicates parameter continuation even if column 72 is nonblank; column 72 is then ignored."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Continuing the comments field; note on column 72", pages: "17 (PDF 63)"}
+    status: VERIFIED
+  - id: JCL-CONT-005
+    applies_to: "Non-continuable statements"
+    summary: "The JCL command, comment, delimiter and null statements cannot be continued."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "3. Format of statements", section: "Continuing JCL statements", pages: "16 (PDF 62)"}
+    status: VERIFIED
+  - id: JCL-CONT-006
+    applies_to: "Comment statements between continuations"
+    summary: "A comment statement can be placed anywhere after the JOB statement, including between continuations of JCL statements."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "10. Comment statement", section: "Location in the JCL", pages: "71 (PDF 117)"}
+    status: VERIFIED
+  - id: JCL-CONT-007
+    applies_to: "Null statement after a continued statement"
+    summary: "If a null statement follows a control statement that is being continued, the system treats the null statement as a blank comment field and assumes the statement contains no other parameters."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "23. Null statement", section: "Location in the JCL", pages: "459 (PDF 505)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- special characters
+  - id: JCL-SYN-001
+    applies_to: "Apostrophe-enclosed values"
+    summary: "Values containing special characters are enclosed in apostrophes; an apostrophe inside the value is coded as two consecutive apostrophes (O'NEIL as 'O''NEIL')."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Special characters in parameters", pages: "22 (PDF 68)"}
+    status: VERIFIED
+  - id: JCL-SYN-002
+    applies_to: "Special characters without apostrophes"
+    summary: "Table 12: e.g. hyphens in JOB accounting; leading/embedded periods in programmer's name (trailing period requires apostrophes); in DSNAME: periods, &&name, parentheses for member or generation, +/- generation signs."
+    conditions: "Only for the parameters listed in Table 12."
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Table 12 Special characters that do not require enclosing apostrophes", pages: "22-23 (PDF 68-69)"}
+    status: VERIFIED
+  - id: JCL-SYN-003
+    applies_to: "Ampersands"
+    summary: "& begins a symbolic parameter; && is treated as a single character (e.g. ACCT='&&ABC'); &&name identifies a temporary data set name."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Special characters in parameters", pages: "22 (PDF 68)"}
+    status: VERIFIED
+  - id: JCL-SYN-004
+    applies_to: "Backward references"
+    summary: "Forms *.name, *.stepname.name, *.stepname.procstepname.name refer to an earlier statement."
+    conditions: "Only parameters that permit backward references."
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Backward references", pages: "23-24 (PDF 69-70)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- statements
+  - id: JCL-STMT-COMMENT
+    applies_to: "Comment statement"
+    summary: "//* in columns 1-3; comments in columns 4 through 80; cannot be continued; placed anywhere after the JOB statement."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "10. Comment statement", section: "Description; Location in the JCL", pages: "71 (PDF 117)"}
+    status: VERIFIED
+  - id: JCL-STMT-NULL
+    applies_to: "Null statement"
+    summary: "// in columns 1-2 with columns 3 through 72 blank; marks the end of a job."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "23. Null statement", section: "Description", pages: "459 (PDF 505)"}
+    status: VERIFIED
+  - id: JCL-STMT-DELIM
+    applies_to: "Delimiter statement"
+    summary: "/* or the characters assigned by DLM in columns 1-2 (plus comments); not continued; required after DD DATA data and after data whose DD has DLM; optional after DD * data without DLM."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "14. Delimiter statement", section: "Description; Relationship to the DLM parameter; Location in the JCL", pages: "309-310 (PDF 355-356)"}
+    status: VERIFIED
+  - id: JCL-JOB-001
+    applies_to: "JOB statement name field"
+    summary: "A jobname is coded on every JOB statement (column 3, 1-8 alphanumeric/national, first alphabetic/national)."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "21. JOB statement", section: "Name field", pages: "389 (PDF 435)"}
+    status: VERIFIED
+  - id: JCL-EXEC-001
+    applies_to: "EXEC statement parameter field"
+    summary: "An EXEC statement must contain one of the positional parameters PGM=, PROC= or a procedure name, preceding all keyword parameters."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "Parameter field > Positional parameters (Table 19)", pages: "314 (PDF 360)"}
+    status: VERIFIED
+  - id: JCL-EXEC-002
+    applies_to: "EXEC stepname"
+    summary: "Stepname optional; column 3; 1-8 alphanumeric/national; first alphabetic/national."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "Name field", pages: "313 (PDF 359)"}
+    status: VERIFIED
+  - id: JCL-DD-001
+    applies_to: "DD name field / concatenation"
+    summary: "ddname rules as name field; do not code a ddname when the DD statement defines a data set concatenated to the data set of the preceding DD statement; data sets are processed in DD order."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "Name field > Omitting the ddname; Concatenating data sets", pages: "75 (PDF 121); 92 (PDF 138)"}
+    status: VERIFIED
+  - id: JCL-DD-002
+    applies_to: "DD override/added names"
+    summary: "procstepname.ddname in the name field overrides or adds a DD statement in a procedure step. Coded within a program step, the system checks both qualifiers, uses only the ddname, adds the DD to that step and issues an informational message."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "Name field when overriding/adding", pages: "76 (PDF 122)"}
+    status: VERIFIED
+  - id: JCL-DD-003
+    applies_to: "DD * in-stream data"
+    summary: "DD * begins an in-stream data set; without DLM, data ends at /* or at // indicating another JCL statement, or when the input stream runs out of records."
+    conditions: "Without DLM."
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "* parameter", pages: "95 (PDF 141)"}
+    status: VERIFIED
+  - id: JCL-DD-004
+    applies_to: "DD DATA in-stream data"
+    summary: "DD DATA data may contain // records; it ends at /* (no DLM), at the DLM delimiter (DLM coded), or when the input stream runs out of records; it is NOT ended by //."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DATA parameter", pages: "121 (PDF 167)"}
+    status: VERIFIED
+  - id: JCL-DD-005
+    applies_to: "DLM parameter"
+    summary: "DLM assigns a delimiter (JES2: 2-18 characters, JES3: 2). On DD DATA only the assigned delimiter ends data. On DD *: JES2 ends data at the delimiter or //; JES3 only at the delimiter. DLM on a DD without * or DATA is a JCL error."
+    conditions: "JES-dependent behavior for DD * with DLM."
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DLM parameter", pages: "159-160 (PDF 205-206)"}
+    status: VERIFIED
+  - id: JCL-DD-006
+    applies_to: "Omitted DD before in-stream data"
+    summary: "If a DD statement is omitted before input data, the system provides a DD * statement with ddname SYSIN; if the delimiter after input data is omitted, data ends when the system runs out of records."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "* parameter > Omitted Data Delimiters", pages: "97 (PDF 143)"}
+    status: VERIFIED
+  - id: JCL-DD-007
+    applies_to: "DISP syntax"
+    summary: "DISP=status or DISP=([status][,normal][,abnormal]); parentheses may be omitted for status only; an omitted status or omitted second subparameter followed by another is marked with a comma, e.g. DISP=(,KEEP), DISP=(OLD,,DELETE)."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DISP parameter > Syntax", pages: "147-148 (PDF 193-194)"}
+    status: VERIFIED
+  - id: JCL-DD-008
+    applies_to: "DISP defaults"
+    summary: "Omitted status: NEW. Omitted normal disposition: DELETE for NEW, KEEP for existing. Omitted abnormal disposition: as specified/implied by the second subparameter, except PASS -> DELETE for NEW, KEEP for existing. DISP omitted: NEW, DELETE, DELETE."
+    conditions: "Temporary data sets: abnormal disposition ignored (separate rule, not modelled here)."
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DISP parameter > Defaults", pages: "152 (PDF 198)"}
+    status: VERIFIED
+  - id: JCL-DD-012
+    applies_to: "DISP=MOD status"
+    summary: "MOD indicates either an existing data set to be extended or a new data set to be created; if no volume information is found on the DD, in the catalog or passed from a previous step, the system assumes the data set is being created. Whether MOD means new or existing is decided at run time."
+    conditions: "Combined with JCL-DD-008, the default dispositions for MOD depend on run-time existence."
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DISP parameter > Status subparameter > MOD", pages: "148 (PDF 194)"}
+    status: VERIFIED
+  - id: JCL-DD-013
+    applies_to: "JOBLIB DD placement"
+    summary: "The JOBLIB DD statement must immediately follow the JOB statement and any JES statements; no intervening EXEC or other DD statements. Concatenated libraries must immediately follow JOBLIB. Do not include JOBLIB in an in-stream or cataloged procedure."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "13. Special DD statements", section: "JOBLIB DD statement > Location in the JCL", pages: "295 (PDF 341)"}
+    status: VERIFIED
+  - id: JCL-DD-014
+    applies_to: "Special ddnames"
+    summary: "Special ddnames JOBLIB, STEPLIB, SYSABEND, SYSCKEOV, SYSMDUMP, SYSUDUMP are used only for the facilities they represent; JOBCAT and STEPCAT are reserved (do not use); JESJCLIN, JESJCL (and related) have special meaning to JES2."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "Name field > Special ddnames", pages: "76 (PDF 122)"}
+    status: VERIFIED
+  - id: JCL-DD-009
+    applies_to: "DSNAME relative generation"
+    summary: "dsname(generation): first character +, - or 0; following characters numeric; numeric portion 1-3 digits; cannot exceed 255. Omit the generation to refer to all generations."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DSNAME parameter > dsname(generation)", pages: "165-166 (PDF 211-212)"}
+    status: VERIFIED
+  - id: JCL-DD-010
+    applies_to: "DSNAME member"
+    summary: "dsname(member): member 1-8 alphanumeric/national (or X'C0'); first character alphabetic, national, + or - (+/- indicates a GDG generation)."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "DSNAME parameter > dsname(member)", pages: "165 (PDF 211)"}
+    status: VERIFIED
+  - id: JCL-DD-011
+    applies_to: "Duplicate ddnames in a step"
+    summary: "Each ddname should be unique within the step; in JES2 both are allocated but all references go to the first DD statement (JES3 behavior differs)."
+    conditions: "JES-dependent."
+    source: {doc: IBM-JCLREF-32, chapter: "12. DD statement", section: "Name field", pages: "75 (PDF 121)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- procedures
+  - id: JCL-PROC-001
+    applies_to: "In-stream procedure"
+    summary: "Begins with PROC (name required, unique in the job), ends with PEND; may contain only CNTL, comment, DD, ENDCNTL, EXEC, IF/THEN/ELSE/ENDIF, INCLUDE, OUTPUT JCL, SET; no nested in-stream procedures; must precede the calling EXEC."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols; 26. PROC statement", section: "In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+    status: VERIFIED
+  - id: JCL-PROC-002
+    applies_to: "Cataloged procedure"
+    summary: "May consist of CNTL, comment, DD, ENDCNTL, EXEC, IF/THEN/ELSE/ENDIF, INCLUDE, OUTPUT JCL, SET; PROC optional (first statement if coded), PEND optional; the procedure's name is its member name or alias in the library; PROC name need not be unique."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols; 26. PROC statement", section: "Cataloged procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+    status: VERIFIED
+  - id: JCL-PROC-003
+    applies_to: "Procedure retrieval order"
+    summary: "1) in-stream procedure placed before the calling EXEC; 2) private library on an earlier JCLLIB; 3) system library (JES2 /*JOBPARM PROCLIB=, JES3 //*MAIN PROC=, MSTR IEFPDSI)."
+    conditions: "Non-APPC scheduling environment for step 3."
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Using a procedure", pages: "26 (PDF 72)"}
+    status: VERIFIED
+  - id: JCL-PROC-004
+    applies_to: "PEND statement"
+    summary: "//[name] PEND [comments]; name optional (column 3 blank if omitted); do not continue PEND; marks end of an in-stream procedure, optional for cataloged."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "25. PEND statement", section: "Description; Location", pages: "549-550 (PDF 595-596)"}
+    status: VERIFIED
+  - id: JCL-PROC-005
+    applies_to: "PROC statement parameters"
+    summary: "PROC parameters assign default values to symbolic parameters; values with special characters in apostrophes (apostrophes not part of the value); PROC must be the first statement of a procedure."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "26. PROC statement", section: "Description; Parameter field; Location", pages: "551-552 (PDF 597-598)"}
+    status: VERIFIED
+  - id: JCL-PROC-006
+    applies_to: "Procedure overrides"
+    summary: "EXEC keyword.procstepname=value overrides one procedure step; keyword without qualifier applies to all steps (PARM only to the first); //pstep.ddname DD overrides or adds a DD."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Modifying EXEC statement parameters; Modifying OUTPUT JCL and DD statements", pages: "27-29 (PDF 73-75)"}
+    status: VERIFIED
+  - id: JCL-PROC-007
+    applies_to: "Nested procedures"
+    summary: "Cataloged and in-stream procedures can invoke other procedures (an EXEC in a procedure calls another procedure), up to 15 levels of nesting. An in-stream procedure cannot be DEFINED within another procedure: the sequence PROC, PROC, PEND, PEND is not valid."
+    conditions: "Distinguishes nested invocation (valid) from nested definition (invalid)."
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Nested procedures", pages: "32 (PDF 78)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- JCLLIB / INCLUDE / SET / symbols
+  - id: JCL-JCLLIB-001
+    applies_to: "JCLLIB placement and count"
+    summary: "Only one JCLLIB per job; after the JOB statement and before the first EXEC; before any INCLUDE; not within an INCLUDE group."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "20. JCLLIB statement", section: "Purpose; Location in the JCL", pages: "385-387 (PDF 431-433)"}
+    status: VERIFIED
+  - id: JCL-JCLLIB-002
+    applies_to: "JCLLIB ORDER"
+    summary: "ORDER=(library[,library...]) up to 15 libraries, searched in the specified order before unspecified default system procedure libraries; parentheses optional for one library; names may be in apostrophes; no temporary, member-qualified or GDG relative names."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "20. JCLLIB statement", section: "Parameter field > ORDER", pages: "386 (PDF 432)"}
+    status: VERIFIED
+  - id: JCL-INCL-001
+    applies_to: "INCLUDE statement"
+    summary: "//[name] INCLUDE MEMBER=name; after the JOB statement and after JCLLIB if any; must follow a complete statement; INCLUDE groups nest up to 15 levels; groups cannot contain JOB, PROC, PEND, JCLLIB or JES statements."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "19. INCLUDE statement", section: "Syntax; Location in the JCL; Considerations", pages: "381-382 (PDF 427-428)"}
+    status: VERIFIED
+  - id: JCL-INCL-002
+    applies_to: "INCLUDE group search"
+    summary: "The library is a system procedure library, an installation-defined library or a private library on an earlier JCLLIB; the search order is the same as for procedures."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "19. INCLUDE statement", section: "Parameter field; Considerations for using INCLUDE groups", pages: "382 (PDF 428)"}
+    status: VERIFIED
+  - id: JCL-SET-001
+    applies_to: "SET statement"
+    summary: "//[name] SET symbol=value[,symbol=value]...; value with special characters or blanks in apostrophes (apostrophes not part of the value, inner apostrophe doubled); symbol=  nullifies; symbol max 8 characters; after JOB, before the intended use, following a complete statement."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "28. SET statement", section: "Description; Parameter field; Location", pages: "565-567 (PDF 611-613)"}
+    status: VERIFIED
+  - id: JCL-SYM-001
+    applies_to: "Undefined symbols"
+    summary: "A string beginning with & that is not a defined symbol is treated as literal characters: no substitution and no error message. A JCL symbol not assigned or nullified is undefined and might cause errors."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Coding symbols in JCL; Using symbols in nested procedures (rule 6)", pages: "44 (PDF 90); 48 (PDF 94)"}
+    status: VERIFIED
+  - id: JCL-SYM-002
+    applies_to: "Symbol concatenation with a period"
+    summary: "Two consecutive periods after a symbol (&DEPT..NYC) mean the symbol is followed by a period and other text: with &DEPT = D27 the value is D27.NYC."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "4. Syntax of parameters", section: "Table 9 Notation used to show syntax (two consecutive periods)", pages: "21 (PDF 67)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- IF / COND
+  - id: JCL-IF-001
+    applies_to: "IF/THEN/ELSE/ENDIF structure"
+    summary: "IF [(]relational-expression[)] THEN, optional ELSE, ENDIF required for each construct; constructs nest up to 15 levels; a THEN clause with no statements is a null THEN clause."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "18. IF/THEN/ELSE/ENDIF statement construct", section: "Purpose; Syntax; THEN and ELSE clauses", pages: "367, 373 (PDF 413, 419)"}
+    status: VERIFIED
+  - id: JCL-IF-002
+    applies_to: "Relational-expression operators"
+    summary: "NOT/¬ first; comparison operators GT > LT < NG ¬> NL ¬< EQ = NE ¬= GE >= LE <= second; logical AND/& and OR/| third. Operators of the same priority are evaluated in the order coded. Alphabetic comparison operators and & / | must be preceded and followed by blanks."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "18. IF/THEN/ELSE/ENDIF statement construct", section: "Priorities of operators (Figure 1); Comparison/Logical operators", pages: "368-369 (PDF 414-415)"}
+    status: VERIFIED
+  - id: JCL-IF-003
+    applies_to: "Relational-expression keywords"
+    summary: "Supported keywords: RC, ABEND, ¬ABEND, ABENDCC, RUN, ¬RUN (optionally stepname. / stepname.procstepname.); other keywords are not supported; RC value range 0-4095."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "18. IF/THEN/ELSE/ENDIF statement construct", section: "Relational-expression keywords", pages: "370 (PDF 416)"}
+    status: VERIFIED
+  - id: JCL-IF-004
+    applies_to: "Continuing a relational expression"
+    summary: "Break the expression where a blank is valid and continue in column 4 through 16 of the next statement; no comments on the statement being continued."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "18. IF/THEN/ELSE/ENDIF statement construct", section: "Continuing a relational expression", pages: "368 (PDF 414)"}
+    status: VERIFIED
+  - id: JCL-COND-001
+    applies_to: "EXEC COND syntax"
+    summary: "COND[.procstep]=(code,operator) or ((code,operator[,stepname][.procstepname])...[,EVEN|ONLY]) or COND=EVEN|ONLY; outer parentheses optional for one test or only EVEN/ONLY; up to 8 tests (7 with EVEN/ONLY); EVEN/ONLY before, between or after tests; null positional subparameters invalid."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "COND parameter > Syntax", pages: "328 (PDF 374)"}
+    status: VERIFIED
+  - id: JCL-COND-002
+    applies_to: "EXEC COND values"
+    summary: "code is decimal 0-4095 (greater values could give invalid testing); operator one of GT, GE, EQ, LT, LE, NE."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "COND parameter > Subparameter definition", pages: "328 (PDF 374)"}
+    status: VERIFIED
+  - id: JCL-COND-003
+    applies_to: "COND on a calling EXEC"
+    summary: "COND.procstepname applies to the named procedure step (one per procstepname); COND without qualifier applies to all steps of the called procedure."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "COND parameter > On an EXEC statement that calls a procedure", pages: "330 (PDF 376)"}
+    status: VERIFIED
+  # ---------------------------------------------------------------- member names (Step 2)
+  - id: MVS-MEM-001
+    applies_to: "PDS member names (inventory)"
+    summary: "1-8 characters; first alphabetic or national; then alphanumeric or national (conservative: hyphen not allowed)."
+    conditions: "Sources disagree on national first characters; DFSMS primary source not yet confirmed."
+    source: {doc: IBM-FTP-NAMES, chapter: "-", section: "whole topic (also IBM-OGETX)", pages: "-"}
+    status: PENDING
+  # ---------------------------------------------------------------- project policies (not IBM)
+  - id: POL-001
+    applies_to: "Unspecified consequences"
+    summary: "Where IBM states a coding requirement (must / do not / code ...) and the input violates it, but IBM does not state the consequence, the tool reports a SYNTAX-class ERROR and never treats the text as successfully analyzed (requirements 1.3, FR-03, 7.4). This applies only to CONFIRMED requirements; unconfirmed rules fall under POL-006 (never ERROR)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "requirements.md", section: "1.3, FR-03, 7.4", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-002
+    applies_to: "Undefined symbols"
+    summary: "Undefined symbols are reported (WARNING) and left as literal text; never replaced by an empty string (CTX-04)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "requirements.md", section: "CTX-04", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-003
+    applies_to: "Environment-dependent behavior"
+    summary: "Behavior that differs by JES2/JES3 or site configuration is not assumed. The Environment Profile holds the JES type (JES2 | JES3 | UNKNOWN, default UNKNOWN); with UNKNOWN, JES-dependent expected values are not fixed and such cases stay BLOCKED (requirements 1.5, ADR-010/011, ADR-021)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "requirements.md / decisions.md", section: "1.5 非推測; ADR-010; ADR-011", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-004
+    applies_to: "PROC label vs member name"
+    summary: "A cataloged procedure is resolved by member name or configured alias; a PROC label that differs from the member name is reported (INFO) and not used for resolution (ADR-011)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "decisions.md", section: "ADR-011", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-005
+    applies_to: "Unmapped library data set names"
+    summary: "A library DSN (JCLLIB ORDER etc.) with no explicit dataset mapping is reported as an ENVIRONMENT_GAP (WARNING); no path is derived from the DSN (ADR-010)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "decisions.md", section: "ADR-010", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-006
+    applies_to: "Diagnostic classes and severity"
+    summary: "Every diagnostic has a class (SYNTAX, SYNTAX_DEFINED, ANALYZABILITY, UNSUPPORTED, ENVIRONMENT, SPEC_UNCONFIRMED, ADVISORY) that separates syntactic validity, analyzability, lack of support and environment dependence. Severity follows the class; a situation whose IBM rule is unconfirmed is never ERROR (user decision A6, ADR-020)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "decisions.md", section: "ADR-020", pages: "-"}
+    status: PROJECT-POLICY
+  - id: POL-007
+    applies_to: "Run-time dependent values"
+    summary: "A value that cannot be fixed statically (e.g. MOD dispositions that depend on data set existence) is represented as RUNTIME_DEPENDENT listing each statically possible outcome with its condition; the tool never assumes the run-time state (user decision A1, ADR-022)."
+    conditions: "-"
+    source: {doc: PROJECT, chapter: "decisions.md", section: "ADR-022", pages: "-"}
+    status: PROJECT-POLICY

@@ -1,0 +1,43 @@
+{
+  "independent_raw_regex_counts": {
+    "JOB": 46,
+    "EXEC": 123,
+    "DD": 500,
+    "SET": 5,
+    "JCLLIB": 3,
+    "PROC": 2,
+    "PEND": 2
+  },
+  "independent_scanner_counts": {
+    "JOB": 46,
+    "EXEC": 123,
+    "DD": 500,
+    "SET": 5,
+    "JCLLIB": 3,
+    "PROC": 2,
+    "PEND": 2
+  },
+  "checked": [
+    "statement heads",
+    "raw parameter spelling",
+    "continuation ownership",
+    "step targets and DD membership",
+    "JOB-level DD membership",
+    "data boundaries"
+  ],
+  "source_fact_differences": [],
+  "job_span_does_not_cover_data": [
+    {
+      "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+      "job_span": [
+        1,
+        28
+      ],
+      "region": [
+        29,
+        30
+      ]
+    }
+  ],
+  "parser_diagnostics": []
+}

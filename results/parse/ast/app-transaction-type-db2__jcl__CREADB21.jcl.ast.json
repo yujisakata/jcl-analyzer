@@ -1,0 +1,4716 @@
+{
+ "schema_version": 1,
+ "source": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app/app-transaction-type-db2/jcl/CREADB21.jcl",
+ "sha256": "88b81b1d8530037d1661321e47600b9afb2a2cf4894c7eefeacd5aff07b87d69",
+ "encoding": "utf-8",
+ "input_kind": "job",
+ "jes": "UNKNOWN",
+ "statements": [
+  {
+   "id": "S00001",
+   "kind": "JOB",
+   "span": [
+    1,
+    2
+   ],
+   "lines": [
+    1,
+    2
+   ],
+   "name": {
+    "text": "CREADB2",
+    "line": 1,
+    "column": 3
+   },
+   "operation": "JOB",
+   "positional": [
+    {
+     "kind": "LIST",
+     "text": "(DB2CR)",
+     "line": 1,
+     "column": 16,
+     "value": null,
+     "items": [
+      {
+       "kind": "WORD",
+       "text": "DB2CR",
+       "line": 1,
+       "column": 17,
+       "value": "DB2CR",
+       "items": [],
+       "keyword": null,
+       "sub": null
+      }
+     ],
+     "keyword": null,
+     "sub": null
+    },
+    {
+     "kind": "STRING",
+     "text": "'SNJARAO'",
+     "line": 1,
+     "column": 24,
+     "value": "SNJARAO",
+     "items": [],
+     "keyword": null,
+     "sub": null
+    }
+   ],
+   "keywords": [
+    {
+     "name": "CLASS",
+     "line": 1,
+     "column": 34,
+     "value": {
+      "kind": "WORD",
+      "text": "A",
+      "line": 1,
+      "column": 40,
+      "value": "A",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "MSGCLASS",
+     "line": 1,
+     "column": 42,
+     "value": {
+      "kind": "WORD",
+      "text": "A",
+      "line": 1,
+      "column": 51,
+      "value": "A",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "TIME",
+     "line": 2,
+     "column": 12,
+     "value": {
+      "kind": "WORD",
+      "text": "1440",
+      "line": 2,
+      "column": 17,
+      "value": "1440",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "NOTIFY",
+     "line": 2,
+     "column": 22,
+     "value": {
+      "kind": "WORD",
+      "text": "&SYSUID",
+      "line": 2,
+      "column": 29,
+      "value": "&SYSUID",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "TYPRUN",
+     "line": 2,
+     "column": 37,
+     "value": {
+      "kind": "WORD",
+      "text": "SCAN",
+      "line": 2,
+      "column": 44,
+      "value": "SCAN",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 0,
+   "raw": [
+    "//CREADB2  JOB (DB2CR),'SNJARAO',CLASS=A,MSGCLASS=A,                    00010016",
+    "//         TIME=1440,NOTIFY=&SYSUID,TYPRUN=SCAN                         00020021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00003",
+   "kind": "COMMENT",
+   "span": [
+    3,
+    3
+   ],
+   "lines": [
+    3
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "*****************************************************************    00021025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//******************************************************************    00021025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00004",
+   "kind": "COMMENT",
+   "span": [
+    4,
+    4
+   ],
+   "lines": [
+    4
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Copyright Amazon.com, Inc. or its affiliates.                       00022025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Copyright Amazon.com, Inc. or its affiliates.                       00022025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00005",
+   "kind": "COMMENT",
+   "span": [
+    5,
+    5
+   ],
+   "lines": [
+    5
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "All Rights Reserved.                                                00023025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* All Rights Reserved.                                                00023025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00006",
+   "kind": "COMMENT",
+   "span": [
+    6,
+    6
+   ],
+   "lines": [
+    6
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "00024025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                     00024025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00007",
+   "kind": "COMMENT",
+   "span": [
+    7,
+    7
+   ],
+   "lines": [
+    7
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Licensed under the Apache License, Version 2.0 (the \"License\").     00025025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Licensed under the Apache License, Version 2.0 (the \"License\").     00025025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00008",
+   "kind": "COMMENT",
+   "span": [
+    8,
+    8
+   ],
+   "lines": [
+    8
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "You may not use this file except in compliance with the License.    00026025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* You may not use this file except in compliance with the License.    00026025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00009",
+   "kind": "COMMENT",
+   "span": [
+    9,
+    9
+   ],
+   "lines": [
+    9
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "You may obtain a copy of the License at                             00027025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* You may obtain a copy of the License at                             00027025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00010",
+   "kind": "COMMENT",
+   "span": [
+    10,
+    10
+   ],
+   "lines": [
+    10
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "00028025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                     00028025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00011",
+   "kind": "COMMENT",
+   "span": [
+    11,
+    11
+   ],
+   "lines": [
+    11
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "http://www.apache.org/licenses/LICENSE-2.0                       00029025"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*    http://www.apache.org/licenses/LICENSE-2.0                       00029025"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00012",
+   "kind": "COMMENT",
+   "span": [
+    12,
+    12
+   ],
+   "lines": [
+    12
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "00029125"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*                                                                     00029125"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00013",
+   "kind": "COMMENT",
+   "span": [
+    13,
+    13
+   ],
+   "lines": [
+    13
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "Unless required by applicable law or agreed to in writing,          00029225"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* Unless required by applicable law or agreed to in writing,          00029225"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00014",
+   "kind": "COMMENT",
+   "span": [
+    14,
+    14
+   ],
+   "lines": [
+    14
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "software distributed under the License is distributed on an         00029325"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* software distributed under the License is distributed on an         00029325"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00015",
+   "kind": "COMMENT",
+   "span": [
+    15,
+    15
+   ],
+   "lines": [
+    15
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "\"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,        00029425"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,        00029425"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00016",
+   "kind": "COMMENT",
+   "span": [
+    16,
+    16
+   ],
+   "lines": [
+    16
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "either express or implied. See the License for the specific         00029525"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* either express or implied. See the License for the specific         00029525"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00017",
+   "kind": "COMMENT",
+   "span": [
+    17,
+    17
+   ],
+   "lines": [
+    17
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "language governing permissions and limitations under the License    00029625"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//* language governing permissions and limitations under the License    00029625"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00018",
+   "kind": "COMMENT",
+   "span": [
+    18,
+    18
+   ],
+   "lines": [
+    18
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00031002"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00031002"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00019",
+   "kind": "COMMENT",
+   "span": [
+    19,
+    19
+   ],
+   "lines": [
+    19
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  Create CARDDEMO Database in DAZ1 subsystem (SSID=DAZ1)   ****** 00040021"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  Create CARDDEMO Database in DAZ1 subsystem (SSID=DAZ1)   ****** 00040021"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00020",
+   "kind": "COMMENT",
+   "span": [
+    20,
+    20
+   ],
+   "lines": [
+    20
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00040119"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00040119"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00021",
+   "kind": "COMMENT",
+   "span": [
+    21,
+    21
+   ],
+   "lines": [
+    21
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  You can run the SQLs linked here through SPUFI           ****** 00041019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  You can run the SQLs linked here through SPUFI           ****** 00041019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00022",
+   "kind": "COMMENT",
+   "span": [
+    22,
+    22
+   ],
+   "lines": [
+    22
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  If you prefer JCL, you can run them from this job        ****** 00041220"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  If you prefer JCL, you can run them from this job        ****** 00041220"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00023",
+   "kind": "COMMENT",
+   "span": [
+    23,
+    23
+   ],
+   "lines": [
+    23
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  You may need to bind the utilities used first though     ****** 00041320"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  You may need to bind the utilities used first though     ****** 00041320"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00024",
+   "kind": "COMMENT",
+   "span": [
+    24,
+    24
+   ],
+   "lines": [
+    24
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  See AWS.M2.CARDDEMO.JCL.UTIL(BINDTIAD) to see how        ****** 00042017"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  See AWS.M2.CARDDEMO.JCL.UTIL(BINDTIAD) to see how        ****** 00042017"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00025",
+   "kind": "COMMENT",
+   "span": [
+    25,
+    25
+   ],
+   "lines": [
+    25
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00050002"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00050002"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00026",
+   "kind": "COMMENT",
+   "span": [
+    26,
+    26
+   ],
+   "lines": [
+    26
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "SET PARMS FOR THIS JOB:                                            00070021"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//*  SET PARMS FOR THIS JOB:                                            00070021"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00027",
+   "kind": "COMMENT",
+   "span": [
+    27,
+    27
+   ],
+   "lines": [
+    27
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00071021"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00071021"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00028",
+   "kind": "SET",
+   "span": [
+    28,
+    28
+   ],
+   "lines": [
+    28
+   ],
+   "name": null,
+   "operation": "SET",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "CODER",
+     "line": 28,
+     "column": 10,
+     "value": {
+      "kind": "WORD",
+      "text": "AWS",
+      "line": 28,
+      "column": 16,
+      "value": "AWS",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 1,
+   "raw": [
+    "//   SET CODER=AWS                                                      00072022"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00029",
+   "kind": "SET",
+   "span": [
+    29,
+    29
+   ],
+   "lines": [
+    29
+   ],
+   "name": null,
+   "operation": "SET",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "LBNM",
+     "line": 29,
+     "column": 10,
+     "value": {
+      "kind": "WORD",
+      "text": "&CODER..M2.CARDDEMO",
+      "line": 29,
+      "column": 15,
+      "value": "&CODER..M2.CARDDEMO",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 2,
+   "raw": [
+    "//   SET LBNM=&CODER..M2.CARDDEMO                                       00072122"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED",
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00030",
+   "kind": "SET",
+   "span": [
+    30,
+    30
+   ],
+   "lines": [
+    30
+   ],
+   "name": null,
+   "operation": "SET",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DB2S",
+     "line": 30,
+     "column": 10,
+     "value": {
+      "kind": "WORD",
+      "text": "DAZ1",
+      "line": 30,
+      "column": 15,
+      "value": "DAZ1",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 3,
+   "raw": [
+    "//   SET DB2S=DAZ1                                                      00073021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00031",
+   "kind": "COMMENT",
+   "span": [
+    31,
+    31
+   ],
+   "lines": [
+    31
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00075021"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00075021"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00032",
+   "kind": "DD",
+   "span": [
+    32,
+    32
+   ],
+   "lines": [
+    32
+   ],
+   "name": {
+    "text": "JOBLIB",
+    "line": 32,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DSN",
+     "line": 32,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.&DB2S..SDSNLOAD",
+      "line": 32,
+      "column": 19,
+      "value": "OEM.DB2.&DB2S..SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DISP",
+     "line": 32,
+     "column": 43,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 32,
+      "column": 48,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 4,
+   "raw": [
+    "//JOBLIB  DD  DSN=OEM.DB2.&DB2S..SDSNLOAD,DISP=SHR                      00080021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00033",
+   "kind": "DD",
+   "span": [
+    33,
+    33
+   ],
+   "lines": [
+    33
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DSN",
+     "line": 33,
+     "column": 9,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.&DB2S..SDSNLOAD",
+      "line": 33,
+      "column": 13,
+      "value": "OEM.DB2.&DB2S..SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DISP",
+     "line": 33,
+     "column": 37,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 33,
+      "column": 42,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 5,
+   "raw": [
+    "//  DD  DSN=OEM.DB2.&DB2S..SDSNLOAD,DISP=SHR                            00090021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00034",
+   "kind": "DD",
+   "span": [
+    34,
+    34
+   ],
+   "lines": [
+    34
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DSN",
+     "line": 34,
+     "column": 9,
+     "value": {
+      "kind": "WORD",
+      "text": "CEE.SCEERUN",
+      "line": 34,
+      "column": 13,
+      "value": "CEE.SCEERUN",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DISP",
+     "line": 34,
+     "column": 25,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 34,
+      "column": 30,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 6,
+   "raw": [
+    "//  DD  DSN=CEE.SCEERUN,DISP=SHR                                        00100004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00035",
+   "kind": "COMMENT",
+   "span": [
+    35,
+    35
+   ],
+   "lines": [
+    35
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00100123"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00100123"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00036",
+   "kind": "COMMENT",
+   "span": [
+    36,
+    36
+   ],
+   "lines": [
+    36
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  STEP 00 : Free existing plans and packages               ****** 00100223"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  STEP 00 : Free existing plans and packages               ****** 00100223"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00037",
+   "kind": "COMMENT",
+   "span": [
+    37,
+    37
+   ],
+   "lines": [
+    37
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***          : It ends with RC 8 if not existing.             ****** 00100324"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****          : It ends with RC 8 if not existing.             ****** 00100324"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00038",
+   "kind": "COMMENT",
+   "span": [
+    38,
+    38
+   ],
+   "lines": [
+    38
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***          : So dont run it if creating new database        ****** 00100424"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****          : So dont run it if creating new database        ****** 00100424"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00039",
+   "kind": "COMMENT",
+   "span": [
+    39,
+    39
+   ],
+   "lines": [
+    39
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00100524"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00100524"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00040",
+   "kind": "EXEC",
+   "span": [
+    40,
+    40
+   ],
+   "lines": [
+    40
+   ],
+   "name": {
+    "text": "FREEPLN",
+    "line": 40,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 40,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "IKJEFT01",
+      "line": 40,
+      "column": 20,
+      "value": "IKJEFT01",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DYNAMNBR",
+     "line": 40,
+     "column": 29,
+     "value": {
+      "kind": "WORD",
+      "text": "20",
+      "line": 40,
+      "column": 38,
+      "value": "20",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 7,
+   "raw": [
+    "//FREEPLN EXEC PGM=IKJEFT01,DYNAMNBR=20                                 00102023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00041",
+   "kind": "DD",
+   "span": [
+    41,
+    41
+   ],
+   "lines": [
+    41
+   ],
+   "name": {
+    "text": "STEPLIB",
+    "line": 41,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 41,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 41,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 41,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.DAZ1.SDSNEXIT",
+      "line": 41,
+      "column": 28,
+      "value": "OEM.DB2.DAZ1.SDSNEXIT",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 8,
+   "raw": [
+    "//STEPLIB  DD DISP=SHR,DSN=OEM.DB2.DAZ1.SDSNEXIT                        00103023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00042",
+   "kind": "DD",
+   "span": [
+    42,
+    42
+   ],
+   "lines": [
+    42
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 42,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 42,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 42,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "line": 42,
+      "column": 28,
+      "value": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 9,
+   "raw": [
+    "//         DD DISP=SHR,DSN=OEMA.DB2.VERSIONA.SDSNLOAD                   00104023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00043",
+   "kind": "DD",
+   "span": [
+    43,
+    43
+   ],
+   "lines": [
+    43
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 43,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 43,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 43,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 10,
+   "raw": [
+    "//SYSPRINT DD SYSOUT=*                                                  00105023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00044",
+   "kind": "DD",
+   "span": [
+    44,
+    44
+   ],
+   "lines": [
+    44
+   ],
+   "name": {
+    "text": "SYSTSPRT",
+    "line": 44,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 44,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 44,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 11,
+   "raw": [
+    "//SYSTSPRT DD SYSOUT=*                                                  00106023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00045",
+   "kind": "DD",
+   "span": [
+    45,
+    45
+   ],
+   "lines": [
+    45
+   ],
+   "name": {
+    "text": "SYSUDUMP",
+    "line": 45,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 45,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 45,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 12,
+   "raw": [
+    "//SYSUDUMP DD SYSOUT=*                                                  00107023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00046",
+   "kind": "DD",
+   "span": [
+    46,
+    46
+   ],
+   "lines": [
+    46
+   ],
+   "name": {
+    "text": "SYSTSIN",
+    "line": 46,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 46,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 46,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 46,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2FREE)",
+      "line": 46,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 13,
+   "raw": [
+    "//SYSTSIN  DD DISP=SHR,DSN=&LBNM..CNTL(DB2FREE)                         00108023"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00047",
+   "kind": "COMMENT",
+   "span": [
+    47,
+    47
+   ],
+   "lines": [
+    47
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00110004"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00110004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00048",
+   "kind": "COMMENT",
+   "span": [
+    48,
+    48
+   ],
+   "lines": [
+    48
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  STEP 10 : Use Utility DSNTIAD to create the database     ****** 00120019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  STEP 10 : Use Utility DSNTIAD to create the database     ****** 00120019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00049",
+   "kind": "COMMENT",
+   "span": [
+    49,
+    49
+   ],
+   "lines": [
+    49
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***            This uses an existing STOGROUP AWST1STG        ****** 00121018"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****            This uses an existing STOGROUP AWST1STG        ****** 00121018"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00050",
+   "kind": "COMMENT",
+   "span": [
+    50,
+    50
+   ],
+   "lines": [
+    50
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***            You would have to create it if not available   ****** 00122023"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****            You would have to create it if not available   ****** 00122023"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00051",
+   "kind": "COMMENT",
+   "span": [
+    51,
+    51
+   ],
+   "lines": [
+    51
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00130004"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00130004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00052",
+   "kind": "EXEC",
+   "span": [
+    52,
+    52
+   ],
+   "lines": [
+    52
+   ],
+   "name": {
+    "text": "CRCRDDB",
+    "line": 52,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 52,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "IKJEFT01",
+      "line": 52,
+      "column": 21,
+      "value": "IKJEFT01",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DYNAMNBR",
+     "line": 52,
+     "column": 30,
+     "value": {
+      "kind": "WORD",
+      "text": "20",
+      "line": 52,
+      "column": 39,
+      "value": "20",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 14,
+   "raw": [
+    "//CRCRDDB  EXEC PGM=IKJEFT01,DYNAMNBR=20                                00140004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00053",
+   "kind": "DD",
+   "span": [
+    53,
+    53
+   ],
+   "lines": [
+    53
+   ],
+   "name": {
+    "text": "STEPLIB",
+    "line": 53,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 53,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 53,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 53,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "line": 53,
+      "column": 28,
+      "value": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 15,
+   "raw": [
+    "//STEPLIB  DD DISP=SHR,DSN=OEM.DB2.&DB2S..RUNLIB.LOAD                   00150021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00054",
+   "kind": "DD",
+   "span": [
+    54,
+    54
+   ],
+   "lines": [
+    54
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 54,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 54,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 54,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "line": 54,
+      "column": 28,
+      "value": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 16,
+   "raw": [
+    "//         DD DISP=SHR,DSN=OEMA.DB2.VERSIONA.SDSNLOAD                   00160019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00055",
+   "kind": "DD",
+   "span": [
+    55,
+    55
+   ],
+   "lines": [
+    55
+   ],
+   "name": {
+    "text": "SYSTSPRT",
+    "line": 55,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 55,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 55,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 17,
+   "raw": [
+    "//SYSTSPRT DD SYSOUT=*                                                  00170004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00056",
+   "kind": "DD",
+   "span": [
+    56,
+    56
+   ],
+   "lines": [
+    56
+   ],
+   "name": {
+    "text": "SYSUDUMP",
+    "line": 56,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 56,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 56,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 18,
+   "raw": [
+    "//SYSUDUMP DD SYSOUT=*                                                  00180004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00057",
+   "kind": "DD",
+   "span": [
+    57,
+    57
+   ],
+   "lines": [
+    57
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 57,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 57,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 57,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 19,
+   "raw": [
+    "//SYSPRINT DD SYSOUT=*                                                  00190004"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00058",
+   "kind": "DD",
+   "span": [
+    58,
+    58
+   ],
+   "lines": [
+    58
+   ],
+   "name": {
+    "text": "SYSTSIN",
+    "line": 58,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 58,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 58,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 58,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2TIAD1)",
+      "line": 58,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 20,
+   "raw": [
+    "//SYSTSIN  DD DISP=SHR,DSN=&LBNM..CNTL(DB2TIAD1)                        00200021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00059",
+   "kind": "DD",
+   "span": [
+    59,
+    59
+   ],
+   "lines": [
+    59
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 59,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 59,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 59,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 59,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2CREAT)",
+      "line": 59,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 21,
+   "raw": [
+    "//SYSIN    DD DISP=SHR,DSN=&LBNM..CNTL(DB2CREAT)                        00250021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00060",
+   "kind": "COMMENT",
+   "span": [
+    60,
+    60
+   ],
+   "lines": [
+    60
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00470011"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00470011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00061",
+   "kind": "COMMENT",
+   "span": [
+    61,
+    61
+   ],
+   "lines": [
+    61
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  STEP 20 : Load the transaction Type table                ****** 00480019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  STEP 20 : Load the transaction Type table                ****** 00480019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00062",
+   "kind": "COMMENT",
+   "span": [
+    62,
+    62
+   ],
+   "lines": [
+    62
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***            using DSNTEP4 utility                          ****** 00481019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****            using DSNTEP4 utility                          ****** 00481019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00063",
+   "kind": "COMMENT",
+   "span": [
+    63,
+    63
+   ],
+   "lines": [
+    63
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00490011"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00490011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00064",
+   "kind": "EXEC",
+   "span": [
+    64,
+    64
+   ],
+   "lines": [
+    64
+   ],
+   "name": {
+    "text": "LDTTYPE",
+    "line": 64,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 64,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "IEFBR14",
+      "line": 64,
+      "column": 21,
+      "value": "IEFBR14",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "COND",
+     "line": 64,
+     "column": 29,
+     "value": {
+      "kind": "LIST",
+      "text": "(0,NE)",
+      "line": 64,
+      "column": 34,
+      "value": null,
+      "items": [
+       {
+        "kind": "WORD",
+        "text": "0",
+        "line": 64,
+        "column": 35,
+        "value": "0",
+        "items": [],
+        "keyword": null,
+        "sub": null
+       },
+       {
+        "kind": "WORD",
+        "text": "NE",
+        "line": 64,
+        "column": 37,
+        "value": "NE",
+        "items": [],
+        "keyword": null,
+        "sub": null
+       }
+      ],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 22,
+   "raw": [
+    "//LDTTYPE  EXEC PGM=IEFBR14,COND=(0,NE)                                 00500019"
+   ],
+   "limitations": [
+    "COND_NOT_ANALYZED"
+   ]
+  },
+  {
+   "id": "S00065",
+   "kind": "EXEC",
+   "span": [
+    65,
+    65
+   ],
+   "lines": [
+    65
+   ],
+   "name": {
+    "text": "RUNTEP2",
+    "line": 65,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 65,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "IKJEFT01",
+      "line": 65,
+      "column": 21,
+      "value": "IKJEFT01",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DYNAMNBR",
+     "line": 65,
+     "column": 30,
+     "value": {
+      "kind": "WORD",
+      "text": "20",
+      "line": 65,
+      "column": 39,
+      "value": "20",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 23,
+   "raw": [
+    "//RUNTEP2  EXEC PGM=IKJEFT01,DYNAMNBR=20                                00510011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00066",
+   "kind": "DD",
+   "span": [
+    66,
+    66
+   ],
+   "lines": [
+    66
+   ],
+   "name": {
+    "text": "STEPLIB",
+    "line": 66,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 66,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 66,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 66,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "line": 66,
+      "column": 28,
+      "value": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 24,
+   "raw": [
+    "//STEPLIB  DD DISP=SHR,DSN=OEM.DB2.&DB2S..RUNLIB.LOAD                   00520021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00067",
+   "kind": "DD",
+   "span": [
+    67,
+    67
+   ],
+   "lines": [
+    67
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 67,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 67,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 67,
+     "column": 24,
+     "value": {
+      "kind": "WORD",
+      "text": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "line": 67,
+      "column": 28,
+      "value": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 25,
+   "raw": [
+    "//         DD DISP=SHR,DSN=OEMA.DB2.VERSIONA.SDSNLOAD                   00530019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00068",
+   "kind": "DD",
+   "span": [
+    68,
+    68
+   ],
+   "lines": [
+    68
+   ],
+   "name": {
+    "text": "SYSTSPRT",
+    "line": 68,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 68,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 68,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 26,
+   "raw": [
+    "//SYSTSPRT DD SYSOUT=*                                                  00540011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00069",
+   "kind": "DD",
+   "span": [
+    69,
+    69
+   ],
+   "lines": [
+    69
+   ],
+   "name": {
+    "text": "SYSUDUMP",
+    "line": 69,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 69,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 69,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 27,
+   "raw": [
+    "//SYSUDUMP DD SYSOUT=*                                                  00550011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00070",
+   "kind": "DD",
+   "span": [
+    70,
+    70
+   ],
+   "lines": [
+    70
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 70,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 70,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 70,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 28,
+   "raw": [
+    "//SYSPRINT DD SYSOUT=*                                                  00560011"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00071",
+   "kind": "DD",
+   "span": [
+    71,
+    71
+   ],
+   "lines": [
+    71
+   ],
+   "name": {
+    "text": "SYSTSIN",
+    "line": 71,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 71,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 71,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 71,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2TEP41)",
+      "line": 71,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 29,
+   "raw": [
+    "//SYSTSIN  DD DISP=SHR,DSN=&LBNM..CNTL(DB2TEP41)                        00570021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00072",
+   "kind": "DD",
+   "span": [
+    72,
+    72
+   ],
+   "lines": [
+    72
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 72,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 72,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 72,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 72,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2LTTYP)",
+      "line": 72,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 30,
+   "raw": [
+    "//SYSIN    DD DISP=SHR,DSN=&LBNM..CNTL(DB2LTTYP)                        00630021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00073",
+   "kind": "COMMENT",
+   "span": [
+    73,
+    73
+   ],
+   "lines": [
+    73
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00750015"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00750015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00074",
+   "kind": "COMMENT",
+   "span": [
+    74,
+    74
+   ],
+   "lines": [
+    74
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***  STEP 30 : Load Transaction Type Category table           ****** 00760019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****  STEP 30 : Load Transaction Type Category table           ****** 00760019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00075",
+   "kind": "COMMENT",
+   "span": [
+    75,
+    75
+   ],
+   "lines": [
+    75
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "***            using DSNTEP4 utility                          ****** 00761019"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//****            using DSNTEP4 utility                          ****** 00761019"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00076",
+   "kind": "COMMENT",
+   "span": [
+    76,
+    76
+   ],
+   "lines": [
+    76
+   ],
+   "name": null,
+   "operation": null,
+   "positional": [],
+   "keywords": [],
+   "comments": [],
+   "comment_texts": [
+    "******************************************************************** 00770015"
+   ],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": null,
+   "raw": [
+    "//********************************************************************* 00770015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00077",
+   "kind": "EXEC",
+   "span": [
+    77,
+    77
+   ],
+   "lines": [
+    77
+   ],
+   "name": {
+    "text": "LDTCCAT",
+    "line": 77,
+    "column": 3
+   },
+   "operation": "EXEC",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "PGM",
+     "line": 77,
+     "column": 17,
+     "value": {
+      "kind": "WORD",
+      "text": "IKJEFT01",
+      "line": 77,
+      "column": 21,
+      "value": "IKJEFT01",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DYNAMNBR",
+     "line": 77,
+     "column": 30,
+     "value": {
+      "kind": "WORD",
+      "text": "20",
+      "line": 77,
+      "column": 39,
+      "value": "20",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "COND",
+     "line": 77,
+     "column": 42,
+     "value": {
+      "kind": "LIST",
+      "text": "(0,NE)",
+      "line": 77,
+      "column": 47,
+      "value": null,
+      "items": [
+       {
+        "kind": "WORD",
+        "text": "0",
+        "line": 77,
+        "column": 48,
+        "value": "0",
+        "items": [],
+        "keyword": null,
+        "sub": null
+       },
+       {
+        "kind": "WORD",
+        "text": "NE",
+        "line": 77,
+        "column": 50,
+        "value": "NE",
+        "items": [],
+        "keyword": null,
+        "sub": null
+       }
+      ],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 31,
+   "raw": [
+    "//LDTCCAT  EXEC PGM=IKJEFT01,DYNAMNBR=20,COND=(0,NE)                    00790019"
+   ],
+   "limitations": [
+    "COND_NOT_ANALYZED"
+   ]
+  },
+  {
+   "id": "S00078",
+   "kind": "DD",
+   "span": [
+    78,
+    78
+   ],
+   "lines": [
+    78
+   ],
+   "name": {
+    "text": "STEPLIB",
+    "line": 78,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 78,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 78,
+      "column": 21,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 78,
+     "column": 25,
+     "value": {
+      "kind": "WORD",
+      "text": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "line": 78,
+      "column": 29,
+      "value": "OEM.DB2.&DB2S..RUNLIB.LOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 32,
+   "raw": [
+    "//STEPLIB  DD  DISP=SHR,DSN=OEM.DB2.&DB2S..RUNLIB.LOAD                  00800021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00079",
+   "kind": "DD",
+   "span": [
+    79,
+    79
+   ],
+   "lines": [
+    79
+   ],
+   "name": null,
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 79,
+     "column": 16,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 79,
+      "column": 21,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 79,
+     "column": 25,
+     "value": {
+      "kind": "WORD",
+      "text": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "line": 79,
+      "column": 29,
+      "value": "OEMA.DB2.VERSIONA.SDSNLOAD",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 33,
+   "raw": [
+    "//         DD  DISP=SHR,DSN=OEMA.DB2.VERSIONA.SDSNLOAD                  00810015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00080",
+   "kind": "DD",
+   "span": [
+    80,
+    80
+   ],
+   "lines": [
+    80
+   ],
+   "name": {
+    "text": "SYSTSPRT",
+    "line": 80,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 80,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 80,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 34,
+   "raw": [
+    "//SYSTSPRT DD SYSOUT=*                                                  00820015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00081",
+   "kind": "DD",
+   "span": [
+    81,
+    81
+   ],
+   "lines": [
+    81
+   ],
+   "name": {
+    "text": "SYSUDUMP",
+    "line": 81,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 81,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 81,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 35,
+   "raw": [
+    "//SYSUDUMP DD SYSOUT=*                                                  00830015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00082",
+   "kind": "DD",
+   "span": [
+    82,
+    82
+   ],
+   "lines": [
+    82
+   ],
+   "name": {
+    "text": "SYSPRINT",
+    "line": 82,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "SYSOUT",
+     "line": 82,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "*",
+      "line": 82,
+      "column": 22,
+      "value": "*",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 36,
+   "raw": [
+    "//SYSPRINT DD SYSOUT=*                                                  00840015"
+   ],
+   "limitations": []
+  },
+  {
+   "id": "S00083",
+   "kind": "DD",
+   "span": [
+    83,
+    83
+   ],
+   "lines": [
+    83
+   ],
+   "name": {
+    "text": "SYSTSIN",
+    "line": 83,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 83,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 83,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 83,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2TEP41)",
+      "line": 83,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 37,
+   "raw": [
+    "//SYSTSIN  DD DISP=SHR,DSN=&LBNM..CNTL(DB2TEP41)                        00850021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  },
+  {
+   "id": "S00084",
+   "kind": "DD",
+   "span": [
+    84,
+    84
+   ],
+   "lines": [
+    84
+   ],
+   "name": {
+    "text": "SYSIN",
+    "line": 84,
+    "column": 3
+   },
+   "operation": "DD",
+   "positional": [],
+   "keywords": [
+    {
+     "name": "DISP",
+     "line": 84,
+     "column": 15,
+     "value": {
+      "kind": "WORD",
+      "text": "SHR",
+      "line": 84,
+      "column": 20,
+      "value": "SHR",
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    },
+    {
+     "name": "DSN",
+     "line": 84,
+     "column": 24,
+     "value": {
+      "kind": "COMPOUND",
+      "text": "&LBNM..CNTL(DB2LTCAT)",
+      "line": 84,
+      "column": 28,
+      "value": null,
+      "items": [],
+      "keyword": null,
+      "sub": null
+     }
+    }
+   ],
+   "comments": [],
+   "comment_texts": [],
+   "condition_tokens": [],
+   "condition": null,
+   "inline": null,
+   "implicit": false,
+   "implicit_basis": null,
+   "implicit_name": null,
+   "lex_statement": 38,
+   "raw": [
+    "//SYSIN    DD DISP=SHR,DSN=&LBNM..CNTL(DB2LTCAT)                        00910021"
+   ],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ]
+  }
+ ],
+ "records": [
+  {
+   "line": 1,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00001",
+   "region_id": null
+  },
+  {
+   "line": 2,
+   "lexer_kind": "CONTINUATION",
+   "role": "CONTINUATION",
+   "statement_id": "S00001",
+   "region_id": null
+  },
+  {
+   "line": 3,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00003",
+   "region_id": null
+  },
+  {
+   "line": 4,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00004",
+   "region_id": null
+  },
+  {
+   "line": 5,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00005",
+   "region_id": null
+  },
+  {
+   "line": 6,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00006",
+   "region_id": null
+  },
+  {
+   "line": 7,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00007",
+   "region_id": null
+  },
+  {
+   "line": 8,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00008",
+   "region_id": null
+  },
+  {
+   "line": 9,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00009",
+   "region_id": null
+  },
+  {
+   "line": 10,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00010",
+   "region_id": null
+  },
+  {
+   "line": 11,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00011",
+   "region_id": null
+  },
+  {
+   "line": 12,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00012",
+   "region_id": null
+  },
+  {
+   "line": 13,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00013",
+   "region_id": null
+  },
+  {
+   "line": 14,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00014",
+   "region_id": null
+  },
+  {
+   "line": 15,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00015",
+   "region_id": null
+  },
+  {
+   "line": 16,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00016",
+   "region_id": null
+  },
+  {
+   "line": 17,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00017",
+   "region_id": null
+  },
+  {
+   "line": 18,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00018",
+   "region_id": null
+  },
+  {
+   "line": 19,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00019",
+   "region_id": null
+  },
+  {
+   "line": 20,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00020",
+   "region_id": null
+  },
+  {
+   "line": 21,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00021",
+   "region_id": null
+  },
+  {
+   "line": 22,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00022",
+   "region_id": null
+  },
+  {
+   "line": 23,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00023",
+   "region_id": null
+  },
+  {
+   "line": 24,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00024",
+   "region_id": null
+  },
+  {
+   "line": 25,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00025",
+   "region_id": null
+  },
+  {
+   "line": 26,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00026",
+   "region_id": null
+  },
+  {
+   "line": 27,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00027",
+   "region_id": null
+  },
+  {
+   "line": 28,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00028",
+   "region_id": null
+  },
+  {
+   "line": 29,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00029",
+   "region_id": null
+  },
+  {
+   "line": 30,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00030",
+   "region_id": null
+  },
+  {
+   "line": 31,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00031",
+   "region_id": null
+  },
+  {
+   "line": 32,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00032",
+   "region_id": null
+  },
+  {
+   "line": 33,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00033",
+   "region_id": null
+  },
+  {
+   "line": 34,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00034",
+   "region_id": null
+  },
+  {
+   "line": 35,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00035",
+   "region_id": null
+  },
+  {
+   "line": 36,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00036",
+   "region_id": null
+  },
+  {
+   "line": 37,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00037",
+   "region_id": null
+  },
+  {
+   "line": 38,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00038",
+   "region_id": null
+  },
+  {
+   "line": 39,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00039",
+   "region_id": null
+  },
+  {
+   "line": 40,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00040",
+   "region_id": null
+  },
+  {
+   "line": 41,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00041",
+   "region_id": null
+  },
+  {
+   "line": 42,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00042",
+   "region_id": null
+  },
+  {
+   "line": 43,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00043",
+   "region_id": null
+  },
+  {
+   "line": 44,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00044",
+   "region_id": null
+  },
+  {
+   "line": 45,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00045",
+   "region_id": null
+  },
+  {
+   "line": 46,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00046",
+   "region_id": null
+  },
+  {
+   "line": 47,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00047",
+   "region_id": null
+  },
+  {
+   "line": 48,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00048",
+   "region_id": null
+  },
+  {
+   "line": 49,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00049",
+   "region_id": null
+  },
+  {
+   "line": 50,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00050",
+   "region_id": null
+  },
+  {
+   "line": 51,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00051",
+   "region_id": null
+  },
+  {
+   "line": 52,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00052",
+   "region_id": null
+  },
+  {
+   "line": 53,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00053",
+   "region_id": null
+  },
+  {
+   "line": 54,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00054",
+   "region_id": null
+  },
+  {
+   "line": 55,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00055",
+   "region_id": null
+  },
+  {
+   "line": 56,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00056",
+   "region_id": null
+  },
+  {
+   "line": 57,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00057",
+   "region_id": null
+  },
+  {
+   "line": 58,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00058",
+   "region_id": null
+  },
+  {
+   "line": 59,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00059",
+   "region_id": null
+  },
+  {
+   "line": 60,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00060",
+   "region_id": null
+  },
+  {
+   "line": 61,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00061",
+   "region_id": null
+  },
+  {
+   "line": 62,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00062",
+   "region_id": null
+  },
+  {
+   "line": 63,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00063",
+   "region_id": null
+  },
+  {
+   "line": 64,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00064",
+   "region_id": null
+  },
+  {
+   "line": 65,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00065",
+   "region_id": null
+  },
+  {
+   "line": 66,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00066",
+   "region_id": null
+  },
+  {
+   "line": 67,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00067",
+   "region_id": null
+  },
+  {
+   "line": 68,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00068",
+   "region_id": null
+  },
+  {
+   "line": 69,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00069",
+   "region_id": null
+  },
+  {
+   "line": 70,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00070",
+   "region_id": null
+  },
+  {
+   "line": 71,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00071",
+   "region_id": null
+  },
+  {
+   "line": 72,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00072",
+   "region_id": null
+  },
+  {
+   "line": 73,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00073",
+   "region_id": null
+  },
+  {
+   "line": 74,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00074",
+   "region_id": null
+  },
+  {
+   "line": 75,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00075",
+   "region_id": null
+  },
+  {
+   "line": 76,
+   "lexer_kind": "COMMENT",
+   "role": "COMMENT",
+   "statement_id": "S00076",
+   "region_id": null
+  },
+  {
+   "line": 77,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00077",
+   "region_id": null
+  },
+  {
+   "line": 78,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00078",
+   "region_id": null
+  },
+  {
+   "line": 79,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00079",
+   "region_id": null
+  },
+  {
+   "line": 80,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00080",
+   "region_id": null
+  },
+  {
+   "line": 81,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00081",
+   "region_id": null
+  },
+  {
+   "line": 82,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00082",
+   "region_id": null
+  },
+  {
+   "line": 83,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00083",
+   "region_id": null
+  },
+  {
+   "line": 84,
+   "lexer_kind": "STATEMENT_START",
+   "role": "STATEMENT",
+   "statement_id": "S00084",
+   "region_id": null
+  }
+ ],
+ "data_regions": [],
+ "jobs": [
+  {
+   "id": "J00001",
+   "name": "CREADB2",
+   "job_statement_id": "S00001",
+   "span": [
+    1,
+    84
+   ],
+   "job_level_dds": [
+    {
+     "statement_id": "S00032",
+     "ddname": "JOBLIB",
+     "procstep": null,
+     "level": "JOB",
+     "concat_head": "JOBLIB",
+     "concat_index": 0,
+     "concat_of": null,
+     "special": "JOBLIB",
+     "implicit": false
+    },
+    {
+     "statement_id": "S00033",
+     "ddname": null,
+     "procstep": null,
+     "level": "JOB",
+     "concat_head": "JOBLIB",
+     "concat_index": 1,
+     "concat_of": "S00032",
+     "special": null,
+     "implicit": false
+    },
+    {
+     "statement_id": "S00034",
+     "ddname": null,
+     "procstep": null,
+     "level": "JOB",
+     "concat_head": "JOBLIB",
+     "concat_index": 2,
+     "concat_of": "S00033",
+     "special": null,
+     "implicit": false
+    }
+   ],
+   "job_level_statements": [
+    "S00028",
+    "S00029",
+    "S00030"
+   ],
+   "steps": [
+    {
+     "id": "T00040",
+     "name": "FREEPLN",
+     "exec_statement_id": "S00040",
+     "target": [
+      "PGM",
+      "IKJEFT01"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00041",
+       "ddname": "STEPLIB",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "STEPLIB",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00042",
+       "ddname": null,
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 1,
+       "concat_of": "S00041",
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00043",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00044",
+       "ddname": "SYSTSPRT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSPRT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00045",
+       "ddname": "SYSUDUMP",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSUDUMP",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "SYSUDUMP",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00046",
+       "ddname": "SYSTSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00052",
+     "name": "CRCRDDB",
+     "exec_statement_id": "S00052",
+     "target": [
+      "PGM",
+      "IKJEFT01"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00053",
+       "ddname": "STEPLIB",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "STEPLIB",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00054",
+       "ddname": null,
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 1,
+       "concat_of": "S00053",
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00055",
+       "ddname": "SYSTSPRT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSPRT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00056",
+       "ddname": "SYSUDUMP",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSUDUMP",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "SYSUDUMP",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00057",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00058",
+       "ddname": "SYSTSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00059",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00064",
+     "name": "LDTTYPE",
+     "exec_statement_id": "S00064",
+     "target": [
+      "PGM",
+      "IEFBR14"
+     ],
+     "dds": [],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00065",
+     "name": "RUNTEP2",
+     "exec_statement_id": "S00065",
+     "target": [
+      "PGM",
+      "IKJEFT01"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00066",
+       "ddname": "STEPLIB",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "STEPLIB",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00067",
+       "ddname": null,
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 1,
+       "concat_of": "S00066",
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00068",
+       "ddname": "SYSTSPRT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSPRT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00069",
+       "ddname": "SYSUDUMP",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSUDUMP",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "SYSUDUMP",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00070",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00071",
+       "ddname": "SYSTSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00072",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    },
+    {
+     "id": "T00077",
+     "name": "LDTCCAT",
+     "exec_statement_id": "S00077",
+     "target": [
+      "PGM",
+      "IKJEFT01"
+     ],
+     "dds": [
+      {
+       "statement_id": "S00078",
+       "ddname": "STEPLIB",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "STEPLIB",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00079",
+       "ddname": null,
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "STEPLIB",
+       "concat_index": 1,
+       "concat_of": "S00078",
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00080",
+       "ddname": "SYSTSPRT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSPRT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00081",
+       "ddname": "SYSUDUMP",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSUDUMP",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": "SYSUDUMP",
+       "implicit": false
+      },
+      {
+       "statement_id": "S00082",
+       "ddname": "SYSPRINT",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSPRINT",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00083",
+       "ddname": "SYSTSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSTSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      },
+      {
+       "statement_id": "S00084",
+       "ddname": "SYSIN",
+       "procstep": null,
+       "level": "STEP",
+       "concat_head": "SYSIN",
+       "concat_index": 0,
+       "concat_of": null,
+       "special": null,
+       "implicit": false
+      }
+     ],
+     "other_statements": [],
+     "after_null": false
+    }
+   ],
+   "procedures": [],
+   "null_statement_line": null
+  }
+ ],
+ "procedure_header_id": null,
+ "procedure_steps": [],
+ "outside_statements": [],
+ "diagnostics": [],
+ "superseded_diagnostics": [],
+ "limitations": [
+  "COND_NOT_ANALYZED",
+  "SYMBOLS_NOT_RESOLVED"
+ ],
+ "dropped_lex_statements": []
+}

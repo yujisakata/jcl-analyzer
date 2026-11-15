@@ -1,0 +1,248 @@
+{
+  "required_mutants": 943,
+  "required_detected": 943,
+  "required_detection_rate": 1.0,
+  "escaped": [],
+  "rows": [
+    {
+      "operator": "M1 drop_all_jobs",
+      "group": "carddemo",
+      "mutants": 46,
+      "detected": 46,
+      "invariants": 46,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M1 drop_all_jobs",
+      "group": "golden",
+      "mutants": 33,
+      "detected": 33,
+      "invariants": 33,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M1 drop_all_jobs",
+      "group": "pending",
+      "mutants": 5,
+      "detected": 5,
+      "invariants": 5,
+      "trace": 0,
+      "golden": 5,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M2 drop_step",
+      "group": "carddemo",
+      "mutants": 119,
+      "detected": 119,
+      "invariants": 119,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M2 drop_step",
+      "group": "golden",
+      "mutants": 34,
+      "detected": 34,
+      "invariants": 34,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M2 drop_step",
+      "group": "pending",
+      "mutants": 11,
+      "detected": 11,
+      "invariants": 11,
+      "trace": 0,
+      "golden": 11,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M3 move_step_to_job",
+      "group": "pending",
+      "mutants": 3,
+      "detected": 3,
+      "invariants": 3,
+      "trace": 0,
+      "golden": 3,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M4 move_dd_to_step",
+      "group": "carddemo",
+      "mutants": 353,
+      "detected": 353,
+      "invariants": 353,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M4 move_dd_to_step",
+      "group": "pending",
+      "mutants": 16,
+      "detected": 16,
+      "invariants": 16,
+      "trace": 0,
+      "golden": 16,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5 change_exec_target",
+      "group": "carddemo",
+      "mutants": 119,
+      "detected": 119,
+      "invariants": 119,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5 change_exec_target",
+      "group": "golden",
+      "mutants": 33,
+      "detected": 33,
+      "invariants": 33,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5 change_exec_target",
+      "group": "pending",
+      "mutants": 11,
+      "detected": 11,
+      "invariants": 11,
+      "trace": 0,
+      "golden": 11,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5c change_exec_target_everywhere",
+      "group": "carddemo",
+      "mutants": 116,
+      "detected": 116,
+      "invariants": 0,
+      "trace": 116,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5c change_exec_target_everywhere",
+      "group": "golden",
+      "mutants": 29,
+      "detected": 29,
+      "invariants": 0,
+      "trace": 29,
+      "golden": 6,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M5c change_exec_target_everywhere",
+      "group": "pending",
+      "mutants": 9,
+      "detected": 9,
+      "invariants": 0,
+      "trace": 9,
+      "golden": 9,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6 shift_data_boundary",
+      "group": "carddemo",
+      "mutants": 68,
+      "detected": 68,
+      "invariants": 68,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6 shift_data_boundary",
+      "group": "golden",
+      "mutants": 5,
+      "detected": 5,
+      "invariants": 5,
+      "trace": 0,
+      "golden": 5,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6 shift_data_boundary",
+      "group": "pending",
+      "mutants": 2,
+      "detected": 2,
+      "invariants": 2,
+      "trace": 0,
+      "golden": 2,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6c shift_data_boundary_everywhere",
+      "group": "carddemo",
+      "mutants": 68,
+      "detected": 68,
+      "invariants": 68,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6c shift_data_boundary_everywhere",
+      "group": "golden",
+      "mutants": 5,
+      "detected": 5,
+      "invariants": 5,
+      "trace": 0,
+      "golden": 5,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M6c shift_data_boundary_everywhere",
+      "group": "pending",
+      "mutants": 2,
+      "detected": 2,
+      "invariants": 2,
+      "trace": 0,
+      "golden": 2,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M7 shrink_job_span",
+      "group": "carddemo",
+      "mutants": 46,
+      "detected": 46,
+      "invariants": 46,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M7 shrink_job_span",
+      "group": "golden",
+      "mutants": 33,
+      "detected": 33,
+      "invariants": 33,
+      "trace": 0,
+      "golden": 0,
+      "needs_expectation": 0
+    },
+    {
+      "operator": "M7 shrink_job_span",
+      "group": "pending",
+      "mutants": 6,
+      "detected": 6,
+      "invariants": 6,
+      "trace": 0,
+      "golden": 6,
+      "needs_expectation": 0
+    }
+  ]
+}

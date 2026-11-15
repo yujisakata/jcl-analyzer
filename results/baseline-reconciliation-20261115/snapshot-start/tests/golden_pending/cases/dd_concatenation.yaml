@@ -1,0 +1,127 @@
+# REVIEW PENDING (unsealed). See tests/golden_pending/README.md.
+schema_version: 1
+category: DD_CONCATENATION
+cases:
+- test_id: G-HIER-002
+  category: DD_CONCATENATION
+  description: Unnamed DDs are concatenated to the preceding DD of the same step; an unnamed DD directly
+    after EXEC has no preceding DD in its step.
+  rule_ids:
+  - JCL-DD-001
+  source_reference:
+  - rule_id: JCL-DD-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > Name field > Omitting the ddname; Concatenating data sets
+    pages: 75 (PDF 121); 92 (PDF 138)
+  input_file: inputs/hierarchy/h002.jcl
+  input_kind: job
+  case_type: boundary
+  validation_stage: syntactic
+  expected_structure:
+    view: statements
+    statements:
+    - kind: JOB
+      span:
+      - 1
+      - 1
+    - kind: EXEC
+      span:
+      - 2
+      - 2
+    - kind: DD
+      span:
+      - 3
+      - 3
+    - kind: DD
+      span:
+      - 4
+      - 4
+    - kind: DD
+      span:
+      - 5
+      - 5
+    - kind: DD
+      span:
+      - 6
+      - 6
+    - kind: EXEC
+      span:
+      - 7
+      - 7
+    - kind: DD
+      span:
+      - 8
+      - 8
+    - kind: DD
+      span:
+      - 9
+      - 9
+    - kind: DD
+      span:
+      - 10
+      - 10
+    hierarchy:
+      jobs:
+      - name: CONCAT
+        line: 1
+        span:
+        - 1
+        - 10
+        dds: []
+        steps:
+        - name: S1
+          line: 2
+          target:
+          - PGM
+          - IEBGENER
+          dds:
+          - name: SYSUT1
+            line: 3
+            concat_head: SYSUT1
+            concat_index: 0
+          - name: null
+            line: 4
+            concat_head: SYSUT1
+            concat_index: 1
+          - name: null
+            line: 5
+            concat_head: SYSUT1
+            concat_index: 2
+          - name: SYSUT2
+            line: 6
+            concat_head: SYSUT2
+            concat_index: 0
+        - name: S2
+          line: 7
+          target:
+          - PGM
+          - X
+          dds:
+          - name: null
+            line: 8
+            concat_head: null
+            concat_index: 0
+          - name: LIB
+            line: 9
+            concat_head: LIB
+            concat_index: 0
+          - name: null
+            line: 10
+            concat_head: LIB
+            concat_index: 1
+        procedures: []
+      outside: []
+  expected_diagnostics:
+    mode: exact
+    items:
+    - code: PAR-W004
+      severity: WARNING
+      line: 8
+  oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in docs/golden-view.md
+    (ADR-027). Input JCL designed by hand. Expected statements and hierarchy written manually, never generated
+    from parser output.
+  oracle_author: Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness (R1);
+    draft awaiting independent review
+  review_status: draft
+  notes: The DD at line 8 is not concatenated across the step boundary.

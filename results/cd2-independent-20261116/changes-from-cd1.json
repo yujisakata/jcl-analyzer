@@ -1,0 +1,53 @@
+{
+  "baseline_sha256": "94adb81b77fa0e43df02f1a17bb963ced920448e3c1b1a6133511f2cbe718538",
+  "changed": [
+    {
+      "path": "CLAUDE.md",
+      "before": "a533841bd01b6ed0f4f1e7933951b3113759f78ca8a2e21400a5c7ad6d2e8874",
+      "after": "7c2fc59612d57f59123ce8d086141b24313ac10522d02c44ef4ee1a5ee25112a"
+    },
+    {
+      "path": "src/jclprof/harness/carddemo_source.py",
+      "before": "99d93c82f9531ec432761daaf77e1304e0801fffeeed13bbcdf1fb5d78397c63",
+      "after": "e6731b965388cb6c45d33348d7251edb635c08f7f83f0044564c2b10d947b6d6"
+    },
+    {
+      "path": "src/jclprof/harness/hierarchy.py",
+      "before": "87537b8fce222778f2c623e9fc2e1a2f611333cca1f692d2f0128b7c581c8875",
+      "after": "a497706b261d020a3335d6060ef9c50efe793abe200693ab18d4e020f1263685"
+    },
+    {
+      "path": "src/jclprof/parser/model.py",
+      "before": "e60e752c148cb72cb9d40b771b344e09039633c3589d556f74a635294e4d1b56",
+      "after": "e19acd6e108c7b8cdb90f4c81368367ccbc8b4ebdd5a17f524e8db2150c8686a"
+    },
+    {
+      "path": "src/jclprof/parser/parser.py",
+      "before": "9291fa64250f6238733b3cbcc40303e1ff09c3c79b0186dabd506a1b81ac7c94",
+      "after": "2b462a36bdafcec67993bd0175669109aee54b7b48b59f7a698f7cfbe6fd29b1"
+    },
+    {
+      "path": "tests/CHANGES.md",
+      "before": "6a4cc3bc259dd3822b4f814b4b416f4999f3a8042b7a54f57f0683a49b95d401",
+      "after": "37c678e5fef1f11c800425cb4a4940e4aa25bbc8bb311503035ffc766ba7ec16"
+    },
+    {
+      "path": "tests/KNOWN_DEFECTS.yaml",
+      "before": "6b540b2e56600aa2b95bb44e682216db2f199b78b734c130cfe934bdd08699e0",
+      "after": "0005094945610b8ef7df257dacb7cc92d703ced0b57a742851b8b205b4ea635c"
+    },
+    {
+      "path": "tests/harness/test_carddemo_source.py",
+      "before": "6a0a73a29fb0340db6ebf2d989af7a043df09560c93a9382d57e120aca26bf37",
+      "after": "b2d2f75f6f8946065086275f1bf3ae09d4af767bfc07cdcb85e534035b30ba84"
+    },
+    {
+      "path": "tests/harness/test_hierarchy_harness.py",
+      "before": "f79ceca28a7f3f120210bf237d7b4036a6cf25fbd85892d9fa11973722ad7002",
+      "after": "e8d10ed5c4f43d817c4cff59a35ae9c7f6c4b2901571fc05323ec43b18ddf387"
+    }
+  ],
+  "added_source_paths": [
+    "tests/parser/test_cd2_source_fixes.py"
+  ]
+}

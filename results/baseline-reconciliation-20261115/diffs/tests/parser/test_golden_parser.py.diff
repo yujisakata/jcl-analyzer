@@ -1,0 +1,40 @@
+--- before/tests/parser/test_golden_parser.py
++++ current/tests/parser/test_golden_parser.py
+@@ -8,11 +8,13 @@
+ from __future__ import annotations
+ 
+ from pathlib import Path
++from typing import Any
+ 
+ import pytest
+ 
+ from jclprof.context.config import ConfigError, load_config
+ from jclprof.harness.adapters import registered_adapters
++from jclprof.harness.defects import known_golden_failures, load_known_defects
+ from jclprof.harness.loader import GoldenCase, load_suite
+ from jclprof.harness.registry import load_catalog, load_rules
+ from jclprof.harness.runner import run_case
+@@ -30,12 +32,22 @@
+ 
+ pytestmark = pytest.mark.parser
+ 
++# TC-013: a case registered under an OPEN known defect is expected to FAIL (strict xfail, so a fix
++# is noticed); the registration is listed in tests/KNOWN_DEFECTS.yaml (xfail_tests).
++KNOWN = known_golden_failures(load_known_defects())
++
++
++def _param(c: GoldenCase) -> Any:
++    marks = ([pytest.mark.xfail(strict=True, reason=f"known defect {KNOWN[c.test_id]}")]
++             if c.test_id in KNOWN else [])
++    return pytest.param(c, id=c.test_id, marks=marks)
++
+ 
+ def test_suite_definitions_valid() -> None:
+     assert [e.message for e in _result.errors] == []
+ 
+ 
+-@pytest.mark.parametrize("case", CASES, ids=[c.test_id for c in CASES])
++@pytest.mark.parametrize("case", [_param(c) for c in CASES])
+ def test_golden_case(case: GoldenCase) -> None:
+     r = run_case(case, registered_adapters(), CORPUS)
+     if r.status in ("NOT_IMPLEMENTED", "BLOCKED"):

@@ -1,0 +1,10 @@
+//CONCAT   JOB
+//S1       EXEC PGM=IEBGENER
+//SYSUT1   DD   DSN=A.ONE,DISP=SHR
+//         DD   DSN=A.TWO,DISP=SHR
+//         DD   DSN=A.THREE,DISP=SHR
+//SYSUT2   DD   SYSOUT=*
+//S2       EXEC PGM=X
+//         DD   DSN=ORPHAN,DISP=SHR
+//LIB      DD   DSN=L1,DISP=SHR
+//         DD   DSN=L2,DISP=SHR

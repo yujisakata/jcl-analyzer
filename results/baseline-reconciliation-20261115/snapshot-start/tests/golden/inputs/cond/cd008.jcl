@@ -1,0 +1,3 @@
+//CD008    JOB
+//STEP1    EXEC PGM=A
+//STEP2    EXEC PGM=B,COND=(4,XX)

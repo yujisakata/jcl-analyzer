@@ -1,0 +1,3 @@
+//QP007    JOB
+//STEP1    EXEC PGM=IEFBR14
+//D1       DD   DSN=A.B,SPACE=(CYL,(1,(1)))

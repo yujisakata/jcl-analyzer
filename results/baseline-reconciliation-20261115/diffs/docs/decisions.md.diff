@@ -1,0 +1,27 @@
+--- before/docs/decisions.md
++++ current/docs/decisions.md
+@@ -190,3 +190,24 @@
+ - **日付**: 2026-11-15 / **状態**: 採用 / **関連**: Step 4a 指示 D
+ - **決定**: Runner は各結果に assurance を付ける。reviewed / approved のケースは FORMAL、draft のケースは REFERENCE。報告では assurance ごとに集計を分ける
+ - **影響**: 現時点では全ケースが draft なので、Lexer が lexical ケースに一致しても REFERENCE に留まる。正式な検証の根拠は、IBM の本文から先に書いた tests/lexer のテストと property テストとし、その独立性に限界があることも報告に明記する
++
++## ADR-027 Golden View の階層表現と期待値に依存しない階層検査（R1、監査 A11）
++- **日付**: 2026-11-15 / **状態**: 採用（ユーザー指示 R1） / **関連**: ADR-016, ADR-026, ADR-028
++- **背景**: JobNode をすべて除いても Golden 比較とトレース検査が PASS した（監査 A11）。statements view には JOB→STEP→DD の階層がなく、`check_trace` は値の先頭 1 文字しか見ていなかった
++- **決定**:
++  1. statements view に任意の `hierarchy`（jobs / steps / dds / procedures / outside）を加える。平坦な statements はそのまま維持する。順序つきで比較し、期待値にないキーは `unchecked` として明示する（`docs/golden-view.md`）
++  2. Job の span は「JOB 文から、次の JOB 文の前までにそのジョブが所有する最後の物理レコードまで」とする（文、コメント、インストリームデータ、区切り文を含む）
++  3. Adapter は期待値と無関係に `check_hierarchy()`（`jclprof.harness.hierarchy`）を実行する。違反があればケースは FAILED になる。この検査は、平坦な文の並びから所属を独立に導き、木・レコードの役割・データ領域・原文位置と突き合わせる
++  4. `check_trace` は値の全文を原文の位置と照合する
++  5. レビュー前の新しい期待値は、封印済みスイートとは別の `tests/golden_pending/`（未封印）に置く。レビューと承認の後に `tests/golden/` へ移し、ユーザーが封印する
++- **検証方法**: 7 種の誤った AST（`jclprof.harness.mutations`）を注入し、すべてが検出されることを確認する（`tools/hierarchy_mutation_report.py`）
++- **限界**: 参照モデルは Parser の現在の範囲判断（Null 文の後の所属は JES2 IGNORE と同じ、など）を写している。実装・期待値・検査を同じ担当者が作成した
++
++## ADR-028 品質ゲートの分離（Gate A / Gate B）と既知欠陥台帳
++- **日付**: 2026-11-15 / **状態**: 採用（ユーザー指示 R1） / **関連**: ADR-017, ADR-018, ADR-026, ADR-027
++- **決定**:
++  1. **Gate A（開発健全性）** `tools/quality_gate.py --gate dev`（既定）。既存の検査に加え、既知欠陥台帳の妥当性、未封印の pending スイート、階層の変異検出（M1〜M7 を 100%）を確認する。FAILED と xfail は、`tests/KNOWN_DEFECTS.yaml` の OPEN の欠陥に登録されたものだけを許す。未登録のものと、登録されているのに失敗しなくなったもの（stale）は FAIL とする。PASS の表示には、OPEN の欠陥数と「受入れではない」旨を添える
++  2. **Gate B（Parser 正式受入れ）** `--gate acceptance`。Gate A に加えて、B1 範囲内の欠陥がすべて CLOSED、B2 xfail が 0、B3 範囲内の Golden がすべて approved、B4 NOT_IMPLEMENTED が 0、B5 BLOCKED が 0、B6 FAILED が 0、B7 レビュー待ちのケースが 0、B8 実行された syntactic ケースがすべて階層を検証している、B9 受入れ範囲が承認済み、をすべて満たすこと
++  3. 受入れ範囲は `tests/ACCEPTANCE_SCOPE.yaml` で、Adapter の実装状況とは独立に定義する。除外は status: APPROVED かつ approved_by がある場合にだけ有効とする
++  4. 既知欠陥の状態は OPEN → RESOLVED_PENDING_REVIEW → CLOSED とする。CLOSED には修正、xfail の除去、独立レビューが必要である
++- **影響**: `tests/harness/test_harness_cli.py` と `tests/parser/test_golden_parser.py` の判定を、「FAILED 0 件」から「FAILED は登録済みの既知欠陥に限る」に変えた（TC-013）

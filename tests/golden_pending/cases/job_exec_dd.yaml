@@ -1,0 +1,275 @@
+# REVIEW PENDING (unsealed). See tests/golden_pending/README.md.
+schema_version: 1
+category: JOB_EXEC_DD
+cases:
+- test_id: G-HIER-001
+  category: JOB_EXEC_DD
+  description: 'Two jobs: JOBLIB concatenation is job-level, STEPLIB and other DDs belong to the preceding
+    EXEC, steps belong to the preceding JOB.'
+  rule_ids:
+  - JCL-JOB-001
+  - JCL-EXEC-001
+  - JCL-DD-001
+  - JCL-DD-013
+  - JCL-STMT-COMMENT
+  source_reference:
+  - rule_id: JCL-JOB-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 21. JOB statement > Name field
+    pages: 389 (PDF 435)
+  - rule_id: JCL-EXEC-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 16. EXEC statement > Parameter field > Positional parameters (Table 19)
+    pages: 314 (PDF 360)
+  - rule_id: JCL-DD-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 12. DD statement > Name field > Omitting the ddname; Concatenating data sets
+    pages: 75 (PDF 121); 92 (PDF 138)
+  - rule_id: JCL-DD-013
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 13. Special DD statements > JOBLIB DD statement > Location in the JCL
+    pages: 295 (PDF 341)
+  - rule_id: JCL-STMT-COMMENT
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 10. Comment statement > Description; Location in the JCL
+    pages: 71 (PDF 117)
+  input_file: inputs/hierarchy/h001.jcl
+  input_kind: job
+  case_type: valid
+  validation_stage: syntactic
+  expected_structure:
+    view: statements
+    statements:
+    - kind: JOB
+      span:
+      - 1
+      - 1
+    - kind: DD
+      span:
+      - 2
+      - 2
+    - kind: DD
+      span:
+      - 3
+      - 3
+    - kind: EXEC
+      span:
+      - 4
+      - 4
+    - kind: DD
+      span:
+      - 5
+      - 5
+    - kind: DD
+      span:
+      - 6
+      - 6
+    - kind: COMMENT
+      span:
+      - 7
+      - 7
+    - kind: EXEC
+      span:
+      - 8
+      - 8
+    - kind: DD
+      span:
+      - 9
+      - 9
+    - kind: JOB
+      span:
+      - 10
+      - 10
+    - kind: EXEC
+      span:
+      - 11
+      - 11
+    - kind: DD
+      span:
+      - 12
+      - 12
+    hierarchy:
+      jobs:
+      - name: PAYROLL
+        line: 1
+        span:
+        - 1
+        - 9
+        dds:
+        - name: JOBLIB
+          line: 2
+          concat_head: JOBLIB
+          concat_index: 0
+        - name: null
+          line: 3
+          concat_head: JOBLIB
+          concat_index: 1
+        steps:
+        - name: STEP1
+          line: 4
+          target:
+          - PGM
+          - SCAN
+          dds:
+          - name: IN
+            line: 5
+            concat_head: IN
+            concat_index: 0
+          - name: STEPLIB
+            line: 6
+            concat_head: STEPLIB
+            concat_index: 0
+        - name: STEP2
+          line: 8
+          target:
+          - PGM
+          - UPDATE
+          dds:
+          - name: OUT
+            line: 9
+            concat_head: OUT
+            concat_index: 0
+        procedures: []
+      - name: JOB2
+        line: 10
+        span:
+        - 10
+        - 12
+        dds: []
+        steps:
+        - name: S
+          line: 11
+          target:
+          - PGM
+          - IEFBR14
+          dds:
+          - name: D
+            line: 12
+            concat_head: D
+            concat_index: 0
+        procedures: []
+      outside: []
+  expected_diagnostics:
+    mode: exact
+    items: []
+  oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in docs/golden-view.md
+    (ADR-027). Input JCL designed by hand. Expected statements and hierarchy written manually, never generated
+    from parser output.
+  oracle_author: Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness (R1);
+    draft awaiting independent review
+  review_status: draft
+  notes: 'Job span: JOB statement through the last record the job owns before the next JOB statement (comment
+    statement at line 7 is inside job 1).'
+- test_id: G-HIER-005
+  category: JOB_EXEC_DD
+  description: Steps of an in-stream procedure definition are not job steps; EXEC of the procedure (bare
+    name and PROC=) are job steps; a DD after the procedure EXEC belongs to that step.
+  rule_ids:
+  - JCL-PROC-001
+  - JCL-EXEC-001
+  source_reference:
+  - rule_id: JCL-PROC-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field
+    pages: 25 (PDF 71); 551 (PDF 597)
+  - rule_id: JCL-EXEC-001
+    url: https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf
+    edition: z/OS 3.2, SA23-1385-70
+    section: 16. EXEC statement > Parameter field > Positional parameters (Table 19)
+    pages: 314 (PDF 360)
+  input_file: inputs/hierarchy/h005.jcl
+  input_kind: job
+  case_type: valid
+  validation_stage: syntactic
+  expected_structure:
+    view: statements
+    statements:
+    - kind: JOB
+      span:
+      - 1
+      - 1
+    - kind: PROC
+      span:
+      - 2
+      - 2
+    - kind: EXEC
+      span:
+      - 3
+      - 3
+    - kind: DD
+      span:
+      - 4
+      - 4
+    - kind: PEND
+      span:
+      - 5
+      - 5
+    - kind: EXEC
+      span:
+      - 6
+      - 6
+    - kind: EXEC
+      span:
+      - 7
+      - 7
+    - kind: DD
+      span:
+      - 8
+      - 8
+    hierarchy:
+      jobs:
+      - name: PJOB
+        line: 1
+        span:
+        - 1
+        - 8
+        dds: []
+        steps:
+        - name: STEP1
+          line: 6
+          target:
+          - PROC
+          - CARDS
+          dds: []
+        - name: STEP2
+          line: 7
+          target:
+          - PROC
+          - CARDS
+          dds:
+          - name: SYSIN
+            line: 8
+            concat_head: SYSIN
+            concat_index: 0
+        procedures:
+        - name: CARDS
+          line: 2
+          end_line: 5
+          steps:
+          - name: PS1
+            line: 3
+            target:
+            - PGM
+            - X
+            dds:
+            - name: DD1
+              line: 4
+              concat_head: DD1
+              concat_index: 0
+      outside: []
+  expected_diagnostics:
+    mode: exact
+    items: []
+  oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in docs/golden-view.md
+    (ADR-027). Input JCL designed by hand. Expected statements and hierarchy written manually, never generated
+    from parser output.
+  oracle_author: Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness (R1);
+    draft awaiting independent review
+  review_status: draft
+  notes: 'Procedure expansion is out of Step 4b scope: the definition is recorded, not expanded.'

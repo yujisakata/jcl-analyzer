@@ -1,0 +1,15 @@
+--- /dev/null
++++ current/tests/golden_pending/inputs/hierarchy/h001.jcl
+@@ -0,0 +1,12 @@
++//PAYROLL  JOB  JONES,CLASS=C
++//JOBLIB   DD   DSNAME=PRIVATE.LIB4,DISP=SHR
++//         DD   DSNAME=PRIVATE.LIB5,DISP=SHR
++//STEP1    EXEC PGM=SCAN
++//IN       DD   DSN=A.B,DISP=SHR
++//STEPLIB  DD   DSN=L.M,DISP=SHR
++//* COMMENT INSIDE JOB
++//STEP2    EXEC PGM=UPDATE
++//OUT      DD   SYSOUT=*
++//JOB2     JOB
++//S        EXEC PGM=IEFBR14
++//D        DD   DUMMY

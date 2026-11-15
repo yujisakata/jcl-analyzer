@@ -1,0 +1,25 @@
+FAIL N1-null-JES3: JES3: T is ignored after null
+FAIL N2-null-UNKNOWN: UNKNOWN must preserve competing memberships, not determine [S,T]
+FAIL N3-continued-null: Null after continued DD is a blank comments field, not a job terminator
+FAIL N4-DLM-UNKNOWN: Competing job structures must remain explicitly environment-dependent
+FAIL D1-escaped-ampersand: Doubled && counts as one &: &@ terminates at line 5
+FAIL D2-delimiter-continuation-boundary: Line 5 is a delimiter with comment; line 6 starts an independent unnamed DD
+FAIL D3-delimiter-prefix: JES2 delimiter must be followed by a blank; AAXYZ remains data
+FAIL D4-invalid-length-empty: Invalid DLM length must produce syntax ERROR
+FAIL D4-invalid-length-one: Invalid DLM length must produce syntax ERROR
+FAIL D4-invalid-length-nineteen: Invalid DLM length must produce syntax ERROR
+FAIL D4-invalid-length-JES3-three: Invalid DLM length must produce syntax ERROR
+FAIL D5-star-DLM-EOF: Missing required DLM delimiter must be diagnosed, consistently with DD DATA
+FAIL E1-EXEC-two-targets: EXEC accepts only one of PGM=, PROC=, bare procedure
+FAIL E2-EXEC-list-target: PGM is a program name or allowed backward reference, not a list
+FAIL E3-DD-two-positionals: DD permits at most one positional parameter
+FAIL T1-job-data-span: Job source interval must include its owned inline records through EOF
+PASS C1-JOB-EXEC-DD: Ordinary JOB/EXEC/DD parses without diagnostics
+PASS C2-DD-concat: Unnamed DD joins preceding DD
+PASS C3-DATA-keeps-JCL: DD DATA preserves // records as data
+PASS C4-STAR-next-statement: DD * without DLM ends on //
+PASS C5-STAR-DLM-JES3: JES3: // stays in data until AA
+PASS C6-invalid-JOB-name: JOB name must start alphabetic or national
+PASS C7-invalid-EXEC-missing-target: EXEC without a target produces syntax ERROR
+PASS C8-DLM-without-data: DLM without * or DATA produces syntax ERROR
+8 passed, 16 failed, 24 total

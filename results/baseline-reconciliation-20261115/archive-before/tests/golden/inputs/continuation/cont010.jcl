@@ -1,0 +1,4 @@
+//CONT010  JOB
+//STEP1    EXEC PGM=IEFBR14
+//DD1      DD   DSN=A.B,
+//

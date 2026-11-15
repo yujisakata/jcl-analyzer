@@ -1,0 +1,198 @@
+"""Write the review-pending hierarchy cases (tests/golden_pending, R1 / ADR-027).
+
+The expected values below are written by hand from the cited IBM rules and the hierarchy contract
+in docs/golden-view.md. They were NOT generated from Parser output. This script only fills in
+source_reference from specs/rules.yaml, so that the citations match the registry exactly, and
+writes the YAML. The author of these expectations also wrote the Parser and the Harness: the same
+author. Every case stays draft until an independent reviewer has checked it.
+
+usage: uv run python tools/golden_authoring/make_pending_hierarchy.py
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+from jclprof.harness.registry import load_rules
+
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "tests" / "golden_pending" / "cases"
+METHOD = ("Hand-derived from the cited IBM SA23-1385-70 rules and the hierarchy contract in "
+          "docs/golden-view.md (ADR-027). Input JCL designed by hand. Expected statements and "
+          "hierarchy written manually, never generated from parser output.")
+AUTHOR = ("Claude (AI assistant, claude-opus-5-5). SAME AUTHOR as the Parser and the Harness "
+          "(R1); draft awaiting independent review")
+
+
+def dd(name: str | None, line: int | None, head: str | None, idx: int = 0,
+       **extra: Any) -> dict[str, Any]:
+    return {"name": name, "line": line, "concat_head": head, "concat_index": idx, **extra}
+
+
+def step(name: str, line: int, target: list[str], dds: list[dict[str, Any]]) -> dict[str, Any]:
+    return {"name": name, "line": line, "target": target, "dds": dds}
+
+
+def job(name: str, line: int, span: list[int], steps: list[dict[str, Any]],
+        dds: list[dict[str, Any]] | None = None,
+        procedures: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    return {"name": name, "line": line, "span": span, "dds": dds or [], "steps": steps,
+            "procedures": procedures or []}
+
+
+def st(kind: str, a: int | None, b: int | None = None, **extra: Any) -> dict[str, Any]:
+    return {"kind": kind, "span": None if a is None else [a, a if b is None else b], **extra}
+
+
+CASES: dict[str, list[dict[str, Any]]] = {
+    "JOB_EXEC_DD": [
+        {
+            "test_id": "G-HIER-001",
+            "description": "Two jobs: JOBLIB concatenation is job-level, STEPLIB and other DDs "
+                           "belong to the preceding EXEC, steps belong to the preceding JOB.",
+            "rule_ids": ["JCL-JOB-001", "JCL-EXEC-001", "JCL-DD-001", "JCL-DD-013",
+                         "JCL-STMT-COMMENT"],
+            "input_file": "inputs/hierarchy/h001.jcl", "case_type": "valid",
+            "statements": [st("JOB", 1), st("DD", 2), st("DD", 3), st("EXEC", 4), st("DD", 5),
+                           st("DD", 6), st("COMMENT", 7), st("EXEC", 8), st("DD", 9),
+                           st("JOB", 10), st("EXEC", 11), st("DD", 12)],
+            "hierarchy": {"jobs": [
+                job("PAYROLL", 1, [1, 9],
+                    dds=[dd("JOBLIB", 2, "JOBLIB"), dd(None, 3, "JOBLIB", 1)],
+                    steps=[step("STEP1", 4, ["PGM", "SCAN"],
+                                [dd("IN", 5, "IN"), dd("STEPLIB", 6, "STEPLIB")]),
+                           step("STEP2", 8, ["PGM", "UPDATE"], [dd("OUT", 9, "OUT")])]),
+                job("JOB2", 10, [10, 12],
+                    steps=[step("S", 11, ["PGM", "IEFBR14"], [dd("D", 12, "D")])]),
+            ], "outside": []},
+            "diagnostics": [],
+            "notes": "Job span: JOB statement through the last record the job owns before the "
+                     "next JOB statement (comment statement at line 7 is inside job 1).",
+        },
+        {
+            "test_id": "G-HIER-005",
+            "description": "Steps of an in-stream procedure definition are not job steps; EXEC of "
+                           "the procedure (bare name and PROC=) are job steps; a DD after the "
+                           "procedure EXEC belongs to that step.",
+            "rule_ids": ["JCL-PROC-001", "JCL-EXEC-001"],
+            "input_file": "inputs/hierarchy/h005.jcl", "case_type": "valid",
+            "statements": [st("JOB", 1), st("PROC", 2), st("EXEC", 3), st("DD", 4),
+                           st("PEND", 5), st("EXEC", 6), st("EXEC", 7), st("DD", 8)],
+            "hierarchy": {"jobs": [
+                job("PJOB", 1, [1, 8],
+                    steps=[step("STEP1", 6, ["PROC", "CARDS"], []),
+                           step("STEP2", 7, ["PROC", "CARDS"], [dd("SYSIN", 8, "SYSIN")])],
+                    procedures=[{"name": "CARDS", "line": 2, "end_line": 5,
+                                 "steps": [step("PS1", 3, ["PGM", "X"], [dd("DD1", 4, "DD1")])]}]),
+            ], "outside": []},
+            "diagnostics": [],
+            "notes": "Procedure expansion is out of Step 4b scope: the definition is recorded, "
+                     "not expanded.",
+        },
+    ],
+    "DD_CONCATENATION": [
+        {
+            "test_id": "G-HIER-002",
+            "description": "Unnamed DDs are concatenated to the preceding DD of the same step; an "
+                           "unnamed DD directly after EXEC has no preceding DD in its step.",
+            "rule_ids": ["JCL-DD-001"],
+            "input_file": "inputs/hierarchy/h002.jcl", "case_type": "boundary",
+            "statements": [st("JOB", 1), st("EXEC", 2), st("DD", 3), st("DD", 4), st("DD", 5),
+                           st("DD", 6), st("EXEC", 7), st("DD", 8), st("DD", 9), st("DD", 10)],
+            "hierarchy": {"jobs": [
+                job("CONCAT", 1, [1, 10], steps=[
+                    step("S1", 2, ["PGM", "IEBGENER"],
+                         [dd("SYSUT1", 3, "SYSUT1"), dd(None, 4, "SYSUT1", 1),
+                          dd(None, 5, "SYSUT1", 2), dd("SYSUT2", 6, "SYSUT2")]),
+                    step("S2", 7, ["PGM", "X"],
+                         [dd(None, 8, None), dd("LIB", 9, "LIB"), dd(None, 10, "LIB", 1)]),
+                ]),
+            ], "outside": []},
+            "diagnostics": [{"code": "PAR-W004", "severity": "WARNING", "line": 8}],
+            "notes": "The DD at line 8 is not concatenated across the step boundary.",
+        },
+    ],
+    "INSTREAM_DATA": [
+        {
+            "test_id": "G-HIER-003",
+            "description": "DD * data with /*, implicit SYSIN for data without a DD, DD DATA "
+                           "containing a // record: data records are not statements and every "
+                           "DD belongs to its step.",
+            "rule_ids": ["JCL-DD-003", "JCL-DD-004", "JCL-DD-006", "JCL-STMT-DELIM"],
+            "input_file": "inputs/hierarchy/h003.jcl", "case_type": "valid",
+            "statements": [st("JOB", 1), st("EXEC", 2), st("DD", 3), st("DELIMITER", 6),
+                           st("EXEC", 7), st("DD", None, implicit=True), st("DD", 9),
+                           st("EXEC", 10), st("DD", 11), st("DELIMITER", 13),
+                           st("COMMENT", 14)],
+            "hierarchy": {"jobs": [
+                job("INST", 1, [1, 14], steps=[
+                    step("S1", 2, ["PGM", "A"],
+                         [dd("SYSIN", 3, "SYSIN",
+                             inline_data={"records": [4, 5], "terminator": "DELIMITER"})]),
+                    step("S2", 7, ["PGM", "B"],
+                         [dd("SYSIN", None, "SYSIN", implicit=True,
+                             inline_data={"records": [8, 8], "terminator": "NEXT_STATEMENT"}),
+                          dd("OUT", 9, "OUT")]),
+                    step("S3", 10, ["PGM", "C"],
+                         [dd("SYSUT1", 11, "SYSUT1",
+                             inline_data={"records": [12, 12], "terminator": "DELIMITER"})]),
+                ]),
+            ], "outside": []},
+            "diagnostics": [],
+            "notes": "Line 12 (//NOTJCL JOB) is DD DATA data, so there is only one job.",
+        },
+        {
+            "test_id": "G-HIER-004",
+            "description": "DD DATA data that runs to end of input belongs to the job: the job "
+                           "span contains the data records.",
+            "rule_ids": ["JCL-DD-004", "JCL-STMT-DELIM", "POL-006"],
+            "input_file": "inputs/hierarchy/h004.jcl", "case_type": "boundary",
+            "statements": [st("JOB", 1), st("EXEC", 2),
+                           st("DD", 3, inline_data={"records": [4, 5], "terminator": "EOF",
+                                                    "delimiter": None})],
+            "hierarchy": {"jobs": [
+                job("EOFJOB", 1, [1, 5], steps=[
+                    step("S1", 2, ["PGM", "A"],
+                         [dd("SYSUT1", 3, "SYSUT1",
+                             inline_data={"records": [4, 5], "terminator": "EOF"})]),
+                ]),
+            ], "outside": []},
+            "diagnostics": [{"code": "LEX-W002", "severity": "WARNING", "line": 3}],
+            "notes": "Expected to FAIL with the current Parser (known defect A10: Job.span stops "
+                     "at the last statement).",
+        },
+    ],
+}
+
+
+def main() -> None:
+    reg = load_rules(ROOT / "specs" / "rules.yaml")
+    OUT.mkdir(parents=True, exist_ok=True)
+    for category, cases in CASES.items():
+        out = []
+        for c in cases:
+            out.append({
+                "test_id": c["test_id"], "category": category, "description": c["description"],
+                "rule_ids": c["rule_ids"],
+                "source_reference": [reg.source_reference(r) for r in c["rule_ids"]],
+                "input_file": c["input_file"], "input_kind": "job", "case_type": c["case_type"],
+                "validation_stage": "syntactic",
+                "expected_structure": {"view": "statements", "statements": c["statements"],
+                                       "hierarchy": c["hierarchy"]},
+                "expected_diagnostics": {"mode": "exact", "items": c["diagnostics"]},
+                "oracle_method": METHOD, "oracle_author": AUTHOR, "review_status": "draft",
+                "notes": c["notes"],
+            })
+        doc = {"schema_version": 1, "category": category, "cases": out}
+        path = OUT / f"{category.lower()}.yaml"
+        path.write_text("# REVIEW PENDING (unsealed). See tests/golden_pending/README.md.\n"
+                        + yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=100),
+                        encoding="utf-8", newline="\n")
+        print(f"wrote {path.relative_to(ROOT)} ({len(out)} case(s))")
+
+
+if __name__ == "__main__":
+    main()

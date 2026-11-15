@@ -1,0 +1,238 @@
+"""In-memory AST mutation operators for the hierarchy checks (R1 / audit A11).
+
+Each operator returns altered copies of a ParseResult (the input file, the Parser and the Golden
+expectations are never touched). A detector is adequate only if it rejects every applicable
+mutant: the point is that a WRONG tree is detected, not that a correct tree passes.
+
+Operators (instruction R1):
+  M1 drop_all_jobs         remove every JobNode
+  M2 drop_step             remove one StepNode
+  M3 move_step_to_job      move one StepNode to another JobNode
+  M4 move_dd_to_step       move one DDNode to another StepNode
+  M5 change_exec_target    change the program / procedure name of one step target
+  M6 shift_data_boundary   move the end of one in-stream data region by one record
+  M7 shrink_job_span       shrink one Job.span by one record
+Consistency variants (the same fact changed everywhere it is stored, so that only the source text
+or a Golden expectation can reveal it):
+  M5c change_exec_target_everywhere  target and the EXEC statement's PGM=/PROC= value
+  M6c shift_data_boundary_everywhere region, record roles and diagnostics updated together
+"""
+
+from __future__ import annotations
+
+from collections.abc import Callable, Iterator
+from dataclasses import dataclass, replace
+from typing import Any
+
+from jclprof.parser import ParseResult
+from jclprof.parser.model import (
+    DataRegion,
+    DDNode,
+    JobNode,
+    KeywordParam,
+    ParseDiagnostic,
+    RecordRole,
+    StatementNode,
+    StepNode,
+    Value,
+)
+
+
+@dataclass(frozen=True)
+class Mutant:
+    operator: str
+    target: str
+    result: ParseResult
+
+
+def _with_jobs(r: ParseResult, jobs: list[JobNode]) -> ParseResult:
+    return replace(r, jobs=tuple(jobs))
+
+
+def _replace_statement(r: ParseResult, new: StatementNode) -> ParseResult:
+    """Replace the statement with new.id everywhere it is referenced (flat list and tree)."""
+    def fix_dd(d: DDNode) -> DDNode:
+        return replace(d, statement=new) if d.statement.id == new.id else d
+
+    def fix_step(s: StepNode) -> StepNode:
+        ex = new if s.exec_statement.id == new.id else s.exec_statement
+        return replace(s, exec_statement=ex, dds=tuple(fix_dd(d) for d in s.dds))
+
+    jobs = [replace(j, job_level_dds=tuple(fix_dd(d) for d in j.job_level_dds),
+                    steps=tuple(fix_step(s) for s in j.steps),
+                    procedures=tuple(replace(p, steps=tuple(fix_step(s) for s in p.steps))
+                                     for p in j.procedures)) for j in r.jobs]
+    return replace(r, statements=tuple(new if s.id == new.id else s for s in r.statements),
+                   jobs=tuple(jobs),
+                   procedure_steps=tuple(fix_step(s) for s in r.procedure_steps))
+
+
+# ---------------------------------------------------------------- M1-M7
+def drop_all_jobs(r: ParseResult) -> Iterator[Mutant]:
+    if r.jobs:
+        yield Mutant("M1 drop_all_jobs", "all", _with_jobs(r, []))
+
+
+def drop_step(r: ParseResult) -> Iterator[Mutant]:
+    for ji, j in enumerate(r.jobs):
+        for si, s in enumerate(j.steps):
+            jobs = list(r.jobs)
+            jobs[ji] = replace(j, steps=j.steps[:si] + j.steps[si + 1:])
+            yield Mutant("M2 drop_step", s.id, _with_jobs(r, jobs))
+
+
+def move_step_to_job(r: ParseResult) -> Iterator[Mutant]:
+    for ji, j in enumerate(r.jobs):
+        for si, s in enumerate(j.steps):
+            for ki, k in enumerate(r.jobs):
+                if ki == ji:
+                    continue
+                jobs = list(r.jobs)
+                jobs[ji] = replace(j, steps=j.steps[:si] + j.steps[si + 1:])
+                jobs[ki] = replace(k, steps=(*k.steps, s))
+                yield Mutant("M3 move_step_to_job", f"{s.id}->{k.id}", _with_jobs(r, jobs))
+                break  # one destination per step is enough
+
+
+def move_dd_to_step(r: ParseResult) -> Iterator[Mutant]:
+    steps = [(ji, si) for ji, j in enumerate(r.jobs) for si in range(len(j.steps))]
+    for ji, si in steps:
+        src = r.jobs[ji].steps[si]
+        for di, d in enumerate(src.dds):
+            dst = next(((a, b) for a, b in steps if (a, b) != (ji, si)), None)
+            if dst is None:
+                return
+            jsteps: list[list[StepNode]] = [list(j.steps) for j in r.jobs]
+            jsteps[ji][si] = replace(src, dds=src.dds[:di] + src.dds[di + 1:])
+            a, b = dst
+            jsteps[a][b] = replace(jsteps[a][b], dds=(*jsteps[a][b].dds, d))
+            jobs = [replace(j, steps=tuple(jsteps[i])) for i, j in enumerate(r.jobs)]
+            yield Mutant("M4 move_dd_to_step", f"{d.statement.id}->{jsteps[a][b].id}",
+                         _with_jobs(r, jobs))
+
+
+def change_exec_target(r: ParseResult) -> Iterator[Mutant]:
+    for ji, j in enumerate(r.jobs):
+        for si, s in enumerate(j.steps):
+            if s.target is None:
+                continue
+            jobs = list(r.jobs)
+            steps = list(j.steps)
+            steps[si] = replace(s, target=(s.target[0], s.target[1] + "X"))
+            jobs[ji] = replace(j, steps=tuple(steps))
+            yield Mutant("M5 change_exec_target", s.id, _with_jobs(r, jobs))
+
+
+def _regions(r: ParseResult) -> Iterator[tuple[StatementNode, DataRegion, tuple[int, int]]]:
+    last = len(r.records)
+    for s in r.statements:
+        g = s.inline
+        if g is None or g.status != "DETERMINED" or not g.records:
+            continue
+        lo, hi = g.records
+        if hi > lo:
+            yield s, g, (lo, hi - 1)
+        elif hi + 1 <= last and (g.terminator_line is None or hi + 1 < g.terminator_line):
+            yield s, g, (lo, hi + 1)
+
+
+def shift_data_boundary(r: ParseResult) -> Iterator[Mutant]:
+    for s, g, new in _regions(r):
+        g2 = replace(g, records=new)
+        r2 = _replace_statement(r, replace(s, inline=g2))
+        r2 = replace(r2, data_regions=tuple(g2 if x.id == g.id else x for x in r.data_regions))
+        yield Mutant("M6 shift_data_boundary", g.id, r2)
+
+
+def shrink_job_span(r: ParseResult) -> Iterator[Mutant]:
+    for ji, j in enumerate(r.jobs):
+        lo, hi = j.span
+        if hi > lo:
+            jobs = list(r.jobs)
+            jobs[ji] = replace(j, span=(lo, hi - 1))
+            yield Mutant("M7 shrink_job_span", j.id, _with_jobs(r, jobs))
+
+
+# ---------------------------------------------------------------- consistency variants
+def change_exec_target_everywhere(r: ParseResult) -> Iterator[Mutant]:
+    for j in r.jobs:
+        for s in j.steps:
+            ex = s.exec_statement
+            if s.target is None or s.target[0] != "PGM":
+                continue
+            kws = []
+            for k in ex.keywords:
+                if k.name == "PGM" and k.value is not None:
+                    v = k.value
+                    nv: Value = replace(v, text=v.text + "X",
+                                        value=(v.value + "X") if v.value else v.value)
+                    k = KeywordParam(k.name, k.line, k.column, nv)
+                kws.append(k)
+            r2 = _replace_statement(r, replace(ex, keywords=tuple(kws)))
+            jobs = [replace(jj, steps=tuple(
+                replace(ss, target=(ss.target[0], ss.target[1] + "X"))
+                if ss.id == s.id and ss.target else ss for ss in jj.steps)) for jj in r2.jobs]
+            yield Mutant("M5c change_exec_target_everywhere", s.id, _with_jobs(r2, jobs))
+
+
+def shift_data_boundary_everywhere(r: ParseResult) -> Iterator[Mutant]:
+    for m in shift_data_boundary(r):
+        g = next(x for x in m.result.data_regions if x.id == m.target)
+        assert g.records is not None
+        lo, hi = g.records
+        roles = []
+        for rr in m.result.records:
+            if rr.region_id == g.id and rr.role == "DATA" and not lo <= rr.line <= hi:
+                rr = RecordRole(rr.line, rr.lexer_kind, "UNRECOGNIZED", None, None)
+            elif lo <= rr.line <= hi and rr.role != "DATA":
+                rr = RecordRole(rr.line, rr.lexer_kind, "DATA", g.statement_id, g.id)
+            roles.append(rr)
+        diags = list(m.result.diagnostics) + [
+            ParseDiagnostic("PAR-W006", "WARNING", "ANALYZABILITY", rr.line, None, "mutant")
+            for rr in roles if rr.role == "UNRECOGNIZED" and rr.region_id is None
+            and not any(d.code == "PAR-W006" and d.line == rr.line
+                        for d in m.result.diagnostics)]
+        yield Mutant("M6c shift_data_boundary_everywhere", g.id,
+                     replace(m.result, records=tuple(roles), diagnostics=tuple(diags)))
+
+
+REQUIRED: tuple[Callable[[ParseResult], Iterator[Mutant]], ...] = (
+    drop_all_jobs, drop_step, move_step_to_job, move_dd_to_step, change_exec_target,
+    shift_data_boundary, shrink_job_span)
+CONSISTENT: tuple[Callable[[ParseResult], Iterator[Mutant]], ...] = (
+    change_exec_target_everywhere, shift_data_boundary_everywhere)
+
+
+def all_mutants(r: ParseResult, *, consistent: bool = True) -> Iterator[Mutant]:
+    for op in REQUIRED + (CONSISTENT if consistent else ()):
+        yield from op(r)
+
+
+# ---------------------------------------------------------------- detection
+DETECTORS = ("invariants", "trace", "golden")
+
+
+def detect(m: Mutant, original: ParseResult, text: str,
+           expected: dict[str, Any] | None = None) -> dict[str, bool | None]:
+    """Which detectors reject the mutant. invariants: a violation not present on the original
+    (known-defect violations of the original are therefore not counted); trace: check_trace
+    raises; golden: the Golden comparison (statements + hierarchy) differs, None when the input
+    has no expectation."""
+    from jclprof.harness.comparator import compare_structure
+    from jclprof.harness.hierarchy import check_hierarchy
+    from jclprof.harness.trace import check_trace
+    from jclprof.parser.adapter import hierarchy_view
+
+    base = set(check_hierarchy(original))
+    inv = bool(set(check_hierarchy(m.result)) - base)
+    try:
+        check_trace(m.result, text)
+        trace = False
+    except AssertionError:
+        trace = True
+    golden: bool | None = None
+    if expected is not None:
+        view = m.result.to_golden_view()
+        view["hierarchy"] = hierarchy_view(m.result)
+        golden = not compare_structure(expected, view).ok
+    return {"invariants": inv, "trace": trace, "golden": golden}

@@ -1,0 +1,38 @@
+--- before/docs/reviews/parser-defects-04b.md
++++ current/docs/reviews/parser-defects-04b.md
+@@ -1,7 +1,7 @@
+ # Step 4b Parser 欠陥分析と修正設計（レビュー依頼）
+ 
+ - 日付: 2026-11-15
+-- 状態: **設計レビュー待ち**。修正コードは実装していない。Golden の期待値と既存テストは変更していない
++- 状態: **設計レビュー待ち**（ADR 番号は R1 で ADR-027/028 を使用したため ADR-029/030 に繰り下げた）。修正コードは実装していない。Golden の期待値と既存テストは変更していない
+ - 対象: 独立監査で指摘された 2 件（D-1、D-2）と、その調査中に見つかった関連欠陥 1 件（D-3）
+ - 再現テスト: [tests/parser/test_known_defects_04b.py](../../tests/parser/test_known_defects_04b.py)（9 件、すべて `xfail(strict=True)`。TC-012）
+ 
+@@ -117,7 +117,7 @@
+ 
+ `after_null` は構文層の事実 `follows_null_statement: <行番号>` に置き換え、所属の判断には使わない。
+ 
+-### 4.2 Environment Profile の拡張（ADR-027 案）
++### 4.2 Environment Profile の拡張（ADR-029 案）
+ 
+ ```yaml
+ environment:
+@@ -168,7 +168,7 @@
+ | 成果物 | 変更 |
+ |---|---|
+ | `config/profiler.yaml` とスキーマ、`context/config.py` | `environment.jes2_nulljcl` を追加 |
+-| `docs/decisions.md` | ADR-027（NULLJCL を Environment Profile に持つ）、ADR-028（解釈ごとの解析と統合）。ADR-025 の未決事項（Null 文でジョブが終わるか）は Q-1 の決定で解消する |
++| `docs/decisions.md` | ADR-029（NULLJCL を Environment Profile に持つ）、ADR-030（解釈ごとの解析と統合）。ADR-025 の未決事項（Null 文でジョブが終わるか）は Q-1 の決定で解消する |
+ | `requirements.md` の変更履歴 | ADR-014 に従って記録する |
+ | `specs/diagnostic-catalog.yaml` | PAR-I001 の意味の変更。新しいコード（読み飛ばし INFO、D-3 の SPEC_UNCONFIRMED WARNING） |
+ | `specs/rules.yaml` | N-4 と N-5 を新しい規則（例: JES2-INPUT-001/002、文書 IBM-JES2INIT-32）として追加し、md を再生成する |
+@@ -259,7 +259,7 @@
+ | Q-3 | 読み飛ばされる範囲の中にある DD \* などのデータ領域をどう扱うか | (A, 推奨) 読み飛ばされる範囲の中でも、データ領域の終端は同じ規則で決めて保持する（`//` で始まるデータが JOB 文として誤認されないようにするため） / (B) すべてのレコードを一律に SKIPPED とする |
+ | Q-4 | G-IS-005 の解除方法と「record 6 is stray」の読み方 | 修正後に `interpretations` ビューで draft にし、7 行目（ケースの入力では 6 行目）を補われた SYSIN のデータとして扱う（D-c） |
+ | Q-5 | JES2-IGNORE で、Null 文の後の文がそのジョブに属すること（EXPECT_IGNORE）は妥当か | N-2 の「JES2 ignores a NULL statement」と N-4 の「continues reading the current job」に基づく。ただし z/OS のコンバーターの段階で N-1 が適用されるかどうかは、明記されていない。レビューでのご確認をお願いしたい |
+-| Q-6 | ADR-027（NULLJCL）と ADR-028（解釈ごとの解析と統合）、AST schema v2、Golden スキーマの拡張、診断コードの追加 | この設計のとおり進めてよいか |
++| Q-6 | ADR-029（NULLJCL）と ADR-030（解釈ごとの解析と統合）、AST schema v2、Golden スキーマの拡張、診断コードの追加 | この設計のとおり進めてよいか |
+ | Q-7 | 品質ゲートの 2 段階化と、B-3 / B-9 の閾値 | 8 章の案でよいか |
+ 
+ ## 10. 今回の作業範囲

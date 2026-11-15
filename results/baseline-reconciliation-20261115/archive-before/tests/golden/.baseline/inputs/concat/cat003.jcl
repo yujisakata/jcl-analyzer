@@ -1,0 +1,3 @@
+//CAT003   JOB
+//STEP1    EXEC PGM=IEBGENER
+//         DD   DSN=A.B,DISP=SHR

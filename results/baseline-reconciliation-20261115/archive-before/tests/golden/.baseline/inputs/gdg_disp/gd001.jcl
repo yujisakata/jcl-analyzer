@@ -1,0 +1,6 @@
+//GD001    JOB
+//STEP1    EXEC PGM=IEFBR14
+//TRANSACT DD DISP=(NEW,CATLG,DELETE),
+//         UNIT=SYSDA,
+//         SPACE=(CYL,(1,1),RLSE),
+//         DSN=APP.SYSTRAN(+1)

@@ -1,0 +1,2875 @@
+{
+ "totals": {
+  "files": 48,
+  "records": 3046,
+  "jobs": 46,
+  "steps": 123,
+  "dds": 500,
+  "files_with_instream": 36,
+  "data_regions": 91,
+  "undetermined_regions": 0,
+  "data_records": 635,
+  "unknown_statements": 0,
+  "syntax_errors": 0,
+  "diagnostics_by_code": {},
+  "unrecognized_records": 0,
+  "limitations": {
+   "COND_NOT_ANALYZED": 6,
+   "LIBRARY_SEARCH_NOT_RESOLVED": 3,
+   "PROC_NOT_EXPANDED": 5,
+   "SYMBOLS_NOT_RESOLVED": 4
+  },
+  "unexplained_cross_check_differences": 0,
+  "jes": "UNKNOWN"
+ },
+ "files": [
+  {
+   "file": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+   "input_kind": "job",
+   "sha256": "c90fbd21b8ea2b6448b8939ff4f3b47c6f73472465cd7d1e25871f7779063a86",
+   "records": 47,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 17,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 2,
+   "statement_kinds": {
+    "COMMENT": 25,
+    "DD": 17,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00036",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      37,
+      37
+     ],
+     "terminator": "NEXT_STATEMENT"
+    }
+   ],
+   "data_records": 1,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 17,
+    "parser_dd": 17,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+   "input_kind": "job",
+   "sha256": "3fabb7f3230f98fee855a8d436f70f4bd601a9e544f29c83d413a3a7a61efbcd",
+   "records": 47,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 19,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 2,
+   "statement_kinds": {
+    "COMMENT": 15,
+    "DD": 19,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00034",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      35,
+      35
+     ],
+     "terminator": "NEXT_STATEMENT"
+    }
+   ],
+   "data_records": 1,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 19,
+    "parser_dd": 19,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+   "input_kind": "job",
+   "sha256": "9a0a88472f69236d14b36ecc89d83f35179d5c720c2c3a465af5f7ff510fb067",
+   "records": 51,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 14,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 3,
+   "statement_kinds": {
+    "COMMENT": 32,
+    "DD": 14,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 14,
+    "parser_dd": 14,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+   "input_kind": "job",
+   "sha256": "1da94de3db6f265578c8b7498a2371c0c7246c8409f4ac44eb8013d3f0e113b8",
+   "records": 53,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 16,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 3,
+   "statement_kinds": {
+    "COMMENT": 30,
+    "DD": 16,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 16,
+    "parser_dd": 16,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+   "input_kind": "job",
+   "sha256": "e2c26ca546ab427d66cadeaff07345bad706c979ca396fb04e60d401dc93c66b",
+   "records": 69,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 21,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 3,
+   "statement_kinds": {
+    "COMMENT": 34,
+    "DD": 21,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 21,
+    "parser_dd": 21,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-transaction-type-db2/jcl/CREADB21.jcl",
+   "input_kind": "job",
+   "sha256": "88b81b1d8530037d1661321e47600b9afb2a2cf4894c7eefeacd5aff07b87d69",
+   "records": 84,
+   "jobs": 1,
+   "steps": 5,
+   "steps_in_instream_procs": 0,
+   "dds": 30,
+   "job_level_dds": 3,
+   "implicit_dds": 0,
+   "concatenated_dds": 6,
+   "statement_kinds": {
+    "COMMENT": 44,
+    "DD": 30,
+    "EXEC": 5,
+    "JOB": 1,
+    "SET": 3
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED",
+    "SYMBOLS_NOT_RESOLVED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 5,
+    "parser_exec": 5,
+    "regex_dd": 30,
+    "parser_dd": 30,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+   "input_kind": "job",
+   "sha256": "beaba6e4e35092c2ac7c1be7a3708303cc75d0fca00b64c65ee2d2bc1682f893",
+   "records": 30,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 7,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 2,
+   "statement_kinds": {
+    "COMMENT": 18,
+    "DD": 7,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00028",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      29,
+      30
+     ],
+     "terminator": "EOF"
+    }
+   ],
+   "data_records": 2,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 7,
+    "parser_dd": 7,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+   "input_kind": "job",
+   "sha256": "d4d3b99a71b91fbce9c145283642ee7ca31b5ad7fa51ddcdb3e2c0b2e530457f",
+   "records": 122,
+   "jobs": 1,
+   "steps": 5,
+   "steps_in_instream_procs": 0,
+   "dds": 28,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 2,
+   "statement_kinds": {
+    "COMMENT": 39,
+    "DD": 28,
+    "DELIMITER": 4,
+    "EXEC": 5,
+    "JOB": 1,
+    "SET": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00075",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      76,
+      84
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00086",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      87,
+      90
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00105",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      106,
+      115
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00117",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      118,
+      121
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 27,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED",
+    "SYMBOLS_NOT_RESOLVED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 5,
+    "parser_exec": 5,
+    "regex_dd": 28,
+    "parser_dd": 28,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/ACCTFILE.jcl",
+   "input_kind": "job",
+   "sha256": "92ce6733ad0e3fad640e19d1224003fe30c711c2564eb7a660d53fd7f0dd6622",
+   "records": 65,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 8,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      49
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CARDFILE.jcl",
+   "input_kind": "job",
+   "sha256": "795600a41abec0706aec8bd0dd93446b29cf01fcd8f9d2173e4ec6d5476611d0",
+   "records": 128,
+   "jobs": 1,
+   "steps": 8,
+   "steps_in_instream_procs": 0,
+   "dds": 20,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 46,
+    "DD": 20,
+    "DELIMITER": 8,
+    "EXEC": 8,
+    "JOB": 1,
+    "NULL": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      41
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00049",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      50,
+      63
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00074",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      75,
+      75
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00082",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      83,
+      92
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00099",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      100,
+      102
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00109",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      110,
+      112
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00121",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      122,
+      123
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 41,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 8,
+    "parser_exec": 8,
+    "regex_dd": 20,
+    "parser_dd": 20,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CBADMCDJ.jcl",
+   "input_kind": "job",
+   "sha256": "49b99c74e97d7177e558748f58b73cc418daacd93b415d908b09651393841916",
+   "records": 167,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 5,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 26,
+    "DD": 5,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1,
+    "NULL": 1,
+    "SET": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00033",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      34,
+      162
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 129,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "SYMBOLS_NOT_RESOLVED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 5,
+    "parser_dd": 5,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CBEXPORT.jcl",
+   "input_kind": "job",
+   "sha256": "e5d010a3209dbbcf6d9b92a3c71b7c806019ce014ad921430eed9abf1706f804",
+   "records": 72,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 11,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 37,
+    "DD": 11,
+    "DELIMITER": 1,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00026",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      27,
+      38
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 12,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 11,
+    "parser_dd": 11,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CBIMPORT.jcl",
+   "input_kind": "job",
+   "sha256": "9f3adc0cde9d471b0976a4e4c5bee625a65fd0cdcc1e031d9abde8f5c3e8ccf5",
+   "records": 68,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 9,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 34,
+    "DD": 9,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 9,
+    "parser_dd": 9,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CLOSEFIL.jcl",
+   "input_kind": "job",
+   "sha256": "e47d406dde49f06847a46559fa9a7182b80b85f0727a5f0be312286f34df9192",
+   "records": 34,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 3,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 3,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      30
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 5,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 3,
+    "parser_dd": 3,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/COMBTRAN.jcl",
+   "input_kind": "job",
+   "sha256": "a91649d6a927e1fd7b81fcdab39088ae26554eea52b07d5715e488c81c3f2cc2",
+   "records": 52,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 10,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 1,
+   "statement_kinds": {
+    "COMMENT": 25,
+    "DD": 10,
+    "DELIMITER": 2,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00027",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      28,
+      28
+     ],
+     "terminator": "NEXT_STATEMENT"
+    },
+    {
+     "dd_statement": "S00029",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      30,
+      30
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00047",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      48,
+      48
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 3,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 10,
+    "parser_dd": 10,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CREASTMT.JCL",
+   "input_kind": "job",
+   "sha256": "87a18700fac7bccfffbefa5d80fed0b171fdc36caeebb575c8a3cf66e4fc3caa",
+   "records": 97,
+   "jobs": 1,
+   "steps": 5,
+   "steps_in_instream_procs": 0,
+   "dds": 22,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 22,
+    "DELIMITER": 3,
+    "EXEC": 5,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      39
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00052",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      53,
+      54
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 5,
+    "parser_exec": 5,
+    "regex_dd": 22,
+    "parser_dd": 22,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/CUSTFILE.jcl",
+   "input_kind": "job",
+   "sha256": "5fa6da4bc85866f0e08783585e7c652d312179982dbdd821866f569a083ac976",
+   "records": 84,
+   "jobs": 1,
+   "steps": 5,
+   "steps_in_instream_procs": 0,
+   "dds": 14,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 36,
+    "DD": 14,
+    "DELIMITER": 5,
+    "EXEC": 5,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      26
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00034",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      35,
+      37
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00045",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      46,
+      59
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00070",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      71,
+      71
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00079",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      80,
+      80
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 20,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 5,
+    "parser_exec": 5,
+    "regex_dd": 14,
+    "parser_dd": 14,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DALYREJS.jcl",
+   "input_kind": "job",
+   "sha256": "ce396a6469c84577ea508d184f7ea6a42ceacd54c6a5e0fb097e626bb6361d45",
+   "records": 32,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 2,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 2,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00023",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      24,
+      28
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 5,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 2,
+    "parser_dd": 2,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DEFCUST.jcl",
+   "input_kind": "job",
+   "sha256": "03dd2fc683ced79ec53269f6a24d48ceadb87ae4d6a5b48b65a37763046dfd58",
+   "records": 47,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 23,
+    "DD": 4,
+    "DELIMITER": 2,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      26
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00034",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      35,
+      46
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 14,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DEFGDGB.jcl",
+   "input_kind": "job",
+   "sha256": "4ccd135a079641b2d484b7789ea0f47955725774442283274f204480c0903f3f",
+   "records": 63,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 2,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 2,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00023",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      24,
+      59
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 36,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 2,
+    "parser_dd": 2,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DEFGDGD.jcl",
+   "input_kind": "job",
+   "sha256": "78c13d7e0e851aecd1acbfcedd26b60633a3a850dcd9fe38de339362be5e4830",
+   "records": 94,
+   "jobs": 1,
+   "steps": 6,
+   "steps_in_instream_procs": 0,
+   "dds": 18,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 40,
+    "DD": 18,
+    "DELIMITER": 3,
+    "EXEC": 6,
+    "JOB": 1,
+    "NULL": 2
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00026",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      27,
+      31
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00049",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      50,
+      54
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00072",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      73,
+      77
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 15,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 6,
+    "parser_exec": 6,
+    "regex_dd": 18,
+    "parser_dd": 18,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DISCGRP.jcl",
+   "input_kind": "job",
+   "sha256": "64a250c918cc8205eddd6d51615e24a8c23585ff012ea518c6d452ebd7d71492",
+   "records": 65,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 8,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      49
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/DUSRSECJ.jcl",
+   "input_kind": "job",
+   "sha256": "71a529aab49502e9ce57abcdb268a896e34b947409d3278c5dd813f93105e33f",
+   "records": 92,
+   "jobs": 1,
+   "steps": 4,
+   "steps_in_instream_procs": 0,
+   "dds": 12,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 43,
+    "DD": 12,
+    "DELIMITER": 3,
+    "EXEC": 4,
+    "JOB": 1,
+    "NULL": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00034",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      35,
+      44
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00061",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      62,
+      73
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00086",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      87,
+      87
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 23,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 4,
+    "parser_exec": 4,
+    "regex_dd": 12,
+    "parser_dd": 12,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/ESDSRRDS.jcl",
+   "input_kind": "job",
+   "sha256": "9bec766029968057b831f539cc91b84e4e1d8ee22aa3de5ba6b509f8a698de77",
+   "records": 124,
+   "jobs": 1,
+   "steps": 6,
+   "steps_in_instream_procs": 0,
+   "dds": 19,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 55,
+    "DD": 19,
+    "DELIMITER": 5,
+    "EXEC": 6,
+    "JOB": 1,
+    "NULL": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      45
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00062",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      63,
+      72
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00085",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      86,
+      86
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00096",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      97,
+      106
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00119",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      120,
+      120
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 32,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 6,
+    "parser_exec": 6,
+    "regex_dd": 19,
+    "parser_dd": 19,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/FTPJCL.JCL",
+   "input_kind": "job",
+   "sha256": "10393acea782d865532700ac61c9282c0438e921b34e698ddba1a046e974899a",
+   "records": 42,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 1,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00032",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      33,
+      41
+     ],
+     "terminator": "NEXT_STATEMENT"
+    }
+   ],
+   "data_records": 9,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 1,
+    "parser_dd": 1,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/INTCALC.jcl",
+   "input_kind": "job",
+   "sha256": "b9313658a1e6fdb570a765c5e5e0e9e23d83f7062439c7d18544da986fbf108d",
+   "records": 44,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 9,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 9,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 9,
+    "parser_dd": 9,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/INTRDRJ1.JCL",
+   "input_kind": "job",
+   "sha256": "bc1c4427ac4d980ea01686026f7f15d1e86b060c7c3dc5c795730cea5441dd87",
+   "records": 19,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 5,
+    "DD": 8,
+    "DELIMITER": 1,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00010",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      11,
+      11
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 1,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/INTRDRJ2.JCL",
+   "input_kind": "job",
+   "sha256": "e89c73e8ebffa116c27e7c2e335b364467355def280c6208b7ef9d70ca66c7a8",
+   "records": 14,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 5,
+    "DD": 4,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00011",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      12,
+      12
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 1,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/OPENFIL.jcl",
+   "input_kind": "job",
+   "sha256": "adf1f084e330739d5b220bc6ba08b0345ab5b9083e020d6f4527d021b6838a3a",
+   "records": 34,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 3,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 3,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      30
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 5,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 3,
+    "parser_dd": 3,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/POSTTRAN.jcl",
+   "input_kind": "job",
+   "sha256": "a4de9f8cc5fbcaefb12e0b05fe87cb7d0b4accaa8a05f2ff6c13cf325431e2d6",
+   "records": 45,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 9,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 23,
+    "DD": 9,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 9,
+    "parser_dd": 9,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/PRTCATBL.jcl",
+   "input_kind": "job",
+   "sha256": "0668cd90c6092711cd173b3dfcd884887c11408e7c5c9ebc2d0332d929750cbe",
+   "records": 66,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 28,
+    "DD": 8,
+    "DELIMITER": 1,
+    "EXEC": 3,
+    "JCLLIB": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00046",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      47,
+      50
+     ],
+     "terminator": "NEXT_STATEMENT"
+    },
+    {
+     "dd_statement": "S00051",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      52,
+      56
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 9,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "LIBRARY_SEARCH_NOT_RESOLVED",
+    "PROC_NOT_EXPANDED"
+   ],
+   "procedure_calls": [
+    "REPROC"
+   ],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/READACCT.jcl",
+   "input_kind": "job",
+   "sha256": "0965badda9c801df4f86e74755b66325764d8d1a840c615e6552b660f6401f15",
+   "records": 50,
+   "jobs": 1,
+   "steps": 2,
+   "steps_in_instream_procs": 0,
+   "dds": 10,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 10,
+    "EXEC": 2,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 2,
+    "parser_exec": 2,
+    "regex_dd": 10,
+    "parser_dd": 10,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/READCARD.jcl",
+   "input_kind": "job",
+   "sha256": "2b8ef6678d477345868671ace4b6a9990e33081d6ba6b47827aad980927132b7",
+   "records": 31,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 4,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/READCUST.jcl",
+   "input_kind": "job",
+   "sha256": "3b39d6182c5483967c63616df65c56359e13a8a10c5bf08dcff9fe98566196a9",
+   "records": 30,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 21,
+    "DD": 4,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/READXREF.jcl",
+   "input_kind": "job",
+   "sha256": "09f076859afdd2a12bbe2e5eb1380bb986a656efe7bfb65a39377ad2c581db52",
+   "records": 31,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 4,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/REPTFILE.jcl",
+   "input_kind": "job",
+   "sha256": "b78fd0ff11009e23d5dce60a79daa5d947990d3b9e7a04ccb346fcc90151dee0",
+   "records": 32,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 2,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 2,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      28
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 4,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 2,
+    "parser_dd": 2,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TCATBALF.jcl",
+   "input_kind": "job",
+   "sha256": "9ff82ea5a21fd54c3ce405a14fd0851a7c17af71ed4e27a2bb2ce1860f50692b",
+   "records": 65,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 8,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      49
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANBKP.jcl",
+   "input_kind": "job",
+   "sha256": "bd7a846799373121152a91b52427f3c668f390f448609d0eea534d49989acb9d",
+   "records": 71,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 6,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 31,
+    "DD": 6,
+    "DELIMITER": 2,
+    "EXEC": 3,
+    "JCLLIB": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00039",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      40,
+      45
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00053",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      54,
+      67
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 20,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED",
+    "LIBRARY_SEARCH_NOT_RESOLVED",
+    "PROC_NOT_EXPANDED"
+   ],
+   "procedure_calls": [
+    "REPROC"
+   ],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 6,
+    "parser_dd": 6,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANCATG.jcl",
+   "input_kind": "job",
+   "sha256": "09ad86b3c1ac0b32cee842682baead25c1ded1572c65599591b28826261de457",
+   "records": 65,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 8,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      49
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANFILE.jcl",
+   "input_kind": "job",
+   "sha256": "c506a68f7482a971133524ec1d8b76001f593d4e1e98477c12c80ede4e4ce2db",
+   "records": 125,
+   "jobs": 1,
+   "steps": 8,
+   "steps_in_instream_procs": 0,
+   "dds": 20,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 44,
+    "DD": 20,
+    "DELIMITER": 8,
+    "EXEC": 8,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00034",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      35,
+      40
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00048",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      49,
+      62
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00073",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      74,
+      74
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00081",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      82,
+      91
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00098",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      99,
+      101
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00108",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      109,
+      111
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00119",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      120,
+      121
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 41,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 8,
+    "parser_exec": 8,
+    "regex_dd": 20,
+    "parser_dd": 20,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANIDX.jcl",
+   "input_kind": "job",
+   "sha256": "ad12d5f7b4b4e37b17baf23a5b1bf208ff35945182d587a909e0208d3bd45855",
+   "records": 58,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 6,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 28,
+    "DD": 6,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      34
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00041",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      42,
+      44
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00051",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      52,
+      54
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 16,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 6,
+    "parser_dd": 6,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANREPT.jcl",
+   "input_kind": "job",
+   "sha256": "081aad149f0a9c020440fb6e6da93f2a6cf6d1f77eead3cefea3702b13d79802",
+   "records": 84,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 16,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 32,
+    "DD": 16,
+    "DELIMITER": 1,
+    "EXEC": 3,
+    "JCLLIB": 1,
+    "JOB": 1,
+    "NULL": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00040",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      41,
+      44
+     ],
+     "terminator": "NEXT_STATEMENT"
+    },
+    {
+     "dd_statement": "S00045",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      46,
+      48
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 7,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "LIBRARY_SEARCH_NOT_RESOLVED",
+    "PROC_NOT_EXPANDED"
+   ],
+   "procedure_calls": [
+    "REPROC"
+   ],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 16,
+    "parser_dd": 16,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TRANTYPE.jcl",
+   "input_kind": "job",
+   "sha256": "7993012c72041e6a9cbda9fff43549af4f8789081dc8a64b71a8a1a01f775254",
+   "records": 65,
+   "jobs": 1,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 8,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 29,
+    "DD": 8,
+    "DELIMITER": 3,
+    "EXEC": 3,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      27
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00035",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      36,
+      49
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00060",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      61,
+      61
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 18,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 8,
+    "parser_dd": 8,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/TXT2PDF1.JCL",
+   "input_kind": "job",
+   "sha256": "7b051e99abe3fdcf772d613646b39f9abf10b02e9f52422d073fa0c52908e46b",
+   "records": 41,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 6,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 27,
+    "DD": 6,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00037",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      38,
+      39
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 2,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "COND_NOT_ANALYZED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 6,
+    "parser_dd": 6,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/WAITSTEP.jcl",
+   "input_kind": "job",
+   "sha256": "36c98a55c7701bfaa9bd6404d2aca95888880d4f908ced678840a37e2e3eac5e",
+   "records": 27,
+   "jobs": 1,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 3,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 19,
+    "DD": 3,
+    "DELIMITER": 1,
+    "EXEC": 1,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00025",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      26,
+      26
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 1,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 3,
+    "parser_dd": 3,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "jcl/XREFFILE.jcl",
+   "input_kind": "job",
+   "sha256": "f4a24014ae9ebfdf4d36db958e1fadb76158114fa6f721e9b547d0842d556f24",
+   "records": 106,
+   "jobs": 1,
+   "steps": 6,
+   "steps_in_instream_procs": 0,
+   "dds": 14,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 38,
+    "DD": 14,
+    "DELIMITER": 6,
+    "EXEC": 6,
+    "JOB": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00024",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      25,
+      30
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00038",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      39,
+      52
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00063",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      64,
+      64
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00071",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      72,
+      82
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00089",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      90,
+      92
+     ],
+     "terminator": "DELIMITER"
+    },
+    {
+     "dd_statement": "S00099",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      100,
+      102
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 38,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 6,
+    "parser_exec": 6,
+    "regex_dd": 14,
+    "parser_dd": 14,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "proc/REPROC.prc",
+   "input_kind": "proc_member",
+   "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+   "records": 32,
+   "jobs": 0,
+   "steps": 1,
+   "steps_in_instream_procs": 0,
+   "dds": 4,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 22,
+    "DD": 4,
+    "EXEC": 1,
+    "PEND": 1,
+    "PROC": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [],
+   "data_records": 0,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "PROC_NOT_EXPANDED",
+    "SYMBOLS_NOT_RESOLVED"
+   ],
+   "procedure_calls": [],
+   "cross_check": {
+    "regex_exec": 1,
+    "parser_exec": 1,
+    "regex_dd": 4,
+    "parser_dd": 4,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  },
+  {
+   "file": "proc/TRANREPT.prc",
+   "input_kind": "proc_member",
+   "sha256": "fdbdc473dd21ba4908613c47180542ceffea8ea9a976a9413355361c6deaf103",
+   "records": 82,
+   "jobs": 0,
+   "steps": 3,
+   "steps_in_instream_procs": 0,
+   "dds": 16,
+   "job_level_dds": 0,
+   "implicit_dds": 0,
+   "concatenated_dds": 0,
+   "statement_kinds": {
+    "COMMENT": 32,
+    "DD": 16,
+    "DELIMITER": 1,
+    "EXEC": 3,
+    "PEND": 1,
+    "PROC": 1
+   },
+   "unknown_statements": [],
+   "syntax_errors": [],
+   "diagnostics": [],
+   "instream": [
+    {
+     "dd_statement": "S00038",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      39,
+      42
+     ],
+     "terminator": "NEXT_STATEMENT"
+    },
+    {
+     "dd_statement": "S00043",
+     "mode": "STAR",
+     "dlm": null,
+     "status": "DETERMINED",
+     "records": [
+      44,
+      46
+     ],
+     "terminator": "DELIMITER"
+    }
+   ],
+   "data_records": 7,
+   "unrecognized_records": [],
+   "undetermined_records": [],
+   "limitations": [
+    "PROC_NOT_EXPANDED"
+   ],
+   "procedure_calls": [
+    "REPROC"
+   ],
+   "cross_check": {
+    "regex_exec": 3,
+    "parser_exec": 3,
+    "regex_dd": 16,
+    "parser_dd": 16,
+    "differences_explained_by_data": [],
+    "unexplained_differences": []
+   }
+  }
+ ]
+}

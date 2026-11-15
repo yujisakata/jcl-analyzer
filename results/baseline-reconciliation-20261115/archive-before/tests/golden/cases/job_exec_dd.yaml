@@ -1,0 +1,178 @@
+schema_version: 1
+category: JOB_EXEC_DD
+cases:
+  - test_id: G-JED-001
+    category: JOB_EXEC_DD
+    description: "Minimal job: JOB with positional accounting list and quoted programmer name, EXEC PGM, DD with DSN/DISP, SYSOUT DD."
+    rule_ids: [JCL-REC-001, JCL-FMT-001, JCL-FMT-002, JCL-FMT-003, JCL-FMT-004, JCL-FMT-005, JCL-JOB-001, JCL-EXEC-001, JCL-SYN-001]
+    source_reference:
+      - {rule_id: "JCL-REC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > JCL statement fields > Identifier field", pages: "13 (PDF 59)"}
+      - {rule_id: "JCL-FMT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements / 4. Syntax of parameters > Name field; Table 10 Character sets", pages: "13 (PDF 59); 21 (PDF 67)"}
+      - {rule_id: "JCL-FMT-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Operation field", pages: "13 (PDF 59)"}
+      - {rule_id: "JCL-FMT-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-FMT-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Keyword parameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-FMT-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field > Multiple subparameters", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-JOB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "21. JOB statement > Name field", pages: "389 (PDF 435)"}
+      - {rule_id: "JCL-EXEC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Parameter field > Positional parameters (Table 19)", pages: "314 (PDF 360)"}
+      - {rule_id: "JCL-SYN-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Special characters in parameters", pages: "22 (PDF 68)"}
+    input_file: inputs/job_exec_dd/jed001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JED001, positional: [[ACCT], {q: PROGRAMMER}], keywords: [[CLASS, A]], comment: null}
+        - {kind: EXEC, span: [2, 2], name: STEP1, positional: [], keywords: [[PGM, IEFBR14]], comment: null}
+        - {kind: DD, span: [3, 3], name: INDD, positional: [], keywords: [[DSN, PROD.INPUT.DATA], [DISP, SHR]], comment: null}
+        - {kind: DD, span: [4, 4], name: OUTDD, positional: [], keywords: [[SYSOUT, "*"]], comment: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: "(ACCT) is a one-item subparameter list, represented as a list per docs/golden-view.md."
+
+  - test_id: G-JED-002
+    category: JOB_EXEC_DD
+    description: "Omitted first positional on JOB marked by a comma; EXEC with PROC= keyword form and with a bare procedure name."
+    rule_ids: [JCL-FMT-003, JCL-SYN-002, JCL-JOB-001, JCL-EXEC-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field", pages: "15 (PDF 61)"}
+      - {rule_id: "JCL-SYN-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "4. Syntax of parameters > Table 12 Special characters that do not require enclosing apostrophes", pages: "22-23 (PDF 68-69)"}
+      - {rule_id: "JCL-JOB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "21. JOB statement > Name field", pages: "389 (PDF 435)"}
+      - {rule_id: "JCL-EXEC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Parameter field > Positional parameters (Table 19)", pages: "314 (PDF 360)"}
+    input_file: inputs/job_exec_dd/jed002.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JED002, positional: [null, {q: "A.B.C."}], keywords: []}
+        - {kind: EXEC, span: [2, 2], name: STEPA, positional: [], keywords: [[PROC, PAYROLL], [REGION, "0M"]]}
+        - {kind: EXEC, span: [3, 3], name: STEPB, positional: [PAYROLL], keywords: []}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "'A.B.C.' needs apostrophes because of the trailing period (Table 12, //JOBE example). Procedures are not resolved at this stage."
+
+  - test_id: G-JED-003
+    category: JOB_EXEC_DD
+    description: "Invalid name fields: 9 characters, leading digit, lowercase letters."
+    rule_ids: [JCL-FMT-001, JCL-EXEC-002]
+    source_reference:
+      - {rule_id: "JCL-FMT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements / 4. Syntax of parameters > Name field; Table 10 Character sets", pages: "13 (PDF 59); 21 (PDF 67)"}
+      - {rule_id: "JCL-EXEC-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Name field", pages: "313 (PDF 359)"}
+    input_file: inputs/job_exec_dd/jed003.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure:
+      view: none
+      reason: "Invalid case: the diagnostics are the oracle. IBM does not specify how analysis continues after an invalid name, so no recovery structure is asserted."
+    expected_diagnostics:
+      mode: exact
+      items:
+        - {code: PAR-E002, severity: ERROR, line: 2, column: 3}
+        - {code: PAR-E002, severity: ERROR, line: 3, column: 3}
+        - {code: PAR-E002, severity: ERROR, line: 4, column: 3}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Alphabetic means capital A-Z (Table 10), so 'step3' is invalid."
+
+  - test_id: G-JED-004
+    category: JOB_EXEC_DD
+    description: "Boundary: 8-character names starting with national characters; JOB and DD statements without parameters."
+    rule_ids: [JCL-FMT-001, JCL-FMT-009, JCL-JOB-001, JCL-EXEC-002]
+    source_reference:
+      - {rule_id: "JCL-FMT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements / 4. Syntax of parameters > Name field; Table 10 Character sets", pages: "13 (PDF 59); 21 (PDF 67)"}
+      - {rule_id: "JCL-FMT-009", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Table 8 JCL statement fields", pages: "14 (PDF 60)"}
+      - {rule_id: "JCL-JOB-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "21. JOB statement > Name field", pages: "389 (PDF 435)"}
+      - {rule_id: "JCL-EXEC-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Name field", pages: "313 (PDF 359)"}
+    input_file: inputs/job_exec_dd/jed004.jcl
+    input_kind: job
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: "@#$JOB08", positional: [], keywords: []}
+        - {kind: EXEC, span: [2, 2], name: "$STEP#08", positional: [], keywords: [[PGM, IEFBR14]]}
+        - {kind: DD, span: [3, 3], name: "DD@ABCDE", positional: [], keywords: []}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: "Table 8 allows //jobname JOB and //[ddname] DD with no parameter field."
+
+  - test_id: G-JED-005
+    category: JOB_EXEC_DD
+    description: "EXEC with only a keyword parameter and no PGM=, PROC= or procedure name."
+    rule_ids: [JCL-EXEC-001]
+    source_reference:
+      - {rule_id: "JCL-EXEC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Parameter field > Positional parameters (Table 19)", pages: "314 (PDF 360)"}
+    input_file: inputs/job_exec_dd/jed005.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E006, severity: ERROR, line: 2}]
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-JED-006
+    category: JOB_EXEC_DD
+    description: "Unknown operation field: the statement is kept as UNKNOWN with its raw operation and reported, not dropped."
+    rule_ids: [JCL-FMT-002, POL-006]
+    source_reference:
+      - {rule_id: "JCL-FMT-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Operation field", pages: "13 (PDF 59)"}
+      - {rule_id: "POL-006", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "decisions.md > ADR-020", pages: "-"}
+    input_file: inputs/job_exec_dd/jed006.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: JED006}
+        - {kind: UNKNOWN, span: [2, 2], name: STEP1, operation: EXCE}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-W003, severity: WARNING, line: 2, column: 12}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic and the preserved UNKNOWN statement follow project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A6: an unrecognized operation may be invalid JCL or an unsupported product extension; this is not decidable, so it is not uniformly ERROR."
+        before: {code: PAR-E001, severity: ERROR, rule_ids: [JCL-FMT-002, POL-001]}
+        after: {code: PAR-W003, severity: WARNING, class: UNSUPPORTED, rule_ids: [JCL-FMT-002, POL-006]}
+        basis: "ADR-020; requirements 1.3 (product-specific extensions)"
+        approver: "user decision A6 (the case itself remains draft)"
+    notes: "Requirements 1.3: unknown syntax keeps its original text and location. Column 12 is where the operation field begins."
+
+  - test_id: G-JED-007
+    category: JOB_EXEC_DD
+    description: "Positional parameter (*) coded after a keyword parameter."
+    rule_ids: [JCL-FMT-003, POL-001]
+    source_reference:
+      - {rule_id: "JCL-FMT-003", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Parameter field", pages: "15 (PDF 61)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/job_exec_dd/jed007.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E007, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: ""

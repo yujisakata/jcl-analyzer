@@ -1,0 +1,17 @@
+--- /dev/null
++++ current/tests/ACCEPTANCE_SCOPE.yaml
+@@ -0,0 +1,14 @@
++# Step 4b acceptance scope (Gate B, ADR-028).
++# The scope is defined here, independently of what the adapter implements (audit A11): Golden
++# cases of the stages below are in scope. Exclusions take effect ONLY when status is APPROVED and
++# approved_by names the person who approved them. Until then every case of these stages counts.
++schema_version: 1
++status: PROPOSED          # PROPOSED | APPROVED (set by the user only)
++approved_by: null
++approved_at: null
++in_scope_stages: [lexical, syntactic]
++proposed_exclusions:
++  - {category: PROC_PEND, reason: "PROC/PEND block structure and nesting: planned for Step 5 (resolver)"}
++  - {category: JCLLIB_INCLUDE_SET, reason: "JCLLIB/INCLUDE/SET placement and limits: planned for Step 5"}
++  - {category: IF_THEN_ELSE, reason: "IF relational-expression AST and nesting: planned for Step 5"}
++  - {category: COND, reason: "COND structure checks: planned for Step 5"}

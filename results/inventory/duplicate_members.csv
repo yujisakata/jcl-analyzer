@@ -1,0 +1,2 @@
+asset_type,member_name,identical_content,rel_paths
+CONTROL_CARDS,REPROCT,true,carddemo:app-transaction-type-db2/ctl/REPROCT.ctl;carddemo:ctl/REPROCT.ctl

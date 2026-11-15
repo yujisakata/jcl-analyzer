@@ -1,0 +1,2738 @@
+[
+  {
+    "id": "N1-null-JES3",
+    "jes": "JES3",
+    "input": "//J JOB\n//S EXEC PGM=X\n//\n//T EXEC PGM=Y\n",
+    "expected": "JES3: T is ignored after null",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            4
+          ],
+          "null_line": 3,
+          "dds": [
+            [],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "NULL",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "NULL",
+          "role": "NULL",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00004",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "N2-null-UNKNOWN",
+    "jes": "UNKNOWN",
+    "input": "//J JOB\n//S EXEC PGM=X\n//\n//T EXEC PGM=Y\n",
+    "expected": "UNKNOWN must preserve competing memberships, not determine [S,T]",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            4
+          ],
+          "null_line": 3,
+          "dds": [
+            [],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "NULL",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [
+        {
+          "code": "PAR-I001",
+          "severity": "INFO",
+          "cls": "ENVIRONMENT",
+          "line": 3,
+          "column": null,
+          "message": "Statements follow a null statement before the next JOB"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "NULL",
+          "role": "NULL",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00004",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "N3-continued-null",
+    "jes": "JES3",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DSN=A,\n//\n//T EXEC PGM=Y\n",
+    "expected": "Null after continued DD is a blank comments field, not a job terminator",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            5
+          ],
+          "null_line": 4,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DSN=A,"
+          ]
+        },
+        {
+          "kind": "NULL",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            "//"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            5,
+            5
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [
+        {
+          "code": "LEX-W001",
+          "severity": "WARNING",
+          "cls": "ADVISORY",
+          "line": 4,
+          "column": null,
+          "message": "Continued statement followed by a null statement"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "NULL",
+          "role": "NULL",
+          "statement_id": "S00004",
+          "region_id": null
+        },
+        {
+          "line": 5,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00005",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "N4-DLM-UNKNOWN",
+    "jes": "UNKNOWN",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD *,DLM=AA\n DATA\n//T EXEC PGM=Y\nAA\n//U EXEC PGM=Z\n",
+    "expected": "Competing job structures must remain explicitly environment-dependent",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "U"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            7
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD *,DLM=AA"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            7,
+            7
+          ],
+          "raw": [
+            "//U EXEC PGM=Z"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "STAR",
+          "dlm": "AA",
+          "status": "UNDETERMINED",
+          "records": null,
+          "terminator": "UNDETERMINED",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": [
+            {
+              "jes": "JES2",
+              "records": [
+                4,
+                4
+              ],
+              "terminator": "NEXT_STATEMENT",
+              "terminator_line": 5
+            },
+            {
+              "jes": "JES3",
+              "records": [
+                4,
+                5
+              ],
+              "terminator": "DELIMITER",
+              "terminator_line": 6
+            }
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "PAR-W005",
+          "severity": "WARNING",
+          "cls": "ENVIRONMENT",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data end depends on the JES type (UNKNOWN)"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "UNDETERMINED",
+          "statement_id": null,
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "STATEMENT_START",
+          "role": "UNDETERMINED",
+          "statement_id": null,
+          "region_id": "R00004"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "OTHER",
+          "role": "UNDETERMINED",
+          "statement_id": null,
+          "region_id": "R00004"
+        },
+        {
+          "line": 7,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00007",
+          "region_id": null
+        }
+      ],
+      "limitations": [
+        "INSTREAM_END_UNDETERMINED"
+      ],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D1-escaped-ampersand",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM='&&@'\n DATA\n&@\n//T EXEC PGM=Y\n",
+    "expected": "Doubled && counts as one &: &@ terminates at line 5",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM='&&@'"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "&&@",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            6
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "LEX-W002",
+          "severity": "WARNING",
+          "cls": "SYNTAX_DEFINED",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data requiring a delimiter ends at end of input: DD DATA data ends at end of input"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "STATEMENT_START",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D2-delimiter-continuation-boundary",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM='//'\n DATA\n// DD DSN=A,\n//         DD DSN=B\n//T EXEC PGM=Y\n",
+    "expected": "Line 5 is a delimiter with comment; line 6 starts an independent unnamed DD",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            7
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM='//'"
+          ]
+        },
+        {
+          "kind": "DELIMITER",
+          "span": [
+            5,
+            5
+          ],
+          "raw": [
+            "// DD DSN=A,"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            7,
+            7
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "//",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "DELIMITER",
+          "delimiter": "//",
+          "terminator_line": 5,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "PAR-W006",
+          "severity": "WARNING",
+          "cls": "ANALYZABILITY",
+          "line": 6,
+          "column": null,
+          "message": "Record is not JCL and not in an in-stream data context: continuation of a data record"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "STATEMENT_START",
+          "role": "DELIMITER",
+          "statement_id": "S00005",
+          "region_id": "R00004"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "CONTINUATION",
+          "role": "UNRECOGNIZED",
+          "statement_id": null,
+          "region_id": null
+        },
+        {
+          "line": 7,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00007",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D3-delimiter-prefix",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM=AA\nAAXYZ\nAA\n//T EXEC PGM=Y\n",
+    "expected": "JES2 delimiter must be followed by a blank; AAXYZ remains data",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            6
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D",
+              "SYSIN"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM=AA"
+          ]
+        },
+        {
+          "kind": "DELIMITER",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            "AAXYZ"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": null,
+          "raw": []
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            6,
+            6
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "AA",
+          "status": "DETERMINED",
+          "records": null,
+          "terminator": "DELIMITER",
+          "delimiter": "AA",
+          "terminator_line": 4,
+          "candidates": []
+        },
+        {
+          "id": "R00005",
+          "statement_id": "S00005I",
+          "mode": "IMPLICIT",
+          "dlm": null,
+          "status": "DETERMINED",
+          "records": [
+            5,
+            5
+          ],
+          "terminator": "NEXT_STATEMENT",
+          "delimiter": null,
+          "terminator_line": 6,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DELIMITER",
+          "statement_id": "S00004",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00005I",
+          "region_id": "R00005"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00006",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D4-invalid-length-empty",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM=''\n DATA\n",
+    "expected": "Invalid DLM length must produce syntax ERROR",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            4
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM=''"
+          ]
+        },
+        {
+          "kind": "DELIMITER",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            " DATA"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "",
+          "status": "DETERMINED",
+          "records": null,
+          "terminator": "DELIMITER",
+          "delimiter": "",
+          "terminator_line": 4,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DELIMITER",
+          "statement_id": "S00004",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D4-invalid-length-one",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM=A\n DATA\n",
+    "expected": "Invalid DLM length must produce syntax ERROR",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM=A"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "A",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "LEX-W002",
+          "severity": "WARNING",
+          "cls": "SYNTAX_DEFINED",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data requiring a delimiter ends at end of input: DD DATA data ends at end of input"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D4-invalid-length-nineteen",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM=ABCDEFGHIJKLMNOPQRS\n DATA\n",
+    "expected": "Invalid DLM length must produce syntax ERROR",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM=ABCDEFGHIJKLMNOPQRS"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "ABCDEFGHIJKLMNOPQRS",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "LEX-W002",
+          "severity": "WARNING",
+          "cls": "SYNTAX_DEFINED",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data requiring a delimiter ends at end of input: DD DATA data ends at end of input"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D4-invalid-length-JES3-three",
+    "jes": "JES3",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA,DLM=AAA\n DATA\n",
+    "expected": "Invalid DLM length must produce syntax ERROR",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA,DLM=AAA"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": "AAA",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "LEX-W002",
+          "severity": "WARNING",
+          "cls": "SYNTAX_DEFINED",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data requiring a delimiter ends at end of input: DD DATA data ends at end of input"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "D5-star-DLM-EOF",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD *,DLM=AA\n DATA\n",
+    "expected": "Missing required DLM delimiter must be diagnosed, consistently with DD DATA",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD *,DLM=AA"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "STAR",
+          "dlm": "AA",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "E1-EXEC-two-targets",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X,PROC=Y\n",
+    "expected": "EXEC accepts only one of PGM=, PROC=, bare procedure",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            2
+          ],
+          "null_line": null,
+          "dds": [
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X,PROC=Y"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "E2-EXEC-list-target",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=(X,Y)\n",
+    "expected": "PGM is a program name or allowed backward reference, not a list",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            2
+          ],
+          "null_line": null,
+          "dds": [
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=(X,Y)"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "E3-DD-two-positionals",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DUMMY,DATA\n",
+    "expected": "DD permits at most one positional parameter",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DUMMY,DATA"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "T1-job-data-span",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA\n DATA1\n DATA2\n",
+    "expected": "Job source interval must include its owned inline records through EOF",
+    "status": "FAIL",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": null,
+          "status": "DETERMINED",
+          "records": [
+            4,
+            5
+          ],
+          "terminator": "EOF",
+          "delimiter": null,
+          "terminator_line": null,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "LEX-W002",
+          "severity": "WARNING",
+          "cls": "SYNTAX_DEFINED",
+          "line": 3,
+          "column": null,
+          "message": "In-stream data requiring a delimiter ends at end of input: DD DATA data ends at end of input"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C1-JOB-EXEC-DD",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DSN=A.B,DISP=SHR\n",
+    "expected": "Ordinary JOB/EXEC/DD parses without diagnostics",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DSN=A.B,DISP=SHR"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C2-DD-concat",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DSN=A\n// DD DSN=B\n",
+    "expected": "Unnamed DD joins preceding DD",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            4
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D",
+              null
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DSN=A"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            4,
+            4
+          ],
+          "raw": [
+            "// DD DSN=B"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00004",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C3-DATA-keeps-JCL",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DATA\n//INNER JOB\n/*\n//T EXEC PGM=Y\n",
+    "expected": "DD DATA preserves // records as data",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            6
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DATA"
+          ]
+        },
+        {
+          "kind": "DELIMITER",
+          "span": [
+            5,
+            5
+          ],
+          "raw": [
+            "/*"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            6,
+            6
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "DATA",
+          "dlm": null,
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "DELIMITER",
+          "delimiter": "/*",
+          "terminator_line": 5,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "STATEMENT_START",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "DELIMITER",
+          "role": "DELIMITER",
+          "statement_id": "S00005",
+          "region_id": "R00004"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00006",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C4-STAR-next-statement",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD *\n DATA\n//T EXEC PGM=Y\n",
+    "expected": "DD * without DLM ends on //",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S",
+        "T"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            5
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD *"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            5,
+            5
+          ],
+          "raw": [
+            "//T EXEC PGM=Y"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "STAR",
+          "dlm": null,
+          "status": "DETERMINED",
+          "records": [
+            4,
+            4
+          ],
+          "terminator": "NEXT_STATEMENT",
+          "delimiter": null,
+          "terminator_line": 5,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00005",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C5-STAR-DLM-JES3",
+    "jes": "JES3",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD *,DLM=AA\n DATA\n//T EXEC PGM=Y\nAA\n//U EXEC PGM=Z\n",
+    "expected": "JES3: // stays in data until AA",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S",
+        "U"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            7
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ],
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD *,DLM=AA"
+          ]
+        },
+        {
+          "kind": "DELIMITER",
+          "span": [
+            6,
+            6
+          ],
+          "raw": [
+            "AA"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            7,
+            7
+          ],
+          "raw": [
+            "//U EXEC PGM=Z"
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "id": "R00004",
+          "statement_id": "S00003",
+          "mode": "STAR",
+          "dlm": "AA",
+          "status": "DETERMINED",
+          "records": [
+            4,
+            5
+          ],
+          "terminator": "DELIMITER",
+          "delimiter": "AA",
+          "terminator_line": 6,
+          "candidates": []
+        }
+      ],
+      "diagnostics": [],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        },
+        {
+          "line": 4,
+          "lexer_kind": "OTHER",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 5,
+          "lexer_kind": "STATEMENT_START",
+          "role": "DATA",
+          "statement_id": "S00003",
+          "region_id": "R00004"
+        },
+        {
+          "line": 6,
+          "lexer_kind": "OTHER",
+          "role": "DELIMITER",
+          "statement_id": "S00006",
+          "region_id": "R00004"
+        },
+        {
+          "line": 7,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00007",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C6-invalid-JOB-name",
+    "jes": "JES2",
+    "input": "//1BAD JOB\n",
+    "expected": "JOB name must start alphabetic or national",
+    "status": "PASS",
+    "actual": {
+      "steps": [],
+      "jobs": [
+        {
+          "name": "1BAD",
+          "span": [
+            1,
+            1
+          ],
+          "null_line": null,
+          "dds": []
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//1BAD JOB"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [
+        {
+          "code": "PAR-E002",
+          "severity": "ERROR",
+          "cls": "SYNTAX",
+          "line": 1,
+          "column": 3,
+          "message": "Invalid name field: name '1BAD'"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C7-invalid-EXEC-missing-target",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC TIME=1\n",
+    "expected": "EXEC without a target produces syntax ERROR",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            2
+          ],
+          "null_line": null,
+          "dds": [
+            []
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC TIME=1"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [
+        {
+          "code": "PAR-E006",
+          "severity": "ERROR",
+          "cls": "SYNTAX",
+          "line": 2,
+          "column": null,
+          "message": "EXEC without PGM=, PROC= or procedure name"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  },
+  {
+    "id": "C8-DLM-without-data",
+    "jes": "JES2",
+    "input": "//J JOB\n//S EXEC PGM=X\n//D DD DSN=A,DLM=AA\n",
+    "expected": "DLM without * or DATA produces syntax ERROR",
+    "status": "PASS",
+    "actual": {
+      "steps": [
+        "S"
+      ],
+      "jobs": [
+        {
+          "name": "J",
+          "span": [
+            1,
+            3
+          ],
+          "null_line": null,
+          "dds": [
+            [
+              "D"
+            ]
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "JOB",
+          "span": [
+            1,
+            1
+          ],
+          "raw": [
+            "//J JOB"
+          ]
+        },
+        {
+          "kind": "EXEC",
+          "span": [
+            2,
+            2
+          ],
+          "raw": [
+            "//S EXEC PGM=X"
+          ]
+        },
+        {
+          "kind": "DD",
+          "span": [
+            3,
+            3
+          ],
+          "raw": [
+            "//D DD DSN=A,DLM=AA"
+          ]
+        }
+      ],
+      "regions": [],
+      "diagnostics": [
+        {
+          "code": "PAR-E016",
+          "severity": "ERROR",
+          "cls": "SYNTAX",
+          "line": 3,
+          "column": null,
+          "message": "DLM on a DD statement without * or DATA"
+        }
+      ],
+      "roles": [
+        {
+          "line": 1,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00001",
+          "region_id": null
+        },
+        {
+          "line": 2,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00002",
+          "region_id": null
+        },
+        {
+          "line": 3,
+          "lexer_kind": "STATEMENT_START",
+          "role": "STATEMENT",
+          "statement_id": "S00003",
+          "region_id": null
+        }
+      ],
+      "limitations": [],
+      "existing_trace_check": "PASS"
+    }
+  }
+]

@@ -1,0 +1,126 @@
+# Known defects (ADR-028). Confirmed and not yet fixed. Gate A may pass with OPEN entries, but
+# only with every listed symptom visible. Gate B (Parser acceptance) fails while any in-scope
+# entry is not CLOSED. CLOSED requires a fix, removal of the xfail markers and an independent
+# review. Status changes are recorded in tests/CHANGES.md.
+#
+# Sources: results/audit-20261115/report.md (Codex independent audit, A01-A11),
+#          docs/reviews/parser-defects-04b.md (D-1..D-3 = A01..A03),
+#          docs/reports/r1-harness.md (H01-H02, found by the R1 hierarchy invariants).
+schema_version: 1
+defects:
+  - id: A01
+    title: "Statements after a null statement: job membership fixed regardless of JES / NULLJCL"
+    severity: HIGH
+    scope: STEP4B
+    status: OPEN
+    source: "audit A01; parser-defects-04b.md D-1"
+    xfail_tests:
+      - tests/parser/test_known_defects_04b.py::test_d1_jes3_skips_statements_after_null
+      - tests/parser/test_known_defects_04b.py::test_d1_jes2_with_unknown_nulljcl_does_not_fix_membership
+      - tests/parser/test_known_defects_04b.py::test_d1_unknown_environment_keeps_every_candidate
+      - tests/parser/test_known_defects_04b.py::test_d1_skipped_records_are_marked_not_dropped
+  - id: A02
+    title: "JES=UNKNOWN DD * DLM divergence drops candidate statements and steps"
+    severity: HIGH
+    scope: STEP4B
+    status: OPEN
+    source: "audit A02; parser-defects-04b.md D-2"
+    xfail_tests:
+      - tests/parser/test_known_defects_04b.py::test_d2_unknown_keeps_the_jes2_step_as_a_candidate
+      - tests/parser/test_known_defects_04b.py::test_d2_unknown_does_not_present_one_interpretation_as_determined
+  - id: A03
+    title: "Null record after a continued statement treated as a job end candidate"
+    severity: MEDIUM
+    scope: STEP4B
+    status: OPEN
+    source: "audit A03; parser-defects-04b.md D-3"
+    xfail_tests:
+      - "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES2]"
+      - "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES3]"
+      - "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[UNKNOWN]"
+  - id: A04
+    title: "DLM value: doubled ampersands not restored before matching"
+    severity: HIGH
+    scope: STEP4B
+    status: OPEN
+    source: "audit A04 (probe D1); no reproduction test in the project yet"
+  - id: A05
+    title: "False continuation from a delimiter record drops the following DD"
+    severity: HIGH
+    scope: STEP4B
+    status: OPEN
+    source: "audit A05 (probe D2); no reproduction test in the project yet"
+  - id: A06
+    title: "Data ended by a DLM prefix match only"
+    severity: HIGH
+    scope: STEP4B
+    status: OPEN
+    source: "audit A06 (probe D3); no reproduction test in the project yet"
+  - id: A07
+    title: "DLM length / empty value not checked per JES"
+    severity: MEDIUM
+    scope: STEP4B
+    status: OPEN
+    source: "audit A07 (probe D4); no reproduction test in the project yet"
+  - id: A08
+    title: "Missing delimiter for DD * with DLM at end of input not diagnosed"
+    severity: MEDIUM
+    scope: STEP4B
+    status: OPEN
+    source: "audit A08 (probe D5); no reproduction test in the project yet"
+  - id: A09
+    title: "EXEC target / DD positional parameter constraints not checked"
+    severity: MEDIUM
+    scope: STEP4B
+    status: OPEN
+    source: "audit A09 (probes E1-E3); no reproduction test in the project yet"
+  - id: A10
+    title: "Job.span does not contain in-stream data at the end of a job (data to end of input, or data followed directly by the next JOB)"
+    severity: MEDIUM
+    scope: STEP4B
+    status: RESOLVED_PENDING_REVIEW
+    source: "audit A10 (probe T1); confirmed in CardDemo app-transaction-type-db2/jcl/MNTTRDB2.jcl by R1. R1 property test found the same root cause (close_job() takes the span from statements only) for data ended by the next JOB statement; FIXED in CD-2 (parser.py close_job/_region_end; tests/parser/test_cd2_source_fixes.py), independent review pending"
+    golden_cases: [G-IS-006, G-IS-007, G-HIER-004]
+    xfail_tests:
+      - "tests/parser/test_golden_parser.py::test_golden_case[G-IS-006]"
+      - "tests/parser/test_golden_parser.py::test_golden_case[G-IS-007]"
+    invariant_signatures:
+      - {code: H-SPAN-02, detail: "terminator (EOF|NEXT_STATEMENT)\\)$"}
+  - id: A11
+    title: "Harness did not verify the JOB/STEP/DD hierarchy; one gate mixed health and acceptance"
+    severity: HIGH
+    scope: STEP4B
+    status: RESOLVED_PENDING_REVIEW
+    source: "audit A11; fixed by R1 (docs/reports/r1-harness.md); implementation and tests by the same author, independent review pending"
+  - id: H01
+    title: "JobNode.job_statement is not the flat JOB statement (limitations missing in the tree)"
+    severity: LOW
+    scope: STEP4B
+    status: RESOLVED_PENDING_REVIEW
+    source: "R1 hierarchy invariant H-REF-01; parser.py place(): JOB container created before replace(); FIXED in CD-2 (parser.py place(): container created after replace()), independent review pending"
+    invariant_signatures:
+      - {code: H-REF-01, detail: "^JOB tree node differs from flat statement in \\['limitations'\\]$"}
+  - id: H02
+    title: "PEND of a cataloged PROC member is not reachable from the tree"
+    severity: LOW
+    scope: STEP4B
+    status: RESOLVED_PENDING_REVIEW
+    source: "R1 hierarchy invariant H-OWN-02; CardDemo proc/REPROC.prc:29, proc/TRANREPT.prc:79. FIXED in CD-2: ParseResult.procedure_end (owned by the PROC root, not the last EXEC); CD-1 checker follows the link (user-approved). Split on 2026-11-16: the in-stream PROC form is H02B. Independent review pending"
+  - id: H02B
+    title: "Statements owned by an in-stream PROC definition before its first EXEC (JCLLIB/SET), and a stray PEND in a job file, are not reachable from the tree"
+    severity: LOW
+    scope: STEP4B
+    status: OPEN
+    source: "Split from H02 in CD-2 (user decision: CD-2 fixes only the CardDemo member PEND form). Golden inputs proc/pp007.jcl, proc/pp008.jcl; not present in CardDemo"
+    invariant_signatures:
+      - {code: H-OWN-02, detail: "not in tree \\(expected under PROC:S\\d{5}\\)$"}
+      - {code: H-OWN-02, detail: "^PEND not in tree \\(expected under (STEP|JOB):S\\d{5}\\)$"}
+  - id: H03
+    title: "DDs and other statements of a step before the first JOB statement are not reachable (only the EXEC is listed in outside_statements)"
+    severity: LOW
+    scope: STEP4B
+    status: OPEN
+    source: "R1 hierarchy property test (input: '// EXEC' followed by a data record); parser.py close_step() drops a step without container"
+    invariant_signatures:
+      - {code: H-DD-01, detail: ", step outside any job\\)$"}
+      - {code: H-OWN-02, detail: ", step outside any job\\)$"}

@@ -1,0 +1,72 @@
+# Diagnostic code catalog for the analyzer stages (requirements §8.5, M0 "診断コード体系").
+# INV-* (inventory) codes live in src/jclprof/diagnostics.py. Codes below are used by the Lexer
+# (Step 4a) or RESERVED for the Parser (PAR), Resolver (RES) and semantic classifier (SEM).
+# Golden Tests may only expect non-deprecated codes listed here or in the INV registry.
+# Codes are stable: never renumber or reuse. Severity is part of the contract.
+#
+# class (ADR-020, user decision A6) -- what kind of finding this is:
+#   SYNTAX            input violates a coding requirement stated by IBM (stated consequence or not)
+#   SYNTAX_DEFINED    input violates a stated requirement, but IBM also defines how it is processed
+#   ANALYZABILITY     the tool could not analyze (part of) the input; original text is preserved
+#   UNSUPPORTED       recognized as possibly valid (e.g. an extension) but not supported by the tool
+#   ENVIRONMENT       result depends on environment information that is missing (e.g. JES type)
+#   SPEC_UNCONFIRMED  IBM's rule for this situation has not been confirmed; nothing is concluded
+#   ADVISORY          valid per IBM but unusual or not recommended
+# Default severities by class: SYNTAX=ERROR, SYNTAX_DEFINED=WARNING, ANALYZABILITY=ERROR or
+# WARNING (ERROR when text could not be analyzed at all), UNSUPPORTED=WARNING, ENVIRONMENT=INFO or
+# WARNING, SPEC_UNCONFIRMED=INFO or WARNING, ADVISORY=WARNING or INFO. A code may deviate only
+# with a written reason. A situation whose IBM rule is unconfirmed is never ERROR.
+schema_version: 1
+codes:
+  # ---- lexical (physical records -> logical statements, tokens)
+  LEX-E001: {severity: ERROR,   class: SYNTAX,         stage: lexical,   rules: [JCL-SYN-001, JCL-CONT-003, POL-001], title: "Unterminated apostrophe-enclosed value"}
+  LEX-E002: {severity: ERROR,   class: SYNTAX,         stage: lexical,   rules: [JCL-CONT-002],              title: "Continuation expected but not found (column 3 not blank)"}
+  LEX-E003: {severity: ERROR,   class: SYNTAX,         stage: lexical,   rules: [JCL-CONT-001, JCL-CONT-003, POL-001], title: "Continued text does not start in the required column (4-16; 16 for apostrophe continuation)"}
+  LEX-E004: {severity: ERROR,   class: SYNTAX,         stage: lexical,   rules: [JCL-FMT-005, POL-001],      title: "Unbalanced parentheses in parameter field"}
+  LEX-E005: {severity: ERROR,   class: SYNTAX,         stage: lexical,   rules: [JCL-CONT-001, POL-001],     title: "Continued parameter field not completed (next record is not a continuation)"}
+  LEX-E006: {severity: ERROR,   class: ANALYZABILITY,  stage: lexical,   rules: [POL-006],                   title: "Input cannot be decoded with the configured encoding; not lexed"}
+  LEX-W001: {severity: WARNING, class: ADVISORY,       stage: lexical,   rules: [JCL-CONT-007],              title: "Continued statement followed by a null statement (IBM: blank comment field; end-of-job effect not concluded)"}
+  LEX-W002: {severity: WARNING, class: SYNTAX_DEFINED, stage: lexical,   rules: [JCL-DD-004, JCL-STMT-DELIM, POL-006], title: "In-stream data requiring a delimiter ends at end of input (data kept to end of input)"}
+  LEX-W003: {severity: WARNING, class: SYNTAX,         stage: lexical,   rules: [JCL-CONT-004, POL-006],     title: "Comment continuation indicated in column 72 but next record is not a continuation"}
+  LEX-W004: {severity: WARNING, class: ANALYZABILITY,  stage: lexical,   rules: [JCL-REC-004, POL-006],      title: "Record longer than 80 columns; columns beyond 80 kept in raw text but not lexed"}
+  LEX-W005: {severity: WARNING, class: ANALYZABILITY,  stage: lexical,   rules: [JCL-REC-002, POL-006],      title: "TAB character in a JCL record; column positions are ambiguous"}
+  # ---- syntactic (statement structure, placement, limits)
+  PAR-E001: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-FMT-002, POL-001],      title: "Unknown operation field", deprecated: true, replaced_by: PAR-W003}
+  PAR-E002: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-FMT-001],               title: "Invalid name field"}
+  PAR-E003: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-PROC-001, POL-001],     title: "PEND without a preceding in-stream PROC"}
+  PAR-E004: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-IF-001],                title: "IF construct without matching ENDIF"}
+  PAR-E005: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-IF-001, POL-001],       title: "ELSE or ENDIF without matching IF"}
+  PAR-E006: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-EXEC-001],              title: "EXEC without PGM=, PROC= or procedure name"}
+  PAR-E007: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-FMT-003, POL-001],      title: "Positional parameter after keyword parameter"}
+  PAR-E008: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-FMT-008, POL-001],      title: "More than two levels of subparameter parentheses"}
+  PAR-E009: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-JCLLIB-001, JCL-INCL-001, POL-001], title: "Statement placement violation"}
+  PAR-E010: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-JCLLIB-001, POL-001],   title: "More than one JCLLIB statement in the job"}
+  PAR-E011: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-JCLLIB-002, JCL-IF-001, JCL-COND-001, POL-001], title: "Documented maximum exceeded"}
+  PAR-E012: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-PROC-001, POL-001],     title: "In-stream PROC without a name"}
+  PAR-E013: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-PROC-001, JCL-PROC-007], title: "In-stream PROC defined within another procedure (nested definition; not a nested invocation)"}
+  PAR-E014: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-PROC-001, POL-001],     title: "In-stream PROC not ended by PEND"}
+  PAR-E015: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-PROC-001, POL-001],     title: "Statement not allowed in an in-stream PROC"}
+  PAR-E016: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-DD-005],                title: "DLM on a DD statement without * or DATA"}
+  PAR-E017: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-COND-001, POL-001],     title: "Null positional subparameter not allowed"}
+  PAR-E018: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-COND-002, POL-001],     title: "Invalid operator"}
+  PAR-E019: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-DD-001, POL-001],       title: "Unnamed DD statement with no preceding DD statement", deprecated: true, replaced_by: PAR-W004}
+  PAR-W001: {severity: WARNING, class: ADVISORY,       stage: syntactic, rules: [JCL-IF-003],                title: "Relational-expression keyword not supported by IBM"}
+  PAR-W002: {severity: WARNING, class: ADVISORY,       stage: syntactic, rules: [JCL-COND-002, JCL-IF-003],  title: "Value outside the documented range"}
+  PAR-W003: {severity: WARNING, class: UNSUPPORTED,    stage: syntactic, rules: [JCL-FMT-002, POL-006],      title: "Unrecognized operation field (invalid JCL or unsupported extension; statement preserved as UNKNOWN)"}
+  PAR-W004: {severity: WARNING, class: SPEC_UNCONFIRMED, stage: syntactic, rules: [JCL-DD-001, POL-006],     title: "Unnamed DD statement with no preceding DD statement (IBM consequence not confirmed)"}
+  PAR-W005: {severity: WARNING, class: ENVIRONMENT,    stage: syntactic, rules: [JCL-DD-005, POL-003],      title: "In-stream data end depends on the JES type (UNKNOWN); region kept UNDETERMINED with candidate ends"}
+  PAR-W006: {severity: WARNING, class: ANALYZABILITY,  stage: syntactic, rules: [JCL-REC-001, JCL-DD-006, POL-006], title: "Record is not JCL and not in an in-stream data context; preserved as UNRECOGNIZED"}
+  PAR-W008: {severity: WARNING, class: SPEC_UNCONFIRMED, stage: syntactic, rules: [JCL-DD-013, POL-006],    title: "DD statement before the first EXEC that is not JOBLIB or its concatenation (IBM placement rule not confirmed)"}
+  PAR-E020: {severity: ERROR,   class: SYNTAX,         stage: syntactic, rules: [JCL-DD-013],               title: "JOBLIB DD not immediately after the JOB statement (EXEC or DD precedes it, or it is in a procedure)"}
+  PAR-I001: {severity: INFO,    class: ENVIRONMENT,    stage: syntactic, rules: [JCL-STMT-NULL, POL-003],   title: "Statements follow a null statement before the next JOB; handling depends on JES (JES2 ignores the null statement)"}
+  PAR-I002: {severity: INFO,    class: ADVISORY,       stage: syntactic, rules: [JCL-DD-002],               title: "procstepname.ddname coded in a program step; only the ddname qualifier is used (IBM issues an informational message)"}
+  # ---- semantic
+  SEM-E001: {severity: ERROR,   class: SYNTAX,         stage: semantic,  rules: [JCL-DD-009, POL-001],       title: "Invalid relative generation number"}
+  # ---- resolution
+  RES-E001: {severity: ERROR,   class: ANALYZABILITY,  stage: resolution, rules: [JCL-INCL-002],             title: "INCLUDE member not found in the search order"}
+  RES-E002: {severity: ERROR,   class: ANALYZABILITY,  stage: resolution, rules: [JCL-PROC-003],             title: "Procedure not found in the search order"}
+  RES-E003: {severity: ERROR,   class: SYNTAX,         stage: resolution, rules: [JCL-PROC-003, JCL-PROC-007, POL-001], title: "Cyclic procedure or INCLUDE reference"}
+  RES-E004: {severity: ERROR,   class: SYNTAX,         stage: resolution, rules: [JCL-SYN-004, POL-001],     title: "Backward reference target not found"}
+  RES-W001: {severity: WARNING, class: ADVISORY,       stage: resolution, rules: [JCL-SYM-001, POL-002],     title: "Undefined symbol left as literal text"}
+  RES-W002: {severity: WARNING, class: ENVIRONMENT,    stage: resolution, rules: [POL-005],                  title: "Library DSN has no dataset mapping (ENVIRONMENT_GAP)"}
+  RES-I001: {severity: INFO,    class: ADVISORY,       stage: resolution, rules: [JCL-PROC-002, POL-004],    title: "PROC label differs from the member name"}

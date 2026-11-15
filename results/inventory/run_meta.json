@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-11-15T03:19:27+00:00",
+  "tool_version": "0.1.0",
+  "schema_version": 1,
+  "python_version": "3.12.15",
+  "python_executable": "D:\\projects\\jcl-profiler\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "command": "inventory",
+  "elapsed_seconds": 0.14,
+  "config": "D:/projects/jcl-profiler/config/profiler.yaml",
+  "roots_source": "positional",
+  "roots": [
+    {
+      "id": "carddemo",
+      "path": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app"
+    }
+  ],
+  "output": "D:/projects/jcl-profiler/results/inventory",
+  "summary": {
+    "files_seen": 240,
+    "files_registered": 240,
+    "files_excluded": 0,
+    "total_bytes": 3866974,
+    "asset_type_counts": {
+      "ASSEMBLER": 2,
+      "BMS": 21,
+      "CATALOG_LISTING": 1,
+      "CICS_CSD": 4,
+      "COBOL": 44,
+      "CONTROL_CARDS": 8,
+      "COPYBOOK": 62,
+      "DATA": 23,
+      "DB2_DCLGEN": 3,
+      "DB2_DDL": 6,
+      "DOCUMENT": 3,
+      "IMS_DBD": 4,
+      "IMS_PSB": 4,
+      "JCL": 46,
+      "MACRO": 2,
+      "PLACEHOLDER": 3,
+      "PROC": 2,
+      "SCHEDULER_CA7": 1,
+      "SCHEDULER_CONTROLM": 1
+    },
+    "encoding_status_counts": {
+      "ENCODING_UNDETERMINED": 23,
+      "OK": 217
+    },
+    "diagnostic_counts": {
+      "INV-I001": 1,
+      "INV-I004": 23,
+      "INV-W003": 2
+    },
+    "severity_counts": {
+      "INFO": 24,
+      "WARNING": 2
+    },
+    "duplicate_member_groups": 1
+  }
+}

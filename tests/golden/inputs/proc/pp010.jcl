@@ -1,0 +1,8 @@
+//PP010    JOB
+//INNER    PROC
+//IS1      EXEC PGM=IEFBR14
+//         PEND
+//OUTER    PROC
+//OS1      EXEC INNER
+//         PEND
+//STEP1    EXEC OUTER

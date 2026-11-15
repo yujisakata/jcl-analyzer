@@ -1,0 +1,300 @@
+schema_version: 1
+category: PROC_PEND
+cases:
+  - test_id: G-PP-001
+    category: PROC_PEND
+    description: "In-stream procedure (named PROC ... PEND) defined before the EXEC that calls it by name."
+    rule_ids: [JCL-PROC-001, JCL-PROC-004, JCL-EXEC-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "JCL-PROC-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "25. PEND statement > Description; Location", pages: "549-550 (PDF 595-596)"}
+      - {rule_id: "JCL-EXEC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "16. EXEC statement > Parameter field > Positional parameters (Table 19)", pages: "314 (PDF 360)"}
+    input_file: inputs/proc/pp001.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: JOB, span: [1, 1], name: PP001}
+        - {kind: PROC, span: [2, 2], name: CARDS, positional: [], keywords: []}
+        - {kind: EXEC, span: [3, 3], name: PSTEP1, positional: [], keywords: [[PGM, IEFBR14]]}
+        - {kind: DD, span: [4, 4], name: DD1, positional: [], keywords: [[DSN, A.B], [DISP, SHR]]}
+        - {kind: PEND, span: [5, 5], name: null}
+        - {kind: EXEC, span: [6, 6], name: STEP1, positional: [CARDS], keywords: []}
+      blocks:
+        - {kind: PROC, name: CARDS, start: 2, end: 5}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ibm "Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output."
+    oracle_author: &author "Claude (AI assistant, claude-opus-5-5); draft awaiting human review"
+    review_status: draft
+    notes: ""
+
+  - test_id: G-PP-002
+    category: PROC_PEND
+    description: "IBM PROC example 1: a cataloged procedure member whose PROC statement assigns symbolic parameter defaults; symbols stay raw."
+    rule_ids: [JCL-PROC-002, JCL-PROC-005, JCL-CONT-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > Cataloged procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "JCL-PROC-005", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "26. PROC statement > Description; Parameter field; Location", pages: "551-552 (PDF 597-598)"}
+      - {rule_id: "JCL-CONT-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "3. Format of statements > Continuing JCL statements > Continuing the parameter field", pages: "16-17 (PDF 62-63)"}
+    input_file: inputs/proc/DEF.prc
+    input_kind: proc_member
+    environment: {member_name: DEF}
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: PROC, span: [1, 1], name: DEF, positional: [], keywords: [[STATUS, OLD], [LIBRARY, SYSLIB], [NUMBER, "777777"]]}
+        - {kind: EXEC, span: [2, 2], name: NOTIFY, positional: [], keywords: [[PGM, ACCUM]]}
+        - {kind: DD, span: [3, 4], name: DD1, positional: [], keywords: [[DSNAME, MGMT], [DISP, ["&STATUS", KEEP]], [UNIT, "3390"], [VOLUME, {kw: [SER, "888888"]}]]}
+        - {kind: DD, span: [5, 6], name: DD2, positional: [], keywords: [[DSNAME, "&LIBRARY"], [DISP, [OLD, KEEP]], [UNIT, "3390"], [VOLUME, {kw: [SER, "&NUMBER"]}]]}
+      blocks:
+        - {kind: PROC, name: DEF, start: 1, end: null}
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: &m_ex "Statements transcribed from the IBM SA23-1385-70 example on the cited page. Expected structure derived by hand from the cited rules."
+    oracle_author: *author
+    review_status: draft
+    notes: "PROC statement Example 1, p.552. A cataloged procedure needs no PEND, so the block end is null."
+
+  - test_id: G-PP-003
+    category: PROC_PEND
+    description: "A cataloged procedure member without a PROC statement (PROC is optional)."
+    rule_ids: [JCL-PROC-002]
+    source_reference:
+      - {rule_id: "JCL-PROC-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > Cataloged procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+    input_file: inputs/proc/NOPROC.prc
+    input_kind: proc_member
+    environment: {member_name: NOPROC}
+    case_type: boundary
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+        - {kind: EXEC, span: [1, 1], name: S1, positional: [], keywords: [[PGM, IEFBR14]]}
+        - {kind: DD, span: [2, 2], name: DD1, positional: [], keywords: [[DSN, A.B], [DISP, SHR]]}
+      blocks: []
+    expected_diagnostics: {mode: exact, items: []}
+    oracle_method: *m_ibm
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-PP-004
+    category: PROC_PEND
+    description: "In-stream PROC without a name (a name is required for in-stream procedures)."
+    rule_ids: [JCL-PROC-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/proc/pp004.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E012, severity: ERROR, line: 2}]
+    oracle_method: &m_pol "Hand-derived. IBM states the coding rule but not the consequence of violating it, so the expected diagnostic follows project policy (POL rule cited)."
+    oracle_author: *author
+    review_status: draft
+    notes: ""
+
+  - test_id: G-PP-005
+    category: PROC_PEND
+    description: "Nested in-stream procedure DEFINITION (PROC, PROC, PEND, PEND) - invalid; distinct from nested invocation (G-PP-010)."
+    rule_ids: [JCL-PROC-001, JCL-PROC-007, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "JCL-PROC-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols > Nested procedures", pages: "32 (PDF 78)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/proc/pp005.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Recovery policy undecided; see blocked_reason."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E013, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: blocked
+    blocked_reason: "The first diagnostic (PAR-E013 at record 3) is clear, but the follow-on diagnostics depend on an error-recovery policy that has not been decided: which PEND closes which PROC (records 5 and 6). Decide the recovery policy before Step 4."
+    change_log:
+      - date: "2026-11-15"
+        reason: "User decision A4: distinguish nested definition from nested invocation."
+        before: {rule_ids: [JCL-PROC-001, POL-001]}
+        after: {rule_ids: [JCL-PROC-001, JCL-PROC-007, POL-001]}
+        basis: "SA23-1385-70 p.32: 'The sequence PROC, PROC, PEND, PEND is not valid'"
+        approver: "user decision A4 (the case remains blocked: recovery policy)"
+    notes: ""
+
+  - test_id: G-PP-006
+    category: PROC_PEND
+    description: "In-stream procedure not ended by PEND before end of input."
+    rule_ids: [JCL-PROC-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/proc/pp006.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E014, severity: ERROR, line: 2}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: "The diagnostic is reported at the unterminated PROC statement."
+
+  - test_id: G-PP-007
+    category: PROC_PEND
+    description: "PEND in a job with no preceding in-stream PROC."
+    rule_ids: [JCL-PROC-001, JCL-PROC-004, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "JCL-PROC-004", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "25. PEND statement > Description; Location", pages: "549-550 (PDF 595-596)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/proc/pp007.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E003, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: "A PEND is legal at the end of a cataloged procedure member (input_kind proc_member), but not here."
+
+  - test_id: G-PP-008
+    category: PROC_PEND
+    description: "JCLLIB inside an in-stream procedure (only CNTL, comment, DD, ENDCNTL, EXEC, IF/ELSE/ENDIF, INCLUDE, OUTPUT and SET are allowed)."
+    rule_ids: [JCL-PROC-001, POL-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "POL-001", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "requirements.md > 1.3, FR-03, 7.4", pages: "-"}
+    input_file: inputs/proc/pp008.jcl
+    input_kind: job
+    case_type: invalid
+    validation_stage: syntactic
+    expected_structure: {view: none, reason: "Invalid case: only the diagnostic is asserted."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: PAR-E015, severity: ERROR, line: 3}]
+    oracle_method: *m_pol
+    oracle_author: *author
+    review_status: draft
+    notes: "Not a JCLLIB placement error, because record 3 precedes the first job-level EXEC."
+
+  - test_id: G-PP-009
+    category: PROC_PEND
+    description: "CardDemo proc/TRANREPT.prc: the PROC label REPROC differs from member name TRANREPT; it is resolved by member name and the mismatch is reported."
+    rule_ids: [JCL-PROC-002, POL-004]
+    source_reference:
+      - {rule_id: "JCL-PROC-002", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > Cataloged procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+      - {rule_id: "POL-004", url: "docs/requirements.md", edition: "requirements.md v1.0 / docs/decisions.md", section: "decisions.md > ADR-011", pages: "-"}
+    input_file: corpus://carddemo/proc/TRANREPT.prc
+    corpus_source: {root_id: carddemo, rel_path: proc/TRANREPT.prc, sha256: fdbdc473dd21ba4908613c47180542ceffea8ea9a976a9413355361c6deaf103, lines: [1, 1]}
+    scope: {lines: [1, 1]}
+    input_kind: proc_member
+    environment: {member_name: TRANREPT}
+    case_type: valid
+    validation_stage: resolution
+    expected_structure: {view: none, reason: "Only the label/member finding is asserted (diagnostic). The procedure name is the member name (JCL-PROC-002)."}
+    expected_diagnostics:
+      mode: exact
+      items: [{code: RES-I001, severity: INFO, line: 1}]
+    oracle_method: &m_corpus "Manual structural analysis of the cited CardDemo line range (read-only). File identity fixed by the SHA-256 from the independent shell oracle (tests/acceptance/expected). Not derived from any parser."
+    oracle_author: *author
+    review_status: draft
+    notes: "Found in Step 2 (user decision A3, ADR-011)."
+
+  - test_id: G-PP-010
+    category: PROC_PEND
+    description: Nested procedure INVOCATION (an EXEC inside in-stream procedure OUTER calls in-stream procedure INNER) is valid and distinct from a nested definition.
+    rule_ids: [JCL-PROC-007, JCL-PROC-001]
+    source_reference:
+      - {rule_id: "JCL-PROC-007", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols > Nested procedures", pages: "32 (PDF 78)"}
+      - {rule_id: "JCL-PROC-001", url: "https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf", edition: "z/OS 3.2, SA23-1385-70", section: "5. Procedures and symbols; 26. PROC statement > In-stream procedures; Name field", pages: "25 (PDF 71); 551 (PDF 597)"}
+    input_file: inputs/proc/pp010.jcl
+    input_kind: job
+    case_type: valid
+    validation_stage: syntactic
+    expected_structure:
+      view: statements
+      statements:
+      - kind: JOB
+        span:
+        - 1
+        - 1
+        name: PP010
+      - kind: PROC
+        span:
+        - 2
+        - 2
+        name: INNER
+        positional: []
+        keywords: []
+      - kind: EXEC
+        span:
+        - 3
+        - 3
+        name: IS1
+        positional: []
+        keywords:
+        - - PGM
+          - IEFBR14
+      - kind: PEND
+        span:
+        - 4
+        - 4
+        name: null
+      - kind: PROC
+        span:
+        - 5
+        - 5
+        name: OUTER
+        positional: []
+        keywords: []
+      - kind: EXEC
+        span:
+        - 6
+        - 6
+        name: OS1
+        positional:
+        - INNER
+        keywords: []
+      - kind: PEND
+        span:
+        - 7
+        - 7
+        name: null
+      - kind: EXEC
+        span:
+        - 8
+        - 8
+        name: STEP1
+        positional:
+        - OUTER
+        keywords: []
+      blocks:
+      - kind: PROC
+        name: INNER
+        start: 2
+        end: 4
+      - kind: PROC
+        name: OUTER
+        start: 5
+        end: 7
+    expected_diagnostics:
+      mode: exact
+      items: []
+    oracle_method: Hand-derived from the cited IBM SA23-1385-70 rules. Input JCL designed by hand (tools/golden_authoring/make_inputs.py only fixes columns). Expected structure written manually, never generated from parser output.
+    oracle_author: Claude (AI assistant, claude-opus-5-5); draft awaiting human review
+    review_status: draft
+    notes: User decision A4. INNER is defined before the EXEC (in OUTER) that calls it. Nesting depth here is 2 (limit 15, p.32). Resolution of the nested call is a Step 5 matter.

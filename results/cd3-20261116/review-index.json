@@ -1,0 +1,133 @@
+{
+  "items": 45,
+  "categories": {
+    "CONCATENATION": 19,
+    "NEXT-STATEMENT": 7,
+    "SEQUENCE-LOOKS-LIKE-COMMENT": 1,
+    "JOBLIB-DD": 1,
+    "EOF-DATA": 1,
+    "NULL-SOURCE-ONLY": 6,
+    "COMMENT-AFTER-COMMA": 1,
+    "SAME-NAMED-STEPS": 2,
+    "JOBLIB-LABEL-JCLLIB": 3,
+    "DATA-TRAILING-SLASHES": 2,
+    "PROC-PEND": 2
+  },
+  "file_items": {
+    "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl": [
+      "EX-001",
+      "EX-002",
+      "EX-003"
+    ],
+    "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl": [
+      "EX-004",
+      "EX-005",
+      "EX-006",
+      "EX-007"
+    ],
+    "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL": [
+      "EX-008",
+      "EX-009"
+    ],
+    "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL": [
+      "EX-010",
+      "EX-011"
+    ],
+    "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL": [
+      "EX-012",
+      "EX-013"
+    ],
+    "app-transaction-type-db2/jcl/CREADB21.jcl": [
+      "EX-014",
+      "EX-015",
+      "EX-016",
+      "EX-017",
+      "EX-018",
+      "EX-019"
+    ],
+    "app-transaction-type-db2/jcl/MNTTRDB2.jcl": [
+      "EX-020",
+      "EX-021"
+    ],
+    "app-transaction-type-db2/jcl/TRANEXTR.jcl": [
+      "EX-022",
+      "EX-023"
+    ],
+    "jcl/ACCTFILE.jcl": [],
+    "jcl/CARDFILE.jcl": [
+      "EX-024"
+    ],
+    "jcl/CBADMCDJ.jcl": [
+      "EX-025"
+    ],
+    "jcl/CBEXPORT.jcl": [],
+    "jcl/CBIMPORT.jcl": [],
+    "jcl/CLOSEFIL.jcl": [],
+    "jcl/COMBTRAN.jcl": [
+      "EX-026",
+      "EX-027"
+    ],
+    "jcl/CREASTMT.JCL": [
+      "EX-028"
+    ],
+    "jcl/CUSTFILE.jcl": [],
+    "jcl/DALYREJS.jcl": [],
+    "jcl/DEFCUST.jcl": [
+      "EX-029"
+    ],
+    "jcl/DEFGDGB.jcl": [],
+    "jcl/DEFGDGD.jcl": [
+      "EX-030"
+    ],
+    "jcl/DISCGRP.jcl": [],
+    "jcl/DUSRSECJ.jcl": [
+      "EX-031"
+    ],
+    "jcl/ESDSRRDS.jcl": [
+      "EX-032"
+    ],
+    "jcl/FTPJCL.JCL": [
+      "EX-033"
+    ],
+    "jcl/INTCALC.jcl": [],
+    "jcl/INTRDRJ1.JCL": [],
+    "jcl/INTRDRJ2.JCL": [],
+    "jcl/OPENFIL.jcl": [],
+    "jcl/POSTTRAN.jcl": [],
+    "jcl/PRTCATBL.jcl": [
+      "EX-034",
+      "EX-035"
+    ],
+    "jcl/READACCT.jcl": [],
+    "jcl/READCARD.jcl": [],
+    "jcl/READCUST.jcl": [],
+    "jcl/READXREF.jcl": [],
+    "jcl/REPTFILE.jcl": [],
+    "jcl/TCATBALF.jcl": [],
+    "jcl/TRANBKP.jcl": [
+      "EX-036"
+    ],
+    "jcl/TRANCATG.jcl": [],
+    "jcl/TRANFILE.jcl": [],
+    "jcl/TRANIDX.jcl": [],
+    "jcl/TRANREPT.jcl": [
+      "EX-037",
+      "EX-038",
+      "EX-039",
+      "EX-040",
+      "EX-041"
+    ],
+    "jcl/TRANTYPE.jcl": [],
+    "jcl/TXT2PDF1.JCL": [],
+    "jcl/WAITSTEP.jcl": [],
+    "jcl/XREFFILE.jcl": [],
+    "proc/REPROC.prc": [
+      "EX-042"
+    ],
+    "proc/TRANREPT.prc": [
+      "EX-043",
+      "EX-044",
+      "EX-045"
+    ]
+  }
+}

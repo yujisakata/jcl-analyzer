@@ -1,0 +1,152 @@
+{
+  "run_at": "2026-11-15T12:31:32+00:00",
+  "gate": "A (development health)",
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "ruff",
+      "ok": true,
+      "detail": "All checks passed!",
+      "data": {}
+    },
+    {
+      "name": "mypy",
+      "ok": true,
+      "detail": "Success: no issues found in 76 source files",
+      "data": {}
+    },
+    {
+      "name": "harness-suite",
+      "ok": true,
+      "detail": "245 passed, 1 skipped in 8.46s",
+      "data": {
+        "counts": {
+          "passed": 245,
+          "skipped": 1
+        },
+        "skips": {
+          "symlinks not permitted on this system": 1
+        },
+        "unverified": [
+          "symlinks not permitted on this system"
+        ]
+      }
+    },
+    {
+      "name": "golden-defs",
+      "ok": true,
+      "detail": "golden definitions: 102 case(s) valid",
+      "data": {}
+    },
+    {
+      "name": "golden-integrity",
+      "ok": true,
+      "detail": "golden integrity: OK (matches MANIFEST.json)",
+      "data": {}
+    },
+    {
+      "name": "rules-sync",
+      "ok": true,
+      "detail": "rules reference: in sync",
+      "data": {}
+    },
+    {
+      "name": "known-defects",
+      "ok": true,
+      "detail": "14 registered, 13 OPEN",
+      "data": {}
+    },
+    {
+      "name": "golden-run",
+      "ok": true,
+      "detail": "{\"PASSED\": 49, \"NOT_IMPLEMENTED\": 49, \"BLOCKED\": 2, \"FAILED\": 2}; known-defect FAILED {'G-IS-006': 'A10', 'G-IS-007': 'A10'}",
+      "data": {
+        "counts": {
+          "PASSED": 49,
+          "NOT_IMPLEMENTED": 49,
+          "BLOCKED": 2,
+          "FAILED": 2
+        },
+        "known": {
+          "G-IS-006": "A10",
+          "G-IS-007": "A10"
+        },
+        "unexpected": [],
+        "stale": []
+      }
+    },
+    {
+      "name": "pending-defs",
+      "ok": true,
+      "detail": "golden definitions: 5 case(s) valid (unsealed by design)",
+      "data": {}
+    },
+    {
+      "name": "pending-run",
+      "ok": true,
+      "detail": "{\"PASSED\": 4, \"FAILED\": 1}; known-defect FAILED {'G-HIER-004': 'A10'}",
+      "data": {
+        "counts": {
+          "PASSED": 4,
+          "FAILED": 1
+        },
+        "known": {
+          "G-HIER-004": "A10"
+        },
+        "unexpected": [],
+        "stale": []
+      }
+    },
+    {
+      "name": "analyzer-suite",
+      "ok": true,
+      "detail": "129 passed, 51 skipped, 11 xfailed in 8.72s",
+      "data": {
+        "counts": {
+          "passed": 129,
+          "skipped": 51,
+          "xfailed": 11
+        },
+        "skips": {
+          "NOT_IMPLEMENTED": 49,
+          "BLOCKED": 2
+        },
+        "xfail_by_defect": {
+          "tests/parser/test_golden_parser.py::test_golden_case[G-IS-006]": "A10",
+          "tests/parser/test_golden_parser.py::test_golden_case[G-IS-007]": "A10",
+          "tests/parser/test_known_defects_04b.py::test_d1_jes2_with_unknown_nulljcl_does_not_fix_membership": "A01",
+          "tests/parser/test_known_defects_04b.py::test_d1_jes3_skips_statements_after_null": "A01",
+          "tests/parser/test_known_defects_04b.py::test_d1_skipped_records_are_marked_not_dropped": "A01",
+          "tests/parser/test_known_defects_04b.py::test_d1_unknown_environment_keeps_every_candidate": "A01",
+          "tests/parser/test_known_defects_04b.py::test_d2_unknown_does_not_present_one_interpretation_as_determined": "A02",
+          "tests/parser/test_known_defects_04b.py::test_d2_unknown_keeps_the_jes2_step_as_a_candidate": "A02",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES2]": "A03",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[JES3]": "A03",
+          "tests/parser/test_known_defects_04b.py::test_d3_null_after_continuation_is_not_a_job_end[UNKNOWN]": "A03"
+        }
+      }
+    },
+    {
+      "name": "hierarchy-mutation",
+      "ok": true,
+      "detail": "required operators: 943/943 detected; escaped: 0",
+      "data": {}
+    }
+  ],
+  "known_defects_not_closed": [
+    "A01 HIGH OPEN: Statements after a null statement: job membership fixed regardless of JES / NULLJCL",
+    "A02 HIGH OPEN: JES=UNKNOWN DD * DLM divergence drops candidate statements and steps",
+    "A03 MEDIUM OPEN: Null record after a continued statement treated as a job end candidate",
+    "A04 HIGH OPEN: DLM value: doubled ampersands not restored before matching",
+    "A05 HIGH OPEN: False continuation from a delimiter record drops the following DD",
+    "A06 HIGH OPEN: Data ended by a DLM prefix match only",
+    "A07 MEDIUM OPEN: DLM length / empty value not checked per JES",
+    "A08 MEDIUM OPEN: Missing delimiter for DD * with DLM at end of input not diagnosed",
+    "A09 MEDIUM OPEN: EXEC target / DD positional parameter constraints not checked",
+    "A10 MEDIUM OPEN: Job.span does not contain in-stream data at the end of a job (data to end of input, or data followed directly by the next JOB)",
+    "A11 HIGH RESOLVED_PENDING_REVIEW: Harness did not verify the JOB/STEP/DD hierarchy; one gate mixed health and acceptance",
+    "H01 LOW OPEN: JobNode.job_statement is not the flat JOB statement (limitations missing in the tree)",
+    "H02 LOW OPEN: Statements owned by a procedure container (PEND in a cataloged PROC member, JCLLIB/SET before the first EXEC of an in-stream PROC) are not reachable from the tree",
+    "H03 LOW OPEN: DDs and other statements of a step before the first JOB statement are not reachable (only the EXEC is listed in outside_statements)"
+  ]
+}

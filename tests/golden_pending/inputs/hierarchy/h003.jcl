@@ -1,0 +1,14 @@
+//INST     JOB
+//S1       EXEC PGM=A
+//SYSIN    DD   *
+ CARD 1
+ CARD 2
+/*
+//S2       EXEC PGM=B
+ IMPLICIT 1
+//OUT      DD   SYSOUT=*
+//S3       EXEC PGM=C
+//SYSUT1   DD   DATA
+//NOTJCL   JOB
+/*
+//* TRAILING COMMENT

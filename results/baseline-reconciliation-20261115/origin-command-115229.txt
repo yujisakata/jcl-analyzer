@@ -1,0 +1,54 @@
+uv run python - <<'EOF'
+import json
+p='specs/golden-schema.json'
+d=json.load(open(p,encoding='utf-8'))
+nullable_line = {"oneOf": [{"$ref": "#/$defs/line"}, {"type": "null"}]}
+d["$defs"]["hier_dd"] = {
+  "type": "object", "additionalProperties": False,
+  "required": ["name", "line", "concat_head", "concat_index"],
+  "properties": {
+    "name": {"type": ["string", "null"]},
+    "line": nullable_line,
+    "concat_head": {"type": ["string", "null"]},
+    "concat_index": {"type": "integer", "minimum": 0},
+    "implicit": {"type": "boolean"},
+    "inline_data": {"type": "object", "additionalProperties": False,
+                    "required": ["records", "terminator"],
+                    "properties": {"records": {"oneOf": [{"$ref": "#/$defs/span"}, {"type": "null"}]},
+                                   "terminator": {"enum": ["DELIMITER", "NEXT_STATEMENT", "EOF", "UNDETERMINED"]}}}}}
+d["$defs"]["hier_step"] = {
+  "type": "object", "additionalProperties": False,
+  "required": ["name", "line", "target", "dds"],
+  "properties": {
+    "name": {"type": ["string", "null"]},
+    "line": nullable_line,
+    "target": {"oneOf": [{"type": "array", "prefixItems": [{"enum": ["PGM", "PROC"]}, {"type": "string"}],
+                          "minItems": 2, "maxItems": 2}, {"type": "null"}]},
+    "dds": {"type": "array", "items": {"$ref": "#/$defs/hier_dd"}}}}
+d["$defs"]["hier_proc"] = {
+  "type": "object", "additionalProperties": False,
+  "required": ["name", "line", "end_line", "steps"],
+  "properties": {"name": {"type": ["string", "null"]}, "line": nullable_line, "end_line": nullable_line,
+                 "steps": {"type": "array", "items": {"$ref": "#/$defs/hier_step"}}}}
+d["$defs"]["hier_job"] = {
+  "type": "object", "additionalProperties": False,
+  "required": ["name", "line", "span", "dds", "steps", "procedures"],
+  "properties": {"name": {"type": ["string", "null"]}, "line": {"$ref": "#/$defs/line"},
+                 "span": {"$ref": "#/$defs/span"},
+                 "dds": {"type": "array", "items": {"$ref": "#/$defs/hier_dd"}},
+                 "steps": {"type": "array", "items": {"$ref": "#/$defs/hier_step"}},
+                 "procedures": {"type": "array", "items": {"$ref": "#/$defs/hier_proc"}}}}
+d["$defs"]["hierarchy"] = {
+  "type": "object", "additionalProperties": False, "required": ["jobs", "outside"],
+  "description": "JOB -> STEP -> DD tree (ADR-027, docs/golden-view.md). Compared in order; only with view: statements.",
+  "properties": {"jobs": {"type": "array", "items": {"$ref": "#/$defs/hier_job"}},
+                 "procedure_steps": {"type": "array", "items": {"$ref": "#/$defs/hier_step"}},
+                 "outside": {"type": "array", "items": {"$ref": "#/$defs/line"}}}}
+es = d["$defs"]["expected_structure"]
+es["properties"]["hierarchy"] = {"$ref": "#/$defs/hierarchy"}
+es["allOf"].append({"if": {"required": ["hierarchy"]},
+                    "then": {"properties": {"view": {"const": "statements"}}}})
+open(p,'w',encoding='utf-8',newline='\n').write(json.dumps(d,indent=2,ensure_ascii=False)+"\n")
+print("schema updated")
+EOF
+uv run jclprof golden-check | tail -2
