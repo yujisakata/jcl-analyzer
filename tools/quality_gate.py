@@ -14,7 +14,8 @@ Gate A (dev, default) -- "nothing is broken that is not a registered, visible kn
                         a listed case that no longer fails is stale (fails the gate)
   9. pending-defs       tests/golden_pending definitions valid (review pending, unsealed)
  10. pending-run        review-pending suite: same rule as 8
- 11. analyzer-suite     pytest tests/lexer tests/parser tests/property: no failure or error;
+ 11. analyzer-suite     pytest tests/lexer tests/parser tests/property tests/resolver:
+                        no failure or error;
                         every XFAIL registered under an OPEN known defect; no XPASS
  12. hierarchy-mutation every required AST mutation (M1-M7) is detected
 Gate A prints the OPEN known defects; a PASS never means "accepted".
@@ -154,7 +155,7 @@ def gate_a(py: str, output: str) -> tuple[list[Check], dict[str, Any]]:
             checks.append(Check("pending-defs", p_ok, p_defs + " (unsealed by design)"))
 
     rc, out = _run([py, "-m", "pytest", "-q", "-rsxX", "-p", "no:cacheprovider", "tests/lexer",
-                    "tests/parser", "tests/property"])
+                    "tests/parser", "tests/property", "tests/resolver"])
     pc = _pytest_counts(out)
     xfailed, xpassed = _report_ids(out, "XFAIL"), _report_ids(out, "XPASS")
     unreg, registered, unseen = classify_xfails(xfailed, xpassed, defects)

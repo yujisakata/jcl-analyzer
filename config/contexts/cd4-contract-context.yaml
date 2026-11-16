@@ -1,0 +1,21 @@
+# CD-4 contract verification context (docs/reviews/carddemo-acceptance-contract.md CA-04/CA-05).
+#
+# status UNCONFIRMED_CONTRACT_CONTEXT: this mapping has NOT been confirmed by the asset owner
+# (contract Q01). It exists only so that the conditional expectations of CA-05 can be compared.
+# The production configuration (config/profiler.yaml, datasets: []) is unchanged; resolution
+# results produced with this context carry the basis UNCONFIRMED_CONTRACT_CONTEXT and must not
+# be reported as confirmed (ADR-010, ADR-029).
+#
+# Only the procedure library is mapped. AWS.M2.CARDDEMO.CNTL (REPROCT has two local candidates,
+# contract Q02) and the other DSN references are deliberately NOT mapped: data set to physical
+# resource mapping is outside CD-4.
+schema_version: 1
+status: UNCONFIRMED_CONTRACT_CONTEXT
+basis_note: "CA-04 table: AWS.M2.CARDDEMO.PROC(REPROC) -> app/proc/REPROC.prc; AWS.M2.CARDDEMO.PROC(TRANREPT) -> app/proc/TRANREPT.prc"
+datasets:
+  - dsn: AWS.M2.CARDDEMO.PROC
+    root: carddemo
+    path: proc
+    organization: PDS
+    member_suffixes: [".prc"]
+    note: "candidate from contract CA-04; owner confirmation pending (Q01)"

@@ -347,6 +347,12 @@ rules:
     conditions: "-"
     source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Modifying EXEC statement parameters; Modifying OUTPUT JCL and DD statements", pages: "27-29 (PDF 73-75)"}
     status: VERIFIED
+  - id: JCL-EXEC-003
+    applies_to: "EXEC keyword vs symbolic parameters"
+    summary: "EXEC syntax: positional-parm[,keyword-parm]...[,symbolic-parm=value]. Keyword parameters are those of Table 20 (ABDISPCC, ACCT, ADDRSPC, CCSID, CONCURRENTRW, COND, DSKEYLBL, DYNAMNBR, FREEVOL, GDGORDER, KEYENCD1/2, KEYLABL1/2, MEMLIMIT, PARM, PARMDD, PERFORM, RD, REGION, REGIONX, RLSTMOUT, ROACCESS, SYMBOLS, SYMLIST, TIME, TVSAMCOM, TVSMSG, VOL), optionally qualified by .procstepname. On an EXEC that calls a procedure, other KEYWORD=value assignments assign or nullify symbolic parameters."
+    conditions: "EXEC parameter keywords must not be used as symbolic parameters."
+    source: {doc: IBM-JCLREF-32, chapter: "16. EXEC statement", section: "Syntax; Table 20 Keyword parameters; Symbolic parameters", pages: "313-321 (PDF 359-367)"}
+    status: VERIFIED
   - id: JCL-PROC-007
     applies_to: "Nested procedures"
     summary: "Cataloged and in-stream procedures can invoke other procedures (an EXEC in a procedure calls another procedure), up to 15 levels of nesting. An in-stream procedure cannot be DEFINED within another procedure: the sequence PROC, PROC, PEND, PEND is not valid."
@@ -389,6 +395,18 @@ rules:
     summary: "A string beginning with & that is not a defined symbol is treated as literal characters: no substitution and no error message. A JCL symbol not assigned or nullified is undefined and might cause errors."
     conditions: "-"
     source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Coding symbols in JCL; Using symbols in nested procedures (rule 6)", pages: "44 (PDF 90); 48 (PDF 94)"}
+    status: VERIFIED
+  - id: JCL-SYM-003
+    applies_to: "Symbol syntax and substitution"
+    summary: "A symbol starts with & (not &&), is ended by a character that is not alphabetic, numeric or national, and is at most 8 characters. A period after a symbol is a delimiter and disappears on substitution. A string beginning with & that is not a defined symbol stays literal. Inside apostrophes, symbols are substituted only for DD AMP/PATH/SUBSYS and EXEC ACCT/PARM."
+    conditions: "Other apostrophe-enclosed values keep & text literally."
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Coding symbols in JCL; Using symbols before fixed code", pages: "43-44 (PDF 89-90)"}
+    status: VERIFIED
+  - id: JCL-SYM-004
+    applies_to: "Symbol value precedence and nesting"
+    summary: "A SET value is overridden by a later SET, by a default on a later PROC statement and by a value on a later EXEC statement that calls a procedure. If a nested procedure does not assign or nullify a symbol, the value comes from the procedure in which it is nested."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "28. SET statement; 5. Procedures and symbols", section: "SET > Overrides; Using symbols in nested procedures (rule 5)", pages: "566 (PDF 612); 48 (PDF 94)"}
     status: VERIFIED
   - id: JCL-SYM-002
     applies_to: "Symbol concatenation with a period"

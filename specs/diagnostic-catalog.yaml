@@ -69,4 +69,9 @@ codes:
   RES-E004: {severity: ERROR,   class: SYNTAX,         stage: resolution, rules: [JCL-SYN-004, POL-001],     title: "Backward reference target not found"}
   RES-W001: {severity: WARNING, class: ADVISORY,       stage: resolution, rules: [JCL-SYM-001, POL-002],     title: "Undefined symbol left as literal text"}
   RES-W002: {severity: WARNING, class: ENVIRONMENT,    stage: resolution, rules: [POL-005],                  title: "Library DSN has no dataset mapping (ENVIRONMENT_GAP)"}
+  RES-E005: {severity: ERROR,   class: SYNTAX,         stage: resolution, rules: [JCL-PROC-006, POL-001],    title: "Override names a procedure step that the called procedure does not contain"}
+  RES-W003: {severity: WARNING, class: ENVIRONMENT,    stage: resolution, rules: [JCL-PROC-002, POL-005],    title: "Member has more than one local candidate in a mapped library; not resolved"}
+  RES-W004: {severity: WARNING, class: UNSUPPORTED,    stage: resolution, rules: [JCL-PROC-006, POL-006],    title: "Procedure call or override construct outside the CD-4 resolver scope; not applied"}
+  RES-W005: {severity: WARNING, class: ENVIRONMENT,    stage: resolution, rules: [JCL-PROC-003, POL-003],    title: "Procedure search cannot complete (unmapped library or system procedure library not configured)"}
+  RES-I002: {severity: INFO,    class: ENVIRONMENT,    stage: resolution, rules: [JCL-SYM-003, POL-003],     title: "System symbol whose value depends on the execution environment; left unresolved"}
   RES-I001: {severity: INFO,    class: ADVISORY,       stage: resolution, rules: [JCL-PROC-002, POL-004],    title: "PROC label differs from the member name"}

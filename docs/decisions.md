@@ -218,3 +218,31 @@
 - **決定**: `ParseResult.procedure_end` に、メンバーレベルの最初の PEND（インストリーム PROC を閉じるものではない PEND）を置く。木では PROC ルート（procedure_header と同じ階層）が所有し、最後の EXEC の other_statements や outside には入れない。インストリーム PROC の PEND は従来どおり `ProcDefNode.pend_statement`
 - **検査**: `check_hierarchy` の参照モデルは、このPEND の所有者を MEMBER とする。CD-1 の検査器は実際のリンクを辿る（1 処理の追加）
 - **範囲外**: インストリーム PROC 定義の最初の EXEC より前の文と、ジョブファイル内の孤立した PEND は H02B（OPEN）として残す
+
+## ADR-032 CardDemo 専用 PROC Resolver と Effective Job View（CD-4）
+- **日付**: 2026-11-16 / **状態**: 採用（実装済み。Codex の独立監査待ち）/ **契約**: carddemo-acceptance-contract.md CA-04〜06、CA-15
+- **層の分離**:
+  - Effective Job View（`src/jclprof/resolver/`）は Source AST（ParseResult）とは別の層とする
+  - Source AST の JOB / STEP / DD と原文は変更しない。呼出し STEP の子である PRC001.FILEIN / FILEOUT もそのまま残す
+  - Resolver は ParseResult を読むだけで、展開結果は新しいオブジェクトとして作る
+- **ライブラリーの解決**（JCL-PROC-002/003、ADR-010/011）:
+  - 探索順序はインストリーム → JCLLIB ORDER → システム PROCLIB とする。システム PROCLIB は未設定のため、常に NOT_CONFIGURED になる
+  - メンバーは、明示的なマッピングが指すフォルダの中だけを、メンバー名または明示された別名で探す。候補が 0 件なら NOT_FOUND、複数なら AMBIGUOUS とし、先頭の候補を選ぶことはしない
+  - 先に探索する未マッピングのライブラリーがある場合、後のライブラリーで見つかっても ENVIRONMENT_GAP とする（先のライブラリーにメンバーがあるかどうかが分からないため）
+  - PROC ラベルは別の属性として扱い、メンバー名と異なる場合は RES-I001 を出す
+- **マッピングの出典**:
+  - 本番設定（config/profiler.yaml、datasets: []）は変更しない。この設定では 4 呼出しとも ENVIRONMENT_GAP になる
+  - 契約の検算用に `config/contexts/cd4-contract-context.yaml`（status: UNCONFIRMED_CONTRACT_CONTEXT）を追加した。これは PROC ライブラリーだけをマッピングする。この文脈で得た結果には basis を付け、確定した結果としては扱わない（契約 Q01）
+- **上書き**（JCL-PROC-006）:
+  - procstepname.ddname は名前の付いた STEP に適用する。修飾なしの上書きは、直前に名前を付けた STEP、無ければ最初の STEP に適用する
+  - 既存のパラメーターは REPLACE、値なしは NULLIFY、手続き文に無いものは ADD とし、元の値・適用値・上書き元の位置・理由を記録する
+  - 一致する DD が無い上書き DD は、STEP の末尾に追加する
+  - 範囲外の構成（位置パラメーター／DUMMY の上書き、DCB の部分マージ、相互排他、連結や暗黙 DD の上書き、入れ子呼出し STEP の上書き、呼出し EXEC の EXEC パラメーター上書き、16 段以上の入れ子）は RES-W004 を出し、適用しない
+- **シンボル**（JCL-SYM-001〜004、JCL-EXEC-003）:
+  - 呼出し EXEC のキーワードのうち、Table 20 と PARMDD に無いものをシンボリックパラメーターとする
+  - 優先順位は、EXEC の値 > PROC の既定値 > SET とし、入れ子では呼出し元の値を引き継ぐ
+  - SET の効力は記述位置で決まる（SET より後の文にだけ適用する）
+  - 未定義のシンボルは文字のまま残し（RES-W001）、SYSUID は実行環境に依存するものとして扱う（RES-I002）
+  - アポストロフィ内では PARM / ACCT / AMP / PATH / SUBSYS に限って置換する。インストリームデータの中のシンボルは置換しない（CA-07）
+- **出典**: 展開後のノードは SourceRef を持ち、呼出し EXEC、PROC 定義の文と DD、上書き DD とキーワード、シンボルを定義した SET / EXEC / PROC、DCB 後方参照の参照元と参照先へたどれる（CA-15）
+
