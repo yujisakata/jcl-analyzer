@@ -1,0 +1,35 @@
+# CD-4R2 R01 fresh-checkout verification (2026-11-16T08:54:00Z)
+## 1. fresh detached worktree at 0add9bf (system core.autocrlf=true), no regeneration
+HEAD 0add9bfabb53260a8b3231628f8ddae6a3539be4; status lines: 0
+i/lf    w/lf    attr/-text            	config/contexts/cd4-contract-context.yaml
+i/lf    w/crlf  attr/                 	config/profiler.yaml
+i/lf    w/lf    attr/-text            	results/resolve/contract/effective.json
+i/lf    w/lf    attr/-text            	results/resolve/official/effective.json
+i/lf    w/lf    attr/-text            	results/resolve/report.md
+i/lf    w/lf    attr/-text            	results/resolve/run-manifest.json
+i/lf    w/crlf  attr/                 	uv.lock
+trust point: GIT_BLOB HEAD:results/resolve/run-manifest.json ef7ddad9e38d917ca558c1970bb3ddbb12e38ad4
+recorded only (not guaranteed): generated_at, code.git_dirty_paths, code.code_hash, environment.python, environment.implementation, environment.platform, environment.byteorder, environment.pyyaml
+run-manifest: PASS (20 verified fact groups)
+exit=0
+## 2. same worktree, external digest anchor
+manifest sha256 6c787d2a90e8276af6b5e6c9e77a3ce478bbd8694cb67c3f3dd63cec4ead8f82
+trust point: EXTERNAL_SHA256 6c787d2a90e8276af6b5e6c9e77a3ce478bbd8694cb67c3f3dd63cec4ead8f82
+run-manifest: PASS (20 verified fact groups)
+exit=0
+PROBLEM manifest digest: differs from the expected SHA-256
+run-manifest: FAIL
+exit(expected 1)=1
+## 3. regenerate from the fresh checkout into a separate directory, verify, compare bytes
+run-manifest: PASS (20 verified fact groups)
+exit=0
+official/effective.json committed=99739e0056c6f1300d996b7873f2b57a4459a69ad73d5aadfef1278f12cbc931 regenerated=99739e0056c6f1300d996b7873f2b57a4459a69ad73d5aadfef1278f12cbc931 IDENTICAL
+contract/effective.json committed=3969982a470ba5ab4fe8ce2f14529b888e3e5e7921328a150a4ea6e3e8abd9a4 regenerated=3969982a470ba5ab4fe8ce2f14529b888e3e5e7921328a150a4ea6e3e8abd9a4 IDENTICAL
+report.md committed=aaf4fa6831b535a8b637710aaf1a024af6d5b8e87336d0540bf3ddf42fc80365 regenerated=aaf4fa6831b535a8b637710aaf1a024af6d5b8e87336d0540bf3ddf42fc80365 IDENTICAL
+## 4. second fresh worktree checked out with core.autocrlf=false
+i/lf    w/lf    attr/-text            	config/contexts/cd4-contract-context.yaml
+i/lf    w/lf    attr/                 	config/profiler.yaml
+i/lf    w/lf    attr/-text            	results/resolve/run-manifest.json
+trust point: GIT_BLOB HEAD:results/resolve/run-manifest.json ef7ddad9e38d917ca558c1970bb3ddbb12e38ad4
+run-manifest: PASS (20 verified fact groups)
+exit=0
