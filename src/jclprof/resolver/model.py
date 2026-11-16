@@ -70,6 +70,10 @@ class ProcCall:
     basis: str = ""  # library context basis (CONFIG / UNCONFIRMED_CONTRACT_CONTEXT / ...)
     depth: int = 1
     parent_call: str | None = None
+    # CD-4R2 R04: the library search result (None when the call was not searched) and every
+    # reason the call is not RESOLVED, e.g. ("UNSUPPORTED:U-EXEC-OVERRIDE", "ENVIRONMENT_GAP").
+    search_status: str | None = None
+    reasons: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -89,6 +93,10 @@ class OverrideRecord:
     applied: Any
     source: SourceRef  # the overriding DD keyword
     reason: str
+    # CD-4R2 R02: the procedure parameter that was replaced / removed (its spelling may differ:
+    # DSN and DSNAME are one parameter) and where it was coded. None for ADD.
+    original_param: str | None = None
+    original_source: SourceRef | None = None
 
 
 @dataclass(frozen=True)
@@ -178,6 +186,8 @@ class EffectiveResult:
     diagnostics: tuple[ResolveDiagnostic, ...]
     limitations: tuple[str, ...] = field(default=())
     unsupported: tuple[UnsupportedForm, ...] = field(default=())
+    encoding: str = ""  # CD-4R2 R03: run conditions, re-derivable by run-manifest --verify
+    jes: str = ""
 
     def counts(self) -> dict[str, int]:
         steps = [s for j in self.jobs for s in j.steps] + list(self.steps)
@@ -197,5 +207,7 @@ class EffectiveResult:
             "symbols_defined": [asdict(s) for s in self.symbols_defined],
             "diagnostics": [asdict(d) for d in self.diagnostics],
             "limitations": list(self.limitations),
-            "unsupported": [asdict(u) for u in self.unsupported], "counts": self.counts(),
+            "unsupported": [asdict(u) for u in self.unsupported],
+            "run_conditions": {"encoding": self.encoding, "jes": self.jes},
+            "counts": self.counts(),
         }

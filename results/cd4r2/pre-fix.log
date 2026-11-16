@@ -1,0 +1,173 @@
+FFFFF....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                             [100%]
+================================== FAILURES ===================================
+E   AssertionError: assert 'unspecified' == 'unset'
+      
+      - unset
+      + unspecified
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:71: AssertionError: assert 'unspecified' == 'unset'
+E   AssertionError: assert 'unspecified' == 'unset'
+      
+      - unset
+      + unspecified
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:71: AssertionError: assert 'unspecified' == 'unset'
+E   AssertionError: assert 'unspecified' == 'unset'
+      
+      - unset
+      + unspecified
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:71: AssertionError: assert 'unspecified' == 'unset'
+E   AssertionError: assert 'unspecified' == 'unset'
+      
+      - unset
+      + unspecified
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:71: AssertionError: assert 'unspecified' == 'unset'
+E   AssertionError: assert 'unspecified' == 'unset'
+      
+      - unset
+      + unspecified
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:71: AssertionError: assert 'unspecified' == 'unset'
+E   AssertionError: assert [('DSN', 'BAS..., 'NEW.NAME')] == [('DSNAME', 'NEW.NAME')]
+      
+      At index 0 diff: ('DSN', 'BASE.NAME') != ('DSNAME', 'NEW.NAME')
+      Left contains one more item: ('DSNAME', 'NEW.NAME')
+      Use -v to get more diff
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:106: AssertionError: assert [('DSN', 'BAS..., 'NEW.NAME')] == [('DSNAME', 'NEW.NAME')]
+E   AssertionError: assert [('DSNAME', '..., 'NEW.NAME')] == [('DSN', 'NEW.NAME')]
+      
+      At index 0 diff: ('DSNAME', 'BASE.NAME') != ('DSN', 'NEW.NAME')
+      Left contains one more item: ('DSN', 'NEW.NAME')
+      Use -v to get more diff
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:106: AssertionError: assert [('DSNAME', '..., 'NEW.NAME')] == [('DSN', 'NEW.NAME')]
+E   AssertionError: assert [('DSN', 'BASE.NAME')] == []
+      
+      Left contains one more item: ('DSN', 'BASE.NAME')
+      Use -v to get more diff
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:121: AssertionError: assert [('DSN', 'BASE.NAME')] == []
+E   AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+      
+      - UNSUPPORTED
+      + RESOLVED
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:137: AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+E   AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+      
+      - UNSUPPORTED
+      + RESOLVED
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:137: AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+E   AttributeError: 'OverrideRecord' object has no attribute 'original_param'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:146: AttributeError: 'OverrideRecord' object has no attribute 'original_param'
+E   AssertionError: assert 'AMBIGUOUS' == 'UNSUPPORTED'
+      
+      - UNSUPPORTED
+      + AMBIGUOUS
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:180: AssertionError: assert 'AMBIGUOUS' == 'UNSUPPORTED'
+E   AttributeError: 'ProcCall' object has no attribute 'search_status'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:181: AttributeError: 'ProcCall' object has no attribute 'search_status'
+E   AssertionError: assert 'ENVIRONMENT_GAP' == 'UNSUPPORTED'
+      
+      - UNSUPPORTED
+      + ENVIRONMENT_GAP
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:180: AssertionError: assert 'ENVIRONMENT_GAP' == 'UNSUPPORTED'
+E   AssertionError: assert 'ENVIRONMENT_GAP' == 'UNSUPPORTED'
+      
+      - UNSUPPORTED
+      + ENVIRONMENT_GAP
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:180: AssertionError: assert 'ENVIRONMENT_GAP' == 'UNSUPPORTED'
+E   AttributeError: 'ProcCall' object has no attribute 'search_status'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:199: AttributeError: 'ProcCall' object has no attribute 'search_status'
+E   AttributeError: 'ProcCall' object has no attribute 'search_status'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:199: AttributeError: 'ProcCall' object has no attribute 'search_status'
+E   AttributeError: 'ProcCall' object has no attribute 'search_status'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:199: AttributeError: 'ProcCall' object has no attribute 'search_status'
+E   AttributeError: 'ProcCall' object has no attribute 'search_status'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:199: AttributeError: 'ProcCall' object has no attribute 'search_status'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+---------------------------- Captured stdout setup ----------------------------
+wrote <TMP>\pytest-106\r2run0\report.md and <TMP>\pytest-106\r2run0\run-manifest.json
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:220: TypeError: verify_manifest() got an unexpected keyword argument 'manifest_path'
+E   ImportError: cannot import name 'RECORDED_ONLY' from 'jclprof.resolver.manifest' (D:\projects\jcl-profiler-claude\src\jclprof\resolver\manifest.py)
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:273: ImportError: cannot import name 'RECORDED_ONLY' from 'jclprof.resolver.manifest' (D:\projects\jcl-profiler-claude\src\jclprof\resolver\manifest.py)
+E   ImportError: cannot import name 'manifest_digest' from 'jclprof.resolver.manifest' (D:\projects\jcl-profiler-claude\src\jclprof\resolver\manifest.py)
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_cd4r2.py:287: ImportError: cannot import name 'manifest_digest' from 'jclprof.resolver.manifest' (D:\projects\jcl-profiler-claude\src\jclprof\resolver\manifest.py)
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/resolver/test_resolver_cd4r2.py::test_r01_attribute_is_not_widened[config/profiler.yaml]
+PASSED tests/resolver/test_resolver_cd4r2.py::test_r01_attribute_is_not_widened[uv.lock]
+PASSED tests/resolver/test_resolver_cd4r2.py::test_r01_attribute_is_not_widened[src/jclprof/resolver/resolver.py]
+PASSED tests/resolver/test_resolver_cd4r2.py::test_r01_attribute_is_not_widened[results/cd4r/resolver-tests.log]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r01_hash_fixed_evidence_is_byte_exact[config/contexts/cd4-contract-context.yaml]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r01_hash_fixed_evidence_is_byte_exact[results/resolve/official/effective.json]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r01_hash_fixed_evidence_is_byte_exact[results/resolve/contract/effective.json]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r01_hash_fixed_evidence_is_byte_exact[results/resolve/report.md]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r01_hash_fixed_evidence_is_byte_exact[results/resolve/run-manifest.json]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_other_spelling_replaces[base-DSN_override-DSNAME]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_other_spelling_replaces[base-DSNAME_override-DSN]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_null_other_spelling_nullifies
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_both_spellings_on_one_statement_is_unsupported[override-both]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_both_spellings_on_one_statement_is_unsupported[base-both]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r02_same_spelling_still_replaces
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_unsupported_and_library_state_keep_both_reasons[duplicate]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_unsupported_and_library_state_keep_both_reasons[normal]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_unsupported_and_library_state_keep_both_reasons[unavailable]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_unsupported_and_library_state_keep_both_reasons[unmapped]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_without_unsupported_form_status_is_the_search_status[duplicate]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_without_unsupported_form_status_is_the_search_status[normal]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_without_unsupported_form_status_is_the_search_status[unavailable]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r04_without_unsupported_form_status_is_the_search_status[unmapped]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_unmutated_manifest_verifies
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[context_missing]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[contract_basis_confirmed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[contract_mappings_empty]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[counts_changed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[encoding_changed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[git_commit_zero]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[input_one_removed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[inputs_removed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[jes_changed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[members_removed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[official_roots_changed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[output_bytes_zero]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[output_one_removed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[outputs_removed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[schema_changed]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[src_file_dropped]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[src_tree_zero]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_mutation_detected[uv_lock_zero]
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_recorded_only_fields_are_declared
+FAILED tests/resolver/test_resolver_cd4r2.py::test_r03_manifest_trust_point
+40 failed, 4 passed in 1.86s
+HEAD=e848ec9340c61b11f783f42b0af17242d80b98b8 src-changes=0

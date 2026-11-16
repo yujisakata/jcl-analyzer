@@ -1,0 +1,22 @@
+{
+ "base_problems": [],
+ "context_missing": "NOT_DETECTED",
+ "contract_basis_confirmed": "NOT_DETECTED",
+ "contract_mappings_empty": "NOT_DETECTED",
+ "counts_changed": "NOT_DETECTED",
+ "encoding_changed": "NOT_DETECTED",
+ "git_commit_zero": "NOT_DETECTED",
+ "input_one_removed": "NOT_DETECTED",
+ "inputs_removed": "NOT_DETECTED",
+ "jes_changed": "NOT_DETECTED",
+ "members_removed": "NOT_DETECTED",
+ "official_roots_changed": "NOT_DETECTED",
+ "output_bytes_zero": "NOT_DETECTED",
+ "output_one_removed": "NOT_DETECTED",
+ "outputs_removed": "NOT_DETECTED",
+ "schema_changed": "NOT_DETECTED",
+ "src_file_dropped": "DETECTED",
+ "src_tree_zero": "NOT_DETECTED",
+ "uv_lock_zero": "NOT_DETECTED",
+ "summary": "1/18 detected"
+}

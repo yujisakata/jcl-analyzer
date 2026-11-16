@@ -12,3 +12,10 @@
 /tests/golden_pending/cases/** -text
 /tests/golden_pending/inputs/** -text
 /tests/golden_pending/carddemo_source/expectations.json -text
+
+# CD-4R2 (R01): resolver evidence whose raw bytes are hashed in results/resolve/run-manifest.json.
+/config/contexts/cd4-contract-context.yaml -text
+/results/resolve/official/effective.json -text
+/results/resolve/contract/effective.json -text
+/results/resolve/report.md -text
+/results/resolve/run-manifest.json -text

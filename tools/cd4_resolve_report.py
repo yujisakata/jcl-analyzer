@@ -2,10 +2,12 @@
 contract context, and write results/resolve/ (JSON per context + report.md + run-manifest.json).
 
 usage: uv run python tools/cd4_resolve_report.py [--out DIR]
-       uv run python tools/cd4_resolve_report.py --verify [--out DIR]
+       uv run python tools/cd4_resolve_report.py --verify [--out DIR] [--manifest-sha256 HEX]
 Inputs are read-only. Results under (b) are conditional on the unconfirmed mapping (CA-05).
 Outputs are UTF-8 with LF line ends. run-manifest.json (CD-4R F09) records the code version,
-inputs, contexts, environment and output hashes; --verify recomputes them and lists mismatches.
+inputs, contexts, environment and output hashes; --verify re-derives every VERIFIED fact, lists
+the RECORDED_ONLY fields it does not guarantee, and reports the manifest's trust point (its Git
+blob in HEAD, or the external SHA-256 given with --manifest-sha256). See manifest.py (R03).
 """
 
 from __future__ import annotations
@@ -21,7 +23,7 @@ import yaml
 
 from jclprof.context.config import load_config
 from jclprof.resolver import EffectiveResult, LibraryContext, Resolver, load_library_context
-from jclprof.resolver.manifest import build_manifest, verify_manifest
+from jclprof.resolver.manifest import build_manifest, verify_report
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results" / "resolve"
@@ -56,7 +58,7 @@ def main(out: Path = OUT) -> Path:
         "official": LibraryContext.from_config(cfg),
         "contract": load_library_context(CONTRACT, {cfg.roots[0].id: root}),
     }
-    context_files: dict[str, Path | None] = {"official": CONFIG, "contract": CONTRACT}
+    context_files = {"official": (CONFIG, "config"), "contract": (CONTRACT, "overlay")}
     outputs: list[Path] = []
     members: dict[str, str] = {}
     all_counts: dict[str, Any] = {}
@@ -121,26 +123,35 @@ def main(out: Path = OUT) -> Path:
     manifest = build_manifest(
         project=ROOT, generator=Path(__file__).resolve(), root_id=cfg.roots[0].id, root=root,
         file_list=FILE_LIST, files=files, members=members,
-        contexts={n: (c, context_files[n]) for n, c in contexts.items()}, outputs=outputs,
-        encoding=ENCODING, jes=JES, counts=all_counts)
+        contexts={n: (c, *context_files[n]) for n, c in contexts.items()}, out_dir=out,
+        outputs=outputs, encoding=ENCODING, jes=JES, counts=all_counts)
     mpath = out / "run-manifest.json"
     write_lf(mpath, json.dumps(manifest, ensure_ascii=False, indent=1) + "\n")
     print(f"wrote {report} and {mpath}")
     return mpath
 
 
-def verify(out: Path = OUT) -> list[str]:
-    manifest = json.loads((out / "run-manifest.json").read_text(encoding="utf-8"))
-    return verify_manifest(manifest, ROOT)
+def verify(out: Path = OUT, expected_sha256: str | None = None) -> dict[str, Any]:
+    mpath = out / "run-manifest.json"
+    manifest = json.loads(mpath.read_text(encoding="utf-8"))
+    return verify_report(manifest, ROOT, manifest_path=mpath, expected_sha256=expected_sha256)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="CD-4 resolver report and run manifest")
     ap.add_argument("--out", type=Path, default=OUT)
     ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--manifest-sha256", default=None)
     a = ap.parse_args()
     if a.verify:
-        problems = verify(a.out)
-        print("\n".join(problems) if problems else "run-manifest: all hashes match")
-        sys.exit(1 if problems else 0)
+        rep = verify(a.out, a.manifest_sha256)
+        for prob in rep["problems"]:
+            print(f"PROBLEM {prob}")
+        print(f"trust point: {rep['trust']}")
+        for n in rep["not_verified"]:
+            print(f"NOT VERIFIED {n}")
+        print("recorded only (not guaranteed): " + ", ".join(rep["recorded_only"]))
+        print("run-manifest: " + ("FAIL" if rep["problems"] else
+                                  f"PASS ({len(rep['verified'])} verified fact groups)"))
+        sys.exit(1 if rep["problems"] else 0)
     main(a.out)

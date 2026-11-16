@@ -70,7 +70,10 @@ CASES: dict[str, Callable[[], Case]] = {
                                 J(*HDR, "//C EXEC PP", "//ST1.OUT DD DCB=(RECFM=FB)"), "PP"),
     "U-OVR-MUTEX": lambda: ({"PP.prc": PLAIN}, J(*HDR, "//C EXEC PP", "//ST1.IN DD SYSOUT=A"),
                             "PP"),
-    "U-OVR-CONCAT": lambda: ({"PP.prc": PLAIN},
+    "U-OVR-DSN-DUPLICATE": lambda: ({"PP.prc": PLAIN},  # TC-022 (CD-4R2 R02)
+                                    J(*HDR, "//C EXEC PP", "//ST1.IN DD DSN=A.N,DSNAME=B.N"),
+                                    "PP"),
+    "U-OVR-CONCAT": lambda:({"PP.prc": PLAIN},
                              J(*HDR, "//C EXEC PP", "//ST1.IN DD DSN=A,DISP=SHR",
                                "//       DD DSN=B,DISP=SHR"), "PP"),
     "U-OVR-NESTED-STEP": lambda: (

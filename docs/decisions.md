@@ -257,3 +257,15 @@
 - **従来の RES-W004 の扱いの変更**: CD-4 では、範囲外の上書きを「適用せずに RESOLVED のまま」出していた。CD-4R では、呼出しを UNSUPPORTED にして展開しない（TC-021）。CardDemo には該当がなく（RES-W004 は 0 件）、結果は変わらない
 - **F09 実行証跡**: `tools/cd4_resolve_report.py` は `run-manifest.json` を出力する。内容は、実装（git コミット、未コミットのパス、src/jclprof の全ファイルと生成器の SHA-256）、入力（ファイル一覧、48 入力と読み込んだメンバーの SHA-256）、文脈（ファイルのパスと SHA-256、basis、マッピングと root の全体）、環境（Python、プラットフォーム、エンコーディング、JES、依存の版、uv.lock）、出力（パス、バイト数、SHA-256）、件数。`--verify` はハッシュを再計算し、不一致を一覧にする。出力は UTF-8・LF に固定し、Windows でも再生成の結果がバイト単位で一致するようにする。実装ファイルのハッシュは CRLF を LF に正規化して計算する（同じコミットを CRLF で checkout した worktree でも照合できるようにするため）。原本の入力と出力は生のバイト列で照合する
 - **範囲外のまま残すもの**: 未対応形の機能実装（PROC 内 SET の位置スコープ、ネストからのインストリーム PROC 参照、シンボルを使う PROC 名・JCLLIB・DUMMY の打消し、DCB マージなど）、DSN と物理資源の対応、インストリームデータ内のシンボル
+
+## ADR-034 証拠のバイト固定、DSN/DSNAME、manifest の検証契約、複数の未解決理由（CD-4R2）
+- **日付**: 2026-11-16 / **状態**: 採用（実装済み。Codex の再監査待ち）/ **契機**: Codex の独立再監査（e848ec9、FAIL）の R01〜R04
+- **R01 バイト固定**: `.gitattributes` で、manifest が生のバイト列でハッシュする 5 ファイル（`config/contexts/cd4-contract-context.yaml` と `results/resolve/` の 4 ファイル）だけを `-text` にする。全 JSON・全ソースには広げない。リポジトリ内のそれ以外のファイル（config/profiler.yaml、uv.lock、ソースコード）は、CRLF を LF に正規化してハッシュし、方式（sha256_method）を記録する。原本の入力は生のバイト列のまま照合する。凍結済みの Source Oracle の属性・ハッシュ・Git の履歴は変更しない
+- **R02 DSN と DSNAME**: IBM の DSNAME パラメーターの構文では、DSN と DSNAME は同じパラメーターの別表記である。上書きの照合はこの 2 つを同一とみなし、REPLACE / NULLIFY を適用する。記録には、上書きした側の表記（param）、置き換えた手続き側の表記（original_param）、旧値、新値、両側の出典（source / original_source）を残す。1 つの DD 文に両方の表記がある場合は判断できないため、新しい未対応形 U-OVR-DSN-DUPLICATE として UNSUPPORTED にする
+- **R03 manifest の検証契約**（schema_version 2）:
+  - VERIFIED（再計算または再導出する事実）: 必須の入力集合（ファイル一覧から導く）、入力とメンバーのハッシュ、context の file・hash 方式・hash と inline の内容（ファイルを読み込み直して比較）、コードのファイル一覧と各ハッシュと tree、generator、git_commit の存在と、そのコミットがコードを含むかどうか（commit_contains_code を再導出して比較）、encoding と JES（出力に記録された実行条件から）、uv.lock、出力の必須集合・バイト数・ハッシュ、件数とメンバーと basis（出力から導く）
+  - RECORDED_ONLY（後から確認できない情報で、保証しない）: generated_at、git_dirty_paths、code_hash（説明の文字列）、Python・実装・プラットフォーム・バイト順・PyYAML の版
+  - 信頼点: manifest のファイルそのものは、HEAD の Git blob（`git hash-object --no-filters` と `git rev-parse HEAD:<path>` の一致）または外部の SHA-256（`--manifest-sha256`）で固定する。どちらも無ければ UNANCHORED と表示する
+  - 実装のコミットと証拠を生成したコミットが異なっていても、コードの内容が同じなら許容する（コミットの存在と内容で判定し、HEAD との一致は求めない）
+- **R04 複数の未解決理由**: 未対応形を検出した呼出しの主状態は、ライブラリーの状態にかかわらず UNSUPPORTED とする。ProcCall に search_status（探索の結果）と reasons（例: `UNSUPPORTED:U-EXEC-OVERRIDE`、`ENVIRONMENT_GAP`）を追加し、探索の根拠と環境の診断（RES-W002 / W005 / W006 / W007）を残す
+

@@ -82,6 +82,8 @@ UNSUPPORTED_FORMS: dict[str, str] = {
                              "such as DUMMY [F08]",
     "U-OVR-DCB-MERGE": "override needing a DCB subparameter merge",
     "U-OVR-MUTEX": "override that mixes mutually exclusive parameters (SYSOUT with DSN/DISP)",
+    "U-OVR-DSN-DUPLICATE": "DSN and DSNAME both coded on the overriding or the procedure DD "
+                           "[R02]",
     "U-OVR-CONCAT": "concatenated or implicit DD after a procedure call",
     "U-OVR-NESTED-STEP": "override of a nested procedure call step",
     "U-DEPTH": f"procedure nesting deeper than {MAX_DEPTH} levels",
@@ -280,18 +282,22 @@ class Resolver:
         records: list[OverrideRecord] = []
         for k in st.keywords:
             new = self.param(cdoc, run, st, k.name, k.value, k.line, k.column, clook)
-            idx = next((i for i, p in enumerate(params) if p.name == k.name), None)
+            key = _dsn_alias(k.name)  # DSN and DSNAME are one parameter (R02)
+            idx = next((i for i, p in enumerate(params) if _dsn_alias(p.name) == key), None)
+            old = params[idx] if idx is not None else None
+            oname = old.name if old is not None else None
+            osrc = old.source if old is not None else None
             if k.value is None:
-                orig = params[idx].value if idx is not None else None
                 if idx is not None:
                     params.pop(idx)
-                records.append(OverrideRecord(k.name, "NULLIFY", orig, None, new.source,
-                                              "JCL-PROC-006: keyword coded without a value "
-                                              "removes the procedure parameter"))
-            elif idx is not None:
-                records.append(OverrideRecord(k.name, "REPLACE", params[idx].value, new.value,
+                records.append(OverrideRecord(k.name, "NULLIFY", old.value if old else None, None,
+                                              new.source, "JCL-PROC-006: keyword coded without a "
+                                              "value removes the procedure parameter",
+                                              oname, osrc))
+            elif idx is not None and old is not None:
+                records.append(OverrideRecord(k.name, "REPLACE", old.value, new.value,
                                               new.source, "JCL-PROC-006: overriding parameter "
-                                              "replaces the procedure parameter"))
+                                              "replaces the procedure parameter", oname, osrc))
                 params[idx] = new
             else:
                 records.append(OverrideRecord(k.name, "ADD", None, new.value, new.source,
@@ -397,24 +403,28 @@ class Resolver:
         if depth + 1 > MAX_DEPTH:
             self.form(run, "U-DEPTH", cid, cref, f"nesting deeper than {MAX_DEPTH} levels")
             run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
-                                      depth=depth + 1, parent_call=parent))
+                                      depth=depth + 1, parent_call=parent,
+                                      reasons=("UNSUPPORTED:U-DEPTH",)))
             return [self.placeholder(doc, run, st, look, call_path, chain)]
         if "&" in name:  # CD-4R F06
             self.form(run, "U-SYMBOLIC-PROC", cid, cref, f"PROC={name}")
             run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
-                                      depth=depth + 1, parent_call=parent))
+                                      depth=depth + 1, parent_call=parent,
+                                      reasons=("UNSUPPORTED:U-SYMBOLIC-PROC",)))
             return [self.placeholder(doc, run, st, look, call_path, chain)]
         if parent is not None and name in run.job_instream:  # CD-4R F04
             self.form(run, "U-NESTED-INSTREAM", cid, cref,
                       f"{name} is an in-stream procedure of the job, called from a procedure")
             run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
-                                      depth=depth + 1, parent_call=parent))
+                                      depth=depth + 1, parent_call=parent,
+                                      reasons=("UNSUPPORTED:U-NESTED-INSTREAM",)))
             return [self.placeholder(doc, run, st, look, call_path, chain)]
         others = [k for k in e.keywords if k.name != "PROC" and k.name.split(".")[0]
                   in EXEC_KEYWORDS]
         if others:
             self.form(run, "U-EXEC-OVERRIDE", cid, cref, ",".join(k.name for k in others))
         status, steps, found = self.search(run, doc, name, libs, instream, line)
+        search_status = status
         if status == "UNSUPPORTED":
             ev = steps[-1].evidence or cref
             self.form(run, "U-SYMBOLIC-JCLLIB", cid, ev, f"ORDER item {steps[-1].library}")
@@ -446,18 +456,25 @@ class Resolver:
             if found and found[0] == "INSTREAM":
                 body = _proc_span(found[1], doc.parsed.jobs[0].span[1] if doc.parsed.jobs else 0)
             self.call_forms(run, cid, doc, st, mdoc, proc_steps, body)
-            if any(u.call_id == cid for u in run.unsupported):
-                status = "UNSUPPORTED"
         key = member_rel or (f"{doc.rel}:INSTREAM:{name}" if mdoc is doc else None)
         if status == "RESOLVED" and key in active:
             status = "CYCLE"
             self.diag(run, "RES-E003", doc.rel, line, " -> ".join([*active, key or name]))
+        # R04: an unsupported form makes the call UNSUPPORTED whatever the library state; the
+        # search result and every reason are kept.
+        forms = sorted({u.form for u in run.unsupported if u.call_id == cid})
+        reasons = tuple(f"UNSUPPORTED:{f}" for f in forms)
+        if status not in ("RESOLVED", "UNSUPPORTED"):
+            reasons += (status,)
+        if forms:
+            status = "UNSUPPORTED"
         run.calls.append(ProcCall(cid, name, cref, status, tuple(steps), member_rel, member_sha,
-                                  alias_of, label, matches, self.library.basis, depth + 1, parent))
+                                  alias_of, label, matches, self.library.basis, depth + 1, parent,
+                                  search_status, reasons))
         if status != "RESOLVED" or mdoc is None:
-            if status in ("ENVIRONMENT_GAP", "NO_LIBRARY_CONTEXT"):
-                self.diag(run, "RES-W005", doc.rel, line, f"{name}: {status}")
-            elif status == "AMBIGUOUS" and steps[-1].result == "AMBIGUOUS":
+            if search_status in ("ENVIRONMENT_GAP", "NO_LIBRARY_CONTEXT"):
+                self.diag(run, "RES-W005", doc.rel, line, f"{name}: {search_status}")
+            elif search_status == "AMBIGUOUS" and steps[-1].result == "AMBIGUOUS":
                 self.diag(run, "RES-W003", doc.rel, line,
                           f"{name}: {', '.join(steps[-1].candidates)}")
             return [self.placeholder(doc, run, st, look, call_path, chain)]
@@ -608,7 +625,8 @@ class Resolver:
         diags = sorted(run.diags, key=lambda d: (d.file, d.line or 0, d.code, d.message))
         return EffectiveResult(doc.parsed, doc.rel, doc.sha, self.library.basis, jobs, steps,
                                tuple(run.calls), tuple(run.defs), tuple(diags),
-                               tuple(sorted(lims)), tuple(run.unsupported))
+                               tuple(sorted(lims)), tuple(run.unsupported), self.encoding,
+                               self.jes)
 
     # ------------------------------------------------------------------ unsupported forms
     def call_forms(self, run: _Run, cid: str, doc: _Doc, st: StepNode, mdoc: _Doc,
@@ -653,6 +671,11 @@ class Resolver:
                     self.form(run, "U-OVR-BASE-POSITIONAL", cid, oref,
                               f"procedure DD {ps.name}.{o.ddname} is coded with "
                               f"{' '.join(p.text for p in base.statement.positional)}")
+                for dd_st, who in ((o.statement, "overriding"), (base.statement, "procedure")):
+                    if {"DSN", "DSNAME"} <= {k.name for k in dd_st.keywords}:
+                        self.form(run, "U-OVR-DSN-DUPLICATE", cid, self.ref(
+                            doc if who == "overriding" else mdoc, dd_st),
+                            f"{who} DD {ps.name}.{o.ddname} codes both DSN and DSNAME")
                 names_o = {_dsn_alias(k.name) for k in o.statement.keywords}
                 have = {_dsn_alias(k.name) for k in base.statement.keywords}
                 if "DCB" in names_o and "DCB" in have:

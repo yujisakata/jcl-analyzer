@@ -18,7 +18,7 @@ import pytest
 import yaml
 
 from conftest import PROJECT_ROOT
-from jclprof.resolver.manifest import sha256_file, verify_manifest
+from jclprof.resolver.manifest import repo_hash, sha256_file, verify_manifest
 
 pytestmark = pytest.mark.corpus
 
@@ -83,8 +83,9 @@ def test_manifest_content(runs: tuple[Path, Path, dict[str, Any]]) -> None:
     assert ctxs["contract"]["file"] == "config/contexts/cd4-contract-context.yaml"
     assert ctxs["contract"]["basis"] == "UNCONFIRMED_CONTRACT_CONTEXT"
     assert [x["dsn"] for x in ctxs["contract"]["mappings"]] == ["AWS.M2.CARDDEMO.PROC"]
-    for c in ctxs.values():
-        assert c["sha256"] == sha256_file(PROJECT_ROOT / c["file"])
+    for c in ctxs.values():  # TC-022: hash method per file (raw for -text files, else LF)
+        assert c["sha256"] == repo_hash(PROJECT_ROOT / c["file"], c["file"])
+    assert (ctxs["official"]["sha256_method"], ctxs["contract"]["sha256_method"]) == ("lf", "raw")
     counts = m["counts"]
     assert counts["official"]["jobs_46"] == {"program_steps": 116, "unresolved_call_steps": 3,
                                              "dds": 474, "job_level_dds": 3}
