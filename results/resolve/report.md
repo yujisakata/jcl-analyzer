@@ -6,6 +6,7 @@
 
 - 46 JOB files: program steps 116, unresolved call steps 3, DDs 474 (job-level 3)
 - proc/TRANREPT.prc with context AWS.M2.CARDDEMO.PROC: {'program_steps': 2, 'unresolved_call_steps': 1, 'dds': 14, 'job_level_dds': 0}
+- unsupported forms detected: 0
 
 | File | Call line | Requested | Status | Search | Member | Label match |
 |---|---|---|---|---|---|---|
@@ -23,6 +24,7 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2, "RES-W002": 3, "RES-
 
 - 46 JOB files: program steps 119, unresolved call steps 0, DDs 486 (job-level 3)
 - proc/TRANREPT.prc with context AWS.M2.CARDDEMO.PROC: {'program_steps': 3, 'unresolved_call_steps': 0, 'dds': 18, 'job_level_dds': 0}
+- unsupported forms detected: 0
 
 | File | Call line | Requested | Status | Search | Member | Label match |
 |---|---|---|---|---|---|---|
@@ -600,7 +602,9 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
   }
  ],
  "pending_overrides": [],
- "source_step_id": "T00021"
+ "source_step_id": "T00021",
+ "program_raw": "IDCAMS",
+ "program_substitutions": []
 }
 ```
 

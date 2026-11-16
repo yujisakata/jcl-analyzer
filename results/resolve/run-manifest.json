@@ -1,0 +1,364 @@
+{
+ "schema_version": 1,
+ "kind": "resolver-run",
+ "generated_at": "2026-11-16T05:34:31Z",
+ "code": {
+  "git_commit": "7454478c709e76040a9bedec0fd46f865401a20b",
+  "git_dirty_paths": [],
+  "generator": {
+   "path": "tools/cd4_resolve_report.py",
+   "sha256": "a6c0d819bf7f743089a5b035b335fd07086b4932cfd7cb43715b5ed28ba44f19"
+  },
+  "code_hash": "sha256 of bytes with CRLF normalised to LF",
+  "src_tree_sha256": "ac290bf639633aaec02f8e4d21979d2915c7fb001a14c65f3438d5af231e3551",
+  "src_files": {
+   "src/jclprof/__init__.py": "09ec9e79a4cd4b594e8b318e66b5478d4500efce085bc4f461ce91bc625a5b75",
+   "src/jclprof/__main__.py": "62375d1a3966e750021e0f6778c5cc6e54269ff39273e655bd3cada58abb1824",
+   "src/jclprof/cli.py": "bd618276e4d6b1b184cc8d9bc4bcc6baa8884a56cdcd9776473241df509280be",
+   "src/jclprof/context/__init__.py": "55c3f8884e186c64d68b8eb47796f3a23b4f810c3cd9ad8ec69f311f7c483ec1",
+   "src/jclprof/context/config.py": "f4a7dd1fc1dfcc220813965d30dbc252a64fd942ae3700062d448dcbe6efe2a6",
+   "src/jclprof/context/globmatch.py": "34b3115c50a3dcfc66024c8183f1c81cb0f358bf2da6cc6df61757a5329716fb",
+   "src/jclprof/diagnostics.py": "ad12dbd2b6b0d787800521f6e0f8d4127b49b7b1033984321776035b7343ff87",
+   "src/jclprof/envcheck.py": "355f987301eca347e0c9968bd6df8bd747cc359c7a07dae09e982aa50649e020",
+   "src/jclprof/harness/__init__.py": "1baa7c9a7998ed37aeb21895cb8d82828656fdc34da8cdf48b3ca22b5f341a50",
+   "src/jclprof/harness/adapters.py": "5bd9b2ec8a45ac055c7ae78ed61eec0c652b0ff5308dfac052a3202806b2bb9f",
+   "src/jclprof/harness/carddemo_mutations.py": "1efbf38bd8b6437a87aa663f1f48276a94d0b557082404dd7665dc8857edeacc",
+   "src/jclprof/harness/carddemo_source.py": "e6731b965388cb6c45d33348d7251edb635c08f7f83f0044564c2b10d947b6d6",
+   "src/jclprof/harness/comparator.py": "a28b2d4b490b3eeae846ddda2cb35503eb44b432f75df304f20fd234a5a3cec6",
+   "src/jclprof/harness/defects.py": "a6638898635721e2a94c9bcbe511e2bebac037a8c35d853d06ce37b8e0c5f47e",
+   "src/jclprof/harness/gates.py": "ee46027b3ba06edc2c240696345f859c4d92d063655471aa75dd540bbc12f310",
+   "src/jclprof/harness/hierarchy.py": "a497706b261d020a3335d6060ef9c50efe793abe200693ab18d4e020f1263685",
+   "src/jclprof/harness/integrity.py": "92ce5516621a90459306e77bc2466c7074e46db14727f83cca20f164b45653a3",
+   "src/jclprof/harness/jclgen.py": "2db0fd90019e7616c0c26e2d75f6731e97308fbaabeed9788a8f5307e2b86a9a",
+   "src/jclprof/harness/loader.py": "51c3c54d927762137fba5c6a6da03a93afb7a186c8bc8da31113fb7f03477a7d",
+   "src/jclprof/harness/mutations.py": "e7f589d4cbe9f26dc503e178a1f607f0fad965c5dcefc62592cbdfaee63440fe",
+   "src/jclprof/harness/registry.py": "c734fde193c5f40c5f37fa0a29ddde188ac67523f37f439137c117e79e50f3d1",
+   "src/jclprof/harness/render.py": "8be5dd54784016db546ef439b7341fad7fae2c08747bcfa9bd5ce2e98459941c",
+   "src/jclprof/harness/runner.py": "89b32dd7c79fd5eb310a0fd85ee5f5d24552b93560f7562cd21ef6cc1680363c",
+   "src/jclprof/harness/strategies.py": "5e5ae937b6b73d50a949530c8970a28ba277a7bfbced00b8d925d68328ece412",
+   "src/jclprof/harness/trace.py": "adceccca6d1be81df4b1afff20c144bbfac57ab2c949974bf918d4c20b2bc220",
+   "src/jclprof/ids.py": "51525c715ab17ab3e779abab04b73080286c3cbcbfe2f73c9735117bbbd0e254",
+   "src/jclprof/inventory/__init__.py": "b904977040757856609d512a938c04466f9c03770e28d6092ca95eb2c7dab1d2",
+   "src/jclprof/inventory/collector.py": "60e479035a12726c2a2b50dfceb988cdf8aa1d07c63ae0610d640923f998b3f5",
+   "src/jclprof/inventory/model.py": "798f49bf009b168ceacc36c5d8b0d924611f5e4ed48a2bc2a0390ad52a728764",
+   "src/jclprof/inventory/physical.py": "2cbff10841e4ec7dcb4726bdda30f757c21b7360589614079252ceb6a2788b86",
+   "src/jclprof/inventory/writers.py": "180bdd3683cf5bc8ebe49ba215a39728b7fa35be360bc5c6f77e4d37017ed6e9",
+   "src/jclprof/lexer/__init__.py": "bdab959ca1f4f5f87bcb4e4891da5a1bb465093d1e8b2e11e659223da279d293",
+   "src/jclprof/lexer/adapter.py": "4703c0da649187516364677cc2bc5685ed6746a0378a7015de2aec9caded4751",
+   "src/jclprof/lexer/lexer.py": "91d0704c2b00784038a1237935107ecbfca8fabbd5044f559596c497024bb9ad",
+   "src/jclprof/lexer/model.py": "b146dde7312d7c79332d71e275574d9d14a6fd2e0ca0fbee1735e2eeb46ade9e",
+   "src/jclprof/parser/__init__.py": "187f9a6cd5ca5bb9c82b4d3acadbc33c6ee95f016846ab28fa7a188e9bc46cd5",
+   "src/jclprof/parser/adapter.py": "9dacabff82fe684f0c161935862e92adb0100481a12b6f7da533b33919b656ad",
+   "src/jclprof/parser/model.py": "e19acd6e108c7b8cdb90f4c81368367ccbc8b4ebdd5a17f524e8db2150c8686a",
+   "src/jclprof/parser/parser.py": "2b462a36bdafcec67993bd0175669109aee54b7b48b59f7a698f7cfbe6fd29b1",
+   "src/jclprof/parser/values.py": "fa1f2613f5de1d94799707c00d8ff021049cff80ba6a1ac1a1751051f86a2a26",
+   "src/jclprof/resolver/__init__.py": "be13f008ba507a88de1db0ebba71e58def6a12015509aa905c565669fe41832f",
+   "src/jclprof/resolver/library.py": "267babf864fc2dc9a6477acd1278b5f8176046fe311c1fd415c8ce1c975eec67",
+   "src/jclprof/resolver/manifest.py": "75ed1fc6baa1cf3230172f6a7558b8e77e82997c6d4483dfaa7b8a7c9427b8ff",
+   "src/jclprof/resolver/model.py": "10128e746039f1e87544bfce2c0289e1d3eb88865f614e39fbcc1837310582ae",
+   "src/jclprof/resolver/resolver.py": "4e27a763f81e3a2ba79121b320753dd42b0e150ee1df66f9ebf3c8eca873e750",
+   "src/jclprof/resolver/symbols.py": "b8a817ae87bbe77db351931e88e138e9f4955e220f49663e6620e18879bd75ff"
+  }
+ },
+ "environment": {
+  "python": "3.12.15",
+  "implementation": "CPython",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "byteorder": "little",
+  "encoding": "utf-8",
+  "jes": "UNKNOWN",
+  "pyyaml": "6.0.3",
+  "uv_lock_sha256": "60e67ff10956a2933a788b507f6974e950b00fe364fac66d73dc6ff14e555fde"
+ },
+ "inputs": {
+  "root_id": "carddemo",
+  "root": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app",
+  "file_list": {
+   "path": "tests/acceptance/expected/carddemo_inventory.yaml",
+   "sha256": "22a064f88470cfec50f106711986c6fc1c537da1d6e699a33c52e1269d24c8ca"
+  },
+  "files": [
+   {
+    "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+    "sha256": "c90fbd21b8ea2b6448b8939ff4f3b47c6f73472465cd7d1e25871f7779063a86"
+   },
+   {
+    "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+    "sha256": "3fabb7f3230f98fee855a8d436f70f4bd601a9e544f29c83d413a3a7a61efbcd"
+   },
+   {
+    "path": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+    "sha256": "9a0a88472f69236d14b36ecc89d83f35179d5c720c2c3a465af5f7ff510fb067"
+   },
+   {
+    "path": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+    "sha256": "1da94de3db6f265578c8b7498a2371c0c7246c8409f4ac44eb8013d3f0e113b8"
+   },
+   {
+    "path": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+    "sha256": "e2c26ca546ab427d66cadeaff07345bad706c979ca396fb04e60d401dc93c66b"
+   },
+   {
+    "path": "app-transaction-type-db2/jcl/CREADB21.jcl",
+    "sha256": "88b81b1d8530037d1661321e47600b9afb2a2cf4894c7eefeacd5aff07b87d69"
+   },
+   {
+    "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+    "sha256": "beaba6e4e35092c2ac7c1be7a3708303cc75d0fca00b64c65ee2d2bc1682f893"
+   },
+   {
+    "path": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+    "sha256": "d4d3b99a71b91fbce9c145283642ee7ca31b5ad7fa51ddcdb3e2c0b2e530457f"
+   },
+   {
+    "path": "jcl/ACCTFILE.jcl",
+    "sha256": "92ce6733ad0e3fad640e19d1224003fe30c711c2564eb7a660d53fd7f0dd6622"
+   },
+   {
+    "path": "jcl/CARDFILE.jcl",
+    "sha256": "795600a41abec0706aec8bd0dd93446b29cf01fcd8f9d2173e4ec6d5476611d0"
+   },
+   {
+    "path": "jcl/CBADMCDJ.jcl",
+    "sha256": "49b99c74e97d7177e558748f58b73cc418daacd93b415d908b09651393841916"
+   },
+   {
+    "path": "jcl/CBEXPORT.jcl",
+    "sha256": "e5d010a3209dbbcf6d9b92a3c71b7c806019ce014ad921430eed9abf1706f804"
+   },
+   {
+    "path": "jcl/CBIMPORT.jcl",
+    "sha256": "9f3adc0cde9d471b0976a4e4c5bee625a65fd0cdcc1e031d9abde8f5c3e8ccf5"
+   },
+   {
+    "path": "jcl/CLOSEFIL.jcl",
+    "sha256": "e47d406dde49f06847a46559fa9a7182b80b85f0727a5f0be312286f34df9192"
+   },
+   {
+    "path": "jcl/COMBTRAN.jcl",
+    "sha256": "a91649d6a927e1fd7b81fcdab39088ae26554eea52b07d5715e488c81c3f2cc2"
+   },
+   {
+    "path": "jcl/CREASTMT.JCL",
+    "sha256": "87a18700fac7bccfffbefa5d80fed0b171fdc36caeebb575c8a3cf66e4fc3caa"
+   },
+   {
+    "path": "jcl/CUSTFILE.jcl",
+    "sha256": "5fa6da4bc85866f0e08783585e7c652d312179982dbdd821866f569a083ac976"
+   },
+   {
+    "path": "jcl/DALYREJS.jcl",
+    "sha256": "ce396a6469c84577ea508d184f7ea6a42ceacd54c6a5e0fb097e626bb6361d45"
+   },
+   {
+    "path": "jcl/DEFCUST.jcl",
+    "sha256": "03dd2fc683ced79ec53269f6a24d48ceadb87ae4d6a5b48b65a37763046dfd58"
+   },
+   {
+    "path": "jcl/DEFGDGB.jcl",
+    "sha256": "4ccd135a079641b2d484b7789ea0f47955725774442283274f204480c0903f3f"
+   },
+   {
+    "path": "jcl/DEFGDGD.jcl",
+    "sha256": "78c13d7e0e851aecd1acbfcedd26b60633a3a850dcd9fe38de339362be5e4830"
+   },
+   {
+    "path": "jcl/DISCGRP.jcl",
+    "sha256": "64a250c918cc8205eddd6d51615e24a8c23585ff012ea518c6d452ebd7d71492"
+   },
+   {
+    "path": "jcl/DUSRSECJ.jcl",
+    "sha256": "71a529aab49502e9ce57abcdb268a896e34b947409d3278c5dd813f93105e33f"
+   },
+   {
+    "path": "jcl/ESDSRRDS.jcl",
+    "sha256": "9bec766029968057b831f539cc91b84e4e1d8ee22aa3de5ba6b509f8a698de77"
+   },
+   {
+    "path": "jcl/FTPJCL.JCL",
+    "sha256": "10393acea782d865532700ac61c9282c0438e921b34e698ddba1a046e974899a"
+   },
+   {
+    "path": "jcl/INTCALC.jcl",
+    "sha256": "b9313658a1e6fdb570a765c5e5e0e9e23d83f7062439c7d18544da986fbf108d"
+   },
+   {
+    "path": "jcl/INTRDRJ1.JCL",
+    "sha256": "bc1c4427ac4d980ea01686026f7f15d1e86b060c7c3dc5c795730cea5441dd87"
+   },
+   {
+    "path": "jcl/INTRDRJ2.JCL",
+    "sha256": "e89c73e8ebffa116c27e7c2e335b364467355def280c6208b7ef9d70ca66c7a8"
+   },
+   {
+    "path": "jcl/OPENFIL.jcl",
+    "sha256": "adf1f084e330739d5b220bc6ba08b0345ab5b9083e020d6f4527d021b6838a3a"
+   },
+   {
+    "path": "jcl/POSTTRAN.jcl",
+    "sha256": "a4de9f8cc5fbcaefb12e0b05fe87cb7d0b4accaa8a05f2ff6c13cf325431e2d6"
+   },
+   {
+    "path": "jcl/PRTCATBL.jcl",
+    "sha256": "0668cd90c6092711cd173b3dfcd884887c11408e7c5c9ebc2d0332d929750cbe"
+   },
+   {
+    "path": "jcl/READACCT.jcl",
+    "sha256": "0965badda9c801df4f86e74755b66325764d8d1a840c615e6552b660f6401f15"
+   },
+   {
+    "path": "jcl/READCARD.jcl",
+    "sha256": "2b8ef6678d477345868671ace4b6a9990e33081d6ba6b47827aad980927132b7"
+   },
+   {
+    "path": "jcl/READCUST.jcl",
+    "sha256": "3b39d6182c5483967c63616df65c56359e13a8a10c5bf08dcff9fe98566196a9"
+   },
+   {
+    "path": "jcl/READXREF.jcl",
+    "sha256": "09f076859afdd2a12bbe2e5eb1380bb986a656efe7bfb65a39377ad2c581db52"
+   },
+   {
+    "path": "jcl/REPTFILE.jcl",
+    "sha256": "b78fd0ff11009e23d5dce60a79daa5d947990d3b9e7a04ccb346fcc90151dee0"
+   },
+   {
+    "path": "jcl/TCATBALF.jcl",
+    "sha256": "9ff82ea5a21fd54c3ce405a14fd0851a7c17af71ed4e27a2bb2ce1860f50692b"
+   },
+   {
+    "path": "jcl/TRANBKP.jcl",
+    "sha256": "bd7a846799373121152a91b52427f3c668f390f448609d0eea534d49989acb9d"
+   },
+   {
+    "path": "jcl/TRANCATG.jcl",
+    "sha256": "09ad86b3c1ac0b32cee842682baead25c1ded1572c65599591b28826261de457"
+   },
+   {
+    "path": "jcl/TRANFILE.jcl",
+    "sha256": "c506a68f7482a971133524ec1d8b76001f593d4e1e98477c12c80ede4e4ce2db"
+   },
+   {
+    "path": "jcl/TRANIDX.jcl",
+    "sha256": "ad12d5f7b4b4e37b17baf23a5b1bf208ff35945182d587a909e0208d3bd45855"
+   },
+   {
+    "path": "jcl/TRANREPT.jcl",
+    "sha256": "081aad149f0a9c020440fb6e6da93f2a6cf6d1f77eead3cefea3702b13d79802"
+   },
+   {
+    "path": "jcl/TRANTYPE.jcl",
+    "sha256": "7993012c72041e6a9cbda9fff43549af4f8789081dc8a64b71a8a1a01f775254"
+   },
+   {
+    "path": "jcl/TXT2PDF1.JCL",
+    "sha256": "7b051e99abe3fdcf772d613646b39f9abf10b02e9f52422d073fa0c52908e46b"
+   },
+   {
+    "path": "jcl/WAITSTEP.jcl",
+    "sha256": "36c98a55c7701bfaa9bd6404d2aca95888880d4f908ced678840a37e2e3eac5e"
+   },
+   {
+    "path": "jcl/XREFFILE.jcl",
+    "sha256": "f4a24014ae9ebfdf4d36db958e1fadb76158114fa6f721e9b547d0842d556f24"
+   },
+   {
+    "path": "proc/REPROC.prc",
+    "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53"
+   },
+   {
+    "path": "proc/TRANREPT.prc",
+    "sha256": "fdbdc473dd21ba4908613c47180542ceffea8ea9a976a9413355361c6deaf103"
+   }
+  ],
+  "members_read": [
+   {
+    "path": "proc/REPROC.prc",
+    "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53"
+   }
+  ]
+ },
+ "contexts": {
+  "official": {
+   "basis": "CONFIG",
+   "note": "config/profiler.yaml datasets",
+   "mappings": [],
+   "roots": {
+    "carddemo": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app"
+   },
+   "file": "config/profiler.yaml",
+   "sha256": "6877efb736db4eb6440940515a62b810a2ae36baf1bdb13ecaf78c14b4eb3f6d"
+  },
+  "contract": {
+   "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
+   "note": "CA-04 table: AWS.M2.CARDDEMO.PROC(REPROC) -> app/proc/REPROC.prc; AWS.M2.CARDDEMO.PROC(TRANREPT) -> app/proc/TRANREPT.prc",
+   "mappings": [
+    {
+     "dsn": "AWS.M2.CARDDEMO.PROC",
+     "root": "carddemo",
+     "path": "proc",
+     "organization": "PDS",
+     "member_suffixes": [
+      ".prc"
+     ],
+     "aliases": {},
+     "note": "candidate from contract CA-04; owner confirmation pending (Q01)"
+    }
+   ],
+   "roots": {
+    "carddemo": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app"
+   },
+   "file": "config/contexts/cd4-contract-context.yaml",
+   "sha256": "9f4c19f6862b99584a13da24839b5b241ddbb6fea3c80ffeea7ab034595ba35e"
+  }
+ },
+ "outputs": [
+  {
+   "path": "results/resolve/official/effective.json",
+   "bytes": 921169,
+   "sha256": "e53b222627da4d7f1a69003b62f2cb56ef83724f96753e1b2049f0a61cad4a91"
+  },
+  {
+   "path": "results/resolve/contract/effective.json",
+   "bytes": 972054,
+   "sha256": "a653141800cfbf09f8a753af389c392d74771b9025994c2e688c366fd16122d8"
+  },
+  {
+   "path": "results/resolve/report.md",
+   "bytes": 16821,
+   "sha256": "c3931d2e36c1fcd69e278a28db3c78d798db0cab7bd445922adaa6c70c89165e"
+  }
+ ],
+ "counts": {
+  "official": {
+   "jobs_46": {
+    "program_steps": 116,
+    "unresolved_call_steps": 3,
+    "dds": 474,
+    "job_level_dds": 3
+   },
+   "unsupported_forms": 0,
+   "calls": [
+    "jcl/PRTCATBL.jcl:29:ENVIRONMENT_GAP",
+    "jcl/TRANBKP.jcl:23:ENVIRONMENT_GAP",
+    "jcl/TRANREPT.jcl:23:ENVIRONMENT_GAP",
+    "proc/TRANREPT.prc:21:ENVIRONMENT_GAP"
+   ]
+  },
+  "contract": {
+   "jobs_46": {
+    "program_steps": 119,
+    "unresolved_call_steps": 0,
+    "dds": 486,
+    "job_level_dds": 3
+   },
+   "unsupported_forms": 0,
+   "calls": [
+    "jcl/PRTCATBL.jcl:29:RESOLVED",
+    "jcl/TRANBKP.jcl:23:RESOLVED",
+    "jcl/TRANREPT.jcl:23:RESOLVED",
+    "proc/TRANREPT.prc:21:RESOLVED"
+   ]
+  }
+ }
+}

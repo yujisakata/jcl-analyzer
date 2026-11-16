@@ -898,7 +898,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00024"
+      "source_step_id": "T00024",
+      "program_raw": "DFSRRC00",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -939,6 +941,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -1133,7 +1136,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00007"
+      "source_step_id": "T00007",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl#S00015",
@@ -2253,7 +2258,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00015"
+      "source_step_id": "T00015",
+      "program_raw": "DFSRRC00",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -2294,6 +2301,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -3108,7 +3116,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00026"
+      "source_step_id": "T00026",
+      "program_raw": "DFSRRC00",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -3149,6 +3159,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -4089,7 +4100,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00026"
+      "source_step_id": "T00026",
+      "program_raw": "DFSRRC00",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -4130,6 +4143,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -4435,7 +4449,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00025"
+      "source_step_id": "T00025",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL#S00038",
@@ -5502,7 +5518,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00038"
+      "source_step_id": "T00038",
+      "program_raw": "DFSRRC00",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -5543,6 +5561,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -6179,7 +6198,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00040"
+      "source_step_id": "T00040",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/CREADB21.jcl#S00052",
@@ -6669,7 +6690,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00052"
+      "source_step_id": "T00052",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/CREADB21.jcl#S00064",
@@ -6715,7 +6738,9 @@
       ],
       "dds": [],
       "pending_overrides": [],
-      "source_step_id": "T00064"
+      "source_step_id": "T00064",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/CREADB21.jcl#S00065",
@@ -7205,7 +7230,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00065"
+      "source_step_id": "T00065",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/CREADB21.jcl#S00077",
@@ -7715,7 +7742,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00077"
+      "source_step_id": "T00077",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -7837,6 +7866,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -8287,7 +8317,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00021"
+      "source_step_id": "T00021",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -8328,6 +8360,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -8702,7 +8735,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00031"
+      "source_step_id": "T00031",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/TRANEXTR.jcl#S00042",
@@ -9070,7 +9105,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00042"
+      "source_step_id": "T00042",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/TRANEXTR.jcl#S00053",
@@ -9379,7 +9416,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00053"
+      "source_step_id": "T00053",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/TRANEXTR.jcl#S00065",
@@ -9911,7 +9950,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00065"
+      "source_step_id": "T00065",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      },
      {
       "id": "app-transaction-type-db2/jcl/TRANEXTR.jcl#S00095",
@@ -10443,7 +10484,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00095"
+      "source_step_id": "T00095",
+      "program_raw": "IKJEFT01",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -10503,6 +10546,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -10640,7 +10684,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ACCTFILE.jcl#S00033",
@@ -10750,7 +10796,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ACCTFILE.jcl#S00054",
@@ -10978,7 +11026,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00054"
+      "source_step_id": "T00054",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -11019,6 +11069,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -11198,7 +11249,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00033",
@@ -11308,7 +11361,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00047",
@@ -11418,7 +11473,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00047"
+      "source_step_id": "T00047",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00068",
@@ -11646,7 +11703,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00068"
+      "source_step_id": "T00068",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00080",
@@ -11756,7 +11815,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00080"
+      "source_step_id": "T00080",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00097",
@@ -11866,7 +11927,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00097"
+      "source_step_id": "T00097",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00107",
@@ -11976,7 +12039,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00107"
+      "source_step_id": "T00107",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CARDFILE.jcl#S00118",
@@ -12128,7 +12193,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00118"
+      "source_step_id": "T00118",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -12169,6 +12236,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 8,
    "unresolved_call_steps": 0,
@@ -12538,7 +12606,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00027"
+      "source_step_id": "T00027",
+      "program_raw": "DFHCSDUP",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -12597,6 +12667,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -12734,7 +12805,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00024"
+      "source_step_id": "T00024",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CBEXPORT.jcl#S00043",
@@ -13257,7 +13330,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00043"
+      "source_step_id": "T00043",
+      "program_raw": "CBEXPORT",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -13298,6 +13373,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -14253,7 +14329,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "CBIMPORT",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -14294,6 +14372,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -14473,7 +14552,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -14514,6 +14595,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -14952,7 +15034,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SORT",
+      "program_substitutions": []
      },
      {
       "id": "jcl/COMBTRAN.jcl#S00041",
@@ -15180,7 +15264,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00041"
+      "source_step_id": "T00041",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -15221,6 +15307,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -15358,7 +15445,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CREASTMT.JCL#S00044",
@@ -15709,7 +15798,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00044"
+      "source_step_id": "T00044",
+      "program_raw": "SORT",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CREASTMT.JCL#S00056",
@@ -15958,7 +16049,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00056"
+      "source_step_id": "T00056",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CREASTMT.JCL#S00066",
@@ -16268,7 +16361,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00066"
+      "source_step_id": "T00066",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CREASTMT.JCL#S00079",
@@ -16974,7 +17069,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00079"
+      "source_step_id": "T00079",
+      "program_raw": "CBSTM03A",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -17016,6 +17113,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -17195,7 +17293,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CUSTFILE.jcl#S00032",
@@ -17305,7 +17405,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00032"
+      "source_step_id": "T00032",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CUSTFILE.jcl#S00043",
@@ -17415,7 +17517,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00043"
+      "source_step_id": "T00043",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CUSTFILE.jcl#S00064",
@@ -17643,7 +17747,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00064"
+      "source_step_id": "T00064",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/CUSTFILE.jcl#S00076",
@@ -17795,7 +17901,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00076"
+      "source_step_id": "T00076",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -17836,6 +17944,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -17973,7 +18082,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00021"
+      "source_step_id": "T00021",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -18014,6 +18125,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -18151,7 +18263,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFCUST.jcl#S00032",
@@ -18261,7 +18375,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00032"
+      "source_step_id": "T00032",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -18302,6 +18418,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -18439,7 +18556,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00021"
+      "source_step_id": "T00021",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -18480,6 +18599,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -18617,7 +18737,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00024"
+      "source_step_id": "T00024",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFGDGD.jcl#S00036",
@@ -18929,7 +19051,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00036"
+      "source_step_id": "T00036",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFGDGD.jcl#S00047",
@@ -19060,7 +19184,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00047"
+      "source_step_id": "T00047",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFGDGD.jcl#S00059",
@@ -19372,7 +19498,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00059"
+      "source_step_id": "T00059",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFGDGD.jcl#S00070",
@@ -19482,7 +19610,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00070"
+      "source_step_id": "T00070",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DEFGDGD.jcl#S00082",
@@ -19794,7 +19924,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00082"
+      "source_step_id": "T00082",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -19836,6 +19968,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -19973,7 +20106,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DISCGRP.jcl#S00033",
@@ -20083,7 +20218,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DISCGRP.jcl#S00054",
@@ -20311,7 +20448,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00054"
+      "source_step_id": "T00054",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -20352,6 +20491,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -20468,7 +20608,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00023"
+      "source_step_id": "T00023",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DUSRSECJ.jcl#S00032",
@@ -20766,7 +20908,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00032"
+      "source_step_id": "T00032",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DUSRSECJ.jcl#S00058",
@@ -20876,7 +21020,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00058"
+      "source_step_id": "T00058",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/DUSRSECJ.jcl#S00080",
@@ -21146,7 +21292,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00080"
+      "source_step_id": "T00080",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -21187,6 +21335,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 4,
    "unresolved_call_steps": 0,
@@ -21303,7 +21452,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00024"
+      "source_step_id": "T00024",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ESDSRRDS.jcl#S00033",
@@ -21601,7 +21752,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ESDSRRDS.jcl#S00059",
@@ -21711,7 +21864,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00059"
+      "source_step_id": "T00059",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ESDSRRDS.jcl#S00079",
@@ -21981,7 +22136,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00079"
+      "source_step_id": "T00079",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ESDSRRDS.jcl#S00093",
@@ -22091,7 +22248,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00093"
+      "source_step_id": "T00093",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/ESDSRRDS.jcl#S00113",
@@ -22361,7 +22520,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00113"
+      "source_step_id": "T00113",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -22402,6 +22563,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -22515,7 +22677,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00030"
+      "source_step_id": "T00030",
+      "program_raw": "FTP",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -22556,6 +22720,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -23207,7 +23372,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "CBACT04C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -23248,6 +23415,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -23521,7 +23689,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00006"
+      "source_step_id": "T00006",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/INTRDRJ1.JCL#S00014",
@@ -23765,7 +23935,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00014"
+      "source_step_id": "T00014",
+      "program_raw": "IEBGENER",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -23806,6 +23978,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -24079,7 +24252,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00007"
+      "source_step_id": "T00007",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -24120,6 +24295,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -24299,7 +24475,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -24340,6 +24518,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -24971,7 +25150,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00023"
+      "source_step_id": "T00023",
+      "program_raw": "CBTRN02C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -25012,6 +25193,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -25168,7 +25350,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00021"
+      "source_step_id": "T00021",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "jcl/PRTCATBL.jcl#S00029",
@@ -25234,7 +25418,9 @@
         ]
        }
       ],
-      "source_step_id": "T00029"
+      "source_step_id": "T00029",
+      "program_raw": null,
+      "program_substitutions": []
      },
      {
       "id": "jcl/PRTCATBL.jcl#S00043",
@@ -25585,7 +25771,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00043"
+      "source_step_id": "T00043",
+      "program_raw": "SORT",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -25643,7 +25831,8 @@
         19,
         19
        ]
-      }
+      },
+      "reason": ""
      }
     ],
     "member_path": null,
@@ -25689,6 +25878,7 @@
    "PROC_NOT_EXPANDED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 1,
@@ -25931,7 +26121,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IEFBR14",
+      "program_substitutions": []
      },
      {
       "id": "jcl/READACCT.jcl#S00032",
@@ -26597,7 +26789,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00032"
+      "source_step_id": "T00032",
+      "program_raw": "CBACT01C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -26638,6 +26832,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -26893,7 +27088,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "CBACT02C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -26934,6 +27131,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -27189,7 +27387,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00021"
+      "source_step_id": "T00021",
+      "program_raw": "CBCUS01C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -27230,6 +27430,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -27485,7 +27686,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "CBACT03C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -27526,6 +27729,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -27663,7 +27867,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -27704,6 +27910,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -27841,7 +28048,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TCATBALF.jcl#S00033",
@@ -27951,7 +28160,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TCATBALF.jcl#S00054",
@@ -28179,7 +28390,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00054"
+      "source_step_id": "T00054",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -28220,6 +28433,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -28313,7 +28527,9 @@
         ]
        }
       ],
-      "source_step_id": "T00023"
+      "source_step_id": "T00023",
+      "program_raw": null,
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANBKP.jcl#S00037",
@@ -28423,7 +28639,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00037"
+      "source_step_id": "T00037",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANBKP.jcl#S00051",
@@ -28554,7 +28772,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00051"
+      "source_step_id": "T00051",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -28612,7 +28832,8 @@
         19,
         19
        ]
-      }
+      },
+      "reason": ""
      }
     ],
     "member_path": null,
@@ -28659,6 +28880,7 @@
    "PROC_NOT_EXPANDED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 1,
@@ -28796,7 +29018,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANCATG.jcl#S00033",
@@ -28906,7 +29130,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANCATG.jcl#S00054",
@@ -29134,7 +29360,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00054"
+      "source_step_id": "T00054",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -29175,6 +29403,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -29354,7 +29583,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00032",
@@ -29464,7 +29695,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00032"
+      "source_step_id": "T00032",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00046",
@@ -29574,7 +29807,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00046"
+      "source_step_id": "T00046",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00067",
@@ -29802,7 +30037,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00067"
+      "source_step_id": "T00067",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00079",
@@ -29912,7 +30149,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00079"
+      "source_step_id": "T00079",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00096",
@@ -30022,7 +30261,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00096"
+      "source_step_id": "T00096",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00106",
@@ -30132,7 +30373,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00106"
+      "source_step_id": "T00106",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANFILE.jcl#S00116",
@@ -30284,7 +30527,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00116"
+      "source_step_id": "T00116",
+      "program_raw": "SDSF",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -30325,6 +30570,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 8,
    "unresolved_call_steps": 0,
@@ -30462,7 +30708,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANIDX.jcl#S00039",
@@ -30572,7 +30820,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00039"
+      "source_step_id": "T00039",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANIDX.jcl#S00049",
@@ -30682,7 +30932,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00049"
+      "source_step_id": "T00049",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -30723,6 +30975,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -30816,7 +31069,9 @@
         ]
        }
       ],
-      "source_step_id": "T00023"
+      "source_step_id": "T00023",
+      "program_raw": null,
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANREPT.jcl#S00037",
@@ -31168,7 +31423,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00037"
+      "source_step_id": "T00037",
+      "program_raw": "SORT",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANREPT.jcl#S00059",
@@ -31772,7 +32029,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00059"
+      "source_step_id": "T00059",
+      "program_raw": "CBTRN03C",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -31830,7 +32089,8 @@
         19,
         19
        ]
-      }
+      },
+      "reason": ""
      }
     ],
     "member_path": null,
@@ -31876,6 +32136,7 @@
    "PROC_NOT_EXPANDED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 1,
@@ -32013,7 +32274,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANTYPE.jcl#S00033",
@@ -32123,7 +32386,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00033"
+      "source_step_id": "T00033",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/TRANTYPE.jcl#S00054",
@@ -32351,7 +32616,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00054"
+      "source_step_id": "T00054",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -32392,6 +32659,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -32807,7 +33075,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00024"
+      "source_step_id": "T00024",
+      "program_raw": "IKJEFT1B",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -32849,6 +33119,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -33045,7 +33316,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "COBSWAIT",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -33086,6 +33359,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -33223,7 +33497,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00022"
+      "source_step_id": "T00022",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/XREFFILE.jcl#S00036",
@@ -33333,7 +33609,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00036"
+      "source_step_id": "T00036",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/XREFFILE.jcl#S00057",
@@ -33561,7 +33839,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00057"
+      "source_step_id": "T00057",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/XREFFILE.jcl#S00069",
@@ -33671,7 +33951,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00069"
+      "source_step_id": "T00069",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/XREFFILE.jcl#S00087",
@@ -33781,7 +34063,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00087"
+      "source_step_id": "T00087",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      },
      {
       "id": "jcl/XREFFILE.jcl#S00097",
@@ -33891,7 +34175,9 @@
        }
       ],
       "pending_overrides": [],
-      "source_step_id": "T00097"
+      "source_step_id": "T00097",
+      "program_raw": "IDCAMS",
+      "program_substitutions": []
      }
     ],
     "job_symbol_uses": [
@@ -33932,6 +34218,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -34010,7 +34297,9 @@
       ]
      }
     ],
-    "source_step_id": "T00021"
+    "source_step_id": "T00021",
+    "program_raw": null,
+    "program_substitutions": []
    },
    {
     "id": "proc/TRANREPT.prc#S00035",
@@ -34362,7 +34651,9 @@
      }
     ],
     "pending_overrides": [],
-    "source_step_id": "T00035"
+    "source_step_id": "T00035",
+    "program_raw": "SORT",
+    "program_substitutions": []
    },
    {
     "id": "proc/TRANREPT.prc#S00057",
@@ -34966,7 +35257,9 @@
      }
     ],
     "pending_overrides": [],
-    "source_step_id": "T00057"
+    "source_step_id": "T00057",
+    "program_raw": "CBTRN03C",
+    "program_substitutions": []
    }
   ],
   "calls": [
@@ -34992,7 +35285,8 @@
       "library": "AWS.M2.CARDDEMO.PROC",
       "result": "UNMAPPED",
       "candidates": [],
-      "evidence": null
+      "evidence": null,
+      "reason": ""
      }
     ],
     "member_path": null,
@@ -35029,6 +35323,7 @@
    "PROC_NOT_EXPANDED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 1,
@@ -35304,7 +35599,9 @@
      }
     ],
     "pending_overrides": [],
-    "source_step_id": "T00021"
+    "source_step_id": "T00021",
+    "program_raw": "IDCAMS",
+    "program_substitutions": []
    }
   ],
   "calls": [],
@@ -35323,6 +35620,7 @@
    "DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED",
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
+  "unsupported": [],
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
