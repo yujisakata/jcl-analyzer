@@ -34,6 +34,12 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def sha256_text_lf(path: Path) -> str:
+    """SHA-256 of a source file with CRLF normalised to LF, so the same commit checked out with
+    either line ending (Windows worktrees, .gitattributes) has the same code identity."""
+    return hashlib.sha256(Path(path).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def _git(project: Path, *args: str) -> str | None:
     try:
         r = subprocess.run(["git", *args], cwd=project, capture_output=True, text=True,
@@ -47,7 +53,7 @@ def code_identity(project: Path, generator: Path) -> dict[str, Any]:
     files: dict[str, str] = {}
     for d in CODE_DIRS:
         for p in sorted((project / d).rglob("*.py")):
-            files[p.relative_to(project).as_posix()] = sha256_file(p)
+            files[p.relative_to(project).as_posix()] = sha256_text_lf(p)
     tree = hashlib.sha256("".join(f"{k}\0{v}\n" for k, v in files.items()).encode()).hexdigest()
     head = _git(project, "rev-parse", "HEAD")
     status = _git(project, "status", "--porcelain", "--untracked-files=all", "--", *DIRTY_PATHS)
@@ -55,7 +61,8 @@ def code_identity(project: Path, generator: Path) -> dict[str, Any]:
     return {"git_commit": head.strip() if head else None,
             "git_dirty_paths": dirty if status is not None else None,
             "generator": {"path": generator.relative_to(project).as_posix(),
-                          "sha256": sha256_file(generator)},
+                          "sha256": sha256_text_lf(generator)},
+            "code_hash": "sha256 of bytes with CRLF normalised to LF",
             "src_tree_sha256": tree, "src_files": files}
 
 
@@ -112,10 +119,10 @@ def verify_manifest(manifest: dict[str, Any], project: Path,
     """Recompute every hash recorded in the manifest; return the mismatches (empty = match)."""
     problems: list[str] = []
 
-    def check(label: str, path: Path, want: str) -> None:
+    def check(label: str, path: Path, want: str, text: bool = False) -> None:
         if not path.is_file():
             problems.append(f"{label}: missing {path}")
-        elif sha256_file(path) != want:
+        elif (sha256_text_lf(path) if text else sha256_file(path)) != want:
             problems.append(f"{label}: sha256 differs for {path}")
 
     if manifest.get("schema_version") != SCHEMA_VERSION:
@@ -131,11 +138,11 @@ def verify_manifest(manifest: dict[str, Any], project: Path,
         if "file" in c:
             check(f"context {name}", project / c["file"], c["sha256"])
     code = manifest["code"]
-    check("generator", project / code["generator"]["path"], code["generator"]["sha256"])
+    check("generator", project / code["generator"]["path"], code["generator"]["sha256"], True)
     now = {p.relative_to(project).as_posix() for d in CODE_DIRS
            for p in (project / d).rglob("*.py")}
     for rel, want in code["src_files"].items():
-        check("code", project / rel, want)
+        check("code", project / rel, want, True)
     for extra in sorted(now - set(code["src_files"])):
         problems.append(f"code: file not in manifest {extra}")
     base = output_base or project

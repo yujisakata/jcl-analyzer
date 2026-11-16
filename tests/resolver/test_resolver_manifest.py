@@ -108,3 +108,12 @@ def test_tampering_is_detected(runs: tuple[Path, Path, dict[str, Any]], tmp_path
     copy2 = json.loads(json.dumps(m))
     copy2["outputs"] = [dict(m["outputs"][-1], path=str(edited))]
     assert any(p.startswith("output") for p in verify_manifest(copy2, PROJECT_ROOT))
+
+
+def test_code_identity_ignores_line_endings(tmp_path: Path) -> None:
+    from jclprof.resolver.manifest import sha256_text_lf
+    lf, crlf = tmp_path / "lf.py", tmp_path / "crlf.py"
+    lf.write_bytes(b"a = 1\nb = 2\n")
+    crlf.write_bytes(b"a = 1\r\nb = 2\r\n")
+    assert sha256_text_lf(lf) == sha256_text_lf(crlf)
+    assert sha256_file(lf) != sha256_file(crlf)

@@ -49,17 +49,17 @@
 | 6. 全 46 JOB の 119 STEP・486 DD | 契約文脈で 119 / 486、本番設定で 116 + 未解決 3 / 474（manifest の件数とテストで確認） |
 | 7. Source AST の不変性 | 既存テスト（合成と CardDemo 48 ファイル）が合格 |
 | 8. CD-SOURCE・CD-TRACE の回帰 | CD-SOURCE PASS、CD-TRACE PASS、変異 1501/1501 を検出（`results/cd4r/cd-source/`）。正式な受入れは Source Oracle が未承認のため FAIL のまま（監査時と同じ） |
-| 9. run-manifest と再生成結果の対応 | 2 回の再生成でバイト単位で一致し、LF であること。manifest の全ハッシュが一致すること。出力・入力・文脈を改ざんすると検出されること（`test_resolver_manifest.py` 4 件） |
+| 9. run-manifest と再生成結果の対応 | 2 回の再生成でバイト単位で一致し、LF であること。manifest の全ハッシュが一致すること。出力・入力・文脈を改ざんすると検出されること。実装ファイルのハッシュは CRLF を LF に正規化して計算する（Windows の worktree で CRLF に変換されても同じ実装として照合できる）。入力（原本）と出力は生のバイト列で照合する（`test_resolver_manifest.py` 5 件） |
 
 | スイート | 結果 |
 |---|---|
-| Resolver（tests/resolver） | 75 passed（CD-4 の 37 件 + 新規 38 件） |
-| Analyzer（lexer / parser / property / resolver） | 219 passed、51 skipped、9 xfailed（xfail は登録済みの既知欠陥） |
+| Resolver（tests/resolver） | 76 passed（CD-4 の 37 件 + 新規 39 件） |
+| Analyzer（lexer / parser / property / resolver） | 220 passed、51 skipped、9 xfailed（xfail は登録済みの既知欠陥） |
 | Harness（既定の pytest） | 268 passed、1 skipped（symlink）。CD-4 時点と同じ |
 | ruff / mypy strict | 合格（96 ファイル） |
 | Gate A | PASS（既知欠陥 OPEN 11 件を明示）。golden-check OK |
 | 修正前の記録 | `results/cd4r/pre-fix-counterexamples.log`（12 failed / 2 passed） |
-| 修正後の記録 | `results/cd4r/post-fix-counterexamples.log`（14 passed）、`results/cd4r/resolver-tests.log` |
+| 修正後の記録 | `results/cd4r/post-fix-counterexamples.log`（14 passed）、`results/cd4r/resolver-tests.log`（manifest の改行正規化テストを足す前の 75 件の記録） |
 
 テストの感度: 呼出しを UNSUPPORTED にする処理を変異で無効にすると、未対応形のテストのうち 8 件が失敗した。漏れの修正も無効にすると 13 件が失敗した（変異は戻してある）。
 
