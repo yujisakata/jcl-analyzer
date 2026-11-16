@@ -261,7 +261,7 @@
 ## ADR-034 証拠のバイト固定、DSN/DSNAME、manifest の検証契約、複数の未解決理由（CD-4R2）
 - **日付**: 2026-11-16 / **状態**: 採用（実装済み。Codex の再監査待ち）/ **契機**: Codex の独立再監査（e848ec9、FAIL）の R01〜R04
 - **R01 バイト固定**: `.gitattributes` で、manifest が生のバイト列でハッシュする 5 ファイル（`config/contexts/cd4-contract-context.yaml` と `results/resolve/` の 4 ファイル）だけを `-text` にする。全 JSON・全ソースには広げない。リポジトリ内のそれ以外のファイル（config/profiler.yaml、uv.lock、ソースコード）は、CRLF を LF に正規化してハッシュし、方式（sha256_method）を記録する。原本の入力は生のバイト列のまま照合する。凍結済みの Source Oracle の属性・ハッシュ・Git の履歴は変更しない
-- **R02 DSN と DSNAME**: IBM の DSNAME パラメーターの構文では、DSN と DSNAME は同じパラメーターの別表記である。上書きの照合はこの 2 つを同一とみなし、REPLACE / NULLIFY を適用する。記録には、上書きした側の表記（param）、置き換えた手続き側の表記（original_param）、旧値、新値、両側の出典（source / original_source）を残す。1 つの DD 文に両方の表記がある場合は判断できないため、新しい未対応形 U-OVR-DSN-DUPLICATE として UNSUPPORTED にする
+- **R02 DSN と DSNAME**: IBM の DSNAME パラメーターの構文では、DSN と DSNAME は同じパラメーターの別表記である。上書きの照合はこの 2 つを同一とみなし、REPLACE / NULLIFY を適用する。記録には、上書きした側の表記（param）、置き換えた手続き側の表記（original_param）、旧値、新値、両側の出典（source / original_source）を残す。1 つの DD 文に両方の表記がある場合は判断できないため、新しい未対応形 U-OVR-DSN-DUPLICATE として UNSUPPORTED にする。CD-4R3（Codex 最終監査 N01）で、検査の範囲を、呼ばれた PROC のすべての DD（上書きされない DD を含む）と、呼出し側のすべての DD（上書きと追加）に広げた。検出位置は、両方の表記がある文の原本の位置
 - **R03 manifest の検証契約**（schema_version 2）:
   - VERIFIED（再計算または再導出する事実）: 必須の入力集合（ファイル一覧から導く）、入力とメンバーのハッシュ、context の file・hash 方式・hash と inline の内容（ファイルを読み込み直して比較）、コードのファイル一覧と各ハッシュと tree、generator、git_commit の存在と、そのコミットがコードを含むかどうか（commit_contains_code を再導出して比較）、encoding と JES（出力に記録された実行条件から）、uv.lock、出力の必須集合・バイト数・ハッシュ、件数とメンバーと basis（出力から導く）
   - RECORDED_ONLY（後から確認できない情報で、保証しない）: generated_at、git_dirty_paths、code_hash（説明の文字列）、Python・実装・プラットフォーム・バイト順・PyYAML の版

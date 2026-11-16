@@ -1,0 +1,41 @@
+warning: `VIRTUAL_ENV=d:\projects\jcl-profiler\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+F.F..                                                                    [100%]
+================================== FAILURES ===================================
+_________ test_n01_duplicate_spelling_stops_the_call[caller-added-dd] _________
+
+tmp_path = WindowsPath('C:/Users/yujis/AppData/Local/Temp/pytest-of-yujis/pytest-122/test_n01_duplicate_spelling_st0')
+path = 'caller-added-dd'
+
+    @pytest.mark.parametrize("path", sorted(PATHS))
+    def test_n01_duplicate_spelling_stops_the_call(tmp_path: Path, path: str) -> None:
+        proc, extra, (file, line) = PATHS[path]
+        res = _resolve(tmp_path, proc, J(*CALL, *extra))
+        (c,) = res.calls
+>       assert c.status == "UNSUPPORTED"
+E       AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+E         
+E         - UNSUPPORTED
+E         + RESOLVED
+
+tests\resolver\test_resolver_cd4r3.py:56: AssertionError
+_____ test_n01_duplicate_spelling_stops_the_call[proc-dd-not-overridden] ______
+
+tmp_path = WindowsPath('C:/Users/yujis/AppData/Local/Temp/pytest-of-yujis/pytest-122/test_n01_duplicate_spelling_st2')
+path = 'proc-dd-not-overridden'
+
+    @pytest.mark.parametrize("path", sorted(PATHS))
+    def test_n01_duplicate_spelling_stops_the_call(tmp_path: Path, path: str) -> None:
+        proc, extra, (file, line) = PATHS[path]
+        res = _resolve(tmp_path, proc, J(*CALL, *extra))
+        (c,) = res.calls
+>       assert c.status == "UNSUPPORTED"
+E       AssertionError: assert 'RESOLVED' == 'UNSUPPORTED'
+E         
+E         - UNSUPPORTED
+E         + RESOLVED
+
+tests\resolver\test_resolver_cd4r3.py:56: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/resolver/test_resolver_cd4r3.py::test_n01_duplicate_spelling_stops_the_call[caller-added-dd]
+FAILED tests/resolver/test_resolver_cd4r3.py::test_n01_duplicate_spelling_stops_the_call[proc-dd-not-overridden]
+2 failed, 3 passed in 0.64s

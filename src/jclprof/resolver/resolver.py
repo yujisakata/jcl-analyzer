@@ -82,8 +82,8 @@ UNSUPPORTED_FORMS: dict[str, str] = {
                              "such as DUMMY [F08]",
     "U-OVR-DCB-MERGE": "override needing a DCB subparameter merge",
     "U-OVR-MUTEX": "override that mixes mutually exclusive parameters (SYSOUT with DSN/DISP)",
-    "U-OVR-DSN-DUPLICATE": "DSN and DSNAME both coded on the overriding or the procedure DD "
-                           "[R02]",
+    "U-OVR-DSN-DUPLICATE": "DSN and DSNAME both coded on one DD statement of the called "
+                           "procedure or the caller [R02, N01]",
     "U-OVR-CONCAT": "concatenated or implicit DD after a procedure call",
     "U-OVR-NESTED-STEP": "override of a nested procedure call step",
     "U-DEPTH": f"procedure nesting deeper than {MAX_DEPTH} levels",
@@ -638,6 +638,13 @@ class Resolver:
                 [s for s in mdoc.parsed.statements if s.kind == "SET"])
         for s in sets:
             self.form(run, "U-PROC-SET", cid, self.ref(mdoc, s), "SET inside the called procedure")
+        # N01: every procedure DD (overridden or not) and every caller DD (override or addition)
+        for who, ddoc, owner, dd in (
+                [("procedure", mdoc, ps.name, pd) for ps in proc_steps for pd in ps.dds]
+                + [("caller", doc, dn.procstep, dn) for dn in st.dds]):
+            if {"DSN", "DSNAME"} <= {k.name for k in dd.statement.keywords}:
+                self.form(run, "U-OVR-DSN-DUPLICATE", cid, self.ref(ddoc, dd.statement),
+                          f"{who} DD {owner or '-'}.{dd.ddname or '-'} codes both DSN and DSNAME")
         names = [p.name for p in proc_steps]
         per: dict[str | None, list[DDNode]] = {n: [] for n in names}
         current = names[0] if names else None
@@ -671,11 +678,6 @@ class Resolver:
                     self.form(run, "U-OVR-BASE-POSITIONAL", cid, oref,
                               f"procedure DD {ps.name}.{o.ddname} is coded with "
                               f"{' '.join(p.text for p in base.statement.positional)}")
-                for dd_st, who in ((o.statement, "overriding"), (base.statement, "procedure")):
-                    if {"DSN", "DSNAME"} <= {k.name for k in dd_st.keywords}:
-                        self.form(run, "U-OVR-DSN-DUPLICATE", cid, self.ref(
-                            doc if who == "overriding" else mdoc, dd_st),
-                            f"{who} DD {ps.name}.{o.ddname} codes both DSN and DSNAME")
                 names_o = {_dsn_alias(k.name) for k in o.statement.keywords}
                 have = {_dsn_alias(k.name) for k in base.statement.keywords}
                 if "DCB" in names_o and "DCB" in have:
