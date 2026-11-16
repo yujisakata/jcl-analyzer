@@ -1,16 +1,52 @@
 {
- "schema_version": 1,
+ "schema_version": 2,
  "kind": "resolver-run",
- "generated_at": "2026-11-16T05:34:31Z",
+ "verification": {
+  "verified": [
+   "schema_version",
+   "kind",
+   "verification",
+   "inputs.root_id",
+   "inputs.root",
+   "inputs.file_list",
+   "inputs.files",
+   "inputs.members_read",
+   "contexts",
+   "code.src_files",
+   "code.src_tree_sha256",
+   "code.generator",
+   "code.git_commit",
+   "code.commit_contains_code",
+   "environment.encoding",
+   "environment.jes",
+   "environment.uv_lock_sha256",
+   "output_dir",
+   "outputs",
+   "counts"
+  ],
+  "recorded_only": [
+   "generated_at",
+   "code.git_dirty_paths",
+   "code.code_hash",
+   "environment.python",
+   "environment.implementation",
+   "environment.platform",
+   "environment.byteorder",
+   "environment.pyyaml"
+  ],
+  "trust_point": "the manifest file is trusted through its Git blob in HEAD (git hash-object == git rev-parse HEAD:<path>) or an external SHA-256 digest"
+ },
+ "generated_at": "2026-11-16T08:53:23Z",
  "code": {
-  "git_commit": "7454478c709e76040a9bedec0fd46f865401a20b",
+  "git_commit": "d8b974722a31d2c3b4858ba0254a62b5f5800c37",
+  "commit_contains_code": true,
   "git_dirty_paths": [],
   "generator": {
    "path": "tools/cd4_resolve_report.py",
-   "sha256": "a6c0d819bf7f743089a5b035b335fd07086b4932cfd7cb43715b5ed28ba44f19"
+   "sha256": "b9a98d89cababeae15b943004c5450415e782ade1a1d703c6d11e72fa52ae93d"
   },
   "code_hash": "sha256 of bytes with CRLF normalised to LF",
-  "src_tree_sha256": "ac290bf639633aaec02f8e4d21979d2915c7fb001a14c65f3438d5af231e3551",
+  "src_tree_sha256": "95161c7289f1514a38ca09da58e19ee29e8036d1bfb57b2d6a6c49f2564399f7",
   "src_files": {
    "src/jclprof/__init__.py": "09ec9e79a4cd4b594e8b318e66b5478d4500efce085bc4f461ce91bc625a5b75",
    "src/jclprof/__main__.py": "62375d1a3966e750021e0f6778c5cc6e54269ff39273e655bd3cada58abb1824",
@@ -54,9 +90,9 @@
    "src/jclprof/parser/values.py": "fa1f2613f5de1d94799707c00d8ff021049cff80ba6a1ac1a1751051f86a2a26",
    "src/jclprof/resolver/__init__.py": "be13f008ba507a88de1db0ebba71e58def6a12015509aa905c565669fe41832f",
    "src/jclprof/resolver/library.py": "267babf864fc2dc9a6477acd1278b5f8176046fe311c1fd415c8ce1c975eec67",
-   "src/jclprof/resolver/manifest.py": "75ed1fc6baa1cf3230172f6a7558b8e77e82997c6d4483dfaa7b8a7c9427b8ff",
-   "src/jclprof/resolver/model.py": "10128e746039f1e87544bfce2c0289e1d3eb88865f614e39fbcc1837310582ae",
-   "src/jclprof/resolver/resolver.py": "4e27a763f81e3a2ba79121b320753dd42b0e150ee1df66f9ebf3c8eca873e750",
+   "src/jclprof/resolver/manifest.py": "02eb0bfb8d409660049c2272a3b0d456ed6bf9aae8576cb703270deca72d0a1f",
+   "src/jclprof/resolver/model.py": "1d40a7f4024a721cd4654248d7bf189e7adf5a1f0077aa475c387a82f86243f1",
+   "src/jclprof/resolver/resolver.py": "d9f0d0a03d86388c2223e308acb56c57d4242d41e0ffe910d09ed92fcec90969",
    "src/jclprof/resolver/symbols.py": "b8a817ae87bbe77db351931e88e138e9f4955e220f49663e6620e18879bd75ff"
   }
  },
@@ -68,13 +104,14 @@
   "encoding": "utf-8",
   "jes": "UNKNOWN",
   "pyyaml": "6.0.3",
-  "uv_lock_sha256": "60e67ff10956a2933a788b507f6974e950b00fe364fac66d73dc6ff14e555fde"
+  "uv_lock_sha256": "82c7950ed601c390b24c9a9b15c2ddb57d7eb36c88a072238bff9a00a1ca40d7"
  },
  "inputs": {
   "root_id": "carddemo",
-  "root": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app",
+  "root": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app",
   "file_list": {
    "path": "tests/acceptance/expected/carddemo_inventory.yaml",
+   "sha256_method": "lf",
    "sha256": "22a064f88470cfec50f106711986c6fc1c537da1d6e699a33c52e1269d24c8ca"
   },
   "files": [
@@ -280,16 +317,22 @@
  },
  "contexts": {
   "official": {
+   "loader": "config",
+   "file": "config/profiler.yaml",
+   "sha256_method": "lf",
+   "sha256": "476d3a2095845801ffa3f4fe7186d93e6ffc1980ac8a14df4e1c5327c8c5c39a",
    "basis": "CONFIG",
    "note": "config/profiler.yaml datasets",
    "mappings": [],
    "roots": {
-    "carddemo": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app"
-   },
-   "file": "config/profiler.yaml",
-   "sha256": "6877efb736db4eb6440940515a62b810a2ae36baf1bdb13ecaf78c14b4eb3f6d"
+    "carddemo": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app"
+   }
   },
   "contract": {
+   "loader": "overlay",
+   "file": "config/contexts/cd4-contract-context.yaml",
+   "sha256_method": "raw",
+   "sha256": "9f4c19f6862b99584a13da24839b5b241ddbb6fea3c80ffeea7ab034595ba35e",
    "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
    "note": "CA-04 table: AWS.M2.CARDDEMO.PROC(REPROC) -> app/proc/REPROC.prc; AWS.M2.CARDDEMO.PROC(TRANREPT) -> app/proc/TRANREPT.prc",
    "mappings": [
@@ -306,27 +349,26 @@
     }
    ],
    "roots": {
-    "carddemo": "D:\\projects\\aws-card\\aws-mainframe-modernization-carddemo\\app"
-   },
-   "file": "config/contexts/cd4-contract-context.yaml",
-   "sha256": "9f4c19f6862b99584a13da24839b5b241ddbb6fea3c80ffeea7ab034595ba35e"
+    "carddemo": "D:/projects/aws-card/aws-mainframe-modernization-carddemo/app"
+   }
   }
  },
+ "output_dir": "results/resolve",
  "outputs": [
   {
    "path": "results/resolve/official/effective.json",
-   "bytes": 921169,
-   "sha256": "e53b222627da4d7f1a69003b62f2cb56ef83724f96753e1b2049f0a61cad4a91"
+   "bytes": 924925,
+   "sha256": "99739e0056c6f1300d996b7873f2b57a4459a69ad73d5aadfef1278f12cbc931"
   },
   {
    "path": "results/resolve/contract/effective.json",
-   "bytes": 972054,
-   "sha256": "a653141800cfbf09f8a753af389c392d74771b9025994c2e688c366fd16122d8"
+   "bytes": 982094,
+   "sha256": "3969982a470ba5ab4fe8ce2f14529b888e3e5e7921328a150a4ea6e3e8abd9a4"
   },
   {
    "path": "results/resolve/report.md",
-   "bytes": 16821,
-   "sha256": "c3931d2e36c1fcd69e278a28db3c78d798db0cab7bd445922adaa6c70c89165e"
+   "bytes": 17249,
+   "sha256": "aaf4fa6831b535a8b637710aaf1a024af6d5b8e87336d0540bf3ddf42fc80365"
   }
  ],
  "counts": {

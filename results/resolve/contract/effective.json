@@ -942,6 +942,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -2302,6 +2306,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -3160,6 +3168,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -4144,6 +4156,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -5562,6 +5578,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -7867,6 +7887,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -8361,6 +8385,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -10547,6 +10575,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -11070,6 +11102,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -12237,6 +12273,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 8,
    "unresolved_call_steps": 0,
@@ -12668,6 +12708,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -13374,6 +13418,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -14373,6 +14421,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -14596,6 +14648,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -15308,6 +15364,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -17114,6 +17174,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -17945,6 +18009,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 5,
    "unresolved_call_steps": 0,
@@ -18126,6 +18194,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -18419,6 +18491,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -18600,6 +18676,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -19969,6 +20049,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -20492,6 +20576,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -21336,6 +21424,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 4,
    "unresolved_call_steps": 0,
@@ -22564,6 +22656,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -22721,6 +22817,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -23416,6 +23516,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -23979,6 +24083,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -24296,6 +24404,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -24519,6 +24631,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -25194,6 +25310,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -25490,7 +25610,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 23,
+           "column": 14,
+           "span": [
+            23,
+            24
+           ]
+          }
          },
          {
           "param": "DSN",
@@ -25508,7 +25640,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 24,
+           "column": 11,
+           "span": [
+            23,
+            24
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -25681,7 +25825,19 @@
             39
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 25,
+           "column": 14,
+           "span": [
+            25,
+            26
+           ]
+          }
          },
          {
           "param": "UNIT",
@@ -25699,7 +25855,9 @@
             39
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DCB",
@@ -25736,7 +25894,9 @@
             39
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "SPACE",
@@ -25761,7 +25921,9 @@
             39
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DSN",
@@ -25779,7 +25941,19 @@
             39
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 26,
+           "column": 11,
+           "span": [
+            25,
+            26
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -26313,7 +26487,9 @@
     "label_matches_member": true,
     "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
     "depth": 1,
-    "parent_call": null
+    "parent_call": null,
+    "search_status": "RESOLVED",
+    "reasons": []
    }
   ],
   "symbols_defined": [
@@ -26351,6 +26527,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -27305,6 +27485,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 2,
    "unresolved_call_steps": 0,
@@ -27604,6 +27788,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -27903,6 +28091,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -28202,6 +28394,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -28383,6 +28579,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -28906,6 +29106,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -29071,7 +29275,19 @@
             27
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 23,
+           "column": 14,
+           "span": [
+            23,
+            24
+           ]
+          }
          },
          {
           "param": "DSN",
@@ -29089,7 +29305,19 @@
             27
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 24,
+           "column": 11,
+           "span": [
+            23,
+            24
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -29262,7 +29490,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 25,
+           "column": 14,
+           "span": [
+            25,
+            26
+           ]
+          }
          },
          {
           "param": "UNIT",
@@ -29280,7 +29520,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DCB",
@@ -29317,7 +29559,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "SPACE",
@@ -29342,7 +29586,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DSN",
@@ -29360,7 +29606,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 26,
+           "column": 11,
+           "span": [
+            25,
+            26
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -29786,7 +30044,9 @@
     "label_matches_member": true,
     "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
     "depth": 1,
-    "parent_call": null
+    "parent_call": null,
+    "search_status": "RESOLVED",
+    "reasons": []
    }
   ],
   "symbols_defined": [
@@ -29825,6 +30085,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -30348,6 +30612,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -31515,6 +31783,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 8,
    "unresolved_call_steps": 0,
@@ -31920,6 +32192,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -32085,7 +32361,19 @@
             27
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 23,
+           "column": 14,
+           "span": [
+            23,
+            24
+           ]
+          }
          },
          {
           "param": "DSN",
@@ -32103,7 +32391,19 @@
             27
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00023",
+           "line": 24,
+           "column": 11,
+           "span": [
+            23,
+            24
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -32276,7 +32576,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DISP",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 25,
+           "column": 14,
+           "span": [
+            25,
+            26
+           ]
+          }
          },
          {
           "param": "UNIT",
@@ -32294,7 +32606,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DCB",
@@ -32331,7 +32645,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "SPACE",
@@ -32356,7 +32672,9 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+          "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+          "original_param": null,
+          "original_source": null
          },
          {
           "param": "DSN",
@@ -32374,7 +32692,19 @@
             33
            ]
           },
-          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+          "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+          "original_param": "DSN",
+          "original_source": {
+           "file": "proc/REPROC.prc",
+           "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+           "statement_id": "S00025",
+           "line": 26,
+           "column": 11,
+           "span": [
+            25,
+            26
+           ]
+          }
          }
         ],
         "override_statement": {
@@ -33515,7 +33845,9 @@
     "label_matches_member": true,
     "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
     "depth": 1,
-    "parent_call": null
+    "parent_call": null,
+    "search_status": "RESOLVED",
+    "reasons": []
    }
   ],
   "symbols_defined": [
@@ -33553,6 +33885,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -34076,6 +34412,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -34536,6 +34876,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -34776,6 +35120,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,
@@ -35635,6 +35983,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 6,
    "unresolved_call_steps": 0,
@@ -35785,7 +36137,19 @@
           25
          ]
         },
-        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+        "original_param": "DISP",
+        "original_source": {
+         "file": "proc/REPROC.prc",
+         "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+         "statement_id": "S00023",
+         "line": 23,
+         "column": 14,
+         "span": [
+          23,
+          24
+         ]
+        }
        },
        {
         "param": "DSN",
@@ -35803,7 +36167,19 @@
           25
          ]
         },
-        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+        "original_param": "DSN",
+        "original_source": {
+         "file": "proc/REPROC.prc",
+         "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+         "statement_id": "S00023",
+         "line": 24,
+         "column": 11,
+         "span": [
+          23,
+          24
+         ]
+        }
        }
       ],
       "override_statement": {
@@ -35976,7 +36352,19 @@
           31
          ]
         },
-        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+        "original_param": "DISP",
+        "original_source": {
+         "file": "proc/REPROC.prc",
+         "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+         "statement_id": "S00025",
+         "line": 25,
+         "column": 14,
+         "span": [
+          25,
+          26
+         ]
+        }
        },
        {
         "param": "UNIT",
@@ -35994,7 +36382,9 @@
           31
          ]
         },
-        "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+        "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+        "original_param": null,
+        "original_source": null
        },
        {
         "param": "DCB",
@@ -36031,7 +36421,9 @@
           31
          ]
         },
-        "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+        "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+        "original_param": null,
+        "original_source": null
        },
        {
         "param": "SPACE",
@@ -36056,7 +36448,9 @@
           31
          ]
         },
-        "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+        "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+        "original_param": null,
+        "original_source": null
        },
        {
         "param": "DSN",
@@ -36074,7 +36468,19 @@
           31
          ]
         },
-        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+        "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+        "original_param": "DSN",
+        "original_source": {
+         "file": "proc/REPROC.prc",
+         "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+         "statement_id": "S00025",
+         "line": 26,
+         "column": 11,
+         "span": [
+          25,
+          26
+         ]
+        }
        }
       ],
       "override_statement": {
@@ -37183,7 +37589,9 @@
     "label_matches_member": true,
     "basis": "UNCONFIRMED_CONTRACT_CONTEXT",
     "depth": 1,
-    "parent_call": null
+    "parent_call": null,
+    "search_status": "RESOLVED",
+    "reasons": []
    }
   ],
   "symbols_defined": [
@@ -37220,6 +37628,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 3,
    "unresolved_call_steps": 0,
@@ -37517,6 +37929,10 @@
    "SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED"
   ],
   "unsupported": [],
+  "run_conditions": {
+   "encoding": "utf-8",
+   "jes": "UNKNOWN"
+  },
   "counts": {
    "program_steps": 1,
    "unresolved_call_steps": 0,

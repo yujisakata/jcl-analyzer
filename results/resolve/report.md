@@ -205,7 +205,19 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        33
       ]
      },
-     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+     "original_param": "DISP",
+     "original_source": {
+      "file": "proc/REPROC.prc",
+      "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+      "statement_id": "S00023",
+      "line": 23,
+      "column": 14,
+      "span": [
+       23,
+       24
+      ]
+     }
     },
     {
      "param": "DSN",
@@ -223,7 +235,19 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        33
       ]
      },
-     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+     "original_param": "DSN",
+     "original_source": {
+      "file": "proc/REPROC.prc",
+      "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+      "statement_id": "S00023",
+      "line": 24,
+      "column": 11,
+      "span": [
+       23,
+       24
+      ]
+     }
     }
    ],
    "override_statement": {
@@ -396,7 +420,19 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        39
       ]
      },
-     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+     "original_param": "DISP",
+     "original_source": {
+      "file": "proc/REPROC.prc",
+      "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+      "statement_id": "S00025",
+      "line": 25,
+      "column": 14,
+      "span": [
+       25,
+       26
+      ]
+     }
     },
     {
      "param": "UNIT",
@@ -414,7 +450,9 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        39
       ]
      },
-     "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+     "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+     "original_param": null,
+     "original_source": null
     },
     {
      "param": "DCB",
@@ -451,7 +489,9 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        39
       ]
      },
-     "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+     "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+     "original_param": null,
+     "original_source": null
     },
     {
      "param": "SPACE",
@@ -476,7 +516,9 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        39
       ]
      },
-     "reason": "JCL-PROC-006: parameter not on the procedure statement is added"
+     "reason": "JCL-PROC-006: parameter not on the procedure statement is added",
+     "original_param": null,
+     "original_source": null
     },
     {
      "param": "DSN",
@@ -494,7 +536,19 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
        39
       ]
      },
-     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter"
+     "reason": "JCL-PROC-006: overriding parameter replaces the procedure parameter",
+     "original_param": "DSN",
+     "original_source": {
+      "file": "proc/REPROC.prc",
+      "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
+      "statement_id": "S00025",
+      "line": 26,
+      "column": 11,
+      "span": [
+       25,
+       26
+      ]
+     }
     }
    ],
    "override_statement": {
@@ -559,52 +613,6 @@ Diagnostics: {"RES-I001": 1, "RES-I002": 45, "RES-W001": 2}
         "file": "jcl/PRTCATBL.jcl",
         "sha256": "0668cd90c6092711cd173b3dfcd884887c11408e7c5c9ebc2d0332d929750cbe",
         "statement_id": "S00029",
-        "line": 30,
-        "column": 4,
-        "span": [
-         29,
-         30
-        ]
-       },
-       "used_at": {
-        "file": "proc/REPROC.prc",
-        "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
-        "statement_id": "S00027",
-        "line": 28,
-        "column": 11,
-        "span": [
-         27,
-         28
-        ]
-       }
-      }
-     ]
-    }
-   ],
-   "origin": {
-    "file": "proc/REPROC.prc",
-    "sha256": "cbe8a6eb2e718baf4a45d474e369dfe066e698f09e295a5ae5f8de69088c3f53",
-    "statement_id": "S00027",
-    "line": 27,
-    "column": null,
-    "span": [
-     27,
-     28
-    ]
-   },
-   "positional": [],
-   "overrides": [],
-   "override_statement": null,
-   "added_by_override": false,
-   "unapplied_overrides": [],
-   "backrefs": [],
-   "level": "STEP"
-  }
- ],
- "pending_overrides": [],
- "source_step_id": "T00021",
- "program_raw": "IDCAMS",
- "program_substitutions": []
-}
+  
 ```
 
