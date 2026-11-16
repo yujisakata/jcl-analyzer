@@ -36,9 +36,9 @@
   ],
   "trust_point": "the manifest file is trusted through its Git blob in HEAD (git hash-object == git rev-parse HEAD:<path>) or an external SHA-256 digest"
  },
- "generated_at": "2026-11-16T08:53:23Z",
+ "generated_at": "2026-11-16T10:17:09Z",
  "code": {
-  "git_commit": "d8b974722a31d2c3b4858ba0254a62b5f5800c37",
+  "git_commit": "15fef4bc690de8e22d505ed39888b6d23795290c",
   "commit_contains_code": true,
   "git_dirty_paths": [],
   "generator": {
@@ -46,7 +46,7 @@
    "sha256": "b9a98d89cababeae15b943004c5450415e782ade1a1d703c6d11e72fa52ae93d"
   },
   "code_hash": "sha256 of bytes with CRLF normalised to LF",
-  "src_tree_sha256": "95161c7289f1514a38ca09da58e19ee29e8036d1bfb57b2d6a6c49f2564399f7",
+  "src_tree_sha256": "d2d955dd188c7531f52ec194f11826f60c4378cdb673d1051065592bb23d384c",
   "src_files": {
    "src/jclprof/__init__.py": "09ec9e79a4cd4b594e8b318e66b5478d4500efce085bc4f461ce91bc625a5b75",
    "src/jclprof/__main__.py": "62375d1a3966e750021e0f6778c5cc6e54269ff39273e655bd3cada58abb1824",
@@ -92,7 +92,7 @@
    "src/jclprof/resolver/library.py": "267babf864fc2dc9a6477acd1278b5f8176046fe311c1fd415c8ce1c975eec67",
    "src/jclprof/resolver/manifest.py": "02eb0bfb8d409660049c2272a3b0d456ed6bf9aae8576cb703270deca72d0a1f",
    "src/jclprof/resolver/model.py": "1d40a7f4024a721cd4654248d7bf189e7adf5a1f0077aa475c387a82f86243f1",
-   "src/jclprof/resolver/resolver.py": "d9f0d0a03d86388c2223e308acb56c57d4242d41e0ffe910d09ed92fcec90969",
+   "src/jclprof/resolver/resolver.py": "a97274834d0cde594f61145c95f0d93ad2fb0a51a5d1fe404d6e91fd0367df79",
    "src/jclprof/resolver/symbols.py": "b8a817ae87bbe77db351931e88e138e9f4955e220f49663e6620e18879bd75ff"
   }
  },
