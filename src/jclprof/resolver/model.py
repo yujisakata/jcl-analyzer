@@ -44,9 +44,12 @@ class SearchStep:
     order: int
     kind: str  # INSTREAM | JCLLIB | SYSTEM | CONTEXT
     library: str | None
-    result: str  # FOUND | NOT_FOUND | UNMAPPED | AMBIGUOUS | NOT_CONFIGURED
+    # FOUND | NOT_FOUND | UNMAPPED | AMBIGUOUS | NOT_CONFIGURED | UNAVAILABLE | DUPLICATE_MAPPING
+    # | SYMBOLIC_NOT_SUPPORTED
+    result: str
     candidates: tuple[str, ...] = ()
     evidence: SourceRef | None = None
+    reason: str = ""  # why a library could not be inspected (UNAVAILABLE / DUPLICATE_MAPPING)
 
 
 @dataclass(frozen=True)
@@ -54,7 +57,10 @@ class ProcCall:
     id: str
     requested: str
     call: SourceRef
-    status: str  # RESOLVED | ENVIRONMENT_GAP | AMBIGUOUS | NO_LIBRARY_CONTEXT | CYCLE | UNSUPPORTED
+    # RESOLVED | ENVIRONMENT_GAP | AMBIGUOUS | NO_LIBRARY_CONTEXT | CYCLE | UNSUPPORTED
+    # Only RESOLVED calls are expanded; UNSUPPORTED means an UNSUPPORTED_FORMS entry was detected
+    # (see EffectiveResult.unsupported) and no effective step is produced from the call.
+    status: str
     search: tuple[SearchStep, ...]
     member_path: str | None = None
     member_sha256: str | None = None
@@ -115,7 +121,7 @@ class EffectiveStep:
     id: str
     name: str | None
     call_path: tuple[str | None, ...]
-    status: str  # RESOLVED | UNRESOLVED_CALL
+    status: str  # RESOLVED | UNRESOLVED_CALL | NO_PROGRAM | UNSUPPORTED
     program: str | None
     exec_origin: SourceRef  # EXEC with PGM= (or the unresolved calling EXEC)
     call_chain: tuple[str, ...] = ()  # ProcCall ids from the job down to this step
@@ -123,6 +129,8 @@ class EffectiveStep:
     dds: tuple[EffectiveDD, ...] = ()
     pending_overrides: tuple[SourceRef, ...] = ()  # override DDs of an unresolved call
     source_step_id: str | None = None
+    program_raw: str | None = None  # PGM= as coded (CD-4R F07)
+    program_substitutions: tuple[SymbolUse, ...] = ()  # symbol use -> definition edges for PGM
 
 
 @dataclass(frozen=True)
@@ -146,6 +154,18 @@ class ResolveDiagnostic:
 
 
 @dataclass(frozen=True)
+class UnsupportedForm:
+    """An input form outside the resolver scope (resolver.UNSUPPORTED_FORMS). Whatever it affects
+    is not reported as RESOLVED: the call becomes UNSUPPORTED, or a standalone member's steps get
+    status UNSUPPORTED."""
+
+    form: str  # key of resolver.UNSUPPORTED_FORMS
+    call_id: str | None  # ProcCall made UNSUPPORTED (None: standalone member view)
+    source: SourceRef
+    detail: str
+
+
+@dataclass(frozen=True)
 class EffectiveResult:
     source: Any  # the Source ParseResult (unchanged)
     file: str
@@ -157,6 +177,7 @@ class EffectiveResult:
     symbols_defined: tuple[SymbolDef, ...]
     diagnostics: tuple[ResolveDiagnostic, ...]
     limitations: tuple[str, ...] = field(default=())
+    unsupported: tuple[UnsupportedForm, ...] = field(default=())
 
     def counts(self) -> dict[str, int]:
         steps = [s for j in self.jobs for s in j.steps] + list(self.steps)
@@ -175,5 +196,6 @@ class EffectiveResult:
             "calls": [asdict(c) for c in self.calls],
             "symbols_defined": [asdict(s) for s in self.symbols_defined],
             "diagnostics": [asdict(d) for d in self.diagnostics],
-            "limitations": list(self.limitations), "counts": self.counts(),
+            "limitations": list(self.limitations),
+            "unsupported": [asdict(u) for u in self.unsupported], "counts": self.counts(),
         }

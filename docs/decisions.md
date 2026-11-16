@@ -246,3 +246,14 @@
   - アポストロフィ内では PARM / ACCT / AMP / PATH / SUBSYS に限って置換する。インストリームデータの中のシンボルは置換しない（CA-07）
 - **出典**: 展開後のノードは SourceRef を持ち、呼出し EXEC、PROC 定義の文と DD、上書き DD とキーワード、シンボルを定義した SET / EXEC / PROC、DCB 後方参照の参照元と参照先へたどれる（CA-15）
 
+## ADR-033 Resolver の環境未確定性・未対応入力・実行証跡（CD-4R）
+- **日付**: 2026-11-16 / **状態**: 採用（実装済み。Codex の再監査待ち）/ **契機**: Codex の独立監査（a19b8ca、FAIL）の F01〜F09
+- **F01 検査できないライブラリー**: マッピングはあるがフォルダを検査できない場合（root ID が不明、フォルダが無い、ディレクトリーでない、一覧の取得に失敗）は、新しい結果 UNAVAILABLE とする。UNAVAILABLE は「メンバーが無い」ことを意味しない。UNMAPPED と同じく、それより後のライブラリーで見つかっても ENVIRONMENT_GAP とし、RES-W006 を出す。実在する空フォルダは従来どおり NOT_FOUND とし、次のライブラリーへ進む
+- **F02 同じ DSN の複数マッピング**: 公開ローダー（load_library_context。YAML / JSON）は重複を ConfigError で拒否する（config/profiler.yaml のローダーはもともと拒否している）。コードで直接作った LibraryContext に重複がある場合は、lookup の結果を DUPLICATE_MAPPING、呼出しを AMBIGUOUS とし、RES-W007 を出す。リストの順番を優先順位として扱わない
+- **F03〜F08 対応範囲の境界**: Resolver の範囲外の入力形を `resolver.UNSUPPORTED_FORMS` に登録する（12 形）。展開の前に検出し、RES-W004 に形の ID を付けて出し、EffectiveResult.unsupported に記録する。その形を含む呼出しは UNSUPPORTED とし、展開しない（そこから実効 STEP を作らない）。PROC メンバーの単独検査で SET がある場合は、その STEP を UNSUPPORTED とする。登録表とテストの一覧が一致することをテストで確かめ、境界を機械的に判定できるようにする。次の 3 点は検出ではなく修正した:
+  - F03（漏れ）: インストリーム PROC の本体にある SET を JOB のスコープに入れない
+  - F05: EXEC 文・PROC 文で同じシンボルを重複して定義した場合、最初の値を使う（JCL-SYM-005、SA23-1385-70 p.36）。RES-I003 を出す
+  - F07: PGM= の原表記と、シンボルの使用 → 定義の対応を EffectiveStep に保存する
+- **従来の RES-W004 の扱いの変更**: CD-4 では、範囲外の上書きを「適用せずに RESOLVED のまま」出していた。CD-4R では、呼出しを UNSUPPORTED にして展開しない（TC-021）。CardDemo には該当がなく（RES-W004 は 0 件）、結果は変わらない
+- **F09 実行証跡**: `tools/cd4_resolve_report.py` は `run-manifest.json` を出力する。内容は、実装（git コミット、未コミットのパス、src/jclprof の全ファイルと生成器の SHA-256）、入力（ファイル一覧、48 入力と読み込んだメンバーの SHA-256）、文脈（ファイルのパスと SHA-256、basis、マッピングと root の全体）、環境（Python、プラットフォーム、エンコーディング、JES、依存の版、uv.lock）、出力（パス、バイト数、SHA-256）、件数。`--verify` はハッシュを再計算し、不一致を一覧にする。出力は UTF-8・LF に固定し、Windows でも再生成の結果がバイト単位で一致するようにする
+- **範囲外のまま残すもの**: 未対応形の機能実装（PROC 内 SET の位置スコープ、ネストからのインストリーム PROC 参照、シンボルを使う PROC 名・JCLLIB・DUMMY の打消し、DCB マージなど）、DSN と物理資源の対応、インストリームデータ内のシンボル

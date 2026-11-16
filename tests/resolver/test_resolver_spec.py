@@ -176,11 +176,15 @@ def test_override_of_missing_step(tmp_path: Path) -> None:
 
 
 def test_unsupported_override_construct_is_flagged_not_applied(tmp_path: Path) -> None:
+    # TC-021 (CD-4R): an unsupported override no longer yields a RESOLVED expansion that silently
+    # keeps the procedure value; the call becomes UNSUPPORTED and is not expanded.
     text = CALLER.replace("//PS1.FILEIN DD DISP=OLD,", "//PS1.FILEIN DD DUMMY,")
     res = resolve(tmp_path, lib(tmp_path, {"PA.prc": PROC_A}), text)
     assert ("RES-W004", 5) in {(d.code, d.line) for d in res.diagnostics}
-    fin = dd(step(res), "FILEIN")
-    assert kw(fin)["DSN"] == "NULLFILE" and fin.unapplied_overrides
+    (c,) = calls(res)
+    assert c.status == "UNSUPPORTED"
+    assert [(u.form, u.source.line) for u in res.unsupported] == [("U-OVR-POSITIONAL", 5)]
+    assert step(res).status == "UNRESOLVED_CALL" and step(res).dds == ()
 
 
 def test_exec_keyword_override_on_call_is_flagged(tmp_path: Path) -> None:  # JCL-EXEC-003

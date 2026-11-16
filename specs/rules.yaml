@@ -408,6 +408,12 @@ rules:
     conditions: "-"
     source: {doc: IBM-JCLREF-32, chapter: "28. SET statement; 5. Procedures and symbols", section: "SET > Overrides; Using symbols in nested procedures (rule 5)", pages: "566 (PDF 612); 48 (PDF 94)"}
     status: VERIFIED
+  - id: JCL-SYM-005
+    applies_to: "Duplicate symbol definitions on one EXEC or PROC statement"
+    summary: "If the same JCL symbol is defined more than once on an EXEC statement that calls a procedure, or on a PROC statement, the system uses the first substitution text."
+    conditions: "-"
+    source: {doc: IBM-JCLREF-32, chapter: "5. Procedures and symbols", section: "Defining and nullifying JCL symbols (items 1 and 2)", pages: "36 (PDF 82)"}
+    status: VERIFIED
   - id: JCL-SYM-002
     applies_to: "Symbol concatenation with a period"
     summary: "Two consecutive periods after a symbol (&DEPT..NYC) mean the symbol is followed by a period and other text: with &DEPT = D27 the value is D27.NYC."

@@ -1,0 +1,84 @@
+........................................................................ [ 96%]
+...                                                                      [100%]
+=================================== PASSES ====================================
+____________________ test_outputs_are_reproducible_and_lf _____________________
+---------------------------- Captured stdout setup ----------------------------
+wrote <TMP>\pytest-99\run_a0\report.md and <TMP>\pytest-99\run_a0\run-manifest.json
+wrote <TMP>\pytest-99\run_b0\report.md and <TMP>\pytest-99\run_b0\run-manifest.json
+=========================== short test summary info ===========================
+PASSED tests/resolver/test_resolver_carddemo.py::test_official_config_keeps_all_calls_unresolved
+PASSED tests/resolver/test_resolver_carddemo.py::test_contract_context_resolves_four_calls
+PASSED tests/resolver/test_resolver_carddemo.py::test_contract_context_counts
+PASSED tests/resolver/test_resolver_carddemo.py::test_eight_overrides[jcl/PRTCATBL.jcl-32-35-AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS-AWS.M2.CARDDEMO.TCATBALF.BKUP(+1)-50-30]
+PASSED tests/resolver/test_resolver_carddemo.py::test_eight_overrides[jcl/TRANBKP.jcl-26-29-AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS-AWS.M2.CARDDEMO.TRANSACT.BKUP(+1)-350-24]
+PASSED tests/resolver/test_resolver_carddemo.py::test_eight_overrides[jcl/TRANREPT.jcl-26-29-AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS-AWS.M2.CARDDEMO.TRANSACT.BKUP(+1)-350-24]
+PASSED tests/resolver/test_resolver_carddemo.py::test_eight_overrides[proc/TRANREPT.prc-24-27-AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS-AWS.M2.CARDDEMO.TRANSACT.BKUP(+1)-350-22]
+PASSED tests/resolver/test_resolver_carddemo.py::test_set_symbols_and_environment_symbols
+PASSED tests/resolver/test_resolver_carddemo.py::test_dcb_backward_references
+PASSED tests/resolver/test_resolver_carddemo.py::test_source_ast_unchanged_and_source_counts
+PASSED tests/resolver/test_resolver_carddemo.py::test_deterministic
+PASSED tests/resolver/test_resolver_codes.py::test_resolver_codes_match_catalog
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_uninspectable_earlier_library_blocks_resolution[missing]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_uninspectable_earlier_library_blocks_resolution[file]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_listing_error_blocks_resolution
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_unknown_root_id_blocks_resolution
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_existing_empty_library_is_not_found_and_search_continues
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_public_loader_missing_folder
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_never_resolves_to_a_candidate[one-two]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_never_resolves_to_a_candidate[two-one]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_with_different_roots
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[as-written-yaml]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[as-written-json]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[reversed-yaml]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[reversed-json]
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_main_config_loader_already_rejects_duplicate_dsn
+PASSED tests/resolver/test_resolver_manifest.py::test_outputs_are_reproducible_and_lf
+PASSED tests/resolver/test_resolver_manifest.py::test_manifest_hashes_match_disk
+PASSED tests/resolver/test_resolver_manifest.py::test_manifest_content
+PASSED tests/resolver/test_resolver_manifest.py::test_tampering_is_detected
+PASSED tests/resolver/test_resolver_spec.py::test_resolved_by_member_name_with_search_evidence
+PASSED tests/resolver/test_resolver_spec.py::test_unmapped_library_is_environment_gap_not_guessed
+PASSED tests/resolver/test_resolver_spec.py::test_member_not_found_and_no_system_proclib
+PASSED tests/resolver/test_resolver_spec.py::test_ambiguous_candidates_not_resolved
+PASSED tests/resolver/test_resolver_spec.py::test_label_is_not_member_name
+PASSED tests/resolver/test_resolver_spec.py::test_alias_resolution_is_explicit
+PASSED tests/resolver/test_resolver_spec.py::test_jcllib_order_first_library_wins_and_unmapped_earlier_blocks
+PASSED tests/resolver/test_resolver_spec.py::test_expansion_and_dd_overrides
+PASSED tests/resolver/test_resolver_spec.py::test_nullify_and_add
+PASSED tests/resolver/test_resolver_spec.py::test_unqualified_override_applies_to_first_step
+PASSED tests/resolver/test_resolver_spec.py::test_override_of_missing_step
+PASSED tests/resolver/test_resolver_spec.py::test_unsupported_override_construct_is_flagged_not_applied
+PASSED tests/resolver/test_resolver_spec.py::test_exec_keyword_override_on_call_is_flagged
+PASSED tests/resolver/test_resolver_spec.py::test_call_symbolic_parameter_substituted_with_evidence
+PASSED tests/resolver/test_resolver_spec.py::test_set_chain_with_double_period_and_precedence
+PASSED tests/resolver/test_resolver_spec.py::test_set_scope_is_positional
+PASSED tests/resolver/test_resolver_spec.py::test_system_symbol_and_undefined_symbol
+PASSED tests/resolver/test_resolver_spec.py::test_quoted_values_substituted_only_for_listed_parameters
+PASSED tests/resolver/test_resolver_spec.py::test_procedure_calling_procedure
+PASSED tests/resolver/test_resolver_spec.py::test_nested_symbol_inherited
+PASSED tests/resolver/test_resolver_spec.py::test_cycle_detected
+PASSED tests/resolver/test_resolver_spec.py::test_dcb_backward_reference_both_ends
+PASSED tests/resolver/test_resolver_spec.py::test_source_ast_unchanged
+PASSED tests/resolver/test_resolver_spec.py::test_member_with_explicit_context_only
+PASSED tests/resolver/test_resolver_spec.py::test_nesting_depth_limit[16]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_every_registered_form_has_a_case
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-DEPTH]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-EXEC-OVERRIDE]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-NESTED-INSTREAM]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-BASE-POSITIONAL]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-CONCAT]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-DCB-MERGE]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-MUTEX]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-NESTED-STEP]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-OVR-POSITIONAL]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-PROC-SET]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-SYMBOLIC-JCLLIB]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_unsupported_form_is_detected_and_not_resolved[U-SYMBOLIC-PROC]
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_supported_call_has_no_unsupported_record
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_standalone_member_with_body_set_is_not_resolved
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_f03_set_in_uncalled_instream_proc_does_not_leak
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_f05_duplicate_exec_symbol_first_value
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_f05_duplicate_proc_default_first_value_and_exec_still_overrides
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_f07_program_symbol_keeps_use_definition_edge
+PASSED tests/resolver/test_resolver_unsupported_forms.py::test_f07_literal_program_has_no_substitutions
+75 passed in 2.37s

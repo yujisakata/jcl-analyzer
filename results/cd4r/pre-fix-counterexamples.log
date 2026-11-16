@@ -1,0 +1,61 @@
+FFFF.FFFFFFFF.                                                           [100%]
+================================== FAILURES ===================================
+E   AssertionError: picked LIB.SECOND although LIB.FIRST could not be inspected
+    assert 'RESOLVED' != 'RESOLVED'
+     +  where 'RESOLVED' = ProcCall(id='jcl/JOBX.jcl#S00003@ROOT', requested='P1', call=SourceRef(file='jcl/JOBX.jcl', sha256='341f04a48a57ee0f49...674dfcee840ee3dc5dadce', alias_of=None, label='P1', label_matches_member=True, basis='TEST', depth=1, parent_call=None).status
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:73: AssertionError: picked LIB.SECOND although LIB.FIRST could not be inspected
+E   AssertionError: picked LIB.SECOND although LIB.FIRST could not be inspected
+    assert 'RESOLVED' != 'RESOLVED'
+     +  where 'RESOLVED' = ProcCall(id='jcl/JOBX.jcl#S00003@ROOT', requested='P1', call=SourceRef(file='jcl/JOBX.jcl', sha256='341f04a48a57ee0f49...674dfcee840ee3dc5dadce', alias_of=None, label='P1', label_matches_member=True, basis='TEST', depth=1, parent_call=None).status
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:73: AssertionError: picked LIB.SECOND although LIB.FIRST could not be inspected
+E   PermissionError: [Errno 13] Permission denied: '<TMP>\\pytest-86\\test_f01_listing_error_blocks_0\\root\\first'
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:90: PermissionError: [Errno 13] Permission denied: '<TMP>\\pytest-86\\test_f01_listing_error_blocks_0\\root\\first'
+E   AssertionError: assert 'UNMAPPED' == 'UNAVAILABLE'
+      
+      - UNAVAILABLE
+      + UNMAPPED
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:105: AssertionError: assert 'UNMAPPED' == 'UNAVAILABLE'
+E   AssertionError: assert 'RESOLVED' == 'ENVIRONMENT_GAP'
+      
+      - ENVIRONMENT_GAP
+      + RESOLVED
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:130: AssertionError: assert 'RESOLVED' == 'ENVIRONMENT_GAP'
+E   AssertionError: silently picked one/P1.prc
+    assert 'RESOLVED' != 'RESOLVED'
+     +  where 'RESOLVED' = ProcCall(id='jcl/JOBX.jcl#S00003@ROOT', requested='P1', call=SourceRef(file='jcl/JOBX.jcl', sha256='4abc376965028601cd...fdb2af568b43d1da64d77f', alias_of=None, label='P1', label_matches_member=True, basis='TEST', depth=1, parent_call=None).status
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:147: AssertionError: silently picked one/P1.prc
+E   AssertionError: silently picked two/P1.prc
+    assert 'RESOLVED' != 'RESOLVED'
+     +  where 'RESOLVED' = ProcCall(id='jcl/JOBX.jcl#S00003@ROOT', requested='P1', call=SourceRef(file='jcl/JOBX.jcl', sha256='4abc376965028601cd...674dfcee840ee3dc5dadce', alias_of=None, label='P1', label_matches_member=True, basis='TEST', depth=1, parent_call=None).status
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:147: AssertionError: silently picked two/P1.prc
+E   AssertionError: assert ('RESOLVED' == 'AMBIGUOUS'
+      
+      - AMBIGUOUS
+      + RESOLVED)
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:160: AssertionError: assert ('RESOLVED' == 'AMBIGUOUS'
+E   Failed: DID NOT RAISE ConfigError
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:181: Failed: DID NOT RAISE ConfigError
+E   Failed: DID NOT RAISE ConfigError
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:181: Failed: DID NOT RAISE ConfigError
+E   Failed: DID NOT RAISE ConfigError
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:181: Failed: DID NOT RAISE ConfigError
+E   Failed: DID NOT RAISE ConfigError
+D:\projects\jcl-profiler-claude\tests\resolver\test_resolver_env_counterexamples.py:181: Failed: DID NOT RAISE ConfigError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f01_existing_empty_library_is_not_found_and_search_continues
+PASSED tests/resolver/test_resolver_env_counterexamples.py::test_f02_main_config_loader_already_rejects_duplicate_dsn
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f01_uninspectable_earlier_library_blocks_resolution[missing]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f01_uninspectable_earlier_library_blocks_resolution[file]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f01_listing_error_blocks_resolution
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f01_unknown_root_id_blocks_resolution
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f01_public_loader_missing_folder
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_never_resolves_to_a_candidate[one-two]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_never_resolves_to_a_candidate[two-one]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_duplicate_mapping_with_different_roots
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[as-written-yaml]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[as-written-json]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[reversed-yaml]
+FAILED tests/resolver/test_resolver_env_counterexamples.py::test_f02_public_loader_rejects_duplicate_dsn[reversed-json]
+12 failed, 2 passed in 0.49s
+HEAD=a19b8ca515340ea71546ed8981c8ab691dced5f5 (code unmodified: 0 changed src files)

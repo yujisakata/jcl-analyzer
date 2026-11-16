@@ -30,7 +30,7 @@ Pages are given as "printed page (PDF page)".
 |---|---|
 | PENDING | 1 |
 | PROJECT-POLICY | 7 |
-| VERIFIED | 69 |
+| VERIFIED | 70 |
 
 ## Rules
 
@@ -97,6 +97,7 @@ Pages are given as "printed page (PDF page)".
 | JCL-SYM-001 | Undefined symbols | A string beginning with & that is not a defined symbol is treated as literal characters: no substitution and no error message. A JCL symbol not assigned or nullified is undefined and might cause errors. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 5. Procedures and symbols > Coding symbols in JCL; Using symbols in nested procedures (rule 6) | 44 (PDF 90); 48 (PDF 94) | VERIFIED | G-JIS-011 |
 | JCL-SYM-003 | Symbol syntax and substitution | A symbol starts with & (not &&), is ended by a character that is not alphabetic, numeric or national, and is at most 8 characters. A period after a symbol is a delimiter and disappears on substitution. A string beginning with & that is not a defined symbol stays literal. Inside apostrophes, symbols are substituted only for DD AMP/PATH/SUBSYS and EXEC ACCT/PARM. | Other apostrophe-enclosed values keep & text literally. | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 5. Procedures and symbols > Coding symbols in JCL; Using symbols before fixed code | 43-44 (PDF 89-90) | VERIFIED | - |
 | JCL-SYM-004 | Symbol value precedence and nesting | A SET value is overridden by a later SET, by a default on a later PROC statement and by a value on a later EXEC statement that calls a procedure. If a nested procedure does not assign or nullify a symbol, the value comes from the procedure in which it is nested. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 28. SET statement; 5. Procedures and symbols > SET > Overrides; Using symbols in nested procedures (rule 5) | 566 (PDF 612); 48 (PDF 94) | VERIFIED | - |
+| JCL-SYM-005 | Duplicate symbol definitions on one EXEC or PROC statement | If the same JCL symbol is defined more than once on an EXEC statement that calls a procedure, or on a PROC statement, the system uses the first substitution text. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 5. Procedures and symbols > Defining and nullifying JCL symbols (items 1 and 2) | 36 (PDF 82) | VERIFIED | - |
 | JCL-SYM-002 | Symbol concatenation with a period | Two consecutive periods after a symbol (&DEPT..NYC) mean the symbol is followed by a period and other text: with &DEPT = D27 the value is D27.NYC. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 4. Syntax of parameters > Table 9 Notation used to show syntax (two consecutive periods) | 21 (PDF 67) | VERIFIED | G-JIS-010, G-JIS-012 |
 | JCL-IF-001 | IF/THEN/ELSE/ENDIF structure | IF [(]relational-expression[)] THEN, optional ELSE, ENDIF required for each construct; constructs nest up to 15 levels; a THEN clause with no statements is a null THEN clause. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 18. IF/THEN/ELSE/ENDIF statement construct > Purpose; Syntax; THEN and ELSE clauses | 367, 373 (PDF 413, 419) | VERIFIED | G-IF-001, G-IF-006, G-IF-007, G-IF-008, G-IF-009, G-IF-010 |
 | JCL-IF-002 | Relational-expression operators | NOT/¬ first; comparison operators GT > LT < NG ¬> NL ¬< EQ = NE ¬= GE >= LE <= second; logical AND/& and OR/\| third. Operators of the same priority are evaluated in the order coded. Alphabetic comparison operators and & / \| must be preceded and followed by blanks. | - | https://www.ibm.com/docs/en/SSLTBW_3.2.0/pdf/ieab600_v3r2.pdf | z/OS 3.2, SA23-1385-70 | 18. IF/THEN/ELSE/ENDIF statement construct > Priorities of operators (Figure 1); Comparison/Logical operators | 368-369 (PDF 414-415) | VERIFIED | G-IF-001, G-IF-002, G-IF-003, G-IF-004, G-IF-005, G-IF-101 |
@@ -116,4 +117,4 @@ Pages are given as "printed page (PDF page)".
 
 ## Rules without Golden Tests
 
-JCL-REC-002, JCL-REC-004, JCL-CONT-005, JCL-DD-013, JCL-DD-014, JCL-DD-011, JCL-PROC-006, JCL-EXEC-003, JCL-SYM-003, JCL-SYM-004, MVS-MEM-001
+JCL-REC-002, JCL-REC-004, JCL-CONT-005, JCL-DD-013, JCL-DD-014, JCL-DD-011, JCL-PROC-006, JCL-EXEC-003, JCL-SYM-003, JCL-SYM-004, JCL-SYM-005, MVS-MEM-001

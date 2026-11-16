@@ -15,10 +15,11 @@ from jclprof.resolver.model import (
     SourceRef,
     SymbolDef,
     SymbolUse,
+    UnsupportedForm,
 )
-from jclprof.resolver.resolver import RESOLVE_CODES, Resolver
+from jclprof.resolver.resolver import RESOLVE_CODES, UNSUPPORTED_FORMS, Resolver
 
-__all__ = ["RESOLVE_CODES", "BackRef", "EffectiveDD", "EffectiveJob", "EffectiveParam",
-           "EffectiveResult", "EffectiveStep", "LibraryContext", "MemberLookup", "OverrideRecord",
-           "ProcCall", "ResolveDiagnostic", "Resolver", "SearchStep", "SourceRef", "SymbolDef",
-           "SymbolUse", "load_library_context"]
+__all__ = ["RESOLVE_CODES", "UNSUPPORTED_FORMS", "BackRef", "EffectiveDD", "EffectiveJob",
+           "EffectiveParam", "EffectiveResult", "EffectiveStep", "LibraryContext", "MemberLookup",
+           "OverrideRecord", "ProcCall", "ResolveDiagnostic", "Resolver", "SearchStep",
+           "SourceRef", "SymbolDef", "SymbolUse", "UnsupportedForm", "load_library_context"]

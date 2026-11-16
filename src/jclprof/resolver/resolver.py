@@ -6,14 +6,15 @@ member/alias resolution with label kept separate (JCL-PROC-002, ADR-011), expans
 and DDs, DD overrides and additions by procstepname.ddname (JCL-PROC-006), symbolic parameters
 on the calling EXEC, PROC defaults and SET with positional scope (JCL-EXEC-003, JCL-SYM-001..004),
 nested procedure calls up to 15 levels (JCL-PROC-007), DCB/DSN backward references (JCL-SYN-004).
-Out of scope (detected and reported RES-W004, never applied): EXEC parameter overrides on a call,
-positional / DUMMY / concatenated / DCB-merging overrides, overrides of nested call steps,
-nesting deeper than 15. Unresolved or ambiguous members stay unresolved (never guessed).
+Out of scope: every form listed in UNSUPPORTED_FORMS. A detected form is reported RES-W004 with its
+form id and recorded in EffectiveResult.unsupported; the affected call becomes UNSUPPORTED and is
+not expanded, so no value that depends on it is reported as RESOLVED (CD-4R). Unresolved, ambiguous
+or uninspectable libraries stay unresolved (never guessed, CD-4R F01/F02).
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +34,7 @@ from jclprof.resolver.model import (
     SourceRef,
     SymbolDef,
     SymbolUse,
+    UnsupportedForm,
 )
 from jclprof.resolver.symbols import Lookup, Scope, substitute
 
@@ -49,7 +51,12 @@ RESOLVE_CODES: dict[str, tuple[str, str, str]] = {
     "RES-W004": ("WARNING", "UNSUPPORTED",
                  "Construct outside the CD-4 resolver scope; not applied"),
     "RES-W005": ("WARNING", "ENVIRONMENT", "Procedure search cannot complete"),
+    "RES-W006": ("WARNING", "ENVIRONMENT",
+                 "Mapped library folder cannot be inspected; later libraries are not used"),
+    "RES-W007": ("WARNING", "ENVIRONMENT", "Library DSN is mapped more than once; not resolved"),
     "RES-I001": ("INFO", "ADVISORY", "PROC label differs from the member name"),
+    "RES-I003": ("INFO", "ADVISORY",
+                 "Duplicate symbol on one EXEC or PROC statement; the first value is used"),
     "RES-I002": ("INFO", "ENVIRONMENT",
                  "System symbol whose value depends on the execution environment"),
 }
@@ -64,6 +71,25 @@ EXEC_KEYWORDS = frozenset({
 QUOTED_SUBSTITUTION = frozenset({"PARM", "ACCT", "AMP", "PATH", "SUBSYS"})  # JCL-SYM-003
 MUTUALLY_EXCLUSIVE = (frozenset({"SYSOUT"}), frozenset({"DSN", "DSNAME", "DISP"}))
 MAX_DEPTH = 15  # JCL-PROC-007
+
+# Input forms outside the resolver scope (CD-4R). Each is detected before expansion; the call that
+# contains it becomes UNSUPPORTED (not expanded). Anything not listed here and not diagnosed
+# otherwise is in scope. Audit finding ids in brackets.
+UNSUPPORTED_FORMS: dict[str, str] = {
+    "U-EXEC-OVERRIDE": "EXEC parameter (e.g. COND, REGION.step) coded on a calling EXEC",
+    "U-OVR-POSITIONAL": "override DD with positional parameters (DUMMY, *, DATA)",
+    "U-OVR-BASE-POSITIONAL": "override of a procedure DD coded with positional parameters "
+                             "such as DUMMY [F08]",
+    "U-OVR-DCB-MERGE": "override needing a DCB subparameter merge",
+    "U-OVR-MUTEX": "override that mixes mutually exclusive parameters (SYSOUT with DSN/DISP)",
+    "U-OVR-CONCAT": "concatenated or implicit DD after a procedure call",
+    "U-OVR-NESTED-STEP": "override of a nested procedure call step",
+    "U-DEPTH": f"procedure nesting deeper than {MAX_DEPTH} levels",
+    "U-PROC-SET": "SET statement inside a procedure body [F03]",
+    "U-NESTED-INSTREAM": "nested call of a name the job defines as an in-stream procedure [F04]",
+    "U-SYMBOLIC-PROC": "procedure name given by a symbol [F06]",
+    "U-SYMBOLIC-JCLLIB": "JCLLIB ORDER data set name given by a symbol [F06]",
+}
 
 
 @dataclass(frozen=True)
@@ -86,6 +112,8 @@ class _Run:
     calls: list[ProcCall] = field(default_factory=list)
     defs: list[SymbolDef] = field(default_factory=list)
     seen: set[tuple[str, str, int | None, str]] = field(default_factory=set)
+    unsupported: list[UnsupportedForm] = field(default_factory=list)
+    job_instream: frozenset[str] = frozenset()
 
 
 class Resolver:
@@ -135,6 +163,12 @@ class Resolver:
         run.diags.append(ResolveDiagnostic(code, sev, cls, file, line,
                                            title + (f": {detail}" if detail else "")))
 
+    def form(self, run: _Run, form: str, call_id: str | None, at: SourceRef, detail: str) -> None:
+        if form not in UNSUPPORTED_FORMS:
+            raise KeyError(form)
+        run.unsupported.append(UnsupportedForm(form, call_id, at, detail))
+        self.diag(run, "RES-W004", at.file, at.line, f"[{form}] {detail}")
+
     def note_uses(self, run: _Run, uses: list[SymbolUse]) -> None:
         for u in uses:
             if u.status == "UNDEFINED":
@@ -183,9 +217,13 @@ class Resolver:
         scope = Scope()
         lo, hi = job.span
         sts = [s for s in doc.parsed.statements if s.span and lo <= s.span[0] <= hi]
+        bodies = [_proc_span(pd, hi) for pd in job.procedures]
+        run.job_instream = frozenset(pd.name for pd in job.procedures if pd.name)
         libs: list[_Lib] = []
         for s in sts:
             sline = s.span[0] if s.span else 0
+            if s.kind == "SET" and any(a <= sline <= b for a, b in bodies):
+                continue  # belongs to an in-stream procedure body, not to the job (CD-4R F03)
             if s.kind == "SET":
                 for k in s.keywords:
                     at = self.ref(doc, s, k.line, k.column)
@@ -235,23 +273,9 @@ class Resolver:
 
     def merge(self, run: _Run, base: EffectiveDD, pdoc: _Doc, ovr: DDNode, cdoc: _Doc,
               clook: Lookup) -> EffectiveDD:
+        # Unsupported override forms were rejected by call_forms() before expansion.
         st = ovr.statement
         oref = self.ref(cdoc, st)
-        names = {k.name for k in st.keywords}
-        have = {p.name for p in base.params}
-        why = None
-        if st.positional:
-            why = "override with positional parameters (e.g. DUMMY, *)"
-        elif "DCB" in names and "DCB" in have:
-            why = "DCB subparameter merge"
-        elif any((names & a and have & b) or (names & b and have & a)
-                 for a, b in [MUTUALLY_EXCLUSIVE]):
-            why = "mutually exclusive parameters"
-        if why:
-            self.diag(run, "RES-W004", cdoc.rel, oref.line, why)
-            return EffectiveDD(base.id, base.ddname, base.concat_index, base.params, base.origin,
-                               base.positional, base.overrides, oref, False,
-                               (*base.unapplied_overrides, oref), base.backrefs, base.level)
         params = list(base.params)
         records: list[OverrideRecord] = []
         for k in st.keywords:
@@ -285,15 +309,17 @@ class Resolver:
         e = st.exec_statement
         sid = "/".join([doc.rel + "#" + e.id, *chain])
         exec_kws, _ = self.params_of(doc, run, e, look, frozenset({"PGM"}))
-        prog = None
+        prog = raw = None
+        uses: list[SymbolUse] = []
         if st.target and st.target[0] == "PGM":
-            prog, uses = substitute(st.target[1], look, self.ref(doc, e))
+            raw = st.target[1]
+            prog, uses = substitute(raw, look, self.ref(doc, e))
             self.note_uses(run, uses)
         if dds is None:
             dds = [self.source_dd(doc, run, d, look, f"{sid}/{d.statement.id}") for d in st.dds]
         return EffectiveStep(sid, st.name, (*call_path, st.name),
                              "RESOLVED" if prog else "NO_PROGRAM", prog, self.ref(doc, e), chain,
-                             tuple(exec_kws), tuple(dds), (), st.id)
+                             tuple(exec_kws), tuple(dds), (), st.id, raw, tuple(uses))
 
     def placeholder(self, doc: _Doc, run: _Run, st: StepNode, look: Lookup,
                     call_path: tuple[str | None, ...], chain: tuple[str, ...]) -> EffectiveStep:
@@ -315,22 +341,37 @@ class Resolver:
                 return "RESOLVED", steps, ("INSTREAM", pd)
         if libs is None:
             return "NO_LIBRARY_CONTEXT", steps, None
-        unmapped = False
+        unknown = False  # an earlier library could hold the member (UNMAPPED / UNAVAILABLE)
         for lib in libs:
+            kind = "JCLLIB" if lib.evidence else "CONTEXT"
+            if "&" in lib.dsn:  # CD-4R F06: symbolic library names are not substituted
+                steps.append(SearchStep(order, kind, lib.dsn, "SYMBOLIC_NOT_SUPPORTED", (),
+                                        lib.evidence))
+                return "UNSUPPORTED", steps, None
             look = self.library.lookup(lib.dsn, name)
-            steps.append(SearchStep(order, "JCLLIB" if lib.evidence else "CONTEXT", lib.dsn,
-                                    look.result, look.candidates, lib.evidence))
+            steps.append(SearchStep(order, kind, lib.dsn, look.result, look.candidates,
+                                    lib.evidence, look.reason))
             order += 1
+            ev_file = lib.evidence.file if lib.evidence else doc.rel
+            ev_line = lib.evidence.line if lib.evidence else call_line
             if look.result == "UNMAPPED":
-                unmapped = True
+                unknown = True
                 if lib.evidence:
-                    self.diag(run, "RES-W002", lib.evidence.file, lib.evidence.line, lib.dsn)
+                    self.diag(run, "RES-W002", ev_file, ev_line, lib.dsn)
                 continue
+            if look.result == "UNAVAILABLE":  # CD-4R F01: not a known absence
+                unknown = True
+                self.diag(run, "RES-W006", ev_file, ev_line, f"{lib.dsn}: {look.reason}")
+                continue
+            if look.result == "DUPLICATE_MAPPING":  # CD-4R F02: never pick by list order
+                self.diag(run, "RES-W007", ev_file, ev_line,
+                          f"{lib.dsn}: {', '.join(look.candidates)}")
+                return ("ENVIRONMENT_GAP" if unknown else "AMBIGUOUS"), steps, None
             if look.result == "FOUND":
-                return ("ENVIRONMENT_GAP" if unmapped else "RESOLVED"), steps, ("MEMBER", look)
+                return ("ENVIRONMENT_GAP" if unknown else "RESOLVED"), steps, ("MEMBER", look)
             if look.result == "AMBIGUOUS":
-                return ("ENVIRONMENT_GAP" if unmapped else "AMBIGUOUS"), steps, None
-        if not unmapped:
+                return ("ENVIRONMENT_GAP" if unknown else "AMBIGUOUS"), steps, None
+        if not unknown:
             steps.append(SearchStep(order, "SYSTEM", None, "NOT_CONFIGURED"))
         return "ENVIRONMENT_GAP", steps, None
 
@@ -354,17 +395,29 @@ class Resolver:
         cid = f"{doc.rel}#{e.id}@{parent or 'ROOT'}"
         cref = self.ref(doc, e)
         if depth + 1 > MAX_DEPTH:
-            self.diag(run, "RES-W004", doc.rel, line, f"nesting deeper than {MAX_DEPTH} levels")
+            self.form(run, "U-DEPTH", cid, cref, f"nesting deeper than {MAX_DEPTH} levels")
+            run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
+                                      depth=depth + 1, parent_call=parent))
+            return [self.placeholder(doc, run, st, look, call_path, chain)]
+        if "&" in name:  # CD-4R F06
+            self.form(run, "U-SYMBOLIC-PROC", cid, cref, f"PROC={name}")
+            run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
+                                      depth=depth + 1, parent_call=parent))
+            return [self.placeholder(doc, run, st, look, call_path, chain)]
+        if parent is not None and name in run.job_instream:  # CD-4R F04
+            self.form(run, "U-NESTED-INSTREAM", cid, cref,
+                      f"{name} is an in-stream procedure of the job, called from a procedure")
             run.calls.append(ProcCall(cid, name, cref, "UNSUPPORTED", (), basis=self.library.basis,
                                       depth=depth + 1, parent_call=parent))
             return [self.placeholder(doc, run, st, look, call_path, chain)]
         others = [k for k in e.keywords if k.name != "PROC" and k.name.split(".")[0]
                   in EXEC_KEYWORDS]
         if others:
-            self.diag(run, "RES-W004", doc.rel, line,
-                      "EXEC parameter override on a calling EXEC: " +
-                      ",".join(k.name for k in others))
+            self.form(run, "U-EXEC-OVERRIDE", cid, cref, ",".join(k.name for k in others))
         status, steps, found = self.search(run, doc, name, libs, instream, line)
+        if status == "UNSUPPORTED":
+            ev = steps[-1].evidence or cref
+            self.form(run, "U-SYMBOLIC-JCLLIB", cid, ev, f"ORDER item {steps[-1].library}")
         member_rel = member_sha = alias_of = label = None
         matches = None
         mdoc: _Doc | None = None
@@ -388,6 +441,13 @@ class Resolver:
             mdoc, header, proc_steps = doc, pd.proc_statement, pd.steps
             label = pd.name
             matches = True
+        if status == "RESOLVED" and mdoc is not None:
+            body = None
+            if found and found[0] == "INSTREAM":
+                body = _proc_span(found[1], doc.parsed.jobs[0].span[1] if doc.parsed.jobs else 0)
+            self.call_forms(run, cid, doc, st, mdoc, proc_steps, body)
+            if any(u.call_id == cid for u in run.unsupported):
+                status = "UNSUPPORTED"
         key = member_rel or (f"{doc.rel}:INSTREAM:{name}" if mdoc is doc else None)
         if status == "RESOLVED" and key in active:
             status = "CYCLE"
@@ -397,15 +457,20 @@ class Resolver:
         if status != "RESOLVED" or mdoc is None:
             if status in ("ENVIRONMENT_GAP", "NO_LIBRARY_CONTEXT"):
                 self.diag(run, "RES-W005", doc.rel, line, f"{name}: {status}")
-            elif status == "AMBIGUOUS":
+            elif status == "AMBIGUOUS" and steps[-1].result == "AMBIGUOUS":
                 self.diag(run, "RES-W003", doc.rel, line,
                           f"{name}: {', '.join(steps[-1].candidates)}")
             return [self.placeholder(doc, run, st, look, call_path, chain)]
         # procedure scope: PROC defaults, then the calling EXEC's symbolic assignments
         pscope = Scope(parent=look)
         if header is not None:
+            seen_hdr: set[str] = set()
             for k in header.keywords:
                 at = self.ref(mdoc, header, k.line, k.column)
+                if k.name in seen_hdr:  # first value wins on a PROC statement (p.36)
+                    self.diag(run, "RES-I003", at.file, at.line, f"PROC {k.name}")
+                    continue
+                seen_hdr.add(k.name)
                 uses: list[SymbolUse] = []
                 val = None
                 if k.value is not None:
@@ -414,10 +479,15 @@ class Resolver:
                 d = SymbolDef(k.name, val, "PROC_DEFAULT", at, tuple(uses))
                 pscope.define(d)
                 run.defs.append(d)
+        seen_exec: set[str] = set()
         for k in e.keywords:
             if k.name == "PROC" or k.name.split(".")[0] in EXEC_KEYWORDS:
                 continue
             at = self.ref(doc, e, k.line, k.column)
+            if k.name in seen_exec:  # first value wins on an EXEC statement (p.36)
+                self.diag(run, "RES-I003", at.file, at.line, f"EXEC {k.name}")
+                continue
+            seen_exec.add(k.name)
             uses2: list[SymbolUse] = []
             val2 = None
             if k.value is not None:
@@ -434,9 +504,7 @@ class Resolver:
         for dn in st.dds:
             dline = dn.statement.span[0] if dn.statement.span else line
             if dn.ddname is None or dn.implicit:
-                self.diag(run, "RES-W004", doc.rel, dline,
-                          "concatenated or implicit DD after a procedure call")
-                continue
+                continue  # unreachable: U-OVR-CONCAT makes the call UNSUPPORTED
             target = dn.procstep or current
             if target not in per:
                 self.diag(run, "RES-E005", doc.rel, dline, f"{target}.{dn.ddname}")
@@ -449,9 +517,6 @@ class Resolver:
         for ps in proc_steps:
             ovr = per.get(ps.name, [])
             if ps.target and ps.target[0] == "PROC":
-                if ovr:
-                    self.diag(run, "RES-W004", doc.rel, line,
-                              f"override of nested procedure call step {ps.name}")
                 out += self.expand(mdoc, run, ps, pscope, libs, (), (*call_path, st.name),
                                    sub_chain, depth + 1, (*active, key or name), cid)
                 continue
@@ -488,13 +553,8 @@ class Resolver:
                         if not target:
                             self.diag(run, "RES-E004", p.source.file, p.source.line, text)
                         refs.append(BackRef(p.name, text, status, target, p.source))
-                new_dds.append(EffectiveDD(d.id, d.ddname, d.concat_index, d.params, d.origin,
-                                           d.positional, d.overrides, d.override_statement,
-                                           d.added_by_override, d.unapplied_overrides,
-                                           tuple(refs), d.level) if refs else d)
-            steps[i] = EffectiveStep(s.id, s.name, s.call_path, s.status, s.program,
-                                     s.exec_origin, s.call_chain, s.exec_params, tuple(new_dds),
-                                     s.pending_overrides, s.source_step_id)
+                new_dds.append(replace(d, backrefs=tuple(refs)) if refs else d)
+            steps[i] = replace(s, dds=tuple(new_dds))
 
     # ------------------------------------------------------------------ members / results
     def _resolve_member_parsed(self, parsed: ParseResult, rel: str, root_id: str,
@@ -508,8 +568,13 @@ class Resolver:
                       f"label {header.name.text!r}, member {member!r}")
         scope = Scope()
         if header is not None:
+            seen_hdr: set[str] = set()
             for k in header.keywords:
                 at = self.ref(doc, header, k.line, k.column)
+                if k.name in seen_hdr:  # first value wins on a PROC statement (p.36)
+                    self.diag(run, "RES-I003", at.file, at.line, f"PROC {k.name}")
+                    continue
+                seen_hdr.add(k.name)
                 val = None
                 if k.value is not None:
                     val = k.value.value if k.value.kind == "STRING" else k.value.text
@@ -520,6 +585,12 @@ class Resolver:
         steps: list[EffectiveStep] = []
         for st in parsed.procedure_steps:
             steps += self.expand(doc, run, st, scope, libs, (), (), (), 0, (member,), None)
+        body_sets = [s for s in parsed.statements if s.kind == "SET"]
+        for s in body_sets:  # CD-4R F03: positional SET inside a procedure is not modelled
+            self.form(run, "U-PROC-SET", None, self.ref(doc, s), "SET in a standalone member view")
+        if body_sets:
+            steps = [replace(x, status="UNSUPPORTED") if x.status == "RESOLVED" else x
+                     for x in steps]
         self.backrefs(run, steps)
         return self._result(doc, run, (), tuple(steps))
 
@@ -532,10 +603,73 @@ class Resolver:
             lims.discard("PROC_NOT_EXPANDED")
         lims.add("SYMBOLS_IN_INSTREAM_DATA_NOT_RESOLVED")
         lims.add("DSN_TO_RESOURCE_MAPPING_NOT_ATTEMPTED")
+        if run.unsupported:
+            lims.add("UNSUPPORTED_FORMS_PRESENT")
         diags = sorted(run.diags, key=lambda d: (d.file, d.line or 0, d.code, d.message))
         return EffectiveResult(doc.parsed, doc.rel, doc.sha, self.library.basis, jobs, steps,
                                tuple(run.calls), tuple(run.defs), tuple(diags),
-                               tuple(sorted(lims)))
+                               tuple(sorted(lims)), tuple(run.unsupported))
+
+    # ------------------------------------------------------------------ unsupported forms
+    def call_forms(self, run: _Run, cid: str, doc: _Doc, st: StepNode, mdoc: _Doc,
+                   proc_steps: tuple[StepNode, ...], body: tuple[int, int] | None) -> None:
+        """Detect UNSUPPORTED_FORMS that need the called definition, before any expansion."""
+        sets = ([s for s in mdoc.parsed.statements
+                 if s.kind == "SET" and s.span and body[0] <= s.span[0] <= body[1]]
+                if body is not None else
+                [s for s in mdoc.parsed.statements if s.kind == "SET"])
+        for s in sets:
+            self.form(run, "U-PROC-SET", cid, self.ref(mdoc, s), "SET inside the called procedure")
+        names = [p.name for p in proc_steps]
+        per: dict[str | None, list[DDNode]] = {n: [] for n in names}
+        current = names[0] if names else None
+        for dn in st.dds:
+            if dn.ddname is None or dn.implicit:
+                self.form(run, "U-OVR-CONCAT", cid, self.ref(doc, dn.statement),
+                          "concatenated or implicit DD after a procedure call")
+                continue
+            target = dn.procstep or current
+            if target not in per:
+                continue  # RES-E005 is reported during expansion
+            current = target
+            per[target].append(dn)
+        for ps in proc_steps:
+            ovr = per.get(ps.name, [])
+            if not ovr:
+                continue
+            if ps.target and ps.target[0] == "PROC":
+                self.form(run, "U-OVR-NESTED-STEP", cid, self.ref(doc, ovr[0].statement),
+                          f"override of nested procedure call step {ps.name}")
+                continue
+            for o in ovr:
+                oref = self.ref(doc, o.statement)
+                if o.statement.positional:
+                    self.form(run, "U-OVR-POSITIONAL", cid, oref,
+                              f"{ps.name}.{o.ddname} coded with positional parameters")
+                base = next((pd for pd in ps.dds if pd.ddname == o.ddname), None)
+                if base is None:
+                    continue  # an addition
+                if base.statement.positional:
+                    self.form(run, "U-OVR-BASE-POSITIONAL", cid, oref,
+                              f"procedure DD {ps.name}.{o.ddname} is coded with "
+                              f"{' '.join(p.text for p in base.statement.positional)}")
+                names_o = {_dsn_alias(k.name) for k in o.statement.keywords}
+                have = {_dsn_alias(k.name) for k in base.statement.keywords}
+                if "DCB" in names_o and "DCB" in have:
+                    self.form(run, "U-OVR-DCB-MERGE", cid, oref, f"{ps.name}.{o.ddname}")
+                if any((names_o & a and have & b) or (names_o & b and have & a)
+                       for a, b in [MUTUALLY_EXCLUSIVE]):
+                    self.form(run, "U-OVR-MUTEX", cid, oref, f"{ps.name}.{o.ddname}")
+
+
+def _proc_span(pd: Any, job_end: int) -> tuple[int, int]:
+    lo = pd.proc_statement.span[0] if pd.proc_statement.span else 0
+    end = pd.pend_statement.span[1] if pd.pend_statement and pd.pend_statement.span else job_end
+    return lo, end
+
+
+def _dsn_alias(name: str) -> str:
+    return "DSN" if name == "DSNAME" else name
 
 
 def _ref_texts(v: Any) -> list[str]:
