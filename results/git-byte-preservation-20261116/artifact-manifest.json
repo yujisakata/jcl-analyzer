@@ -1,0 +1,251 @@
+{
+  "created_utc": "2026-11-15T23:52:13.136357+00:00",
+  "git_commit": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+  "files": [
+    {
+      "path": "results/git-byte-preservation-20261116/before.json",
+      "bytes": 622923,
+      "sha256": "3bba472dd28ebe1f67f37469f1eb0e99116da1963c098d17d39b25f6a21639ad"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/branch-updates.json",
+      "bytes": 882,
+      "sha256": "e318e459dc772d72c16be2205c55a45fa984314d440a8eda00f79f84406ddc96"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/checkout-existing.json",
+      "bytes": 1472,
+      "sha256": "7e6f4d613734aa58f9ec2d4ae5ff44c8bdf8c78aef11622782e4f1c2f1c00cfc"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/final-verification.json",
+      "bytes": 19186,
+      "sha256": "e25b0e0a66db5d28aaa12ccf2e67d1dcafd1ad2c64e7b2128eecdf62de590655"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/finalize.py",
+      "bytes": 4514,
+      "sha256": "d6fd23202425da2d8008489363f158bf33fd9ffa48580efbc6e204e37d15d5ac"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/index-stat-refresh.json",
+      "bytes": 3885,
+      "sha256": "16bc4cff72bc70cfa54ae229ad3829738ccc4908acde8a0eecfaafa31c9c00d8"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-claude-status-after.txt",
+      "bytes": 90,
+      "sha256": "cc8a72809a5a8b22591c09f18c7e73d598bf2661cc638b48b23ca8933f3c6f40"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-claude-status-final.txt",
+      "bytes": 404,
+      "sha256": "5a012073bb870e7e5b2eea5d07d1804d911c0870dc996395cbd0c32938090d6a"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-codex-status-after.txt",
+      "bytes": 87,
+      "sha256": "49f34746543d6b83017adad6fb1a59b52fdc1c09e771dcc886aac651fa3b902b"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-codex-status-final.txt",
+      "bytes": 87,
+      "sha256": "49f34746543d6b83017adad6fb1a59b52fdc1c09e771dcc886aac651fa3b902b"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-status-after.txt",
+      "bytes": 816,
+      "sha256": "3d9a3215208e65669eea10d8c49360f0c4c73b89d691a922aebaff4b71200170"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/jcl-profiler-status-final.txt",
+      "bytes": 816,
+      "sha256": "3d9a3215208e65669eea10d8c49360f0c4c73b89d691a922aebaff4b71200170"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/precommit-validation.json",
+      "bytes": 65890,
+      "sha256": "82c34ebb6be3f6e0983b18409dc92036eecb05daebd2e5087dd0fba8b3f53a4f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude/acceptance.json",
+      "bytes": 14748,
+      "sha256": "1f9fdbd4ea609f36d2a00771f8ce376c437aaecb056c970a27a23992c1320531"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude/acceptance.md",
+      "bytes": 3249,
+      "sha256": "8c5ec2f4a95a3b5b016dd44443ccbc5cc90332b654d1b62eb7c248b381722560"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude/mutations.json",
+      "bytes": 22723,
+      "sha256": "a89b69d348440fbe74cb51476583e610a42c503884736fd6ae0ea7a85548bb0f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude-imports.txt",
+      "bytes": 136,
+      "sha256": "06e4e944c4a606bb8915aa8883b110f2d68279331cdf5d3e00b5bc2c3c2c941c"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-claude.log",
+      "bytes": 115,
+      "sha256": "596d2925eeca5a56e477ef0f872ab450ef8aa862f891f030295c22aaabff0494"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex/acceptance.json",
+      "bytes": 14748,
+      "sha256": "6fe1fccf3c1155328dc4b2e49116ef4534dbad492c56db362ac8afca322a33f4"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex/acceptance.md",
+      "bytes": 3249,
+      "sha256": "8c5ec2f4a95a3b5b016dd44443ccbc5cc90332b654d1b62eb7c248b381722560"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex/mutations.json",
+      "bytes": 22723,
+      "sha256": "a89b69d348440fbe74cb51476583e610a42c503884736fd6ae0ea7a85548bb0f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex-imports.txt",
+      "bytes": 134,
+      "sha256": "5e81639c1f1f7164a95e1305486e5caa559614bfb48ed923270e627d0eff0dd3"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-codex.log",
+      "bytes": 115,
+      "sha256": "596d2925eeca5a56e477ef0f872ab450ef8aa862f891f030295c22aaabff0494"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh/acceptance.json",
+      "bytes": 14748,
+      "sha256": "da9788ab4589449179ebcdf86fbbd710fb9e7fce5e8b0de4243dfb8837e97f7a"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh/acceptance.md",
+      "bytes": 3249,
+      "sha256": "8c5ec2f4a95a3b5b016dd44443ccbc5cc90332b654d1b62eb7c248b381722560"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh/mutations.json",
+      "bytes": 22723,
+      "sha256": "a89b69d348440fbe74cb51476583e610a42c503884736fd6ae0ea7a85548bb0f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh-imports.txt",
+      "bytes": 76,
+      "sha256": "542183eb3420faa03414c977e962940e9d3d589784cdd4011f5ea7128d59f59d"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-fresh.log",
+      "bytes": 115,
+      "sha256": "596d2925eeca5a56e477ef0f872ab450ef8aa862f891f030295c22aaabff0494"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main/acceptance.json",
+      "bytes": 14748,
+      "sha256": "ab48d85a2405aacd6b1c1e43464035433670aac9f718e4350aadeb14cd3e4367"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main/acceptance.md",
+      "bytes": 3249,
+      "sha256": "8c5ec2f4a95a3b5b016dd44443ccbc5cc90332b654d1b62eb7c248b381722560"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main/mutations.json",
+      "bytes": 22723,
+      "sha256": "a89b69d348440fbe74cb51476583e610a42c503884736fd6ae0ea7a85548bb0f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main-imports.txt",
+      "bytes": 122,
+      "sha256": "7eb9cb8f48406e32bbc1a42b60f00a5a3442e1033adc3b65903e95f5bb297464"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-main.log",
+      "bytes": 115,
+      "sha256": "596d2925eeca5a56e477ef0f872ab450ef8aa862f891f030295c22aaabff0494"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary/acceptance.json",
+      "bytes": 14748,
+      "sha256": "4687c11ca950552bc946204e321e630c215f0b55af4c9d10dc0d891814d26f90"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary/acceptance.md",
+      "bytes": 3249,
+      "sha256": "8c5ec2f4a95a3b5b016dd44443ccbc5cc90332b654d1b62eb7c248b381722560"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary/mutations.json",
+      "bytes": 22723,
+      "sha256": "a89b69d348440fbe74cb51476583e610a42c503884736fd6ae0ea7a85548bb0f"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary-imports.txt",
+      "bytes": 160,
+      "sha256": "edd301a2a6ad65045698d06738823aedd756b3adc8f0ce1426640703248407e6"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/regression-temporary.log",
+      "bytes": 115,
+      "sha256": "596d2925eeca5a56e477ef0f872ab450ef8aa862f891f030295c22aaabff0494"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/repair_and_validate.py",
+      "bytes": 5131,
+      "sha256": "1406afb83b8a9ed79c549d5aca55702fc51593d517e7ca06efbc3fb2f653ba3e"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/report.md",
+      "bytes": 9266,
+      "sha256": "8edcda38b3d181c13a987c1c717c0ca49bed6521c3a121cd9be02d275985a56e"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/snapshot.py",
+      "bytes": 3573,
+      "sha256": "9a7f5cd969d165b6610fc73d9bd5fc34f391fc84cd2cf1ea1d10c71e2d6a71ac"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/temporary-artifact-cleanup.json",
+      "bytes": 996,
+      "sha256": "3b61ddef527db9a90360cb9e34ce4ee3bb7e79cba2dac6f1cbdbfc9dfc50881b"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/temporary-fresh-checkout.json",
+      "bytes": 466,
+      "sha256": "8ddf7322f9a64f8f85661e01485f727a3808c18e5a9156c53116274127433577"
+    },
+    {
+      "path": "results/git-byte-preservation-20261116/temporary-precommit.json",
+      "bytes": 441,
+      "sha256": "6f8f5ec040ea89de30fd3a05fcf23857d652a618ab7f8003686697f00903f28b"
+    }
+  ]
+}

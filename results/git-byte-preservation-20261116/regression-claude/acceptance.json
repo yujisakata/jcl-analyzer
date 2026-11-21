@@ -1,0 +1,528 @@
+{
+  "schema_version": 1,
+  "suite": "CD-1",
+  "run_at": "2026-11-15T23:44:39.363051+00:00",
+  "baseline_source_sha256": "86878b6588133f6f796b104f8359e5c11e0c7f48f896fe9a5f7345a64bd50b4b",
+  "provenance": {
+    "inventory_path": "results/carddemo-contract-20261115/inventory.json",
+    "inventory_sha256": "bc56e8fd040b0142d3ebcf2f7b5eec65dcada5c29934f7bebbdddbf2b4d6889e",
+    "author": "Codex, independent of Claude's Parser and Harness",
+    "method": "Frozen independent inventory, reconciled with original bytes; value/location oracle derived from source fields only",
+    "limitation": "Inventory, conversion, and CD checks share Codex authorship; no human approval is implied by generation",
+    "rule_ids": [
+      "JCL-REC-001",
+      "JCL-REC-002",
+      "JCL-REC-003",
+      "JCL-CONT-001",
+      "JCL-DD-001",
+      "JCL-DD-003",
+      "JCL-DD-006",
+      "JCL-PROC-002",
+      "JCL-PROC-004"
+    ]
+  },
+  "gates": {
+    "CD-SOURCE": {
+      "status": "PASS",
+      "counts": {
+        "PASS": 48
+      }
+    },
+    "CD-TRACE": {
+      "status": "PASS",
+      "counts": {
+        "PASS": 48
+      }
+    },
+    "CD-ASSURANCE": {
+      "status": "PENDING",
+      "pending_count": 48,
+      "pending": [
+        "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+        "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+        "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+        "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+        "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+        "app-transaction-type-db2/jcl/CREADB21.jcl",
+        "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+        "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+        "jcl/ACCTFILE.jcl",
+        "jcl/CARDFILE.jcl",
+        "jcl/CBADMCDJ.jcl",
+        "jcl/CBEXPORT.jcl",
+        "jcl/CBIMPORT.jcl",
+        "jcl/CLOSEFIL.jcl",
+        "jcl/COMBTRAN.jcl",
+        "jcl/CREASTMT.JCL",
+        "jcl/CUSTFILE.jcl",
+        "jcl/DALYREJS.jcl",
+        "jcl/DEFCUST.jcl",
+        "jcl/DEFGDGB.jcl",
+        "jcl/DEFGDGD.jcl",
+        "jcl/DISCGRP.jcl",
+        "jcl/DUSRSECJ.jcl",
+        "jcl/ESDSRRDS.jcl",
+        "jcl/FTPJCL.JCL",
+        "jcl/INTCALC.jcl",
+        "jcl/INTRDRJ1.JCL",
+        "jcl/INTRDRJ2.JCL",
+        "jcl/OPENFIL.jcl",
+        "jcl/POSTTRAN.jcl",
+        "jcl/PRTCATBL.jcl",
+        "jcl/READACCT.jcl",
+        "jcl/READCARD.jcl",
+        "jcl/READCUST.jcl",
+        "jcl/READXREF.jcl",
+        "jcl/REPTFILE.jcl",
+        "jcl/TCATBALF.jcl",
+        "jcl/TRANBKP.jcl",
+        "jcl/TRANCATG.jcl",
+        "jcl/TRANFILE.jcl",
+        "jcl/TRANIDX.jcl",
+        "jcl/TRANREPT.jcl",
+        "jcl/TRANTYPE.jcl",
+        "jcl/TXT2PDF1.JCL",
+        "jcl/WAITSTEP.jcl",
+        "jcl/XREFFILE.jcl",
+        "proc/REPROC.prc",
+        "proc/TRANREPT.prc"
+      ],
+      "mutation_detection_pass": true
+    },
+    "formal_acceptance": "FAIL"
+  },
+  "files": [
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/CREADB21.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/ACCTFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CARDFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CBADMCDJ.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CBEXPORT.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CBIMPORT.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CLOSEFIL.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/COMBTRAN.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CREASTMT.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/CUSTFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DALYREJS.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DEFCUST.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DEFGDGB.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DEFGDGD.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DISCGRP.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/DUSRSECJ.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/ESDSRRDS.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/FTPJCL.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/INTCALC.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/INTRDRJ1.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/INTRDRJ2.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/OPENFIL.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/POSTTRAN.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/PRTCATBL.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/READACCT.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/READCARD.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/READCUST.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/READXREF.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/REPTFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TCATBALF.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANBKP.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANCATG.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANIDX.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANREPT.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TRANTYPE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/TXT2PDF1.JCL",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/WAITSTEP.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "jcl/XREFFILE.jcl",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "proc/REPROC.prc",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    },
+    {
+      "path": "proc/TRANREPT.prc",
+      "input_status": "MATCHED",
+      "source_status": "PASS",
+      "trace_status": "PASS",
+      "source_differences": [],
+      "trace_issues": [],
+      "review_status": "PENDING"
+    }
+  ]
+}

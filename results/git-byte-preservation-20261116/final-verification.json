@@ -1,0 +1,472 @@
+{
+  "finished_utc": "2026-11-15T23:49:27.006444+00:00",
+  "commit": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+  "parent": "356ff90b3e97fd542e303b4646d5adf79a2ea623",
+  "commit_paths": [
+    ".gitattributes"
+  ],
+  "commit_message": "fix: preserve frozen oracle bytes across worktrees",
+  "worktrees": [
+    {
+      "root": "D:\\projects\\jcl-profiler",
+      "branch": "main",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "protected_payload_checked": 204,
+      "unrelated_bytes_changed": [],
+      "attributes": "tests/golden_pending/carddemo_source/expectations.json: text: unset\ntests/golden_pending/carddemo_source/expectations.json: eol: unspecified\nsrc/jclprof/parser/parser.py: text: unspecified\nsrc/jclprof/parser/parser.py: eol: unspecified\ntests/golden/MANIFEST.json: text: unspecified\ntests/golden/MANIFEST.json: eol: unspecified\n",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head main\n1 .M N... 100644 100644 100644 8c009d800c50d42eab2158a150b20173593470b5 8c009d800c50d42eab2158a150b20173593470b5 docs/reviews/carddemo-source-oracle-review.md\n1 .M N... 100644 100644 100644 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c results/cd3-20261116/finalize.py\n? results/cd3-20261116/artifact-manifest.json\n? results/cd3-20261116/artifact-manifest.sha256\n? results/cd3-20261116/concurrent-change.json\n? results/cd3-20261116/gitignore-before.txt\n? results/cd3-20261116/gitignore-observed.txt\n? results/cd3-20261116/gitignore.diff\n? results/cd3-20261116/preservation.json\n? results/cd3-20261116/preservation.log\n? results/git-baseline-20261116/\n? results/git-byte-preservation-20261116/\n",
+      "remaining_change_owner": "Codex: preexisting CD-3 results, previous Git inspection and this fix evidence"
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-codex",
+      "branch": "codex/cd3-oracle",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "protected_payload_checked": 204,
+      "unrelated_bytes_changed": [],
+      "attributes": "tests/golden_pending/carddemo_source/expectations.json: text: unset\ntests/golden_pending/carddemo_source/expectations.json: eol: unspecified\nsrc/jclprof/parser/parser.py: text: unspecified\nsrc/jclprof/parser/parser.py: eol: unspecified\ntests/golden/MANIFEST.json: text: unspecified\ntests/golden/MANIFEST.json: eol: unspecified\n",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head codex/cd3-oracle\n",
+      "remaining_change_owner": "none; clean"
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-claude",
+      "branch": "claude/cd4-resolver",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "protected_payload_checked": 204,
+      "unrelated_bytes_changed": [],
+      "attributes": "tests/golden_pending/carddemo_source/expectations.json: text: unset\ntests/golden_pending/carddemo_source/expectations.json: eol: unspecified\nsrc/jclprof/parser/parser.py: text: unspecified\nsrc/jclprof/parser/parser.py: eol: unspecified\ntests/golden/MANIFEST.json: text: unspecified\ntests/golden/MANIFEST.json: eol: unspecified\n",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head claude/cd4-resolver\n",
+      "remaining_change_owner": "none; clean"
+    }
+  ],
+  "originals_size_mtime_sha_preserved": 240,
+  "main_existing_golden_all_files_preserved": 195,
+  "all_worktree_sealed_manifest_payloads_verified": 97,
+  "pending_reviews_per_worktree": 48,
+  "regressions": [
+    {
+      "run": "main",
+      "gates": {
+        "CD-SOURCE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-TRACE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-ASSURANCE": {
+          "status": "PENDING",
+          "pending_count": 48,
+          "pending": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+            "app-transaction-type-db2/jcl/CREADB21.jcl",
+            "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+            "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+            "jcl/ACCTFILE.jcl",
+            "jcl/CARDFILE.jcl",
+            "jcl/CBADMCDJ.jcl",
+            "jcl/CBEXPORT.jcl",
+            "jcl/CBIMPORT.jcl",
+            "jcl/CLOSEFIL.jcl",
+            "jcl/COMBTRAN.jcl",
+            "jcl/CREASTMT.JCL",
+            "jcl/CUSTFILE.jcl",
+            "jcl/DALYREJS.jcl",
+            "jcl/DEFCUST.jcl",
+            "jcl/DEFGDGB.jcl",
+            "jcl/DEFGDGD.jcl",
+            "jcl/DISCGRP.jcl",
+            "jcl/DUSRSECJ.jcl",
+            "jcl/ESDSRRDS.jcl",
+            "jcl/FTPJCL.JCL",
+            "jcl/INTCALC.jcl",
+            "jcl/INTRDRJ1.JCL",
+            "jcl/INTRDRJ2.JCL",
+            "jcl/OPENFIL.jcl",
+            "jcl/POSTTRAN.jcl",
+            "jcl/PRTCATBL.jcl",
+            "jcl/READACCT.jcl",
+            "jcl/READCARD.jcl",
+            "jcl/READCUST.jcl",
+            "jcl/READXREF.jcl",
+            "jcl/REPTFILE.jcl",
+            "jcl/TCATBALF.jcl",
+            "jcl/TRANBKP.jcl",
+            "jcl/TRANCATG.jcl",
+            "jcl/TRANFILE.jcl",
+            "jcl/TRANIDX.jcl",
+            "jcl/TRANREPT.jcl",
+            "jcl/TRANTYPE.jcl",
+            "jcl/TXT2PDF1.JCL",
+            "jcl/WAITSTEP.jcl",
+            "jcl/XREFFILE.jcl",
+            "proc/REPROC.prc",
+            "proc/TRANREPT.prc"
+          ],
+          "mutation_detection_pass": true
+        },
+        "formal_acceptance": "FAIL"
+      },
+      "mutations": {
+        "total": 1501,
+        "detected": 1501,
+        "escaped": 0
+      }
+    },
+    {
+      "run": "codex",
+      "gates": {
+        "CD-SOURCE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-TRACE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-ASSURANCE": {
+          "status": "PENDING",
+          "pending_count": 48,
+          "pending": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+            "app-transaction-type-db2/jcl/CREADB21.jcl",
+            "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+            "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+            "jcl/ACCTFILE.jcl",
+            "jcl/CARDFILE.jcl",
+            "jcl/CBADMCDJ.jcl",
+            "jcl/CBEXPORT.jcl",
+            "jcl/CBIMPORT.jcl",
+            "jcl/CLOSEFIL.jcl",
+            "jcl/COMBTRAN.jcl",
+            "jcl/CREASTMT.JCL",
+            "jcl/CUSTFILE.jcl",
+            "jcl/DALYREJS.jcl",
+            "jcl/DEFCUST.jcl",
+            "jcl/DEFGDGB.jcl",
+            "jcl/DEFGDGD.jcl",
+            "jcl/DISCGRP.jcl",
+            "jcl/DUSRSECJ.jcl",
+            "jcl/ESDSRRDS.jcl",
+            "jcl/FTPJCL.JCL",
+            "jcl/INTCALC.jcl",
+            "jcl/INTRDRJ1.JCL",
+            "jcl/INTRDRJ2.JCL",
+            "jcl/OPENFIL.jcl",
+            "jcl/POSTTRAN.jcl",
+            "jcl/PRTCATBL.jcl",
+            "jcl/READACCT.jcl",
+            "jcl/READCARD.jcl",
+            "jcl/READCUST.jcl",
+            "jcl/READXREF.jcl",
+            "jcl/REPTFILE.jcl",
+            "jcl/TCATBALF.jcl",
+            "jcl/TRANBKP.jcl",
+            "jcl/TRANCATG.jcl",
+            "jcl/TRANFILE.jcl",
+            "jcl/TRANIDX.jcl",
+            "jcl/TRANREPT.jcl",
+            "jcl/TRANTYPE.jcl",
+            "jcl/TXT2PDF1.JCL",
+            "jcl/WAITSTEP.jcl",
+            "jcl/XREFFILE.jcl",
+            "proc/REPROC.prc",
+            "proc/TRANREPT.prc"
+          ],
+          "mutation_detection_pass": true
+        },
+        "formal_acceptance": "FAIL"
+      },
+      "mutations": {
+        "total": 1501,
+        "detected": 1501,
+        "escaped": 0
+      }
+    },
+    {
+      "run": "claude",
+      "gates": {
+        "CD-SOURCE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-TRACE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-ASSURANCE": {
+          "status": "PENDING",
+          "pending_count": 48,
+          "pending": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+            "app-transaction-type-db2/jcl/CREADB21.jcl",
+            "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+            "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+            "jcl/ACCTFILE.jcl",
+            "jcl/CARDFILE.jcl",
+            "jcl/CBADMCDJ.jcl",
+            "jcl/CBEXPORT.jcl",
+            "jcl/CBIMPORT.jcl",
+            "jcl/CLOSEFIL.jcl",
+            "jcl/COMBTRAN.jcl",
+            "jcl/CREASTMT.JCL",
+            "jcl/CUSTFILE.jcl",
+            "jcl/DALYREJS.jcl",
+            "jcl/DEFCUST.jcl",
+            "jcl/DEFGDGB.jcl",
+            "jcl/DEFGDGD.jcl",
+            "jcl/DISCGRP.jcl",
+            "jcl/DUSRSECJ.jcl",
+            "jcl/ESDSRRDS.jcl",
+            "jcl/FTPJCL.JCL",
+            "jcl/INTCALC.jcl",
+            "jcl/INTRDRJ1.JCL",
+            "jcl/INTRDRJ2.JCL",
+            "jcl/OPENFIL.jcl",
+            "jcl/POSTTRAN.jcl",
+            "jcl/PRTCATBL.jcl",
+            "jcl/READACCT.jcl",
+            "jcl/READCARD.jcl",
+            "jcl/READCUST.jcl",
+            "jcl/READXREF.jcl",
+            "jcl/REPTFILE.jcl",
+            "jcl/TCATBALF.jcl",
+            "jcl/TRANBKP.jcl",
+            "jcl/TRANCATG.jcl",
+            "jcl/TRANFILE.jcl",
+            "jcl/TRANIDX.jcl",
+            "jcl/TRANREPT.jcl",
+            "jcl/TRANTYPE.jcl",
+            "jcl/TXT2PDF1.JCL",
+            "jcl/WAITSTEP.jcl",
+            "jcl/XREFFILE.jcl",
+            "proc/REPROC.prc",
+            "proc/TRANREPT.prc"
+          ],
+          "mutation_detection_pass": true
+        },
+        "formal_acceptance": "FAIL"
+      },
+      "mutations": {
+        "total": 1501,
+        "detected": 1501,
+        "escaped": 0
+      }
+    },
+    {
+      "run": "temporary",
+      "gates": {
+        "CD-SOURCE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-TRACE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-ASSURANCE": {
+          "status": "PENDING",
+          "pending_count": 48,
+          "pending": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+            "app-transaction-type-db2/jcl/CREADB21.jcl",
+            "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+            "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+            "jcl/ACCTFILE.jcl",
+            "jcl/CARDFILE.jcl",
+            "jcl/CBADMCDJ.jcl",
+            "jcl/CBEXPORT.jcl",
+            "jcl/CBIMPORT.jcl",
+            "jcl/CLOSEFIL.jcl",
+            "jcl/COMBTRAN.jcl",
+            "jcl/CREASTMT.JCL",
+            "jcl/CUSTFILE.jcl",
+            "jcl/DALYREJS.jcl",
+            "jcl/DEFCUST.jcl",
+            "jcl/DEFGDGB.jcl",
+            "jcl/DEFGDGD.jcl",
+            "jcl/DISCGRP.jcl",
+            "jcl/DUSRSECJ.jcl",
+            "jcl/ESDSRRDS.jcl",
+            "jcl/FTPJCL.JCL",
+            "jcl/INTCALC.jcl",
+            "jcl/INTRDRJ1.JCL",
+            "jcl/INTRDRJ2.JCL",
+            "jcl/OPENFIL.jcl",
+            "jcl/POSTTRAN.jcl",
+            "jcl/PRTCATBL.jcl",
+            "jcl/READACCT.jcl",
+            "jcl/READCARD.jcl",
+            "jcl/READCUST.jcl",
+            "jcl/READXREF.jcl",
+            "jcl/REPTFILE.jcl",
+            "jcl/TCATBALF.jcl",
+            "jcl/TRANBKP.jcl",
+            "jcl/TRANCATG.jcl",
+            "jcl/TRANFILE.jcl",
+            "jcl/TRANIDX.jcl",
+            "jcl/TRANREPT.jcl",
+            "jcl/TRANTYPE.jcl",
+            "jcl/TXT2PDF1.JCL",
+            "jcl/WAITSTEP.jcl",
+            "jcl/XREFFILE.jcl",
+            "proc/REPROC.prc",
+            "proc/TRANREPT.prc"
+          ],
+          "mutation_detection_pass": true
+        },
+        "formal_acceptance": "FAIL"
+      },
+      "mutations": {
+        "total": 1501,
+        "detected": 1501,
+        "escaped": 0
+      }
+    },
+    {
+      "run": "fresh",
+      "gates": {
+        "CD-SOURCE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-TRACE": {
+          "status": "PASS",
+          "counts": {
+            "PASS": 48
+          }
+        },
+        "CD-ASSURANCE": {
+          "status": "PENDING",
+          "pending_count": 48,
+          "pending": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+            "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+            "app-transaction-type-db2/jcl/CREADB21.jcl",
+            "app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+            "app-transaction-type-db2/jcl/TRANEXTR.jcl",
+            "jcl/ACCTFILE.jcl",
+            "jcl/CARDFILE.jcl",
+            "jcl/CBADMCDJ.jcl",
+            "jcl/CBEXPORT.jcl",
+            "jcl/CBIMPORT.jcl",
+            "jcl/CLOSEFIL.jcl",
+            "jcl/COMBTRAN.jcl",
+            "jcl/CREASTMT.JCL",
+            "jcl/CUSTFILE.jcl",
+            "jcl/DALYREJS.jcl",
+            "jcl/DEFCUST.jcl",
+            "jcl/DEFGDGB.jcl",
+            "jcl/DEFGDGD.jcl",
+            "jcl/DISCGRP.jcl",
+            "jcl/DUSRSECJ.jcl",
+            "jcl/ESDSRRDS.jcl",
+            "jcl/FTPJCL.JCL",
+            "jcl/INTCALC.jcl",
+            "jcl/INTRDRJ1.JCL",
+            "jcl/INTRDRJ2.JCL",
+            "jcl/OPENFIL.jcl",
+            "jcl/POSTTRAN.jcl",
+            "jcl/PRTCATBL.jcl",
+            "jcl/READACCT.jcl",
+            "jcl/READCARD.jcl",
+            "jcl/READCUST.jcl",
+            "jcl/READXREF.jcl",
+            "jcl/REPTFILE.jcl",
+            "jcl/TCATBALF.jcl",
+            "jcl/TRANBKP.jcl",
+            "jcl/TRANCATG.jcl",
+            "jcl/TRANFILE.jcl",
+            "jcl/TRANIDX.jcl",
+            "jcl/TRANREPT.jcl",
+            "jcl/TRANTYPE.jcl",
+            "jcl/TXT2PDF1.JCL",
+            "jcl/WAITSTEP.jcl",
+            "jcl/XREFFILE.jcl",
+            "proc/REPROC.prc",
+            "proc/TRANREPT.prc"
+          ],
+          "mutation_detection_pass": true
+        },
+        "formal_acceptance": "FAIL"
+      },
+      "mutations": {
+        "total": 1501,
+        "detected": 1501,
+        "escaped": 0
+      }
+    }
+  ],
+  "temporary_worktree_removed": true,
+  "worktree_list": "worktree D:/projects/jcl-profiler\nHEAD 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\nbranch refs/heads/main\n\nworktree D:/projects/jcl-profiler-claude\nHEAD 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\nbranch refs/heads/claude/cd4-resolver\n\nworktree D:/projects/jcl-profiler-codex\nHEAD 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\nbranch refs/heads/codex/cd3-oracle\n\n",
+  "global_autocrlf_unchanged": true,
+  "formal_approval_performed": false,
+  "last_observed_utc": "2026-11-15T23:51:48.304401+00:00",
+  "latest_observed_worktrees": [
+    {
+      "root": "D:\\projects\\jcl-profiler",
+      "branch": "main",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head main\n1 .M N... 100644 100644 100644 8c009d800c50d42eab2158a150b20173593470b5 8c009d800c50d42eab2158a150b20173593470b5 docs/reviews/carddemo-source-oracle-review.md\n1 .M N... 100644 100644 100644 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c results/cd3-20261116/finalize.py\n? results/cd3-20261116/artifact-manifest.json\n? results/cd3-20261116/artifact-manifest.sha256\n? results/cd3-20261116/concurrent-change.json\n? results/cd3-20261116/gitignore-before.txt\n? results/cd3-20261116/gitignore-observed.txt\n? results/cd3-20261116/gitignore.diff\n? results/cd3-20261116/preservation.json\n? results/cd3-20261116/preservation.log\n? results/git-baseline-20261116/\n? results/git-byte-preservation-20261116/\n",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "remaining_change_owner": "Codex: preexisting CD-3 results, previous Git inspection and this fix evidence"
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-codex",
+      "branch": "codex/cd3-oracle",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head codex/cd3-oracle\n",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "remaining_change_owner": "none; clean"
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-claude",
+      "branch": "claude/cd4-resolver",
+      "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+      "status": "# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd\n# branch.head claude/cd4-resolver\n1 .M N... 100644 100644 100644 9ced86462b075efc94a4224017849ad607973937 9ced86462b075efc94a4224017849ad607973937 specs/diagnostic-catalog.yaml\n1 .M N... 100644 100644 100644 c300987976d69f0a6f36bb851bec825bc466f819 c300987976d69f0a6f36bb851bec825bc466f819 specs/rules.yaml\n? config/contexts/\n? tests/resolver/\n",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "remaining_change_owner": "Claude Code CD-4 (inferred from its dedicated worktree); untouched by this fix"
+    }
+  ],
+  "concurrent_development_note": "Claude CD-4 changes appeared after the earlier clean validation checkpoint; they were not edited or staged by this task."
+}

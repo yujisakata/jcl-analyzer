@@ -1,0 +1,28 @@
+{
+  "removed_only_own_temporary_artifacts": [
+    {
+      "path": "codex-checkout.index",
+      "sha256": "4cae1e5c34bee114e4366decf31eadbfd5c77a593034093316e7792d42640afe"
+    },
+    {
+      "path": "jcl-profiler-checkout.index",
+      "sha256": "4dbdb9d9b92b6e71a7d46e2bd3fc05aeff59326b1ed77a6c062a504d1c0b9499"
+    },
+    {
+      "path": "jcl-profiler-codex-checkout.index",
+      "sha256": "4cae1e5c34bee114e4366decf31eadbfd5c77a593034093316e7792d42640afe"
+    },
+    {
+      "path": "jcl-profiler-claude-checkout.index",
+      "sha256": "3ddcfc9c0a70f991df067cb74926fde2a0d0afb7891c47be60653ecda61263ab"
+    },
+    {
+      "path": "jcl-profiler-bytecheck-20261116-checkout.index",
+      "sha256": "f6a8c725c0fc30b9323c01980215ebe9dc2217ee9e45d79573eed6549674c475"
+    },
+    {
+      "path": "materialized-codex/tests/golden_pending/carddemo_source/expectations.json",
+      "sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a"
+    }
+  ]
+}

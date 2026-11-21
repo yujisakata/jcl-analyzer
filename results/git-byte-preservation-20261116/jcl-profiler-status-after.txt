@@ -1,0 +1,14 @@
+# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd
+# branch.head main
+1 .M N... 100644 100644 100644 8c009d800c50d42eab2158a150b20173593470b5 8c009d800c50d42eab2158a150b20173593470b5 docs/reviews/carddemo-source-oracle-review.md
+1 .M N... 100644 100644 100644 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c 30c0eb7e18ab8c5dca8b52210af12e1a927bac4c results/cd3-20261116/finalize.py
+? results/cd3-20261116/artifact-manifest.json
+? results/cd3-20261116/artifact-manifest.sha256
+? results/cd3-20261116/concurrent-change.json
+? results/cd3-20261116/gitignore-before.txt
+? results/cd3-20261116/gitignore-observed.txt
+? results/cd3-20261116/gitignore.diff
+? results/cd3-20261116/preservation.json
+? results/cd3-20261116/preservation.log
+? results/git-baseline-20261116/
+? results/git-byte-preservation-20261116/

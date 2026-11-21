@@ -1,0 +1,110 @@
+{
+  "inspected_utc": "2026-11-15T23:36:10.209833+00:00",
+  "head": "356ff90b3e97fd542e303b4646d5adf79a2ea623",
+  "branch": "main",
+  "history_commits": 1,
+  "worktrees": [
+    {
+      "worktree": "D:/projects/jcl-profiler",
+      "HEAD": "356ff90b3e97fd542e303b4646d5adf79a2ea623",
+      "branch": "refs/heads/main",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a"
+    },
+    {
+      "worktree": "D:/projects/jcl-profiler-claude",
+      "HEAD": "356ff90b3e97fd542e303b4646d5adf79a2ea623",
+      "branch": "refs/heads/claude/cd4-resolver",
+      "oracle_sha256": "eda07b7ef531a7c92d61b06fbb5605e8be553b8e441e53c52b88ef37ba0e430f"
+    },
+    {
+      "worktree": "D:/projects/jcl-profiler-codex",
+      "HEAD": "356ff90b3e97fd542e303b4646d5adf79a2ea623",
+      "branch": "refs/heads/codex/cd3-oracle",
+      "oracle_sha256": "eda07b7ef531a7c92d61b06fbb5605e8be553b8e441e53c52b88ef37ba0e430f"
+    }
+  ],
+  "tracked_files": 1190,
+  "candidate_changes": [
+    {
+      "status": " M",
+      "path": "docs/reviews/carddemo-source-oracle-review.md"
+    },
+    {
+      "status": " M",
+      "path": "results/cd3-20261116/finalize.py"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/artifact-manifest.json"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/artifact-manifest.sha256"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/concurrent-change.json"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/gitignore-before.txt"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/gitignore-observed.txt"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/gitignore.diff"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/preservation.json"
+    },
+    {
+      "status": "??",
+      "path": "results/cd3-20261116/preservation.log"
+    },
+    {
+      "status": "??",
+      "path": "results/git-baseline-20261116/inspect.py"
+    }
+  ],
+  "high_confidence_secret_hits": [],
+  "secret_scan_limitations": "Pattern scan only; no external scanners or proof of absence of all secrets. Matched values never logged.",
+  "exact_original_copies": [],
+  "original_count": 240,
+  "original_content_changes": [],
+  "sealed_golden_changed": [],
+  "cd2_source_changes": [
+    ".gitignore"
+  ],
+  "current_source_set_sha256": "5c1db0b471cea849403fadad859e210e0dec461ac43e667a393d1691242add40",
+  "checkout_filter_results": [
+    {
+      "path": "tests/golden_pending/carddemo_source/expectations.json",
+      "worktree_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "head_blob_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "checkout_filtered_sha256": "eda07b7ef531a7c92d61b06fbb5605e8be553b8e441e53c52b88ef37ba0e430f",
+      "checkout_preserves_bytes": false
+    },
+    {
+      "path": "tests/golden_pending/carddemo_source/reviews.json",
+      "worktree_sha256": "bdd1784538e551c2e750edf11b13f31243c8bf27f946c2583ba93e52855beea4",
+      "head_blob_sha256": "d803e06295e47980d4b6ad910b0007154862505894f61dbcda3e1f1ae7d5c373",
+      "checkout_filtered_sha256": "bdd1784538e551c2e750edf11b13f31243c8bf27f946c2583ba93e52855beea4",
+      "checkout_preserves_bytes": true
+    },
+    {
+      "path": "tests/golden/MANIFEST.json",
+      "worktree_sha256": "d2321e899691b366df29b60cde6468b6b5239cd786deb825d67b4c402b291b21",
+      "head_blob_sha256": "14b83e26b08b38978d644e39a2ef794c995d24255560cca417baf20365e47638",
+      "checkout_filtered_sha256": "d2321e899691b366df29b60cde6468b6b5239cd786deb825d67b4c402b291b21",
+      "checkout_preserves_bytes": true
+    }
+  ],
+  "pending_reviews": 48,
+  "commit_performed": false,
+  "blocking_issue": "core.autocrlf=true changes immutable oracle bytes on checkout; both existing linked worktrees already have the transformed SHA",
+  "review_task_truncated_after": "3. 特"
+}

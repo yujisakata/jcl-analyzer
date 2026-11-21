@@ -1,0 +1,20 @@
+{
+  "observed_utc": "2026-11-15T23:30:01.538206+00:00",
+  "gitignore_mtime_utc": "2026-11-15T23:25:01.149374+00:00",
+  "git_directory_observed": true,
+  "git_directory_ctime_utc": "2026-11-15T23:28:13.081175+00:00",
+  "git_existence_not_recorded_at_CD3_start": true,
+  "head": {
+    "exit": 128,
+    "stdout": "",
+    "stderr": "fatal: Needed a single revision"
+  },
+  "branch": {
+    "exit": 0,
+    "stdout": "main",
+    "stderr": ""
+  },
+  "origin": "UNKNOWN",
+  "reviewer_initialized_git": false,
+  "reviewer_modified_gitignore": false
+}

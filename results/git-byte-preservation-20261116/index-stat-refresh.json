@@ -1,0 +1,22 @@
+[
+  {
+    "root": "D:\\projects\\jcl-profiler",
+    "index_content_changed": false,
+    "status": " M docs/reviews/carddemo-source-oracle-review.md\n M results/cd3-20261116/finalize.py\n?? results/cd3-20261116/artifact-manifest.json\n?? results/cd3-20261116/artifact-manifest.sha256\n?? results/cd3-20261116/concurrent-change.json\n?? results/cd3-20261116/gitignore-before.txt\n?? results/cd3-20261116/gitignore-observed.txt\n?? results/cd3-20261116/gitignore.diff\n?? results/cd3-20261116/preservation.json\n?? results/cd3-20261116/preservation.log\n?? results/git-baseline-20261116/git-config.txt\n?? results/git-baseline-20261116/inspect.py\n?? results/git-baseline-20261116/inspection.json\n?? results/git-baseline-20261116/registration-inventory.json\n?? results/git-baseline-20261116/status-before.txt\n?? results/git-byte-preservation-20261116/before.json\n?? results/git-byte-preservation-20261116/branch-updates.json\n?? results/git-byte-preservation-20261116/checkout-existing.json\n?? results/git-byte-preservation-20261116/codex-checkout.index\n?? results/git-byte-preservation-20261116/jcl-profiler-bytecheck-20261116-checkout.index\n?? results/git-byte-preservation-20261116/jcl-profiler-checkout.index\n?? results/git-byte-preservation-20261116/jcl-profiler-claude-checkout.index\n?? results/git-byte-preservation-20261116/jcl-profiler-codex-checkout.index\n?? results/git-byte-preservation-20261116/materialized-codex/tests/golden_pending/carddemo_source/expectations.json\n?? results/git-byte-preservation-20261116/precommit-validation.json\n?? results/git-byte-preservation-20261116/regression-claude-exit.txt\n?? results/git-byte-preservation-20261116/regression-claude-imports.txt\n?? results/git-byte-preservation-20261116/regression-claude.log\n?? results/git-byte-preservation-20261116/regression-claude/acceptance.json\n?? results/git-byte-preservation-20261116/regression-claude/acceptance.md\n?? results/git-byte-preservation-20261116/regression-claude/mutations.json\n?? results/git-byte-preservation-20261116/regression-codex-exit.txt\n?? results/git-byte-preservation-20261116/regression-codex-imports.txt\n?? results/git-byte-preservation-20261116/regression-codex.log\n?? results/git-byte-preservation-20261116/regression-codex/acceptance.json\n?? results/git-byte-preservation-20261116/regression-codex/acceptance.md\n?? results/git-byte-preservation-20261116/regression-codex/mutations.json\n?? results/git-byte-preservation-20261116/regression-main-exit.txt\n?? results/git-byte-preservation-20261116/regression-main-imports.txt\n?? results/git-byte-preservation-20261116/regression-main.log\n?? results/git-byte-preservation-20261116/regression-main/acceptance.json\n?? results/git-byte-preservation-20261116/regression-main/acceptance.md\n?? results/git-byte-preservation-20261116/regression-main/mutations.json\n?? results/git-byte-preservation-20261116/regression-temporary-exit.txt\n?? results/git-byte-preservation-20261116/regression-temporary-imports.txt\n?? results/git-byte-preservation-20261116/regression-temporary.log\n?? results/git-byte-preservation-20261116/regression-temporary/acceptance.json\n?? results/git-byte-preservation-20261116/regression-temporary/acceptance.md\n?? results/git-byte-preservation-20261116/regression-temporary/mutations.json\n?? results/git-byte-preservation-20261116/repair_and_validate.py\n?? results/git-byte-preservation-20261116/snapshot.py\n?? results/git-byte-preservation-20261116/temporary-precommit.json\n"
+  },
+  {
+    "root": "D:\\projects\\jcl-profiler-codex",
+    "index_content_changed": false,
+    "status": ""
+  },
+  {
+    "root": "D:\\projects\\jcl-profiler-claude",
+    "index_content_changed": false,
+    "status": ""
+  },
+  {
+    "root": "D:\\projects\\jcl-profiler-bytecheck-20261116",
+    "index_content_changed": false,
+    "status": "?? .gitattributes\n"
+  }
+]

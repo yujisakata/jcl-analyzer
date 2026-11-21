@@ -1,0 +1,694 @@
+{
+  "total": 1501,
+  "detected": 1501,
+  "escaped": [],
+  "operators": {
+    "delete_job": {
+      "total": 46,
+      "detected": 46,
+      "examples": [
+        {
+          "operator": "delete_job",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:J00001",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 20,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 1,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 24,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "delete_job",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:J00001",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 23,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 1,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 15,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[4]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "move_job": {
+      "total": 46,
+      "detected": 46,
+      "examples": [
+        {
+          "operator": "move_job",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:J00001->app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 61,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 1,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 24,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "move_job",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:J00001->app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 64,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 1,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 15,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[4]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shrink_span": {
+      "total": 46,
+      "detected": 46,
+      "examples": [
+        {
+          "operator": "shrink_span",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:J00001",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 1,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": 46,
+                "expected": 47,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].span[1]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "shrink_span",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:J00001",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 1,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": 46,
+                "expected": 47,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].span[1]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "delete_step": {
+      "total": 123,
+      "detected": 123,
+      "examples": [
+        {
+          "operator": "delete_step",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:T00024",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 19,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 24,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 26,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[2]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "delete_step",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:T00007",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 47,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": "DFSRRC00",
+                "expected": "IEFBR14",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].target[1]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": "STEPLIB",
+                "expected": "SYSPRINT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[0].concat_head"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "move_step": {
+      "total": 123,
+      "detected": 123,
+      "examples": [
+        {
+          "operator": "move_step",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:T00024->app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 49,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 24,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": 26,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[2]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "move_step",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:T00007->app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 69,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": "DFSRRC00",
+                "expected": "IEFBR14",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].target[1]"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": "STEPLIB",
+                "expected": "SYSPRINT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[0].concat_head"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "delete_dd": {
+      "total": 500,
+      "detected": 500,
+      "examples": [
+        {
+          "operator": "delete_dd",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00026",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 70,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].concat_head"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].name"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "delete_dd",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00027",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 66,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].concat_head"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].name"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "move_dd": {
+      "total": 500,
+      "detected": 500,
+      "examples": [
+        {
+          "operator": "move_dd",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00026->app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:('STEP', 0, 0)",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 82,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].concat_head"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].name"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "move_dd",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00027->app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:('STEP', 0, 0)",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 78,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].concat_head"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "ABENDAID",
+                "expected": "SYSABOUT",
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[10].name"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "reorder_concat": {
+      "total": 24,
+      "detected": 24,
+      "examples": [
+        {
+          "operator": "reorder_concat",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00027",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 6,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "STEPLIB",
+                "expected": null,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[1].name"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": 0,
+                "expected": 1,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[1].concat_index"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "reorder_concat",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:S00034",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 6,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": "IMS",
+                "expected": null,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[6].name"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": 0,
+                "expected": 1,
+                "kind": "mismatch",
+                "path": "hierarchy.jobs[0].steps[0].dds[6].concat_index"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "data_boundary": {
+      "total": 91,
+      "detected": 91,
+      "examples": [
+        {
+          "operator": "data_boundary",
+          "target": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:R00037",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl"
+          ],
+          "new_source_differences": 2,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": null,
+                "expected": [
+                  37,
+                  37
+                ],
+                "kind": "missing",
+                "path": "hierarchy.jobs[0].steps[0].dds[7].inline_data.records"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+              "difference": {
+                "actual": {
+                  "delimiter": null,
+                  "records": null,
+                  "terminator": "NEXT_STATEMENT"
+                },
+                "expected": {
+                  "delimiter": null,
+                  "records": [
+                    37,
+                    37
+                  ],
+                  "terminator": "NEXT_STATEMENT"
+                },
+                "kind": "mismatch",
+                "path": "statements[33].inline_data"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "data_boundary",
+          "target": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:R00035",
+          "affected_files": [
+            "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl"
+          ],
+          "new_source_differences": 2,
+          "sample": [
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": null,
+                "expected": [
+                  35,
+                  35
+                ],
+                "kind": "missing",
+                "path": "hierarchy.jobs[0].steps[1].dds[10].inline_data.records"
+              }
+            },
+            {
+              "path": "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+              "difference": {
+                "actual": {
+                  "delimiter": null,
+                  "records": null,
+                  "terminator": "NEXT_STATEMENT"
+                },
+                "expected": {
+                  "delimiter": null,
+                  "records": [
+                    35,
+                    35
+                  ],
+                  "terminator": "NEXT_STATEMENT"
+                },
+                "kind": "mismatch",
+                "path": "statements[26].inline_data"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "delete_proc_root": {
+      "total": 2,
+      "detected": 2,
+      "examples": [
+        {
+          "operator": "delete_proc_root",
+          "target": "proc/REPROC.prc",
+          "affected_files": [
+            "proc/REPROC.prc"
+          ],
+          "new_source_differences": 9,
+          "sample": [
+            {
+              "path": "proc/REPROC.prc",
+              "difference": {
+                "actual": 29,
+                "expected": 1,
+                "kind": "mismatch",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "proc/REPROC.prc",
+              "difference": {
+                "actual": null,
+                "expected": 21,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "delete_proc_root",
+          "target": "proc/TRANREPT.prc",
+          "affected_files": [
+            "proc/TRANREPT.prc"
+          ],
+          "new_source_differences": 25,
+          "sample": [
+            {
+              "path": "proc/TRANREPT.prc",
+              "difference": {
+                "actual": 79,
+                "expected": 1,
+                "kind": "mismatch",
+                "path": "hierarchy.reachable_lines[0]"
+              }
+            },
+            {
+              "path": "proc/TRANREPT.prc",
+              "difference": {
+                "actual": null,
+                "expected": 21,
+                "kind": "missing",
+                "path": "hierarchy.reachable_lines[1]"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "primary_files": {
+    "app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl": 42,
+    "app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl": 48,
+    "app-authorization-ims-db2-mq/jcl/LOADPADB.JCL": 36,
+    "app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL": 40,
+    "app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL": 52,
+    "app-transaction-type-db2/jcl/CREADB21.jcl": 79,
+    "app-transaction-type-db2/jcl/MNTTRDB2.jcl": 22,
+    "app-transaction-type-db2/jcl/TRANEXTR.jcl": 75,
+    "jcl/ACCTFILE.jcl": 28,
+    "jcl/CARDFILE.jcl": 67,
+    "jcl/CBADMCDJ.jcl": 16,
+    "jcl/CBEXPORT.jcl": 30,
+    "jcl/CBIMPORT.jcl": 23,
+    "jcl/CLOSEFIL.jcl": 12,
+    "jcl/COMBTRAN.jcl": 31,
+    "jcl/CREASTMT.JCL": 60,
+    "jcl/CUSTFILE.jcl": 46,
+    "jcl/DALYREJS.jcl": 10,
+    "jcl/DEFCUST.jcl": 17,
+    "jcl/DEFGDGB.jcl": 10,
+    "jcl/DEFGDGD.jcl": 54,
+    "jcl/DISCGRP.jcl": 28,
+    "jcl/DUSRSECJ.jcl": 38,
+    "jcl/ESDSRRDS.jcl": 58,
+    "jcl/FTPJCL.JCL": 8,
+    "jcl/INTCALC.jcl": 23,
+    "jcl/INTRDRJ1.JCL": 24,
+    "jcl/INTRDRJ2.JCL": 14,
+    "jcl/OPENFIL.jcl": 12,
+    "jcl/POSTTRAN.jcl": 23,
+    "jcl/PRTCATBL.jcl": 27,
+    "jcl/READACCT.jcl": 27,
+    "jcl/READCARD.jcl": 13,
+    "jcl/READCUST.jcl": 13,
+    "jcl/READXREF.jcl": 13,
+    "jcl/REPTFILE.jcl": 10,
+    "jcl/TCATBALF.jcl": 28,
+    "jcl/TRANBKP.jcl": 23,
+    "jcl/TRANCATG.jcl": 28,
+    "jcl/TRANFILE.jcl": 67,
+    "jcl/TRANIDX.jcl": 24,
+    "jcl/TRANREPT.jcl": 43,
+    "jcl/TRANTYPE.jcl": 28,
+    "jcl/TXT2PDF1.JCL": 18,
+    "jcl/WAITSTEP.jcl": 12,
+    "jcl/XREFFILE.jcl": 49,
+    "proc/REPROC.prc": 11,
+    "proc/TRANREPT.prc": 41
+  },
+  "criterion": "NEW difference from the independent SOURCE oracle; existing A10/H01/H02 failures alone do not count; trace-only detection does not count"
+}

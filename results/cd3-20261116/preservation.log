@@ -1,0 +1,34 @@
+{
+  "checked_utc": "2026-11-15T23:30:26.361679+00:00",
+  "project_existing_files": 328,
+  "project_existing_changes": [
+    {
+      "path": ".gitignore",
+      "before": "b7a03369476e39d1c64cbbd0fac9c5ac5db91e16c75748487162b9936bfb9f67",
+      "after": "f9d86f57e540d95df9be61bc45cca69a47e17fd864a99e9775585f1d68885f61"
+    }
+  ],
+  "concurrent_change_origin": "UNKNOWN; this review did not write .gitignore or initialize Git",
+  "original_files": 240,
+  "original_size_mtime_sha_changes": [],
+  "cd2_source_baseline_sha256": "b3b96a54728b9a4b74f2792a7396b47c02a2ade19c3ec603f739e7ce104f8aed",
+  "cd2_source_files_changed": [
+    ".gitignore"
+  ],
+  "current_source_set_sha256": "5c1db0b471cea849403fadad859e210e0dec461ac43e667a393d1691242add40",
+  "source_file_count": 313,
+  "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+  "pending_reviews": 48,
+  "pending_review_items": 45,
+  "direct_oracle_extracts_verified": 99,
+  "checker_imports": [
+    "bisect",
+    "collections",
+    "hashlib",
+    "json",
+    "re",
+    "sqlite3",
+    "pathlib"
+  ],
+  "formal_approval_performed": false
+}

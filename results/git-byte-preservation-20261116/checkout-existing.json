@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-11-15T23:43:56.557741+00:00",
+  "worktrees": [
+    {
+      "root": "D:\\projects\\jcl-profiler",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "sealed_payload_checked": 97,
+      "all_protected_checked": 204,
+      "pending_reviews": 48,
+      "checkout_command": "git checkout-index --prefix=<new directory> --force -z --stdin; validate SHA; atomic install of 204 explicitly verified-clean data paths",
+      "temporary_index_only": true
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-codex",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "sealed_payload_checked": 97,
+      "all_protected_checked": 204,
+      "pending_reviews": 48,
+      "checkout_command": "git checkout-index --prefix=<new directory> --force -z --stdin; validate SHA; atomic install of 204 explicitly verified-clean data paths",
+      "temporary_index_only": true
+    },
+    {
+      "root": "D:\\projects\\jcl-profiler-claude",
+      "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+      "sealed_payload_checked": 97,
+      "all_protected_checked": 204,
+      "pending_reviews": 48,
+      "checkout_command": "git checkout-index --prefix=<new directory> --force -z --stdin; validate SHA; atomic install of 204 explicitly verified-clean data paths",
+      "temporary_index_only": true
+    }
+  ]
+}

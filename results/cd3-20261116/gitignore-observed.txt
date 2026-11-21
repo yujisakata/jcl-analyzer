@@ -1,0 +1,41 @@
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.eggs/
+*.egg
+.hypothesis/
+
+# Test and analysis caches
+.coverage
+.coverage.*
+htmlcov/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Temporary and local database files
+*.tmp
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.swp
+*.bak
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Local backup archive
+/jcl-profiler.7z

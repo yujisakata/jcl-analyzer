@@ -1,0 +1,6 @@
+# branch.oid 16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd
+# branch.head claude/cd4-resolver
+1 .M N... 100644 100644 100644 9ced86462b075efc94a4224017849ad607973937 9ced86462b075efc94a4224017849ad607973937 specs/diagnostic-catalog.yaml
+1 .M N... 100644 100644 100644 c300987976d69f0a6f36bb851bec825bc466f819 c300987976d69f0a6f36bb851bec825bc466f819 specs/rules.yaml
+? config/contexts/
+? tests/resolver/

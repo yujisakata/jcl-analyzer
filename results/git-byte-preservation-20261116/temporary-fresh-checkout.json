@@ -1,0 +1,13 @@
+{
+  "root": "D:\\projects\\jcl-profiler-bytecheck-20261116",
+  "oracle_sha256": "fd1fbf86c50857decdebd6ec722470252f250840145615098a6499315d44402a",
+  "sealed_payload_checked": 97,
+  "all_protected_checked": 204,
+  "pending_reviews": 48,
+  "head": "16a45190fb33a8abdcb8ddaff537f75dd2b4c2bd",
+  "fresh_checkout": true,
+  "manual_attribute_copy": false,
+  "manual_data_repair": false,
+  "existing_golden_all_files_checked": 195,
+  "worktree_clean": true
+}

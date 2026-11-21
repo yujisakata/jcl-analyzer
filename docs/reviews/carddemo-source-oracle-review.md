@@ -294,6 +294,19 @@ Oracle MATCHを、未解決事項の不存在・汎用Parser完成・Batch IR決
 保全結果: [preservation.json](../../results/cd3-20261116/preservation.json)。
 成果物ハッシュ: [artifact-manifest.json](../../results/cd3-20261116/artifact-manifest.json)。
 
+**同時変更の記録:** 終了時照合で、既存328ファイル中`.gitignore`だけに変更を検出した。
+開始時SHAは`b7a03369476e39d1c64cbbd0fac9c5ac5db91e16c75748487162b9936bfb9f67`、
+観測時SHAは`f9d86f57e540d95df9be61bc45cca69a47e17fd864a99e9775585f1d68885f61`。
+環境/cache/secret/DB等の除外規則への拡充で、変更者は不明。ファイルmtimeは2026-11-16 08:25:01 JST付近だが、作者・実変更時刻の証明ではない。
+またGitメタデータを観測した。CD-3開始時に.gitの有無を記録していないため、追加時点は確定できない。
+確認時点で有効なHEADコミットを取得できず、コミットIDによる版固定はしていない。
+[差分](../../results/cd3-20261116/gitignore.diff)と[観測記録](../../results/cd3-20261116/concurrent-change.json)を保存した。
+本審査ではその変更・Git初期化・取消しを実施していない。
+Parser/Harness/テスト/規則/既存Golden/期待値/reviewsおよび原本には変更を検出しておらず、source照合の証拠は有効とする。
+313ファイル集合はCD-2の`b3b96a54728b9a4b74f2792a7396b47c02a2ade19c3ec603f739e7ce104f8aed`から
+観測時点の`5c1db0b471cea849403fadad859e210e0dec461ac43e667a393d1691242add40`へ変化した。
+正式承認前には同時変更を止めた版で再度ハッシュを固定する。
+
 再現コマンド（原本・期待値・承認状態を書き換えない）:
 
 ```powershell
